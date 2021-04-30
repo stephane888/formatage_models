@@ -1,0 +1,7 @@
+formatage_models.example:
+  path: '/formatage-models/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\formatage_models\Controller\FormatageModelsController::build'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,6 @@
+services:
+  formatage_models.event_subscriber:
+    class: Drupal\formatage_models\EventSubscriber\FormatageModelsSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }

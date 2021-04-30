@@ -1,0 +1,19 @@
+<?php
+use Drupal\formatage_models\FormatageModelsThemes;
+
+/**
+ *
+ * @file
+ * Primary module hooks for formatage models module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function formatage_models_theme() {
+	return FormatageModelsThemes::getThemeHooks();
+}
