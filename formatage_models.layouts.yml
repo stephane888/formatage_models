@@ -1,0 +1,15 @@
+formatage_models.blog-list:
+  label: 'Blog list'
+  category: 'Template wbu_entreprise'
+  template: templates/layouts/blog/blog-list
+  library: wbu_entreprise/blog-list
+  default_region: titre
+  regions:
+    titre:
+      label: Titre    
+    description:
+      label: Description
+    left:
+      label: Left
+    right:
+      label: Right

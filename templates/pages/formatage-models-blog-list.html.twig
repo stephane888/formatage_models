@@ -1,0 +1,26 @@
+{% if content %}
+<div {{ attributes.addClass(['row','home-blog']) }}>
+	<div class="col-12">
+		<div class="row">
+			<div class="col-md-8">
+				<header class="header-blog">
+					<div {{ region_attributes.title.addClass(['title']) }}> <h1> {{ render_var({ '#theme': 'formatage_models__clean_field','#tag_field': 'span', '#content_all': content.title }) }} </h1> </div>
+					<div {{ region_attributes.description.addClass(['description']) }}> {{ content.description }} </div>
+				</header>
+			</div>
+		</div>
+	</div>
+	<div {{ region_attributes.left.addClass(['col-lg-8','left']) }}>
+		{{ content.left }}
+	</div>
+	<div {{ region_attributes.right.addClass(['col-lg-4','right']) }}>
+		{{ content.right }}
+		{# {% include
+			'@lesroisdelareno/layouts/models/blogs/blog-call-toaction.html.twig'
+		%} 
+		{% include '@lesroisdelareno/layouts/models/blogs/blog-newletter.html.twig' %}
+		#}
+		{# #}
+	</div>
+</div>
+{% endif %}
