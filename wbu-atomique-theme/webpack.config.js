@@ -14,7 +14,7 @@ const plugins = [];
 // enable in production only
 plugins.push(
   new MiniCssExtractPlugin({
-    filename: "./css/products/[name].css",
+    filename: "./layouts/css/[name].css",
     chunkFilename: "[id].css"
   })
 );
@@ -25,11 +25,13 @@ module.exports = {
   mode: env || "development", // On définit le mode en fonction de la valeur de NODE_ENV
   entry: {
     "product-single": "./src/js/product-single.js",
-    "blog-list": "./src/js/blog-list.js"
+    "formatage-models-blog-list": "./src/js/formatage-models-blog-list.js",
+    "formatage-models-blog-call-toaction":
+      "./src/js/formatage-models-blog-call-toaction.js"
   },
   output: {
     path: path.resolve(__dirname, "../"),
-    filename: "./js/products/[name].js"
+    filename: "./layouts/js/[name].js"
   },
   devtool: devMode ? "inline-source-map" : false,
   module: {

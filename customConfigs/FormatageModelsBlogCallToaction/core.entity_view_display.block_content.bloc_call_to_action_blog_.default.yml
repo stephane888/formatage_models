@@ -1,0 +1,63 @@
+uuid: 238b1449-d6ba-4d7d-85ce-4f875444276d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.bloc_call_to_action_blog_
+    - field.field.block_content.bloc_call_to_action_blog_.body
+    - field.field.block_content.bloc_call_to_action_blog_.field_nom_utilisateur
+    - field.field.block_content.bloc_call_to_action_blog_.field_url
+  module:
+    - ds
+    - link
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: lesroisdelareno.blog-call-toaction
+      library: lesroisdelareno/blog-teaser
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      title:
+        - field_nom_utilisateur
+      body:
+        - body
+      link:
+        - field_url
+id: block_content.bloc_call_to_action_blog_.default
+targetEntityType: block_content
+bundle: bloc_call_to_action_blog_
+mode: default
+content:
+  body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: body
+  field_nom_utilisateur:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: title
+  field_url:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: link
+hidden:
+  langcode: true

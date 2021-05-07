@@ -40,7 +40,15 @@ vuejs:
 
 formatage-models-blog-list:
   js:
-    js/formatage-models-blog-list.js: {}
+    layouts/js/formatage-models-blog-list.js: {}
   css:
     component:
-      css/formatage-models-blog-list.css: {}    
+      layouts/css/formatage-models-blog-list.css: {}   
+
+       
+formatage-models-blog-call-toaction:
+  js:
+    layouts/js/formatage-models-blog-call-toaction.js: {}
+  css:
+    component:
+      layouts/css/formatage-models-blog-call-toaction.css: {}       

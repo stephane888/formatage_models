@@ -1,0 +1,59 @@
+uuid: 3141418a-217e-4516-9223-ddd2ca713881
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.bloc_call_to_action_blog_
+    - field.field.block_content.bloc_call_to_action_blog_.body
+    - field.field.block_content.bloc_call_to_action_blog_.field_nom_utilisateur
+    - field.field.block_content.bloc_call_to_action_blog_.field_url
+  module:
+    - link
+    - text
+id: block_content.bloc_call_to_action_blog_.default
+targetEntityType: block_content
+bundle: bloc_call_to_action_blog_
+mode: default
+content:
+  body:
+    weight: 30
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+    region: content
+  field_nom_utilisateur:
+    weight: 27
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_url:
+    weight: 29
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

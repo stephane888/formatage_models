@@ -1,0 +1,30 @@
+{#
+	wbu-atomique/scss/molecule/stan/serviceBlock-module.scss
+#}
+{% if content %}
+<div{{ attributes.addClass(['serviceBlock-module']) }}>
+    <div class="serviceBlock-module__container">
+        <div class="serviceBlock-module__serviceMessage">
+            <div{{ region_attributes.title.addClass(['title','serviceBlock-module__serviceTitle']) }}>
+                {{ content.title }}
+            </div>
+            <div class="serviceBlock-module__serviceDescription text-left" >
+                <div{{ region_attributes.body.addClass(['body','paragraphList']) }}>
+                {% set body= {
+                    '#theme': 'formatage_models__clean_field',
+                    '#tag_fields': 'ul',
+                    '#tag_fields_attibutes': {'class':['list-module','puce-check']},
+                    '#tag_field': 'li',
+                    '#content_all': content.body
+                } %}
+                	{{ render_var(body) }}                	
+                </div>
+            </div>
+            {{ content.link }}            
+            {# 
+            	<a class="serviceBlock-module__button"> J'ai un poject <i class="fa fa-arrow-right"></i> </a> 
+            #}
+        </div>
+    </div>
+</div>
+{% endif %}

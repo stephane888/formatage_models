@@ -8,29 +8,27 @@ use Drupal\Core\Form\FormStateInterface;
  * A very advanced custom layout.
  *
  * @Layout(
- *   id = "formatage_models_blog_list",
- *   label = @Translation(" Blog list "),
+ *   id = "formatage_models_blog_call_toaction",
+ *   label = @Translation(" blog call to action "),
  *   category = @Translation("Formatage Models"),
- *   path = "layouts/pages",
- *   template = "formatage-models-blog-list",
- *   library = "formatage_models/formatage-models-blog-list",
+ *   path = "layouts/teasers",
+ *   template = "formatage-models-blog-call-toaction",
+ *   library = "formatage_models/formatage-models-blog-call-toaction",
+ *   default_region = "body",
  *   regions = {
  *     "title" = {
  *       "label" = @Translation("Title"),
  *     },
- *     "description" = {
- *       "label" = @Translation("Description"),
+ *     "body" = {
+ *       "label" = @Translation("Body"),
  *     },
- *     "left" = {
- *       "label" = @Translation("Left"),
- *     },
- *     "right" = {
- *       "label" = @Translation("Right")
+ *     "link" = {
+ *       "label" = @Translation("Link")
  *     }
  *   }
  * )
  */
-class FormatageModelsBlogList extends LayoutDefault {
+class FormatageModelsBlogCallToaction extends LayoutDefault {
 	/**
 	 * {@inheritdoc}
 	 */
