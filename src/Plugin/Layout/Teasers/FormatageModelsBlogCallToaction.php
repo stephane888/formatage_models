@@ -5,6 +5,7 @@ use Drupal\Core\Layout\LayoutDefault;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\formatage_models\Services\Layouts;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Stephane888\Debug\debugLog;
 
 /**
  * A very advanced custom layout.
@@ -109,12 +110,14 @@ class FormatageModelsBlogCallToaction extends LayoutDefault {
 			'#type' => 'managed_file',
 			'#title' => $this->t('Bg image'),
 			'#default_value' => $this->configuration['bgimage']['fid'],
-			'#upload_location' => 'public://layouts',
-			'#submit' => [ // 'themeconsultant_completsavefile'
-			]
+			'#upload_location' => 'public://layouts'
 		];
 
 		return $form;
+	}
+
+	public function savefile(array &$form, FormStateInterface $form_state) {
+		debugLog::kintDebugDrupal($form, 'savefile');
 	}
 
 	/**

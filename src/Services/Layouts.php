@@ -31,6 +31,20 @@ class Layouts {
 		];
 	}
 
+	function saveFilePermanent(array $fids) {
+		foreach ($fids as $fid) {
+			if (is_int($fid)) {
+				if ($file = \Drupal\file\Entity\File::load($fid)) {
+					$file->setPermanent();
+					$file->save();
+					$file_usage = \Drupal::service('file.usage');
+					$file_usage->add($file, 'formatage_models', 'module', $fid);
+					return true;
+				}
+			}
+		}
+	}
+
 	function submitConfigurationForm(array &$configuration, FormStateInterface $form_state) {
 		$configuration['css'] = $form_state->getValue('css');
 		$configuration['load_libray'] = $form_state->getValue('load_libray');

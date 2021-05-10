@@ -1,7 +1,6 @@
 <?php
 use Drupal\formatage_models\FormatageModelsThemes;
 use Stephane888\Debug\debugLog;
-use Twig\Markup;
 
 /**
  *
