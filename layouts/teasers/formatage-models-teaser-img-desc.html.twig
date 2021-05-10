@@ -1,8 +1,8 @@
 {% if content %}
-	<div class="teaser-img-desc d-flex ">
+	<div{{ attributes.addClass(['teaser-img-desc','d-flex']) }}>
 		<div class="teaser-img-desc__image">
-		    {{ content.bgimage }}
-		    <div class="categorie">{{ content.categorie }}</div>
+			<div class="categorie">{{ content.categorie|layout_value }}</div>
+		    <div class="img">{{ content.bgimage|layout_value }}</div>	    
 		</div>
 		<div class="teaser-img-desc__desc">
 			<h3 class="title">{{ content.title }}</h3>

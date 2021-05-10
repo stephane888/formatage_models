@@ -1,6 +1,7 @@
 <?php
 namespace Drupal\formatage_models\Services;
 
+use Stephane888\Debug\debugLog;
 use Drupal\Core\Form\FormStateInterface;
 
 class Layouts {
@@ -33,14 +34,13 @@ class Layouts {
 
 	function saveFilePermanent(array $fids) {
 		foreach ($fids as $fid) {
-			if (is_int($fid)) {
-				if ($file = \Drupal\file\Entity\File::load($fid)) {
-					$file->setPermanent();
-					$file->save();
-					$file_usage = \Drupal::service('file.usage');
-					$file_usage->add($file, 'formatage_models', 'module', $fid);
-					return true;
-				}
+			if ($file = \Drupal\file\Entity\File::load($fid)) {
+				// debugLog::kintDebugDrupal($file, 'saveFilePermanent2', null, 'lesroisdelareno');
+				$file->setPermanent();
+				$file->save();
+				$file_usage = \Drupal::service('file.usage');
+				$file_usage->add($file, 'formatage_models', 'module', $fid);
+				return true;
 			}
 		}
 	}
@@ -50,6 +50,12 @@ class Layouts {
 		$configuration['load_libray'] = $form_state->getValue('load_libray');
 	}
 
+	/**
+	 *
+	 * @param array $fid
+	 * @param String $image_style
+	 * @return string|array
+	 */
 	public function getImageUrlByFid($fid, $image_style = null) {
 		if (! empty($fid[0])) {
 			$file = \Drupal\file\Entity\File::load($fid[0]);

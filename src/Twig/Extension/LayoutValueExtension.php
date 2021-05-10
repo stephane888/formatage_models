@@ -23,40 +23,37 @@ class LayoutValueExtension extends \Twig_Extension {
 			new \Twig_SimpleFilter('layout_raw', [
 				$this,
 				'getLayoutRawValues'
+			]),
+			new \Twig_SimpleFilter('layout_value', [
+				$this,
+				'getLayoutValues'
 			])
 		];
 	}
 
-	/**
-	 * Twig filter callback: Only return a field's value(s).
-	 *
-	 * @param array|null $build
-	 *        	Render array of a field.
-	 *        	
-	 * @return array Array of render array(s) of field value(s). If $build is not the render
-	 *         array of a field, NULL is returned.
-	 */
-	public function getFieldValue($build) {
-		if (! $this->isFieldRenderArray($build)) {
-			return NULL;
+	public function getLayoutValues(array $build, $keySearch = null) {
+		$vals = [];
+		$key = 0;
+		foreach ($build as $value) {
+			if (is_array($value) && ! empty($value)) {
+				if (! empty($value['#theme']) && $value['#theme'] == 'block' && ! empty($value['content'])) {
+					if ($keySearch !== null) {
+						if ($key === $keySearch) {
+							return $this->getFieldValue($value['content'], $keySearch);
+						}
+					}
+					else {
+						$vals[] = $this->getFieldValue($value['content']);
+					}
+				}
+			}
+			$key ++;
 		}
-
-		$elements = Element::children($build);
-		if (empty($elements)) {
-			return NULL;
-		}
-
-		$items = [];
-		foreach ($elements as $delta) {
-			$items[$delta] = $build[$delta];
-		}
-
-		return $items;
+		return $vals;
 	}
 
 	public function getLayoutRawValues(array $build, $keySearch = null) {
 		$vals = [];
-
 		$key = 0;
 		foreach ($build as $value) {
 			if (is_array($value) && ! empty($value)) {
@@ -110,6 +107,33 @@ class LayoutValueExtension extends \Twig_Extension {
 			}
 		}
 		return $raw_values;
+	}
+
+	/**
+	 * Twig filter callback: Only return a field's value(s).
+	 *
+	 * @param array|null $build
+	 *        	Render array of a field.
+	 *        	
+	 * @return array Array of render array(s) of field value(s). If $build is not the render
+	 *         array of a field, NULL is returned.
+	 */
+	public function getFieldValue($build) {
+		if (! $this->isFieldRenderArray($build)) {
+			return NULL;
+		}
+
+		$elements = Element::children($build);
+		if (empty($elements)) {
+			return NULL;
+		}
+
+		$items = [];
+		foreach ($elements as $delta) {
+			$items[$delta] = $build[$delta];
+		}
+
+		return $items;
 	}
 
 	/**

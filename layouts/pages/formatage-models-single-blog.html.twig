@@ -1,0 +1,30 @@
+{% if content %}
+<div class="single-blog">
+    <h1 class="single-blog--title">
+    	{{ content.title }}
+    </h1>
+    <div class="single-blog--tags">
+    	{% for block in content.tags|layout_value %}
+    		{% for value in block %}
+    			<div class="item">{{ value }}</div>
+    		{% endfor %}
+    	{% endfor %}
+    </div>
+    <div class="single-blog--icones_info">
+    	{{ content.icones_info }}
+    </div>
+    <div class="single-blog--introduction">
+    	{% for block in content.introduction|layout_value %}
+    		{% for value in block %}
+    			<div class="item">{{ value }}</div>
+    		{% endfor %}
+    	{% endfor %}
+    </div>
+    <div class="single-blog--images">
+    	{{ content.images }}
+    </div>
+	<div class="single-blog--body">
+    	{{ content.body }}
+    </div>
+</div>
+{% endif %}

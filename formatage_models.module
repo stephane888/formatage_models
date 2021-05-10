@@ -37,6 +37,7 @@ function formatage_models_theme() {
 
 function formatage_models_preprocess_formatage_models_teaser_img_desc(array &$variables) {
 	FormatageModelsThemes::addLayoutEditBlock($variables);
+	FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_blog_list(array &$variables) {

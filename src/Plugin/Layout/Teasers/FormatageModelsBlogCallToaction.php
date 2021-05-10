@@ -112,12 +112,7 @@ class FormatageModelsBlogCallToaction extends LayoutDefault {
 			'#default_value' => $this->configuration['bgimage']['fid'],
 			'#upload_location' => 'public://layouts'
 		];
-
 		return $form;
-	}
-
-	public function savefile(array &$form, FormStateInterface $form_state) {
-		debugLog::kintDebugDrupal($form, 'savefile');
 	}
 
 	/**
@@ -137,5 +132,6 @@ class FormatageModelsBlogCallToaction extends LayoutDefault {
 			'fid' => $form_state->getValue('bgimage'),
 			'url' => $this->Layouts->getImageUrlByFid($form_state->getValue('bgimage'))
 		];
+		$this->Layouts->saveFilePermanent($form_state->getValue('bgimage'));
 	}
 }

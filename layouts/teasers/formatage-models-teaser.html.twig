@@ -17,21 +17,13 @@
 <div class="billetDeBlogTeaser"
 	style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}');">
 	{# url #}
-	{% if content.url %}
-	{% set RenderUrl %}
-	{{ render_var({ '#theme': 'formatage_models__clean_field','#tag_field': 'span', '#content_all': content.url }) }}
-	{% endset %}
-	{% if RenderUrl %}
-	{% set RenderUrl %}
-	{{- RenderUrl|striptags|trim -}}
-	{% endset %}
-	{% if RenderUrl.content %}
-	{% set RenderUrl %}
-	{{- path('entity.node.canonical', {'node': RenderUrl}) -}}
-	{% endset %}
-	{% endif %}
-	{% endif %}
-	{% endif %}
+	
+	{% if content.url %}	    
+    	{% set RenderUrl = content.url|layout_raw(0) %}
+    	{% if RenderUrl.value %}
+            {% set RenderUrl %}{{- path('entity.node.canonical', {'node': RenderUrl.value}) -}}{% endset %}
+    	{% endif %}
+    {% endif %}
 
 	{% if RenderUrl %}
 	<a href="{{- RenderUrl -}}" class="cover-link">{% endif %}

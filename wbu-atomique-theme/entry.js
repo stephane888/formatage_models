@@ -3,6 +3,7 @@ module.exports = {
   "formatage-models-blog-list": "./src/js/formatage-models-blog-list.js",
   "formatage-models-teaser": "./src/js/formatage-models-teaser.js",
   "formatage-models-bg-header": "./src/js/formatage-models-bg-header.js",
+  "formatage-models-single-blog": "./src/js/formatage-models-single-blog.js",
   "formatage-models-teaser-img-desc":
     "./src/js/formatage-models-teaser-img-desc.js",
   "formatage-models-teaser-img-title":

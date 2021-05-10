@@ -1,8 +1,7 @@
 <?php
 namespace Drupal\formatage_models\Plugin\Layout\Teasers;
 
-use Drupal\Core\Layout\LayoutDefault;
-use Drupal\Core\Form\FormStateInterface;
+use Drupal\formatage_models\Plugin\Layout\FormatageModels;
 
 /**
  * A very advanced custom layout.
@@ -31,45 +30,5 @@ use Drupal\Core\Form\FormStateInterface;
  *   }
  * )
  */
-class FormatageModelsBlogTeaser extends LayoutDefault {
-
-	/**
-	 *
-	 * {@inheritdoc}
-	 */
-	public function defaultConfiguration() {
-		return parent::defaultConfiguration() + [
-			'css' => ''
-		];
-	}
-
-	/**
-	 *
-	 * {@inheritdoc}
-	 */
-	public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-		$form = parent::buildConfigurationForm($form, $form_state);
-		$form['label']['#default_value'] = empty($this->configuration['label']) ? $this->getBaseId() : $this->configuration['label'];
-		$form['css'] = [
-			'#type' => 'textfield',
-			'#title' => $this->t('Class css'),
-			'#default_value' => $this->configuration['css']
-		];
-		return $form;
-	}
-
-	/**
-	 *
-	 * {@inheritdoc}
-	 */
-	public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {}
-
-	/**
-	 *
-	 * {@inheritdoc}
-	 */
-	public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
-		parent::submitConfigurationForm($form, $form_state);
-		$this->configuration['css'] = $form_state->getValue('css');
-	}
+class FormatageModelsBlogTeaser extends FormatageModels {
 }

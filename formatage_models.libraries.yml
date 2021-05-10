@@ -40,6 +40,13 @@ vuejs:
 
 #################################################################################################################################################
 # -50 <weight> +50 
+formatage-models-single-blog:
+  js:
+    layouts/js/formatage-models-single-blog.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-single-blog.css: { weight: 10 }
+      
 formatage-models-teaser-img-desc:
   js:
     layouts/js/formatage-models-teaser-img-desc.js: {}
