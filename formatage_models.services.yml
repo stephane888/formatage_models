@@ -4,3 +4,13 @@ services:
     arguments: ['@messenger']
     tags:
       - { name: event_subscriber }
+      
+  formatage_models.layouts:
+    class: Drupal\formatage_models\Services\Layouts
+    arguments: []
+    
+  formatage_models.twig.extension:
+    class: Drupal\formatage_models\Twig\Extension\LayoutValueExtension
+    tags:
+      - { name: twig.extension }
+

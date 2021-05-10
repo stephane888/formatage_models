@@ -1,0 +1,10 @@
+uuid: 456e385f-6c4b-4508-a8bd-4c8a4d0801d2
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.blog_teaser_a_la_une
+label: 'Blog teaser à la une'
+targetEntityType: node
+cache: true

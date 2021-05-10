@@ -1,0 +1,14 @@
+{% if content %}
+{% set RenderBgimage = {
+          '#theme':'formatage_models__img_url',
+          '#content_all': content.bgimage,
+          '#tag_fields': '',
+          '#tag_field': '',
+          '#tag_field_attibutes':{}
+        } 
+      %}
+      {% set RenderBgimagHtml %}{{ render_var(RenderBgimage) }}{% endset %}
+<div class="teaser-img-title" style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}');">	
+	<div class="teaser-img-title__title">{{ content.title }}</div>
+</div>	
+{% endif %}

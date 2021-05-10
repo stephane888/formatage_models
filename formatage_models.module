@@ -1,5 +1,7 @@
 <?php
 use Drupal\formatage_models\FormatageModelsThemes;
+use Stephane888\Debug\debugLog;
+use Twig\Markup;
 
 /**
  *
@@ -12,8 +14,59 @@ use Drupal\formatage_models\FormatageModelsThemes;
  */
 
 /**
+ * Implement hook_preprocess_page
+ */
+function formatage_models_preprocess_page(&$variables) {
+	// $Markup = new Markup();
+	// $Markup->__toString()
+	if (! empty($variables['page']['content'])) {
+		foreach ($variables['page']['content'] as $block) {
+			if (! empty($block["#theme"]) && $block["#theme"] == 'block')
+				FormatageModelsThemes::ReInjectLayoutInAnotherRegion($block["#block"], $variables);
+		}
+	}
+	// dump($variables['page']['content']);
+	// MdbootstrapWbu::wbupreprocess_page($variables);
+}
+
+/**
  * Implements hook_theme().
  */
 function formatage_models_theme() {
 	return FormatageModelsThemes::getThemeHooks();
+}
+
+function formatage_models_preprocess_formatage_models_teaser_img_desc(array &$variables) {
+	FormatageModelsThemes::addLayoutEditBlock($variables);
+}
+
+function formatage_models_preprocess_formatage_models_blog_list(array &$variables) {
+	FormatageModelsThemes::ApplyAttributes($variables);
+}
+
+function formatage_models_preprocess_formatage_models_article_header(array &$variables) {
+	FormatageModelsThemes::ApplyAttributes($variables);
+}
+
+function formatage_models_preprocess_formatage_models_teaser(array &$variables) {
+	FormatageModelsThemes::addLayoutEditBlock($variables);
+}
+
+function formatage_models_preprocess_formatage_models_teaser_a_la_une(array &$variables) {
+	FormatageModelsThemes::addLayoutEditBlock($variables);
+}
+
+function formatage_models_preprocess_formatage_models_realisation_big(array &$variables) {
+	FormatageModelsThemes::addLayoutEditBlock($variables);
+}
+
+function formatage_models_preprocess_formatage_models_realisation_small(array &$variables) {
+	FormatageModelsThemes::addLayoutEditBlock($variables);
+}
+
+function formatage_models_preprocess_formatage_models_bg_header(array &$variables) {
+	FormatageModelsThemes::addLayoutEditBlock($variables);
+
+	// $variables["#theme"] = "region";
+	// dump($variables);
 }

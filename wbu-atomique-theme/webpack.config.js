@@ -3,6 +3,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const entry = require("./entry.js");
 
 // on récupère la valeur de NODE_ENV
 const env = process.env.NODE_ENV;
@@ -23,12 +24,7 @@ console.log("devMode", devMode);
 module.exports = {
   plugins,
   mode: env || "development", // On définit le mode en fonction de la valeur de NODE_ENV
-  entry: {
-    "product-single": "./src/js/product-single.js",
-    "formatage-models-blog-list": "./src/js/formatage-models-blog-list.js",
-    "formatage-models-blog-call-toaction":
-      "./src/js/formatage-models-blog-call-toaction.js"
-  },
+  entry,
   output: {
     path: path.resolve(__dirname, "../"),
     filename: "./layouts/js/[name].js"
