@@ -1,2 +1,2 @@
-import tab from "wbu-atomique/js/products/product-all-description.js";
+import tab from "@stephane888/wbu-atomique/js/products/product-all-description.js";
 import "../scss/product-single.scss";

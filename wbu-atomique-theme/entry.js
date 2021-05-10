@@ -18,5 +18,7 @@ module.exports = {
   "formatage-models-realisation-big":
     "./src/js/formatage-models-realisation-big.js",
   "formatage-models-blog-call-toaction":
-    "./src/js/formatage-models-blog-call-toaction.js"
+    "./src/js/formatage-models-blog-call-toaction.js",
+  "galery-title": "./src/js/galery-title.js",
+  "project-summary": "./src/js/project-summary.js",
 };

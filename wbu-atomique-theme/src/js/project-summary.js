@@ -1,1 +1,1 @@
-import moduleName from "wbu-atomique/scss/molecule/stan/projectSummary.scss";
+import "../scss/project-summary.scss";

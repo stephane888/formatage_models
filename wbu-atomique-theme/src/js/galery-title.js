@@ -1,1 +1,1 @@
-import "wbu-atomique/scss/molecule/stan/galeryTitle.scss";
+import "../scss/galery-title.scss";
