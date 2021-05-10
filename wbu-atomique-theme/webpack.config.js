@@ -16,7 +16,7 @@ const plugins = [];
 plugins.push(
   new MiniCssExtractPlugin({
     filename: "./layouts/css/[name].css",
-    chunkFilename: "[id].css"
+    chunkFilename: "[id].css",
   })
 );
 
@@ -27,7 +27,7 @@ module.exports = {
   entry,
   output: {
     path: path.resolve(__dirname, "../"),
-    filename: "./layouts/js/[name].js"
+    filename: "./layouts/js/[name].js",
   },
   devtool: devMode ? "inline-source-map" : false,
   module: {
@@ -39,9 +39,9 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["babel-preset-env"]
-          }
-        }
+            presets: ["babel-preset-env"],
+          },
+        },
       },
       //Règles de compilations pour les fichiers .css
       {
@@ -50,44 +50,44 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: "../"
-            }
+              publicPath: "../",
+            },
           },
           {
             loader: "css-loader",
             options: {
-              importLoaders: 1
-            }
+              importLoaders: 1,
+            },
           },
           {
             loader: "postcss-loader",
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: "resolve-url-loader", // améliore la résolution des chemins relatifs
             // (utile par exemple quand une librairie tierce fait référence à des images ou des fonts situés dans son propre dossier)
             options: {
-              publicPath: "../images"
-            }
+              publicPath: "../images",
+            },
           },
           {
             loader: "sass-loader",
             options: {
               sourceMap: true, // il est indispensable d'activer les sourcemaps pour que postcss fonctionne correctement
-              implementation: require("sass")
-            }
-          }
-        ]
+              implementation: require("sass"),
+            },
+          },
+        ],
       },
       //règles de compilations pour les fonts
       {
         test: /\.(eot|ttf|woff|woff2)$/,
         loader: "file-loader",
         options: {
-          name: "fonts/[name].[hash].[ext]"
-        }
+          name: "fonts/[name].[hash].[ext]",
+        },
       },
       //règles de compilations pour les images
       {
@@ -95,7 +95,7 @@ module.exports = {
         use: [
           {
             // Using file-loader for these files
-            loader: "file-loader?name=[name].[ext]&outputPath=./images/"
+            loader: "file-loader?name=[name].[ext]&outputPath=./images/",
 
             // In options we can set different things like format
             // and directory to save
@@ -103,15 +103,15 @@ module.exports = {
             //     outputPath: (__dirname, '../images')
             // }
           },
-          {loader: "image-webpack-loader"}
-        ]
+          { loader: "image-webpack-loader" },
+        ],
       },
       {
         test: /\.svg$/i,
         use: [
           {
             // Using file-loader for these files
-            loader: "file-loader?name=[name].[ext]&outputPath=./icons/"
+            loader: "file-loader?name=[name].[ext]&outputPath=./icons/",
 
             // In options we can set different things like format
             // and directory to save
@@ -119,17 +119,17 @@ module.exports = {
             //     outputPath: (__dirname, '../images')
             // }
           },
-          {loader: "image-webpack-loader"}
-        ]
-      }
-    ]
+          { loader: "image-webpack-loader" },
+        ],
+      },
+    ],
   },
   devServer: {
     contentBase: path.resolve(__dirname, "./public"),
     port: 3000,
     publicPath: "/dist/",
     watchContentBase: true,
-    hot: true
+    hot: true,
   },
   optimization: {
     minimizer: [
@@ -138,12 +138,12 @@ module.exports = {
           preset: [
             "default",
             {
-              discardComments: {removeAll: true}
-            }
-          ]
-        }
+              discardComments: { removeAll: true },
+            },
+          ],
+        },
       }),
-      new TerserPlugin()
-    ]
-  }
+      new TerserPlugin(),
+    ],
+  },
 };

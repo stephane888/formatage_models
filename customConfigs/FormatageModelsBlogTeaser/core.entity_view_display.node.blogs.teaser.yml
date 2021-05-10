@@ -12,14 +12,23 @@ dependencies:
     - layout_builder
     - text
     - user
+<<<<<<< HEAD
+  theme:
+    - lesroisdelareno
+=======
     - formatage_models
+>>>>>>> f65d783675b33239fed76ddec88cc3dfc95fe470
 third_party_settings:
   layout_builder:
     allow_custom: false
     enabled: true
     sections:
       -
+<<<<<<< HEAD
+        layout_id: lesroisdelareno.blog-teaser
+=======
         layout_id: formatage_models_teaser
+>>>>>>> f65d783675b33239fed76ddec88cc3dfc95fe470
         layout_settings:
           label: ''
         components:

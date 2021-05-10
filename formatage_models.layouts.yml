@@ -1,29 +1,55 @@
 formatage_models.blog-list:
-  label: 'Blog list'
-  category: 'Template wbu_entreprise'
-  template: templates/layouts/blog/blog-list
+  label: "Blog list"
+  category: "Template wbu_entreprise"
+  template: layouts/pages/blog-list
   library: wbu_entreprise/blog-list
   default_region: titre
   regions:
     titre:
-      label: Titre    
+      label: Titre
     description:
       label: Description
     left:
       label: Left
     right:
       label: Right
-formatage_models_formatagemodelsexample:
-  label: 'FormatageModelsExample'
-  category: 'Formatage models'
-  path: layouts/formatagemodelsexample
-  template: formatagemodelsexample
-  library: formatage_models/formatagemodelsexample
-  regions:
-    main:
-      label: Main content
-    sidebar:
-      label: Sidebar
+# formatage_models_formatagemodelsexample:
+#   label: "FormatageModelsExample"
+#   category: "Formatage models"
+#   path: layouts/formatagemodelsexample
+#   template: formatagemodelsexample
+#   library: formatage_models/formatagemodelsexample
+#   regions:
+#     main:
+#       label: Main content
+#     sidebar:
+#       label: Sidebar
+#   default_region: main
+#   icon_map:
+#     - [main, main, sidebar]
+formatage_models.project_summary:
+  label: "Project Summary"
+  category: "Formatage models"
+  template: layouts/pages/project-summary
+  library: formatage_models/project-summary
   default_region: main
-  icon_map:
-    - [main, main, sidebar]
+  regions:
+    title:
+      label: title content
+    description:
+      label: title content
+    localisation:
+      label: localisation content
+formatage_models.galery_title:
+  label: "Galery Title"
+  category: "Formatage models"
+  template: layouts/pages/galery-title
+  library: formatage_models/galery-title
+  default_region: main
+  regions:
+    title:
+      label: title content
+    description:
+      label: title content
+    localisation:
+      label: localisation content
