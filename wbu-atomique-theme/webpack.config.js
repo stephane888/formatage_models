@@ -3,7 +3,11 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+<<<<<<< HEAD
 const { EWOULDBLOCK } = require("constants");
+=======
+const entry = require("./entry.js");
+>>>>>>> f65d783675b33239fed76ddec88cc3dfc95fe470
 
 // on récupère la valeur de NODE_ENV
 const env = process.env.NODE_ENV;
@@ -24,6 +28,7 @@ console.log("devMode", devMode);
 module.exports = {
   plugins,
   mode: env || "development", // On définit le mode en fonction de la valeur de NODE_ENV
+<<<<<<< HEAD
   entry: {
     "product-single": "./src/js/product-single.js",
     "formatage-models-blog-list": "./src/js/formatage-models-blog-list.js",
@@ -33,6 +38,9 @@ module.exports = {
     "galery-title": "./src/js/galery-title.js",
     "project-summary": "./src/js/project-summary.js",
   },
+=======
+  entry,
+>>>>>>> f65d783675b33239fed76ddec88cc3dfc95fe470
   output: {
     path: path.resolve(__dirname, "../"),
     filename: "./layouts/js/[name].js",

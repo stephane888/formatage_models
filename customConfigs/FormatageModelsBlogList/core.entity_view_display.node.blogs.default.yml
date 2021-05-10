@@ -18,7 +18,11 @@ third_party_settings:
     enabled: true
     sections:
       -
+<<<<<<< HEAD
         layout_id: lesroisdelareno.single-blog
+=======
+        layout_id: formatage_models_blog_list
+>>>>>>> f65d783675b33239fed76ddec88cc3dfc95fe470
         layout_settings:
           label: ''
         components:

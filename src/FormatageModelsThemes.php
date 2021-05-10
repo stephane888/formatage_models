@@ -2,6 +2,9 @@
 namespace Drupal\formatage_models;
 
 use Drupal\Core\Field\FieldItemList;
+use Drupal\block\Entity\Block;
+use Drupal\Core\Template\Attribute;
+use Stephane888\Debug\debugLog;
 
 // use Stephane888\HtmlBootstrap\Traits\Portions;
 class FormatageModelsThemes {
@@ -39,6 +42,33 @@ class FormatageModelsThemes {
 			'file' => 'themes/formatage_models__img_url.theme.inc'
 		];
 		return $hooks;
+	}
+
+	/**
+	 * permet de deplacer les layouts dans une autre region.
+	 */
+	public static function ReInjectLayoutInAnotherRegion(Block $Block, $variables) {
+		// dump($Block);
+		// debugLog::$max_depth = 6;
+		// debugLog::kintDebugDrupal($Block, 'ReInjectLayoutInAnotherRegion');
+		$render = \Drupal::entityTypeManager()->getViewBuilder('block')->view($Block);
+		// dump($render);
+	}
+
+	public static function ApplyAttributes(array &$variables) {
+		if (! empty($variables['settings']['css'])) {
+			$css = explode(" ", $variables['settings']['css']);
+			$Attribute = [];
+			$Attribute['class'] = $css;
+			$variables['attributes'] = new Attribute($Attribute);
+		}
+	}
+
+	public static function addLayoutEditBlock(array &$variables) {
+		$route_name = \Drupal::routeMatch()->getRouteName();
+		if (\strripos($route_name, "layout_builder.") !== false) {
+			$variables['show_region_edit'] = true;
+		}
 	}
 
 	/**

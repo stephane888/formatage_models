@@ -3,24 +3,33 @@
 #}
 {% if content %}
 <div{{ attributes.addClass(['serviceBlock-module']) }}>
-    <div class="serviceBlock-module__container">
+    <div class="serviceBlock-module__container" style="background-image:url('{{ settings.bgimage.url }}')">
         <div class="serviceBlock-module__serviceMessage">
-            <div{{ region_attributes.title.addClass(['title','serviceBlock-module__serviceTitle']) }}>
+            <h3{{ region_attributes.title.addClass(['title','serviceBlock-module__serviceTitle']) }}>
                 {{ content.title }}
-            </div>
+            </h3>
             <div class="serviceBlock-module__serviceDescription text-left" >
                 <div{{ region_attributes.body.addClass(['body','paragraphList']) }}>
-                {% set body= {
-                    '#theme': 'formatage_models__clean_field',
-                    '#tag_fields': 'ul',
-                    '#tag_fields_attibutes': {'class':['list-module','puce-check']},
-                    '#tag_field': 'li',
-                    '#content_all': content.body
-                } %}
+                {% if settings.puce %}
+                    {% set body= {
+                        '#theme': 'formatage_models__clean_field',
+                        '#tag_fields': 'ul',
+                        '#tag_fields_attibutes': {'class':['list-module','puce-check']},
+                        '#tag_field': 'li',
+                        '#content_all': content.body
+                    } %}
+                {% else %}
+                	{% set body= {
+                        '#theme': 'formatage_models__clean_field',
+                        '#content_all': content.body
+                    } %}
+                {% endif %}
                 	{{ render_var(body) }}                	
                 </div>
             </div>
-            {{ content.link }}            
+            <div{{ region_attributes.link.addClass(['link','serviceBlock-module__button']) }}>
+            	{{ content.link }}
+            </div>          
             {# 
             	<a class="serviceBlock-module__button"> J'ai un poject <i class="fa fa-arrow-right"></i> </a> 
             #}

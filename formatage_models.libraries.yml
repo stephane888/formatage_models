@@ -3,7 +3,7 @@ formatage_models:
   js:
     js/formatage-models.js: {}
   css:
-    component:
+    theme:
       css/formatage-models.css: {}
   dependencies:
     - core/drupalSettings
@@ -20,7 +20,7 @@ jquery-labelauty:
   js:
     /libraries/jquery-labelauty/source/jquery-labelauty.js: {}
   css:
-    component:
+    theme:
       /libraries/jquery-labelauty/source/jquery-labelauty.css: {}
   dependencies:
     - core/jquery
@@ -44,19 +44,84 @@ formatage-models-teaser:
     component:
       layouts/css/formatage-models-teaser.css: {}
 
+#################################################################################################################################################
+# -50 <weight> +50 
+formatage-models-teaser-img-desc:
+  js:
+    layouts/js/formatage-models-teaser-img-desc.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser-img-desc.css: { weight: 10 }
+      
+formatage-models-teaser-img-title:
+  js:
+    layouts/js/formatage-models-teaser-img-title.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser-img-title.css: { weight: 10 }
+      
+formatage-models-bg-header:
+  js:
+    layouts/js/formatage-models-bg-header.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-bg-header.css: { weight: 10 }
+      
+formatage-models-article-header:
+  js:
+    layouts/js/formatage-models-article-header.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-article-header.css: { weight: 10 }
+      
+formatage-models-teaser-svg-titre-text:
+  js:
+    layouts/js/formatage-models-teaser-svg-titre-text.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser-svg-titre-text.css: { weight: 10 }
+      
+formatage-models-service-svg-titre-text:
+  js:
+    layouts/js/formatage-models-service-svg-titre-text.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-service-svg-titre-text.css: { weight: 10 }
+      
+formatage-models-realisation-small:
+  js:
+    layouts/js/formatage-models-realisation-small.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-realisation-small.css: { weight: 10 }
+      
+formatage-models-realisation-big:
+  js:
+    layouts/js/formatage-models-realisation-big.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-realisation-big.css: { weight: 10 }
+      
+formatage-models-teaser:
+  js:
+    layouts/js/formatage-models-teaser.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser.css: { weight: 10 }
+
 formatage-models-blog-list:
   js:
     layouts/js/formatage-models-blog-list.js: {}
   css:
-    component:
-      layouts/css/formatage-models-blog-list.css: {}
-
+    theme:
+      layouts/css/formatage-models-blog-list.css: { weight: 10 }  
+       
 formatage-models-blog-call-toaction:
   js:
     layouts/js/formatage-models-blog-call-toaction.js: {}
   css:
-    component:
-      layouts/css/formatage-models-blog-call-toaction.css: {}
+    theme:
+      layouts/css/formatage-models-blog-call-toaction.css: { weight: 10 }      
 
 galery-title:
   js:

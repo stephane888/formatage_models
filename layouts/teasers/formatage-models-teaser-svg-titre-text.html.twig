@@ -1,0 +1,23 @@
+<div class="reinsuranceItem">
+	<div class="reinsuranceItem__iconContainer">
+		<div class="reinsuranceItem__assistance">
+			{% set svg = {
+                    '#theme': 'formatage_models__clean_field',
+                    '#content_all': content.svg
+                } 
+            %}
+                {{ render_var(svg) }}  
+		</div>
+	</div>
+	<div class="reinsuranceItem__title">
+		{% set titre= {
+                    '#theme': 'formatage_models__clean_field',
+                    '#content_all': content.titre
+                } %}
+                	{{ render_var(titre) }}  
+		</span>
+	</div>
+	<div class="reinsuranceitem__description">
+		{{ content.body }}
+	</div>
+</div>

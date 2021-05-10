@@ -1,0 +1,53 @@
+{% if content %}
+<div class="ourAchievments-module">
+{# url #}
+    {% if content.url %}	    
+    	{% set RenderUrl = content.url|layout_raw(0) %}
+    	{% if RenderUrl.value %}
+            {% set RenderUrl %}{{- path('entity.node.canonical', {'node': RenderUrl.value}) -}}{% endset %}
+    	{% endif %}
+    {% endif %}
+    
+    {% if RenderUrl %}<a href="{{- RenderUrl -}}">{% endif %}
+  {# on ajoute un template #}
+      {% set RenderBgimage = {
+          '#theme':'formatage_models__img_url',
+          '#content_all': content.bgimage,
+          '#tag_fields': '',
+          '#tag_field': '',
+          '#tag_field_attibutes':{}
+        } 
+      %}
+      {% set RenderBgimagHtml %}{{ render_var(RenderBgimage) }}{% endset %}
+  <div class="ourAchievments-module__image" style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}');">
+    <div class="ourAchievments-module__container">
+      <div class="showProject">
+        {% if settings.text_url != '' %}
+        <div>{{ settings.text_url }}</div>
+        {% endif %}
+      </div>
+      {# on ajoute un template #}
+      {% set RenderListes= {
+          '#theme':'formatage_models__clean_field',
+          '#content_all': content.listes,
+          '#tag_fields': 'ul',
+          '#tag_field': 'button',
+          '#tag_field_attibutes':{class:['btn-radius']}
+        } 
+      %}
+    {{ RenderListes }}
+    </div>
+  </div>
+  <h2 class="ourAchievments-module__title">
+    {# on ajoute un template #}
+      {% set RenderTitre= {
+          '#theme':'formatage_models__clean_field',
+          '#content_all': content.titre
+        } 
+      %}
+      {{ RenderTitre }}
+  </h2>
+  {% if RenderUrl %}</a>{% endif %}
+</div>
+{% include '@formatage_models/includes/add-region-edit.html.twig' %} 
+{% endif %}
