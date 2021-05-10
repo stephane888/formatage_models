@@ -25,7 +25,6 @@ jquery-labelauty:
   dependencies:
     - core/jquery
 
-
 # Third-party library (CDN).
 vuejs:
   remote: https://vuejs.org
@@ -35,20 +34,40 @@ vuejs:
     url: https://github.com/vuejs/vue/blob/dev/LICENSE
     gpl-compatible: true
   js:
-    https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js: {type: external, minified: true}
+    https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js:
+      { type: external, minified: true }
 
+formatage-models-teaser:
+  js:
+    layouts/js/formatage-models-teaser.js: {}
+  css:
+    component:
+      layouts/css/formatage-models-teaser.css: {}
 
 formatage-models-blog-list:
   js:
     layouts/js/formatage-models-blog-list.js: {}
   css:
     component:
-      layouts/css/formatage-models-blog-list.css: {}   
+      layouts/css/formatage-models-blog-list.css: {}
 
-       
 formatage-models-blog-call-toaction:
   js:
     layouts/js/formatage-models-blog-call-toaction.js: {}
   css:
     component:
-      layouts/css/formatage-models-blog-call-toaction.css: {}       
+      layouts/css/formatage-models-blog-call-toaction.css: {}
+
+galery-title:
+  js:
+    layouts/js/galery-title.js: {}
+  css:
+    component:
+      layouts/css/galery-title.css: {}
+
+project-summary:
+  js:
+    layouts/js/project-summary.js: {}
+  css:
+    component:
+      layouts/css/project-summary.css: {}
