@@ -46,6 +46,37 @@ formatage-models-teaser:
 
 #################################################################################################################################################
 # -50 <weight> +50 
+
+formatage-models-lmsg-call-toaction:
+  js:
+    layouts/js/formatage-models-lmsg-call-toaction.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-lmsg-call-toaction.css: { weight: 10 }
+      
+      
+formatage-models-image-after-before:
+  js:
+    layouts/js/formatage-models-image-after-before.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-image-after-before.css: { weight: 10 }
+      
+formatage-models-expert-solution:
+  js:
+    layouts/js/formatage-models-expert-solution.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-expert-solution.css: { weight: 10 }      
+      
+formatage-models-hero-slider-popup:
+  js:
+    layouts/js/formatage-models-hero-slider-popup.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-slider-popup.css: { weight: 10 }
+      
+
 formatage-models-single-blog:
   js:
     layouts/js/formatage-models-single-blog.js: {}
@@ -116,12 +147,7 @@ formatage-models-teaser:
     theme:
       layouts/css/formatage-models-teaser.css: { weight: 10 }
 
-formatage-models-blog-list:
-  js:
-    layouts/js/formatage-models-blog-list.js: {}
-  css:
-    theme:
-      layouts/css/formatage-models-blog-list.css: { weight: 10 }  
+
        
 formatage-models-blog-call-toaction:
   js:
@@ -130,16 +156,17 @@ formatage-models-blog-call-toaction:
     theme:
       layouts/css/formatage-models-blog-call-toaction.css: { weight: 10 }      
 
-galery-title:
+formatage-models-galery-title:
   js:
-    layouts/js/galery-title.js: {}
+    layouts/js/formatage-models-galery-title.js: {}
   css:
     component:
-      layouts/css/galery-title.css: {}
+      layouts/css/formatage-models-galery-title.css: {}
 
-project-summary:
+formatage-models-project-summary:
   js:
-    layouts/js/project-summary.js: {}
+    layouts/js/formatage-models-project-summary.js: {}
   css:
     component:
-      layouts/css/project-summary.css: {}
+      layouts/css/formatage-models-project-summary.css: {}
+      

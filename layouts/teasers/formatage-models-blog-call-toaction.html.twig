@@ -3,7 +3,7 @@
 #}
 {% if content %}
 <div{{ attributes.addClass(['serviceBlock-module']) }}>
-    <div class="serviceBlock-module__container" {% if settings.bgimage.url != "" %} style="background-image:url('{{ settings.bgimage.url }}') {% endif %}">
+    <div class="serviceBlock-module__container" {% if settings.bgimage.url and settings.bgimage.url != "" %} style="background-image:url('{{ settings.bgimage.url }}') {% endif %}">
         <div class="serviceBlock-module__serviceMessage">
             <h3{{ region_attributes.title.addClass(['title','serviceBlock-module__serviceTitle']) }}>
                 {{ content.title }}

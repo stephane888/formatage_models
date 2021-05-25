@@ -1,0 +1,52 @@
+{% if content %}
+<section class="expert-solution">
+	<div {{ attributes }}>
+		{% if content.profile_image or content.title %}
+		<div class="profile">
+			<div {{ region_attributes.profile_image.addClass('profile_image') }}>
+				{{ content.profile_image }}
+			</div>
+			<div class="profile__block">
+				<div {{ region_attributes.title.addClass('title') }}>
+					{{ content.title }}
+				</div>
+				<div class="d-flex profile_name_function">
+					<div {{ region_attributes.profile_name.addClass('profile_name') }}>
+						{{ content.profile_name }}
+					</div>
+					<div
+						{{ region_attributes.profile_function.addClass('profile_function') }}>
+						{{ content.profile_function }}
+					</div>
+				</div>
+				<div
+					{{ region_attributes.button_action.addClass(['button_action','seeMore']) }}>
+					{{ content.button_action }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		{% if content.description %}
+		<div class="messages d-flex">
+			<div {{ region_attributes.description.addClass('description') }}>
+				{{ content.description }}
+			</div>
+			<div class="block-avantages">
+				<div
+					{{ region_attributes.titre_avantage.addClass('titre_avantage') }}>
+					{{ content.titre_avantage }}
+				</div>
+				<ul
+					{{ region_attributes.avantages.addClass(['avantages','puce-check']) }}>
+					{% for blocks in content.avantages|layout_value %}
+					{% for field in blocks %}
+					<li>{{ field }}</li>
+					{% endfor %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</section>
+{% endif %}

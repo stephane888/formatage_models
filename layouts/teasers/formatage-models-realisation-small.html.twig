@@ -1,5 +1,5 @@
 {% if content %}
-<div class="ourAchievments-module">
+<div{{ attributes.addClass('ourAchievments-module') }}>
 {# url #}
     {% if content.url %}	    
     	{% set RenderUrl = content.url|layout_raw(0) %}
@@ -27,6 +27,7 @@
         {% endif %}
       </div>
       {# on ajoute un template #}
+      {#
       {% set RenderListes= {
           '#theme':'formatage_models__clean_field',
           '#content_all': content.listes,
@@ -36,6 +37,16 @@
         } 
       %}
     {{ RenderListes }}
+    #}
+    {% if content.listes %}
+    <ul{{ region_attributes.listes }}>
+    	{% for block in content.listes|layout_value %}
+    		{% for field in block %}
+    		<button class="btn-radius">{{ field }}</button>
+    		{% endfor %}
+    	{% endfor %}    	
+    </ul>
+    {% endif %}
     </div>
   </div>
   <h2 class="ourAchievments-module__title">

@@ -62,6 +62,12 @@ class FormatageModelsThemes {
 			$Attribute['class'] = $css;
 			$variables['attributes'] = new Attribute($Attribute);
 		}
+		// dump($variables);
+		if (isset($variables['region_attributes']))
+			foreach ($variables['region_attributes'] as $region => $attributes) {
+				if (isset($variables['settings']['region_css_' . $region]))
+					$variables['region_attributes'][$region]->addClass($variables['settings']['region_css_' . $region]);
+			}
 	}
 
 	public static function addLayoutEditBlock(array &$variables) {

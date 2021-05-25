@@ -1,0 +1,20 @@
+{% if content %}
+	<div{{ attributes.addClass('main-twentytwenty') }}>
+		<div class="d-flex justify-content-center buttons">
+			<div{{ region_attributes.button1.addClass(['seeMore','after-before']).setAttribute('data-tab','#tab-vue-twentytwenty') }}>{{ content.button1 }}</div>
+			<div{{ region_attributes.button2.addClass(['seeMore','vue-generale']).setAttribute('data-tab','#tab-vue-general') }}>{{ content.button2 }}</div>
+		</div>
+		<div class="tab-content">
+			<div class="container-zurb-twentytwenty tab-pane fade show" role="tabpanel" id="tab-vue-twentytwenty">
+    			<div class="zurb-twentytwenty">
+        			{{ content.image1|layout_value }}
+        			{{ content.image2|layout_value  }}
+        		</div>
+    		</div>
+    		<div class="container-vue-general tab-pane fade " role="tabpanel" id="tab-vue-general">
+    			{{ content.image|layout_value  }}
+    		</div>
+		</div>		
+	</div>
+	{% include '@formatage_models/includes/add-region-edit.html.twig' %}
+{% endif %}

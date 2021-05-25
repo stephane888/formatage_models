@@ -8,6 +8,8 @@ class Layouts {
 
 	protected $configuration = [];
 
+	protected $regions = [];
+
 	function defaultConfiguration() {
 		return [
 			'css' => '',
@@ -19,10 +21,25 @@ class Layouts {
 		$this->configuration = $configuration;
 	}
 
+	function setRegions($regions) {
+		$this->regions = $regions;
+	}
+
+	function buildClassCssRegion(array &$form) {
+		foreach ($this->regions as $region => $label) {
+
+			$form['region_css_' . $region] = [
+				'#type' => 'textfield',
+				'#title' => 'Class css region : ' . $label['label'],
+				'#default_value' => isset($this->configuration['region_css_' . $region]) ? $this->configuration['region_css_' . $region] : ''
+			];
+		}
+	}
+
 	function buildConfigurationForm(array &$form) {
 		$form['css'] = [
 			'#type' => 'textfield',
-			'#title' => 'Class css',
+			'#title' => 'Class css du container parent',
 			'#default_value' => $this->configuration['css']
 		];
 		$form["load_libray"] = [
@@ -30,6 +47,7 @@ class Layouts {
 			'#title' => "load_libray",
 			'#default_value' => $this->configuration['load_libray']
 		];
+		$this->buildClassCssRegion($form);
 	}
 
 	function saveFilePermanent(array $fids) {
@@ -48,6 +66,9 @@ class Layouts {
 	function submitConfigurationForm(array &$configuration, FormStateInterface $form_state) {
 		$configuration['css'] = $form_state->getValue('css');
 		$configuration['load_libray'] = $form_state->getValue('load_libray');
+		foreach ($this->regions as $region => $label) {
+			$configuration['region_css_' . $region] = $form_state->getValue('region_css_' . $region);
+		}
 	}
 
 	/**

@@ -28,6 +28,8 @@ class FormatageModels extends LayoutDefault {
 		$this->Layouts = \Drupal::service('formatage_models.layouts');
 		parent::__construct($configuration, $plugin_id, $plugin_definition);
 		$this->Layouts->setConfig($this->configuration);
+		$this->Layouts->setRegions($this->getPluginDefinition()
+			->getRegions());
 	}
 
 	/**
