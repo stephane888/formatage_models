@@ -36,6 +36,16 @@ function formatage_models_theme() {
 	return FormatageModelsThemes::getThemeHooks();
 }
 
+function formatage_models_preprocess_formatage_models_images_bg(array &$variables) {
+	FormatageModelsThemes::addLayoutEditBlock($variables);
+	FormatageModelsThemes::ApplyAttributes($variables);
+}
+
+function formatage_models_preprocess_formatage_models_services_sliders(array &$variables) {
+	FormatageModelsThemes::addLayoutEditBlock($variables);
+	FormatageModelsThemes::ApplyAttributes($variables);
+}
+
 function formatage_models_preprocess_formatage_models_titre(array &$variables) {
 	FormatageModelsThemes::addLayoutEditBlock($variables);
 	FormatageModelsThemes::ApplyAttributes($variables);

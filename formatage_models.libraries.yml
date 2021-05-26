@@ -47,6 +47,21 @@ formatage-models-teaser:
 #################################################################################################################################################
 # -50 <weight> +50 
 
+
+formatage-models-images-bg:
+  js:
+    layouts/js/formatage-models-images-bg.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-images-bg.css: { weight: 10 }
+      
+formatage-models-services-sliders:
+  js:
+    layouts/js/formatage-models-services-sliders.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-services-sliders.css: { weight: 10 }
+
 formatage-models-titre:
   js:
     layouts/js/formatage-models-titre.js: {}
