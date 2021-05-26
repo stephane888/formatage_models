@@ -47,6 +47,20 @@ formatage-models-teaser:
 #################################################################################################################################################
 # -50 <weight> +50 
 
+formatage-models-titre:
+  js:
+    layouts/js/formatage-models-titre.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-titre.css: { weight: 10 }
+
+formatage-models-service-icone:
+  js:
+    layouts/js/formatage-models-service-icone.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-service-icone.css: { weight: 10 }
+
 formatage-models-lmsg-call-toaction:
   js:
     layouts/js/formatage-models-lmsg-call-toaction.js: {}

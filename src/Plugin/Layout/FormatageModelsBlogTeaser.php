@@ -65,6 +65,7 @@ class FormatageModelsBlogTeaser extends LayoutDefault {
 	 * {@inheritdoc}
 	 */
 	public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+		parent::submitConfigurationForm($form, $form_state);
 		$this->configuration['css'] = $form_state->getValue('css');
 	}
 }

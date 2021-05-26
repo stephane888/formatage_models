@@ -12,7 +12,7 @@ class FormatageModelsController extends ControllerBase {
   /**
    * Builds the response.
    */
-  public function build() {
+  public function build() {    
 
     $build['content'] = [
       '#type' => 'item',

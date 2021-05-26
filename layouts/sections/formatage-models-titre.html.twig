@@ -1,0 +1,23 @@
+{% if content  %}
+    <section {{ attributes.addClass(['titre-section','space-padding']) }}>
+        <div class="container">
+            <h1 {{ region_attributes.main.addClass(['main']) }} class="main">
+                {% if content.main %}
+                    {{ content.main|layout_value }}
+                {% else %}
+                    {{ settings.titre }}
+                {% endif %}
+            </h1>
+            {% if content.sub_title or  settings.sub_title %}
+                <h4{{ region_attributes.sub_title.addClass(['sub_title']) }} class="sub_title">
+                    {% if  content.sub_title %}
+                        {{ content.sub_title | layout_value }}
+                    {% else %}
+                        {{ settings.sub_title }}
+                    {% endif %}
+                </h4>
+            {% endif %}
+        </div>
+    </section>
+    {% include '@formatage_models/includes/add-region-edit.html.twig' %}
+{% endif %}

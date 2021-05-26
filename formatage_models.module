@@ -1,4 +1,5 @@
 <?php
+
 use Drupal\formatage_models\FormatageModelsThemes;
 use Stephane888\Debug\debugLog;
 
@@ -35,7 +36,17 @@ function formatage_models_theme() {
 	return FormatageModelsThemes::getThemeHooks();
 }
 
+function formatage_models_preprocess_formatage_models_titre(array &$variables) {
+	FormatageModelsThemes::addLayoutEditBlock($variables);
+	FormatageModelsThemes::ApplyAttributes($variables);
+}
+
 function formatage_models_preprocess_formatage_models_lmsg_call_toaction(array &$variables) {
+	FormatageModelsThemes::addLayoutEditBlock($variables);
+	FormatageModelsThemes::ApplyAttributes($variables);
+}
+
+function formatage_models_preprocess_formatage_models_service_icone(array &$variables) {
 	FormatageModelsThemes::addLayoutEditBlock($variables);
 	FormatageModelsThemes::ApplyAttributes($variables);
 }
