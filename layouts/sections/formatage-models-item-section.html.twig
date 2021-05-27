@@ -1,0 +1,29 @@
+{% if content %}
+    <div{{ attributes.addclass(['item-section','space-margin']) }} >
+         <div class="d-flex">
+              <div class="item text">
+                   <div class="titre-light">{{ settings.titre_light }}</div>
+                   <div class="titre-bold">{{ settings.titre_bolt }}</div>
+                   {% if content.titre %}
+                       <h4 {{ region_attributes.titre.addClass(['titre']) }}>{{ content.titre|layout_value }}</h4>
+                   {% endif %}
+                   {% if content.description %}
+                       <div {{ region_attributes.description.addClass(['description']) }}>{{ content.description }}</div>
+                   {% endif %}
+                   {% if content.link %}
+                       <div {{ region_attributes.link.addClass(['link','d-flex']) }}>
+                            <svg width="16" height="16" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.8 8.73329H13.2688L8.9776 13.0245C8.6652 13.3369 8.6652 13.8435 8.9774 14.1557C9.2898 14.4681 9.7966 14.4681 10.109 14.1557L15.7656 8.49889C15.8028 8.46169 15.836 8.42069 15.8652 8.37709C15.8786 8.35689 15.888 8.33509 15.8996 8.31409C15.9128 8.28929 15.928 8.26569 15.9386 8.23949C15.95 8.21249 15.9564 8.18449 15.9644 8.15649C15.971 8.13429 15.9796 8.11309 15.9842 8.09029C15.9946 8.03829 16 7.98589 16 7.93329C16 7.93269 15.9998 7.93209 15.9998 7.93149C15.9996 7.87969 15.9944 7.82769 15.9842 7.77669C15.9794 7.75269 15.9704 7.73049 15.9634 7.70689C15.9556 7.68029 15.9496 7.65329 15.9388 7.62749C15.9272 7.59969 15.9116 7.57449 15.8972 7.54829C15.8864 7.52869 15.8778 7.50869 15.8654 7.48989C15.8362 7.44569 15.8026 7.40449 15.7652 7.36709L10.1088 1.71089C9.7964 1.39849 9.2898 1.39849 8.9774 1.71069C8.665 2.02309 8.665 2.52969 8.9774 2.84229L13.2686 7.13329H0.8C0.3582 7.13329 0 7.49149 0 7.93329C0 8.37509 0.3582 8.73329 0.8 8.73329Z"></path></svg>
+                            {{ content.link }}
+                       </div>
+                   {% endif %}
+              </div>
+              <div class="item img">
+                   {% if content.image %}
+                       <div {{ region_attributes.image.addClass(['image']) }}>{{ content.image }}</div>
+                   {% endif %}
+              </div>
+         </div>
+    </div>
+    {% include '@formatage_models/includes/add-region-edit.html.twig' %}
+{% endif %}

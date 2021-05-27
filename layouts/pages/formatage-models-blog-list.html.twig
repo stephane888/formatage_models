@@ -1,21 +1,22 @@
 {% if content %}
-	{% set css_right = [
+    {% set css_right = [
        settings.css_right?settings.css_right:'col-lg-4',
        'right'
     ]
-%}
-	{% set css_left = [
+    %}
+    {% set css_left = [
        settings.css_left?settings.css_left:'col-lg-8',
        'left'
     ]
-%}
-	<div {{ attributes.addClass(['home-blog']) }}>
-		<div class="row">
-			<div {{ region_attributes.left.addClass(css_left) }}>
-				{{ content.left }}
-			</div>
-			<div {{ region_attributes.right.addClass(css_right) }}>
-				{{ content.right }}
-			</div>
-		</div>
-	{% endif %}
+    %}
+    <div {{ attributes.addClass(['home-blog']) }}>
+         <div class="row">
+              <div {{ region_attributes.left.addClass(css_left) }}>
+                   {{ content.left }}
+              </div>
+              <div {{ region_attributes.right.addClass(css_right) }}>
+                   {{ content.right }}
+              </div>
+         </div>
+    </div>
+{% endif %}

@@ -1,4 +1,5 @@
 <?php
+
 namespace Drupal\formatage_models\Plugin\Layout\Pages;
 
 use Drupal\formatage_models\Plugin\Layout\FormatageModels;
@@ -34,8 +35,18 @@ use Drupal\Core\Form\FormStateInterface;
  *     "body" = {
  *       "label" = @Translation("body"),
  *     },
+ *     "owls" = {
+ *       "label" = @Translation("owls"),
+ *     },
+ *     "realisation" = {
+ *       "label" = @Translation("realisation"),
+ *     },
+ *     "slick_carousel_img" = {
+ *       "label" = @Translation("slick_carousel_img"),
+ *     },
  *   }
  * )
  */
 class FormatageModelsSingleBlog extends FormatageModels {
+
 }

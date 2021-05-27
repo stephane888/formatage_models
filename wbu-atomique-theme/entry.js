@@ -1,4 +1,4 @@
 module.exports = {
-  "formatage-models-images-bg":
-    "./src/js/sections/formatage-models-images-bg.js"
+  "formatage-models-item-section":
+    "./src/js/sections/formatage-models-item-section.js"
 };

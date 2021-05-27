@@ -37,16 +37,16 @@ vuejs:
     https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js:
       { type: external, minified: true }
 
-formatage-models-teaser:
-  js:
-    layouts/js/formatage-models-teaser.js: {}
-  css:
-    component:
-      layouts/css/formatage-models-teaser.css: {}
 
 #################################################################################################################################################
 # -50 <weight> +50 
 
+formatage-models-item-section:
+  js:
+    layouts/js/formatage-models-item-section.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-item-section.css: { weight: 10 }
 
 formatage-models-images-bg:
   js:
