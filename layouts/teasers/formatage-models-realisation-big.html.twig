@@ -36,7 +36,7 @@
                    {% if content.listes %}
                        <ul{{ region_attributes.listes }}>
                             {% for block in content.listes|layout_value %}
-                                {% for field in block if field['#theme'] %}
+                                {% for field in block %}
                                     <button class="btn-radius">{{ field }}</button>
                                 {% endfor %}
                             {% endfor %}

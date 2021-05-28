@@ -59,14 +59,19 @@
                    {{ content.realisation }}
               </div>
          </div>
-         <div data-slick='{"slidesToShow": 4, "slidesToScroll": 3, "slidesToShow": 1, "centerMode": true, "variableWidth":true }'>
-              {% for block in content.slick_carousel_img|layout_value %}
-                  {% for field in block %}
-                      <div>
-                           {{ field }}
-                      </div>
-                  {% endfor %}
-              {% endfor %}
+         {# module splidejs #}
+         <div id="splide" class="splide custom-splidejs">
+              <div class="splide__track">
+                   <div class="splide__list">
+                        {% for block in content.slick_carousel_img|layout_value %}
+                            {% for field in block %}
+                                <div class="splide__slide">
+                                     {{ field }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                   </div>
+              </div>
          </div>
     </div>
     {% include '@formatage_models/includes/add-region-edit.html.twig' %}

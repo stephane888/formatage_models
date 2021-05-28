@@ -1,22 +1,22 @@
 {% if content %}
-    {% set css_right = [
-       settings.css_right?settings.css_right:'col-lg-4',
-       'right'
-    ]
-    %}
-    {% set css_left = [
-       settings.css_left?settings.css_left:'col-lg-8',
-       'left'
-    ]
-    %}
     <div {{ attributes.addClass(['home-blog']) }}>
          <div class="row">
-              <div {{ region_attributes.left.addClass(css_left) }}>
-                   {{ content.left }}
-              </div>
-              <div {{ region_attributes.right.addClass(css_right) }}>
-                   {{ content.right }}
-              </div>
+              {% if content.top %}
+                  <div {{ region_attributes.top.addClass(['top', settings.css_top]) }}>
+                       {{ content.top }}
+                  </div>
+              {% endif %}
+              {% if content.left %}
+                  <div {{ region_attributes.left.addClass(['left', settings.css_left]) }}>
+                       {{ content.left }}
+                  </div>
+              {% endif %}
+              {% if content.right %}
+                  <div {{ region_attributes.right.addClass(['right', settings.css_right]) }}>
+                       {{ content.right }}
+                  </div>
+              {% endif %}
          </div>
     </div>
+    {% include '@formatage_models/includes/add-region-edit.html.twig' %} 
 {% endif %}

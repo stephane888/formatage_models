@@ -1,17 +1,25 @@
 {% if content %}
-	<div{{ attributes.addClass(['teaser-img-desc','d-flex']) }}>
-		<div class="teaser-img-desc__image">
-			<div class="categorie">{{ content.categorie|layout_value }}</div>
-		    <div class="img">{{ content.bgimage|layout_value }}</div>	    
-		</div>
-		<div class="teaser-img-desc__desc">
-			<h3 class="title">{{ content.title }}</h3>
-			<div class="description">
-			{% set text = content.desc|render|striptags|trim %}
-            {{ text|length > 150 ? text|slice(0, 150) ~ '...' : text }}
-		    </div>
-			<div class="time_read">{{ content.time_read }}</div>
-		</div>
-	</div>
-	{% include '@formatage_models/includes/add-region-edit.html.twig' %} 
+    <div{{ attributes.addClass(['teaser-img-desc','d-flex']) }}>
+         {% if content.bgimage %}
+             <div class="teaser-img-desc__image">
+                  <div class="categorie">{{ content.categorie|layout_value }}</div>
+                  <div class="img">{{ content.bgimage|layout_value }}</div>
+             </div>
+         {% endif %}
+         <div class="teaser-img-desc__desc">
+              {% if content.title %}
+                  <h3 class="title">{{ content.title|layout_value }}</h3>
+              {% endif %}
+              {% if content.desc %}
+                  <div class="description">
+                       {% set text = content.desc|render|striptags|trim %}
+                       {{ text|length > 150 ? text|slice(0, 150) ~ '...' : text }}
+                  </div>
+              {% endif %}
+              {% if content.time_read %}
+                  <div class="time_read">{{ content.time_read }}</div>
+              {% endif %}
+         </div>
+    </div>
+    {% include '@formatage_models/includes/add-region-edit.html.twig' %}
 {% endif %}

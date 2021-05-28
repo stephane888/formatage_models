@@ -62,7 +62,6 @@ class FormatageModelsItemSection extends FormatageModels {
           '#title' => $this->t('titre_bolt'),
           '#default_value' => $this->configuration['titre_bolt']
         ];
-
         return $form;
     }
 

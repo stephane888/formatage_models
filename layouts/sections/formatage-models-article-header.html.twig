@@ -1,18 +1,19 @@
 {% if content %}
-<div{{ attributes }}>
-	<div class="row">
-		<div class="col-md-8">
-			<header class="header-blog">
-				<div {{ region_attributes.title.addClass(['title']) }}>
-					<h1>
-						{{ render_var({ '#theme': 'formatage_models__clean_field','#tag_field': 'span', '#content_all': content.title }) }}
-					</h1>
-				</div>
-				<div {{ region_attributes.description.addClass(['description']) }}>
-					{{ content.description }}
-				</div>
-			</header>
-		</div>
-	</div>
-</div>
+    <div{{ attributes }}>
+         <div class="row">
+              <div class="{{settings.class_col}}">
+                   <header class="header-blog space-margin">
+                        <div {{ region_attributes.title.addClass(['title']) }}>
+                             <h1>
+                                  {{ content.title|layout_value }}
+                             </h1>
+                        </div>
+                        <div {{ region_attributes.description.addClass(['description']) }}>
+                             {{ content.description|layout_value }}
+                        </div>
+                   </header>
+              </div>
+         </div>
+    </div>
+    {% include '@formatage_models/includes/add-region-edit.html.twig' %} 
 {% endif %}
