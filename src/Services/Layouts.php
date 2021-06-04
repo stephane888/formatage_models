@@ -72,7 +72,7 @@ class Layouts {
     }
 
     /**
-     *
+     * retourne le chemin absolue sans le domaine.
      * @param array $fid
      * @param String $image_style
      * @return string|array
@@ -83,11 +83,13 @@ class Layouts {
             if ($file) {
                 if (!empty($image_style) && \Drupal\image\Entity\ImageStyle::load($image_style)) {
                     $img_url = \Drupal\image\Entity\ImageStyle::load($image_style)->buildUrl($file->getFileUri());
-                } else {
+                }
+                else {
                     $img_url = file_create_url($file->getFileUri());
                 }
-
-                return $img_url;
+                //remove domaine
+                $img_url = explode(\Drupal::request()->getSchemeAndHttpHost(), $img_url);
+                return !empty($img_url[1]) ? $img_url[1] : $img_url[0];
             }
         }
         return [];
