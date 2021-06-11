@@ -12,8 +12,12 @@
               {% endif %}
               {% if content.desc %}
                   <div class="description">
-                       {% set text = content.desc|render|striptags|trim %}
-                       {{ text|length > 150 ? text|slice(0, 150) ~ '...' : text }}
+                       {% if settings.limit_text > 0 %}
+                           {% set text = content.desc|render|striptags|trim %}
+                           {{ text|length > settings.limit_text ? text|slice(0, settings.limit_text) ~ '...' : text }}
+                       {% else %}
+                           {{ content.desc|layout_value }}
+                       {% endif %}
                   </div>
               {% endif %}
               {% if content.time_read %}
