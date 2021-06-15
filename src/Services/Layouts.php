@@ -26,8 +26,8 @@ class Layouts {
     }
 
     function buildClassCssRegion(array &$form) {
-        foreach ($this->regions as $region => $label) {
 
+        foreach ($this->regions as $region => $label) {
             $form['region_css_' . $region] = [
               '#type' => 'textfield',
               '#title' => 'Class css region : ' . $label['label'],
@@ -37,16 +37,23 @@ class Layouts {
     }
 
     function buildConfigurationForm(array &$form) {
-        $form['css'] = [
-          '#type' => 'textfield',
-          '#title' => 'Class css du container parent',
-          '#default_value' => $this->configuration['css']
-        ];
         $form["load_libray"] = [
           '#type' => 'checkbox',
           '#title' => "load_libray",
           '#default_value' => $this->configuration['load_libray']
         ];
+
+        $form['css_class'] = array(
+          '#type' => 'details',
+          '#title' => 'Class html',
+          '#open' => false
+        );
+        $form['css'] = [
+          '#type' => 'textfield',
+          '#title' => 'Class css du container parent',
+          '#default_value' => $this->configuration['css']
+        ];
+
         $this->buildClassCssRegion($form);
     }
 

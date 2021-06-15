@@ -2,13 +2,13 @@
     <div{{ attributes.addClass(['teaser-img-desc','d-flex']) }}>
          {% if content.bgimage %}
              <div class="teaser-img-desc__image">
-                  <div class="categorie">{{ content.categorie|layout_value }}</div>
-                  <div class="img">{{ content.bgimage|layout_value }}</div>
+                  <div class="categorie"> {{ content.categorie|layout_value }} </div>
+                  <div class="img"> {{ content.bgimage|layout_value }} </div>
              </div>
          {% endif %}
          <div class="teaser-img-desc__desc">
               {% if content.title %}
-                  <h3 class="title">{{ content.title|layout_value }}</h3>
+                  <h3 class="title"> {{ content.title|layout_value }} </h3>
               {% endif %}
               {% if content.desc %}
                   <div class="description">
@@ -21,7 +21,7 @@
                   </div>
               {% endif %}
               {% if content.time_read %}
-                  <div class="time_read">{{ content.time_read }}</div>
+                  <div class="time_read"> {{ content.time_read }} </div>
               {% endif %}
          </div>
     </div>

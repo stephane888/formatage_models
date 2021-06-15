@@ -1,4 +1,4 @@
 module.exports = {
-  "formatage-models-item-section":
-    "./src/js/sections/formatage-models-item-section.js"
+  "formatage-models-header-thegem-01":
+    "./src/js/headers/formatage-models-header-thegem-01.js"
 };

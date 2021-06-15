@@ -21,7 +21,7 @@ function formatage_models_preprocess_page(&$variables){
 	// $Markup->__toString()
 	if(! empty( $variables['page']['content'] )){
 		foreach( $variables['page']['content'] as $block ){
-			if(! empty( $block["#theme"] ) && $block["#theme"] == 'block')
+			if(is_array($block) && ! empty( $block["#theme"] ) && $block["#theme"] == 'block')
 				FormatageModelsThemes::ReInjectLayoutInAnotherRegion( $block["#block"], $variables );
 		}
 	}
@@ -34,6 +34,11 @@ function formatage_models_preprocess_page(&$variables){
  */
 function formatage_models_theme(){
 	return FormatageModelsThemes::getThemeHooks();
+}
+
+function formatage_models_preprocess_formatage_models_header_thegem_01(array &$variables){
+	FormatageModelsThemes::addLayoutEditBlock( $variables );
+	FormatageModelsThemes::ApplyAttributes( $variables );
 }
 
 function formatage_models_preprocess_formatage_models_single_blog(array &$variables){

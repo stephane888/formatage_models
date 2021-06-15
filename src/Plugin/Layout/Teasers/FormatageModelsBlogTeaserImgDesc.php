@@ -63,6 +63,10 @@ class FormatageModelsBlogTeaserImgDesc extends FormatageModels {
         return $form;
     }
 
+    /**
+     *
+     * {@inheritdoc}
+     */
     public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
         parent::submitConfigurationForm($form, $form_state);
         $this->configuration['limit_text'] = $form_state->getValue('limit_text');
