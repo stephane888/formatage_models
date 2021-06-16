@@ -4,11 +4,19 @@ services:
     arguments: ['@messenger']
     tags:
       - { name: event_subscriber }
-      
+
   formatage_models.layouts:
     class: Drupal\formatage_models\Services\Layouts
+    arguments: ['@formatage_models.build-edit-form']
+
+  formatage_models.build-edit-form:
+    class: Drupal\formatage_models\Services\BuilderConfigForm
+    arguments: ['@formatage_models.theme-utility']
+
+  formatage_models.theme-utility:
+    class: Stephane888\HtmlBootstrap\ThemeUtility
     arguments: []
-    
+
   formatage_models.twig.extension:
     class: Drupal\formatage_models\Twig\Extension\LayoutValueExtension
     tags:

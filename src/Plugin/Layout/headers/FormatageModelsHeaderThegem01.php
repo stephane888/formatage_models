@@ -30,28 +30,104 @@ use Drupal\formatage_models\Plugin\Layout\FormatageModels;
  */
 class FormatageModelsHeaderThegem01 extends FormatageModels {
 
+    /**
+     *
+     * {@inheritdoc}
+     */
+    public function __construct(array $configuration, $plugin_id, $plugin_definition) {
+        parent::__construct($configuration, $plugin_id, $plugin_definition);
+        // $this->Layouts = \Drupal::service( 'formatage_models.layouts' );
+        // dump( $this->configuration );
+    }
+
     function defaultConfiguration() {
         return [
           'css' => 'bg-dark text-white',
+          'load_libray' => true,
           'infos' => [
-            ['icon-f' => 'fas fa-map-marker-alt', 'text' => ' 19th Ave New York, NY 95822, USA'],
-            ['icon-f' => 'fas fa-map-marker-alt', 'text' => ' +237 694-900-622 ']
+            'builder-form' => true,
+            'info' => [
+              'title' => 'Texte information'
+            ],
+            'fields' => [
+              'f1' => [
+                'icon-f' => 'fas fa-map-marker-alt',
+                'text' => ' 19th Ave New York, NY 95822, USA'
+              ],
+              'f2' => [
+                'icon-f' => 'fas fa-phone-alt',
+                'text' => ' +237 694-900-622 '
+              ]
+            ]
           ],
           'social-items' => [
-            ['icon-f' => 'fab fa-facebook-f', 'text' => '', 'url' => '#'],
-            ['icon-f' => 'fab fa-linkedin-in', 'text' => '', 'url' => '#'],
-            ['icon-f' => 'fab fa-twitter', 'text' => '', 'url' => '#'],
-            ['icon-f' => 'fab fa-instagram', 'text' => '', 'url' => '#'],
-            ['icon-f' => 'fab fa-pinterest', 'text' => '', 'url' => '#'],
-            ['icon-f' => 'fab fa-youtube', 'text' => '', 'url' => '#'],
+            'builder-form' => true,
+            'info' => [
+              'title' => 'Social icone'
+            ],
+            'fields' => [
+              'f1' => [
+                'icon-f' => 'fab fa-facebook-f',
+                'text' => 'Facebook',
+                'url' => '#'
+              ],
+              'f2' => [
+                'icon-f' => 'fab fa-linkedin-in',
+                'text' => 'Linkedin',
+                'url' => '#'
+              ],
+              'f3' => [
+                'icon-f' => 'fab fa-twitter',
+                'text' => 'Twitter',
+                'url' => '#'
+              ],
+              'f4' => [
+                'icon-f' => 'fab fa-instagram',
+                'text' => 'Instagram',
+                'url' => '#'
+              ],
+              'f5' => [
+                'icon-f' => 'fab fa-pinterest',
+                'text' => 'Pinterest',
+                'url' => '#'
+              ],
+              'f6' => [
+                'icon-f' => 'fab fa-youtube',
+                'text' => 'Youtube',
+                'url' => '#'
+              ]
+            ]
           ],
           'links' => [
-            ['text' => 'Contactez nous', 'url' => '#'],
-            ['text' => 'inscription', 'url' => '#'],
-            ['text' => 'Connexion', 'url' => '#'],
+            'builder-form' => true,
+            'info' => [
+              'title' => 'Link action'
+            ],
+            'fields' => [
+              'f1' => [
+                'text' => 'Contactez nous',
+                'url' => '#'
+              ],
+              'f2' => [
+                'text' => 'inscription',
+                'url' => '#'
+              ],
+              'f3' => [
+                'text' => 'Connexion',
+                'url' => '#'
+              ]
+            ]
           ],
           'button-action' => [
-            ['text' => 'Contactez nous', 'url' => '#', 'btn-variant' => 'btn-info']
+            'builder-form' => true,
+            'info' => [
+              'title' => 'Button action'
+            ],
+            'fields' => ['f1' => [
+                'text' => 'Join now',
+                'url' => '#',
+                'btn-variant' => 'btn btn-info'
+              ]]
           ]
         ];
     }
