@@ -30,16 +30,6 @@ use Drupal\formatage_models\Plugin\Layout\FormatageModels;
  */
 class FormatageModelsHeaderThegem01 extends FormatageModels {
 
-    /**
-     *
-     * {@inheritdoc}
-     */
-    public function __construct(array $configuration, $plugin_id, $plugin_definition) {
-        parent::__construct($configuration, $plugin_id, $plugin_definition);
-        // $this->Layouts = \Drupal::service( 'formatage_models.layouts' );
-        // dump( $this->configuration );
-    }
-
     function defaultConfiguration() {
         return [
           'css' => 'bg-dark text-white',

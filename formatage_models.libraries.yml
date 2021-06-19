@@ -42,6 +42,14 @@ vuejs:
 # -50 <weight> +50
 
 
+formatage-models-menu01:
+  js:
+    layouts/js/formatage-models-menu01.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-menu01.css: { weight: 10 }
+
+
 formatage-models-header-thegem-01:
   js:
     layouts/js/formatage-models-header-thegem-01.js: {}

@@ -1,0 +1,27 @@
+{# empty Twig template #}
+{% if content %}
+    <nav {{ attributes.addClass(['navbar','navbar-expand-lg','navbar-light','bg-light','menu01']) }}>
+         <div class="container container-menu">
+              {% if content.logo %}
+                  <div{{ region_attributes.logo.addClass(['logo','navbar-brand']) }}>{{ content.logo }}</div>
+              {% endif %}
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                   <span class="navbar-toggler-icon"></span>
+              </button>
+              {% if content.menu %}
+                  <div id="navbarNav" {{ region_attributes.menu.addClass(['menu','collapse','navbar-collapse','justify-content-end']) }}>
+                       {{ content.menu }}
+                       {% if content.recherche %}
+                           <div class="menu01__search fermer">
+                                <i class="fas fa-search icon ouvert"></i>
+                                <i class="fas fa-times icon fermer"></i>
+                                <div class="menu01__search--form bg-light">
+                                     {{ content.recherche }}
+                                </div>
+                           </div>
+                       {% endif %}
+                  </div>
+              {% endif %}
+         </div>
+    </nav>
+{% endif %}
