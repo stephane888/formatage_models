@@ -41,6 +41,12 @@ vuejs:
 #################################################################################################################################################
 # -50 <weight> +50
 
+formatage-models-hero-thegem-18:
+  js:
+    layouts/js/formatage-models-hero-thegem-18.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-thegem-18.css: { weight: 10 }
 
 formatage-models-menu01:
   js:

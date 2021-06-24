@@ -36,6 +36,12 @@ function formatage_models_theme(){
 	return FormatageModelsThemes::getThemeHooks();
 }
 
+function formatage_models_preprocess_formatage_models_hero_thegem_18(array &$variables){
+	FormatageModelsThemes::addLayoutEditBlock( $variables );
+	FormatageModelsThemes::ApplyAttributes( $variables );
+}
+
+
 function formatage_models_preprocess_formatage_models_header_thegem_01(array &$variables){
 	FormatageModelsThemes::addLayoutEditBlock( $variables );
 	FormatageModelsThemes::ApplyAttributes( $variables );

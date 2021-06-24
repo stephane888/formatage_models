@@ -90,19 +90,30 @@ class Layouts {
 					'region_css_' . $region
 			] );
 		}
-		//
-		$setValue = $this->BuilderConfigForm->getValue();
-		foreach( $setValue as $fieldName ){
-			$configuration[$fieldName] = $this->configuration[$fieldName];
-			$configuration[$fieldName]['fields'] = $form_state->getValue( $fieldName )['fields'];
-		}
-		debugLog::$max_depth = 7;
+		debugLog::$max_depth = 12;
 		debugLog::$themeName = 'builderstheme';
+		//
+		foreach( $configuration as $key => $field ){
+			if(! empty( $field['builder-form'] )){
+				$configuration[$key]['fields'] = $form_state->getValue( $key )['fields'];
+				$this->saveImage( $configuration[$key]['fields'] );
+			}
+		}
 		debugLog::kintDebugDrupal( $configuration, "submitConfigurationForm" );
+	}
+	private function saveImage(array &$fields){
+		foreach( $fields as $key => $field ){
+			if(! empty( $field['img_bg'] )){
+				$fields[$key]['img_bg'] = [
+						'fid'=> $field['img_bg'],
+						'url'=> $this->getImageUrlByFid( $field['img_bg'] )
+				];
+			}
+		}
 	}
 	
 	/**
-	 * retourne le chemin absolue sans le domaine.
+	 * Retourne le chemin absolue sans le domaine.
 	 *
 	 * @param array $fid
 	 * @param String $image_style
@@ -123,6 +134,6 @@ class Layouts {
 				return ! empty( $img_url[1] ) ? $img_url[1] : $img_url[0];
 			}
 		}
-		return [];
+		return '';
 	}
 }

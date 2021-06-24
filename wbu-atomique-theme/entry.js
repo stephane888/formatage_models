@@ -1,3 +1,4 @@
 module.exports = {
-  "formatage-models-menu01": "./src/js/headers/formatage-models-menu01.js"
+  "formatage-models-hero-thegem-18":
+    "./src/js/sections/formatage-models-hero-thegem-18.js"
 };

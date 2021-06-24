@@ -29,7 +29,6 @@ class BuilderConfigForm {
 		// debugLog::kintDebugDrupal( $defaultConfigs, "prepareBuildForms" );
 		foreach( $defaultConfigs as $key => $item ){
 			if(isset( $item['builder-form'] ) && $item['builder-form'] && ! empty( $item['fields'] )){
-				$this->setValue[] = $key;
 				$this->buildcontainerFields( $key, $item, $form );
 				$this->buildRenderField( $item['fields'], $form[$key] );
 			}
@@ -74,6 +73,12 @@ class BuilderConfigForm {
 				case 'btn-variant' :
 					$this->ThemeUtility->addSelectBtnVariantTree( $type, $form, 'button', $defaultValue );
 					break;
+				case 'text_html' :
+					$this->ThemeUtility->addTextareaTree( $type, $form, 'texte long', $defaultValue );
+					break;
+				case 'img_bg' :
+					$this->ThemeUtility->addImageTree( $type, $form, 'image en arriere plan', $defaultValue['fid'] );
+					break;
 			}
 		}
 	}
@@ -88,10 +93,8 @@ class BuilderConfigForm {
 		$form[$key] = array(
 				'#type'=> 'details',
 				'#title'=> $item['info']['title'],
-				'#open'=> false
+				'#open'=> false,
+				'#tree'=> true
 		);
-	}
-	public function getValue(){
-		return $this->setValue;
 	}
 }
