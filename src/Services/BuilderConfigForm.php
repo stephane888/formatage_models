@@ -59,25 +59,69 @@ class BuilderConfigForm {
 	
 	//
 	function selectRenderfield($field, &$form){
-		foreach( $field as $type => $defaultValue ){
+		foreach( $field as $type => $Value ){
+			$key = null;
+			$label = null;
+			$defaultValue = null;
+			if(is_array( $Value )){
+				$label = isset( $Value['label'] ) ? $Value['label'] : null;
+				if(isset( $Value['value'] )){
+					$defaultValue = $Value['value'];
+					$key = 'value';
+				}
+				elseif(isset( $Value['fid'] )){
+					$defaultValue = $Value['fid'];
+					$key = 'fid';
+				}
+				if($key)
+					$form[$type] = [];
+			}
+			else{
+				$defaultValue = $Value;
+				$label = null;
+			}
 			switch($type) {
 				case 'text' :
-					$this->ThemeUtility->addTextfieldTree( $type, $form, 'text', $defaultValue );
+					if($key)
+						$this->ThemeUtility->addTextfieldTree( $key, $form[$type], $label ? $label : 'Text', $defaultValue );
+					else
+						$this->ThemeUtility->addTextfieldTree( $type, $form, $label ? $label : 'Text', $defaultValue );
 					break;
 				case 'url' :
-					$this->ThemeUtility->addTextfieldTree( $type, $form, 'url', $defaultValue );
+					if($key)
+						$this->ThemeUtility->addTextfieldTree( $key, $form[$type], $label ? $label : 'Url', $defaultValue );
+					else
+						$this->ThemeUtility->addTextfieldTree( $type, $form, $label ? $label : 'Url', $defaultValue );
 					break;
 				case 'icon-f' :
-					$this->ThemeUtility->AddFieldfontAwasone( $type, $form, 'icone', $defaultValue );
+					if($key)
+						$this->ThemeUtility->AddFieldfontAwasone( $key, $form[$type], $label ? $label : 'Icone', $defaultValue );
+					else
+						$this->ThemeUtility->AddFieldfontAwasone( $type, $form, $label ? $label : 'Icone', $defaultValue );
 					break;
 				case 'btn-variant' :
-					$this->ThemeUtility->addSelectBtnVariantTree( $type, $form, 'button', $defaultValue );
+					if($key)
+						$this->ThemeUtility->addSelectBtnVariantTree( $key, $form[$type], $label ? $label : 'Button', $defaultValue );
+					else
+						$this->ThemeUtility->addSelectBtnVariantTree( $type, $form, $label ? $label : 'Button', $defaultValue );
 					break;
 				case 'text_html' :
-					$this->ThemeUtility->addTextareaTree( $type, $form, 'texte long', $defaultValue );
+					if($key)
+						$this->ThemeUtility->addTextareaTree( $key, $form[$type], $label ? $label : 'Texte long', $defaultValue );
+					else
+						$this->ThemeUtility->addTextareaTree( $type, $form, $label ? $label : 'Texte long', $defaultValue );
 					break;
 				case 'img_bg' :
-					$this->ThemeUtility->addImageTree( $type, $form, 'image en arriere plan', $defaultValue['fid'] );
+					if($key)
+						$this->ThemeUtility->addImageTree( $key, $form[$type], $label ? $label : 'Image en arriere plan', $defaultValue );
+					else
+						$this->ThemeUtility->addImageTree( $type, $form, $label ? $label : 'Image en arriere plan', $defaultValue );
+					break;
+				case 'img_style' :
+					if($key)
+						$this->ThemeUtility->selectImageStyles( $key, $form[$type], $label ? $label : 'Style image', $defaultValue );
+					else
+						$this->ThemeUtility->selectImageStyles( $type, $form, $label ? $label : 'Style image', $defaultValue );
 					break;
 			}
 		}

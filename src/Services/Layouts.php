@@ -31,12 +31,18 @@ class Layouts {
 				'load_libray'=> false
 		];
 	}
+	//
 	function setConfig($configuration){
 		$this->configuration = $configuration;
 	}
+	//
 	function setRegions($regions){
 		$this->regions = $regions;
 	}
+	/**
+	 *
+	 * @param array $form
+	 */
 	function buildClassCssRegion(array &$form){
 		foreach( $this->regions as $region => $label ){
 			$form['css_class']['region_css_' . $region] = [
@@ -46,6 +52,10 @@ class Layouts {
 			];
 		}
 	}
+	/**
+	 *
+	 * @param array $form
+	 */
 	function buildConfigurationForm(array &$form){
 		$form["load_libray"] = [
 				'#type'=> 'checkbox',
@@ -66,6 +76,11 @@ class Layouts {
 		$this->buildClassCssRegion( $form );
 		$this->BuilderConfigForm->prepareBuildForms( $this->configuration, $form );
 	}
+	/**
+	 *
+	 * @param array $fids
+	 * @return boolean
+	 */
 	function saveFilePermanent(array $fids){
 		foreach( $fids as $fid ){
 			if($file = \Drupal\file\Entity\File::load( $fid )){
@@ -78,6 +93,11 @@ class Layouts {
 			}
 		}
 	}
+	/**
+	 *
+	 * @param array $configuration
+	 * @param FormStateInterface $form_state
+	 */
 	function submitConfigurationForm(array &$configuration, FormStateInterface $form_state){
 		$configuration['css'] = $form_state->getValue( [
 				'css_class',
@@ -95,19 +115,21 @@ class Layouts {
 		//
 		foreach( $configuration as $key => $field ){
 			if(! empty( $field['builder-form'] )){
-				$configuration[$key]['fields'] = $form_state->getValue( $key )['fields'];
+				$configuration[$key]['fields'] = array_merge( $field['fields'], $form_state->getValue( $key )['fields'] );
+				
 				$this->saveImage( $configuration[$key]['fields'] );
 			}
 		}
-		debugLog::kintDebugDrupal( $configuration, "submitConfigurationForm" );
+		// debugLog::kintDebugDrupal($configuration, "submitConfigurationForm");
 	}
+	/**
+	 *
+	 * @param array $fields
+	 */
 	private function saveImage(array &$fields){
 		foreach( $fields as $key => $field ){
 			if(! empty( $field['img_bg'] )){
-				$fields[$key]['img_bg'] = [
-						'fid'=> $field['img_bg'],
-						'url'=> $this->getImageUrlByFid( $field['img_bg'] )
-				];
+				$fields[$key]['img_bg']['url'] = $this->getImageUrlByFid( $field['img_bg']['fid'] );
 			}
 		}
 	}
@@ -129,7 +151,7 @@ class Layouts {
 				else{
 					$img_url = file_create_url( $file->getFileUri() );
 				}
-				// remove domaine
+				// Remove domaine
 				$img_url = explode( \Drupal::request()->getSchemeAndHttpHost(), $img_url );
 				return ! empty( $img_url[1] ) ? $img_url[1] : $img_url[0];
 			}
