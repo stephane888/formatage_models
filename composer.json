@@ -2,7 +2,6 @@
     "name": "stephane888/formatage_models",
     "description": "permet de formatter les modeles tels que les champs",
     "type": "drupal-module",
-    "version": "1.0.0",
     "license": "MIT",
     "authors": [
         {
