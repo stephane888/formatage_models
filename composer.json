@@ -10,5 +10,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+    	"drupal/bootstrap_layout_builder": "^2.0"
+    }
 }
