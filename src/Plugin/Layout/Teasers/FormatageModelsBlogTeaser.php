@@ -1,7 +1,9 @@
 <?php
+
 namespace Drupal\formatage_models\Plugin\Layout\Teasers;
 
 use Drupal\formatage_models\Plugin\Layout\FormatageModels;
+
 
 /**
  * A very advanced custom layout.
@@ -30,5 +32,6 @@ use Drupal\formatage_models\Plugin\Layout\FormatageModels;
  *   }
  * )
  */
-class FormatageModelsBlogTeaser extends FormatageModels {
+class FormatageModelsBlogTeaser extends FormatageModels
+{
 }
