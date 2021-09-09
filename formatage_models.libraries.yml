@@ -41,21 +41,34 @@ vuejs:
 #################################################################################################################################################
 # -50 <weight> +50
 
+formatage-models-product-teaser:
+  js:
+    layouts/js/formatage-models-product-teaser.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-product-teaser.css: { weight: 10 }
+###
+formatage-models-titre-description:
+  js:
+    layouts/js/formatage-models-titre-description.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-titre-description.css: { weight: 10 }
+###
 formatage-models-hero-thegem-18:
   js:
     layouts/js/formatage-models-hero-thegem-18.js: {}
   css:
     theme:
       layouts/css/formatage-models-hero-thegem-18.css: { weight: 10 }
-
+###
 formatage-models-menu01:
   js:
     layouts/js/formatage-models-menu01.js: {}
   css:
     theme:
       layouts/css/formatage-models-menu01.css: { weight: 10 }
-
-
+###
 formatage-models-header-thegem-01:
   js:
     layouts/js/formatage-models-header-thegem-01.js: {}
@@ -69,50 +82,49 @@ formatage-models-item-section:
   css:
     theme:
       layouts/css/formatage-models-item-section.css: { weight: 10 }
-
+###
 formatage-models-images-bg:
   js:
     layouts/js/formatage-models-images-bg.js: {}
   css:
     theme:
       layouts/css/formatage-models-images-bg.css: { weight: 10 }
-
+###
 formatage-models-services-sliders:
   js:
     layouts/js/formatage-models-services-sliders.js: {}
   css:
     theme:
       layouts/css/formatage-models-services-sliders.css: { weight: 10 }
-
+###
 formatage-models-titre:
   js:
     layouts/js/formatage-models-titre.js: {}
   css:
     theme:
       layouts/css/formatage-models-titre.css: { weight: 10 }
-
+###
 formatage-models-service-icone:
   js:
     layouts/js/formatage-models-service-icone.js: {}
   css:
     theme:
       layouts/css/formatage-models-service-icone.css: { weight: 10 }
-
+###
 formatage-models-lmsg-call-toaction:
   js:
     layouts/js/formatage-models-lmsg-call-toaction.js: {}
   css:
     theme:
       layouts/css/formatage-models-lmsg-call-toaction.css: { weight: 10 }
-
-
+###
 formatage-models-image-after-before:
   js:
     layouts/js/formatage-models-image-after-before.js: {}
   css:
     theme:
       layouts/css/formatage-models-image-after-before.css: { weight: 10 }
-
+###
 formatage-models-expert-solution:
   js:
     layouts/js/formatage-models-expert-solution.js: {}
@@ -197,8 +209,6 @@ formatage-models-teaser:
   css:
     theme:
       layouts/css/formatage-models-teaser.css: { weight: 10 }
-
-
 
 formatage-models-blog-call-toaction:
   js:

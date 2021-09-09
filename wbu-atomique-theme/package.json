@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --watch --mode='development' --progress",
-    "build": "NODE_ENV=production webpack --watch --progress",
+    "Dev": "webpack --watch --mode='development' --progress",
+    "Prod": "NODE_ENV=production webpack --watch --progress",
     "copy": "NODE_ENV=production node scripts/build.js  --watch",
     "serve": "webpack serve --mode='production' --open"
   },
@@ -45,7 +45,7 @@
     "not ie 11"
   ],
   "dependencies": {
-    "@stephane888/wbu-atomique": "^1.0.1",
+    "@stephane888/wbu-atomique": "file:../../../AppVuejs/wbu-atomique",
     "bootstrap": "^4.6.0",
     "image-webpack-loader": "^7.0.1",
     "imagemin": "^7.0.1",

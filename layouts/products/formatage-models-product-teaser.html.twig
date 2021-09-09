@@ -1,0 +1,27 @@
+{% if content %}
+	<div{{attributes.addClass('product-teaser')}}>
+		<div{{region_attributes.image.addClass(['image'])}}>
+			{{content.image}}
+		</div>
+		<h4{{region_attributes.title.addClass(['title'])}}>
+			{{ content.title }}
+		</h4>
+    <div {{ region_attributes.reference.addClass(['reference']) }}>
+			{{ content.reference }}
+		</div>
+		<div {{ region_attributes.smalldescription.addClass(['smalldescription']) }}>
+			{{ content.smalldescription }}
+		</div>
+    <div {{ region_attributes.price.addClass(['price']) }}>
+			{{ content.price }}
+		</div>
+    <div {{ region_attributes.button.addClass(['button']) }}>
+			{{ content.button }}
+		</div>
+    <div {{ region_attributes.stocks.addClass(['stocks']) }}>
+			{{ content.stocks }}
+		</div>
+		{{content.title.layout_builder_add_block}}
+		{{content.description.layout_builder_add_block}}
+	</div>
+{% endif %}

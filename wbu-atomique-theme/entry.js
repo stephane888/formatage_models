@@ -1,4 +1,4 @@
 module.exports = {
-  "formatage-models-hero-thegem-18":
-    "./src/js/sections/formatage-models-hero-thegem-18.js"
+  "formatage-models-product-teaser":
+    "./src/js/products/formatage-models-product-teaser.js",
 };
