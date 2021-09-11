@@ -113,11 +113,9 @@ class LayoutValueExtension extends \Twig_Extension
 	{
 		$vals = [];
 		$key = 0;
-
 		// La condifition sur layout_builder_add_block permet un affichage par defaut si on est en administration.
 		if (is_array($build) && ! isset($build['layout_builder_add_block'])) {
-
-			foreach ( $build as $value ) {
+			foreach ( $build as $key => $value ) {
 				if (is_array($value) && ! empty($value)) {
 					if (! empty($value['#theme']) && $value['#theme'] == 'block' && ! empty($value['content'])) {
 						if ($keySearch !== null) {
@@ -130,7 +128,8 @@ class LayoutValueExtension extends \Twig_Extension
 						}
 					}
 					else {
-						$vals[] = $value;
+						// la clee est important, car certains elments comme #attributes ne doivent pas etre rendu.
+						$vals[$key] = $value;
 					}
 				}
 				$key ++;

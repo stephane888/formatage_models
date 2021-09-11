@@ -27,6 +27,9 @@ function formatage_models_preprocess_page(&$variables)
 	// }
 	// dump($variables['page']['content']);
 	// MdbootstrapWbu::wbupreprocess_page($variables);
+	// $listes = \Drupal::service('plugin.manager.element_info')->getDefinitions();
+	// $listes = array_keys($listes);
+	// dump(implode(" , ", $listes));
 }
 
 /**
@@ -109,7 +112,8 @@ function formatage_models_preprocess_formatage_models_item_section(array &$varia
 function formatage_models_preprocess_formatage_models_images_bg(array &$variables)
 {
 	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+	// FormatageModelsThemes::ApplyAttributes($variables);
+	FormatageModelsThemes::mergeContentAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_services_sliders(array &$variables)
@@ -135,6 +139,7 @@ function formatage_models_preprocess_formatage_models_service_icone(array &$vari
 {
 	// FormatageModelsThemes::addLayoutEditBlock($variables);
 	FormatageModelsThemes::ApplyAttributes($variables);
+	FormatageModelsThemes::mergeContentAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_expert_solution(array &$variables)

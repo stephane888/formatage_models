@@ -4,6 +4,10 @@ namespace Drupal\formatage_models\Plugin\Layout;
 
 use Drupal\Core\Layout\LayoutDefault;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 
 
 /**
@@ -23,6 +27,20 @@ class FormatageModels extends LayoutDefault
 	protected $Layouts;
 
 	/**
+	 * The styles group plugin manager.
+	 *
+	 * @var \Drupal\bootstrap_styles\StylesGroup\StylesGroupManager
+	 */
+	protected $stylesGroupManager;
+
+	/**
+	 * The config factory.
+	 *
+	 * @var \Drupal\Core\Config\ConfigFactoryInterface
+	 */
+	protected $configFactory;
+
+	/**
 	 *
 	 * {@inheritdoc}
 	 */
@@ -33,6 +51,7 @@ class FormatageModels extends LayoutDefault
 		parent::__construct($configuration, $plugin_id, $plugin_definition);
 		$this->Layouts->setConfig($this->configuration);
 		$this->Layouts->setRegions($this->getPluginDefinition()->getRegions());
+
 		// dump($this->pluginDefinition->get('icon'));
 		// $this->pluginDefinition->setIconPath("my-custom-icon.jpg");
 		// dump($this->pluginDefinition->getIcon(), $this->pluginDefinition->get('icon'), $this->pluginDefinition->getIconPath(), $this->pluginDefinition->getPath(), $this->pluginDefinition->get('myicone'));
@@ -84,6 +103,7 @@ class FormatageModels extends LayoutDefault
 		$form = parent::buildConfigurationForm($form, $form_state);
 		$form['label']['#default_value'] = empty($this->configuration['label']) ? $this->getBaseId() : $this->configuration['label'];
 		$this->Layouts->buildConfigurationForm($form);
+		// $form['style'] = $this->stylesGroupManager->buildStylesFormElements($form['style'], $form_state, $this->configuration['container_wrapper']['bootstrap_styles'], 'bootstrap_layout_builder.styles');
 		return $form;
 	}
 

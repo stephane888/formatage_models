@@ -130,8 +130,29 @@ class FormatageModelsThemes
 											$variables['content'][$regionName][] = [
 													'#type' => 'inline_template',
 													'#template' => $field['value']
-												// '#context' => []
 											];
+											break;
+										case 'img_bg' :
+											$variables['content'][$regionName][] = [
+													'#type' => 'inline_template',
+													'#template' => $field['value']
+											];
+											break;
+										case 'url' :
+											/**
+											 *
+											 * @var \Drupal\Core\Render\Element\Link
+											 */
+											if (! empty($field['value']['text']))
+												$variables['content'][$regionName][] = [
+														'#type' => 'link',
+														'#title' => $field['value']['text'],
+														'#url' => \Drupal\Core\Url::fromUserInput($field['value']['link']),
+														'#attributes' => [
+																'class' => explode(" ", $field['value']['class'])
+														]
+												];
+
 											break;
 										default :
 											throw new \Exception("Le champs " . $key . " n'a pas de rendu ");

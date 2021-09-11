@@ -94,9 +94,9 @@ class BuilderConfigForm
 					break;
 				case 'url' :
 					if ($key)
-						$this->ThemeUtility->addTextfieldTree($key, $form[$type], $label ? $label : 'Url', $defaultValue);
+						$this->ThemeUtility->addUrlTree($key, $form[$type], $label ? $label : 'Url', $defaultValue);
 					else
-						$this->ThemeUtility->addTextfieldTree($type, $form, $label ? $label : 'Url', $defaultValue);
+						$this->ThemeUtility->addUrlTree($type, $form, $label ? $label : 'Url', $defaultValue);
 					break;
 				case 'icon-f' :
 					if ($key)

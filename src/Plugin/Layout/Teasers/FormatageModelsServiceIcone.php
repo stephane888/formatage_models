@@ -10,7 +10,7 @@ use Drupal\formatage_models\Plugin\Layout\FormatageModels;
  *
  * @Layout(
  *   id = "formatage_models_service_icone",
- *   label = @Translation(" Service icone "),
+ *   label = @Translation(" Teaser icone gauche "),
  *   category = @Translation("Formatage Models"),
  *   path = "layouts/teasers",
  *   template = "formatage-models-service-icone",
@@ -52,7 +52,7 @@ class FormatageModelsServiceIcone extends FormatageModels
 	{
 		return [
 				'load_libray' => true,
-				'css' => 'text-center bg-dark text-white',
+				'css' => '',
 				'sf' => [
 						'builder-form' => true,
 						'info' => [
