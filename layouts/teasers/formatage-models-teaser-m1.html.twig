@@ -1,0 +1,21 @@
+{%if content %}
+	<div{{attributes.addClass(['teaser-m1','card'])}}>
+		<div{{region_attributes.image.addClass('card-img-top','image')}}>
+			{{content.image|layout_value}}
+		</div>
+		<div class="card-body">
+			<h4{{region_attributes.titre.addClass('card-title','titre')}}>
+				{{content.titre|layout_value}}
+			</h4>
+			<div{{region_attributes.description.addClass('card-text','description')}}>
+				{{content.description|layout_value}}
+			</div>
+			<div{{region_attributes.url.addClass('url')}}>
+				{{content.url}}
+			</div>
+			<div{{region_attributes.icone.addClass('icone')}}>
+				{{content.icone}}
+			</div>
+		</div>
+	</div>
+{% endif %}

@@ -37,9 +37,64 @@ vuejs:
     https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js:
       { type: external, minified: true }
 
-
 #################################################################################################################################################
 # -50 <weight> +50
+
+formatage_models_swiper_big:
+  js:
+    layouts/js/formatage_models_swiper_big.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_swiper_big.css: { weight: 10 }
+
+formatage-models-textcotebg:
+  js:
+    layouts/js/formatage-models-textcotebg.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-textcotebg.css: { weight: 10 }
+
+formatage-models-description:
+  js:
+    layouts/js/formatage-models-description.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-description.css: { weight: 10 }
+
+formatage_models_swiper:
+  js:
+    layouts/js/formatage_models_swiper.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_swiper.css: { weight: 10 }
+
+formatage-models-header1":
+  js:
+    layouts/js/formatage-models-header1.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-header1.css: { weight: 10 }
+
+formatage-models-teaser-m1:
+  js:
+    layouts/js/formatage-models-teaser-m1.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser-m1.css: { weight: 10 }
+
+formatage-models-empty-results:
+  js:
+    layouts/js/formatage-models-empty-results.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-empty-results.css: { weight: 10 }
+
+formatage-models-page-bigbackground:
+  js:
+    layouts/js/formatage-models-page-bigbackground.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-page-bigbackground.css: { weight: 10 }
 
 formatage-models-product-teaser:
   js:
@@ -138,7 +193,6 @@ formatage-models-hero-slider-popup:
   css:
     theme:
       layouts/css/formatage-models-hero-slider-popup.css: { weight: 10 }
-
 
 formatage-models-single-blog:
   js:

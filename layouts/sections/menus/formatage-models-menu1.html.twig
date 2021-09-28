@@ -1,0 +1,12 @@
+{% if content %}
+	<div{{attributes.addClass('contain-main-menu')}}>
+		<nav class="container navbar navbar-expand-lg navbar-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div {{region_attributes.site_main_menu.addClass('collapse','navbar-collapse','site_main_menu')}} id="navbarSupportedContent">
+				{{ content.site_main_menu }}
+			</div>
+		</nav>
+	</div>
+{%endif %}

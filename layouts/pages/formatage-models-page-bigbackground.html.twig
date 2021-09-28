@@ -1,0 +1,39 @@
+{% if content %}
+	{# on ajoute un template #}
+	{% set RenderBgimage = {
+    '#theme': 'formatage_models__img_url',
+    '#content_all': content.bg_image,
+    '#tag_fields': '',
+    '#tag_field': '',
+    '#tag_field_attibutes': {}
+  }
+    %}
+	{% set RenderBgimagHtml %}
+	{{ render_var(RenderBgimage) }}
+	{% endset %}
+
+	<section{{attributes.addClass('page-bigbackground')}}>
+		<header{{region_attributes.entete.addClass('entete')}} style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}');">
+			{% if content.bg_image.layout_builder_add_block %}
+				<div{{region_attributes.bg_image.addClass('bg_image')}}>
+					{{content.bg_image.layout_builder_add_block}}
+				</div>
+			{% endif %}
+			<div class="container">
+				<div class="d-flex flex-wrap content-header align-items-center">
+					<h1 {{region_attributes.title.addClass('title')}}>{{content.title|layout_value}}</h1>
+				</div>
+			</div>
+		</header>
+		<div class="container">
+			<div class="row">
+				<div{{region_attributes.body.addClass('body')}}>
+					{{ content.body }}
+				</div>
+				<div{{region_attributes.side_bar_left.addClass('side_bar_left')}}>
+					{{ content.side_bar_left }}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}

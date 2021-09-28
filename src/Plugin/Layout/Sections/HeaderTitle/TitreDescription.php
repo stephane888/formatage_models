@@ -1,9 +1,8 @@
 <?php
-
 namespace Drupal\formatage_models\Plugin\Layout\Sections\HeaderTitle;
 
-use Drupal\formatage_models\Plugin\Layout\FormatageModels;
-
+use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
+use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 
 /**
  * A very advanced custom layout.
@@ -27,47 +26,48 @@ use Drupal\formatage_models\Plugin\Layout\FormatageModels;
  *   }
  * )
  */
-class TitreDescription extends FormatageModels
+class TitreDescription extends FormatageModelsSection
 {
 
-	/**
-	 *
-	 * {@inheritdoc}
-	 * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
-	 */
-	public function __construct(array $configuration, $plugin_id, $plugin_definition)
-	{
-		// TODO Auto-generated method stub
-		parent::__construct($configuration, $plugin_id, $plugin_definition);
-		$this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage-models-titre-description.png");
-	}
+    /**
+     *
+     * {@inheritdoc}
+     * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
+     */
+    public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager)
+    {
+        // TODO Auto-generated method stub
+        parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
+        $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage-models-titre-description.png");
+    }
 
-	function defaultConfiguration()
-	{
-		return [
-				'load_libray' => true,
-				"css" => 'container text-center',
-				'sf' => [
-						'builder-form' => true,
-						'info' => [
-								'title' => 'Contenu',
-								'loader' => 'static'
-						],
-						'fields' => [
-								'title' => [
-										'text' => [
-												'label' => 'Titre de la section',
-												'value' => "Nos produits"
-										]
-								],
-								'description' => [
-										'text_html' => [
-												'label' => 'Description',
-												"value" => "Nous vous proposons une sélection de produits pour une rénovation clé en main de votre habitat. Certains produits du catalogue sont éligibles au crédit d’impôt ou à d’autres subventions. Découvrez notre sélection de produits et demandez un devis gratuit."
-										]
-								]
-						]
-				]
-		];
-	}
+    function defaultConfiguration()
+    {
+        return parent::defaultConfiguration() + [
+            'load_libray' => true,
+            "css" => 'container text-center',
+
+            'sf' => [
+                'builder-form' => true,
+                'info' => [
+                    'title' => 'Contenu',
+                    'loader' => 'static'
+                ],
+                'fields' => [
+                    'title' => [
+                        'text' => [
+                            'label' => 'Titre de la section',
+                            'value' => "Nos produits"
+                        ]
+                    ],
+                    'description' => [
+                        'text_html' => [
+                            'label' => 'Description',
+                            "value" => "Nous vous proposons une sélection de produits pour une rénovation clé en main de votre habitat. Certains produits du catalogue sont éligibles au crédit d’impôt ou à d’autres subventions. Découvrez notre sélection de produits et demandez un devis gratuit."
+                        ]
+                    ]
+                ]
+            ]
+        ];
+    }
 }

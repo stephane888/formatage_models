@@ -2,8 +2,10 @@
 #}
 
 {% if content %}
-    {# on ajoute un template #}
-    {% set RenderBgimage = {
+
+
+	{# on ajoute un template #}
+	{% set RenderBgimage = {
     '#theme': 'formatage_models__img_url',
     '#content_all': content.bgimage,
     '#tag_fields': '',
@@ -11,35 +13,48 @@
     '#tag_field_attibutes': {}
   }
     %}
-    {% set RenderBgimagHtml %}
-        {{ render_var(RenderBgimage) }}
-    {% endset %}
-    <div class="billetDeBlogTeaser" style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}');">
-         {# url #}
+	{% set RenderBgimagHtml %}
+	{{ render_var(RenderBgimage) }}
+	{% endset %}
+	<div
+		{{attributes.addClass('billetDeBlogTeaser')}} style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}');">
+		{# url #}
+		{% if content.url %}
+			{% set RenderUrl = content.url | layout_raw(0) %}
+			{% if RenderUrl.value %}
+				{% set RenderUrl %}{{- path('entity.node.canonical', {'node': RenderUrl.value}) -}}{% endset %}
+			{% endif %}
+		{% endif %}
 
-         {% if content.url %}
-             {% set RenderUrl = content.url | layout_raw(0) %}
-             {% if RenderUrl.value %}
-                 {% set RenderUrl %}{{- path('entity.node.canonical', {'node': RenderUrl.value}) -}}{% endset %}
-             {% endif %}
-         {% endif %}
+		{% if RenderUrl %}
+			<a href="{{- RenderUrl -}}" class="cover-link">
+			{% endif %}
+			{% if RenderUrl %}
+			</a>
+		{% endif %}
+		<div class="background">
+			<div class="billetDeBlogTeaser__text">
+				<div{{region_attributes.date.addClass('date')}}>
+					{{ content.date|layout_value }}
+				</div>
+				<div {{region_attributes.titre.addClass('title')}}>
+					{{content.titre|layout_value}}
+				</div>
+			</div>
+		</div>
 
-         {% if RenderUrl %}
-             <a href="{{- RenderUrl -}}" class="cover-link">
-             {% endif %}
-             {% if RenderUrl %}
-             </a>
-         {% endif %}
-         <div class="background">
-              <div class="billetDeBlogTeaser__text">
-                   <div class="date">
-                        {{ content.date }}
-                   </div>
-                   <div class="title">
-                        {{ render_var({ '#theme': 'formatage_models__clean_field', '#content_all': content.titre  }) }}
-                   </div>
-              </div>
-         </div>
-    </div>
-    {% include '@formatage_models/includes/add-region-edit.html.twig' %}
-{% endif %} 
+		{% if content.bgimage.layout_builder_add_block %}
+			<div{{region_attributes.bgimage.addClass('bgimage')}}>
+				{{content.bgimage.layout_builder_add_block}}
+			</div>
+		{% endif %}
+
+		{% if content.url.layout_builder_add_block %}
+			<div{{region_attributes.url.addClass('url')}}>
+				{{content.url.layout_builder_add_block}}
+			</div>
+		{% endif %}
+
+
+	</div>
+{% endif %}

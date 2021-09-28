@@ -1,6 +1,9 @@
 <?php
 use Drupal\formatage_models\FormatageModelsThemes;
 use Stephane888\Debug\debugLog;
+use Drupal\Core\Url;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use Drupal\Component\DependencyInjection\Container;
 
 /**
  *
@@ -17,28 +20,66 @@ use Stephane888\Debug\debugLog;
  */
 function formatage_models_preprocess_page(&$variables)
 {
-	// $Markup = new Markup();
-	// $Markup->__toString()
-	// if (! empty($variables['page']['content'])) {
-	// foreach ( $variables['page']['content'] as $block ) {
-	// if (is_array($block) && ! empty($block["#theme"]) && $block["#theme"] == 'block')
-	// FormatageModelsThemes::ReInjectLayoutInAnotherRegion($block["#block"], $variables);
-	// }
-	// }
-	// dump($variables['page']['content']);
-	// MdbootstrapWbu::wbupreprocess_page($variables);
-	// $listes = \Drupal::service('plugin.manager.element_info')->getDefinitions();
-	// $listes = array_keys($listes);
-	// dump(implode(" , ", $listes));
+    // $Markup = new Markup();
+    // $Markup->__toString()
+    // if (! empty($variables['page']['content'])) {
+    // foreach ( $variables['page']['content'] as $block ) {
+    // if (is_array($block) && ! empty($block["#theme"]) && $block["#theme"] == 'block')
+    // FormatageModelsThemes::ReInjectLayoutInAnotherRegion($block["#block"], $variables);
+    // }
+    // }
+    // dump($variables['page']['content']);
+    // MdbootstrapWbu::wbupreprocess_page($variables);
+    // $Container = \Drupal::getContainer()->getServiceIds();
+    // $listes = array_keys($listes);
+    // dump(implode(" , ", $listes));
+    // $Container = \Drupal::service("validation.constraint");
+    // dump($Container);
+
+    // ***********
+    // $Markup = new Markup();
+    // $Markup->__toString()
+    // if (! empty($variables['page']['content'])) {
+    // foreach ( $variables['page']['content'] as $block ) {
+    // if (is_array($block) && ! empty($block["#theme"]) && $block["#theme"] == 'block')
+    // FormatageModelsThemes::ReInjectLayoutInAnotherRegion($block["#block"], $variables);
+    // }
+    // }
+    // dump($variables['page']['content']);
+    // MdbootstrapWbu::wbupreprocess_page($variables);
+    // $listes = \Drupal::service('validation.constraint')->getDefinitions();
+    // $listes = array_keys($listes);
+    // dump($listes);
+    // $Container = new Container();
+    // dump($Container->getServiceIds());
+}
+
+function formatage_models_preprocess_menu__extras(&$vars)
+{
+    if (! empty($vars['menu_name']) && $vars['menu_name'] == "main") {
+        foreach ($vars['items'] as $item) {
+            //
+        }
+    }
 }
 
 /**
- * Implement hook_item_list__layouts
+ * Implements hook_menu_alter().
  */
-function formatage_models_preprocess_item_list__layouts(&$vars)
+function formatage_models_link_alter(&$vars)
 {
-	// debugLog::$max_depth = 6;
-	// debugLog::kintDebugDrupal($vars['items'], 'formatage_models_preprocess_item_list__layouts');
+    // /**
+    // * The URL of the link.
+    // *
+    // * @var Url $url
+    // */
+    // $url = $vars['url'];
+    // if ($url->isRouted()){
+    // $url->
+
+    // }
+    // dump($url->getRouteName());
+    // // debugLog::kintDebugDrupal($vars, 'formatage_models_link_alter' . rand(1, 9999));
 }
 
 /**
@@ -46,13 +87,33 @@ function formatage_models_preprocess_item_list__layouts(&$vars)
  */
 function formatage_models_preprocess_layout(&$vars)
 {
-	if (! empty($vars['region_attributes'])) {
-		foreach ( $vars['region_attributes'] as $key => $region_attribute ) {
-			$vars['region_attributes'][$key]->addClass('layout-region');
-		}
-	}
-	// if ($vars['theme_hook_original'] == 'blb_section')
-	// dump($vars);
+    if (! empty($vars['region_attributes'])) {
+        foreach ($vars['region_attributes'] as $key => $region_attribute) {
+            $vars['region_attributes'][$key]->addClass('layout-region');
+        }
+    }
+    // if ($vars['theme_hook_original'] == 'blb_section')
+    // dump($vars);
+}
+
+function formatage_models_preprocess_formatage_models_textcotebg(&$vars)
+{
+    FormatageModelsThemes::mergeContentAttributes($vars);
+}
+
+function formatage_models_preprocess_formatage_models_description(&$vars)
+{
+    FormatageModelsThemes::mergeContentAttributes($vars);
+}
+
+function formatage_models_preprocess_formatage_models_empty_results(&$vars)
+{
+    FormatageModelsThemes::mergeContentAttributes($vars);
+}
+
+function formatage_models_page_bigbackground(&$vars)
+{
+    FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
 /**
@@ -60,13 +121,13 @@ function formatage_models_preprocess_layout(&$vars)
  */
 function formatage_models_preprocess_blb_section(&$vars)
 {
-	if (! empty($vars['region_attributes'])) {
-		foreach ( $vars['region_attributes'] as $key => $region_attribute ) {
-			$vars['region_attributes'][$key]->addClass('layout-region');
-		}
-	}
-	// if ($vars['theme_hook_original'] == 'blb_section')
-	// dump($vars);
+    if (! empty($vars['region_attributes'])) {
+        foreach ($vars['region_attributes'] as $key => $region_attribute) {
+            $vars['region_attributes'][$key]->addClass('layout-region');
+        }
+    }
+    // if ($vars['theme_hook_original'] == 'blb_section')
+    // dump($vars);
 }
 
 /**
@@ -74,96 +135,101 @@ function formatage_models_preprocess_blb_section(&$vars)
  */
 function formatage_models_theme()
 {
-	return FormatageModelsThemes::getThemeHooks();
+    return FormatageModelsThemes::getThemeHooks();
 }
 
 function formatage_models_preprocess_formatage_models_titre_description(array &$variables)
 {
-	// dump($variables);
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
-	FormatageModelsThemes::mergeContentAttributes($variables);
+    // dump($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
+    FormatageModelsThemes::mergeContentAttributes($variables);
+}
+
+function formatage_models_preprocess_formatage_models_header1(&$vars)
+{
+    FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
 function formatage_models_preprocess_formatage_models_hero_thegem_18(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_header_thegem_01(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_single_blog(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_item_section(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    // FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_images_bg(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	// FormatageModelsThemes::ApplyAttributes($variables);
-	FormatageModelsThemes::mergeContentAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    // FormatageModelsThemes::ApplyAttributes($variables);
+    FormatageModelsThemes::mergeContentAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_services_sliders(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_titre(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
-	FormatageModelsThemes::mergeContentAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
+    FormatageModelsThemes::mergeContentAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_lmsg_call_toaction(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_service_icone(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
-	FormatageModelsThemes::mergeContentAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
+    FormatageModelsThemes::mergeContentAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_expert_solution(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_image_after_before(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_hero_slider_popup(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_simple_block(array &$variables)
 {
-	FormatageModelsThemes::ApplyAttributes($variables);
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
 }
 
 /**
@@ -172,8 +238,8 @@ function formatage_models_preprocess_formatage_models_simple_block(array &$varia
  */
 function formatage_models_preprocess_formatage_models_galery_title(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 /**
@@ -182,8 +248,8 @@ function formatage_models_preprocess_formatage_models_galery_title(array &$varia
  */
 function formatage_models_preprocess_formatage_models_teaser_img_desc(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 /**
@@ -192,8 +258,8 @@ function formatage_models_preprocess_formatage_models_teaser_img_desc(array &$va
  */
 function formatage_models_preprocess_formatage_models_blog_list(array &$variables)
 {
-	FormatageModelsThemes::ApplyAttributes($variables);
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
 }
 
 /**
@@ -202,8 +268,8 @@ function formatage_models_preprocess_formatage_models_blog_list(array &$variable
  */
 function formatage_models_preprocess_formatage_models_article_header(array &$variables)
 {
-	FormatageModelsThemes::ApplyAttributes($variables);
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
 }
 
 /**
@@ -212,8 +278,8 @@ function formatage_models_preprocess_formatage_models_article_header(array &$var
  */
 function formatage_models_preprocess_formatage_models_teaser(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 /**
@@ -222,8 +288,8 @@ function formatage_models_preprocess_formatage_models_teaser(array &$variables)
  */
 function formatage_models_preprocess_formatage_models_teaser_a_la_une(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 /**
@@ -232,8 +298,8 @@ function formatage_models_preprocess_formatage_models_teaser_a_la_une(array &$va
  */
 function formatage_models_preprocess_formatage_models_realisation_big(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 /**
@@ -242,8 +308,8 @@ function formatage_models_preprocess_formatage_models_realisation_big(array &$va
  */
 function formatage_models_preprocess_formatage_models_realisation_small(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 /**
@@ -252,6 +318,6 @@ function formatage_models_preprocess_formatage_models_realisation_small(array &$
  */
 function formatage_models_preprocess_formatage_models_bg_header(array &$variables)
 {
-	// FormatageModelsThemes::addLayoutEditBlock($variables);
-	FormatageModelsThemes::ApplyAttributes($variables);
+    // FormatageModelsThemes::addLayoutEditBlock($variables);
+    FormatageModelsThemes::ApplyAttributes($variables);
 }

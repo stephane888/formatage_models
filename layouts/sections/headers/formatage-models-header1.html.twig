@@ -1,0 +1,78 @@
+{%if content %}
+	<section{{attributes}}>
+		<div class="topbar"></div>
+		<div class="container topbar-content">
+			<div class="row">
+				<div class="col-lg-6 d-none d-lg-block">
+					<div {{region_attributes.topheader.addClass('topheader')}}>
+						{{content.topheader|raw}}
+					</div>
+				</div>
+				<div class="col-lg-6 right">
+					<div class="d-flex justify-content-end pt-2">
+						<div class="header_search_1">
+							{% if logged_in == true %}
+								<a href="/user/logout" id="header-search-button">
+									<i class="icon-logout"></i>
+								</a>
+							{% else %}
+								<a href="/user/login" id="header-search-button">
+									<i class="icon-user"></i>
+									Connexion
+								</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- -->
+		<div class="container">
+			<div class="header-nav">
+				<div class="row">
+					<div class="col-lg-5 d-flex align-items-center">
+						<div class="basic-wrapper">
+							<a class="mobile-menu" data-toggle="collapse" data-target=".navbar-collapse">
+								<i class='icon-menu'></i>
+							</a>
+							<a href="/" title="Home" rel="home" class="logo">
+								{{content.logo}}
+							</a>
+						</div>
+						<div>
+							<div {{region_attributes.sitename.addClass('sitename','site-name')}}>
+								{{content.sitename}}
+							</div>
+							<div{{region_attributes.slogan.addclass('slogan','site-slogant')}}>
+								{{content.slogan}}
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-7 col-xs-12 content-info justify-content-end d-flex">
+						<div class="d-flex flex-wrap">
+							<div class="icon d-xl-flex align-items-center d-lg-none">
+								<i class="icon-phone-1"></i>
+								<div class="content">
+									<span {{region_attributes.phone.addClass('phone')}}>
+										{{content.phone}}
+									</span>
+									<div>
+										<a href="#" {{region_attributes.email.addClass('email')}}>
+											{{content.email}}
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="icon  d-flex align-items-center">
+								<i class="icon-edit"></i>
+								<div class="content">
+									{{content.call_action}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}

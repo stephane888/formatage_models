@@ -1,0 +1,58 @@
+{% if content %}
+	<section {{attributes.addClass('textcotebg')}}>
+		<div class="container">
+			<div class="row">
+				<div{{region_attributes.entete.addClass('entete')}}>
+					{%if content.entete %}
+						{{content.entete}}
+					{%endif %}
+					<h2{{region_attributes.title.addClass('title')}}>
+						{{content.title}}
+					</h2>
+					<div{{region_attributes.description.addClass('description')}}>
+						{{content.description}}
+					</div>
+					<div{{region_attributes.call_action.addClass('call_action')}}>
+						{{content.call_action}}
+					</div>
+					{%if content.lyt_footer %}
+						<div{{region_attributes.lyt_footer.addClass('lyt_footer')}}>
+							{{content.lyt_footer}}
+						</div>
+					{%endif %}
+					{% if content.image %}
+						<div{{region_attributes.image.addClass('image')}}>
+							{{content.image}}
+						</div>
+					{%endif %}
+				</div>
+				{%if content.entete2 %}
+					<div{{region_attributes.entete2.addClass('entete2')}}>
+						{%if content.entete2 %}
+							{{content.entete2}}
+						{%endif %}
+						<h2{{region_attributes.title2.addClass('title2')}}>
+							{{content.title2}}
+						</h2>
+						<div{{region_attributes.description2.addClass('description2')}}>
+							{{content.description2}}
+						</div>
+						<div{{region_attributes.call_action2.addClass('call_action2')}}>
+							{{content.call_action2}}
+						</div>
+						{%if content.lyt_footer2 %}
+							<div{{region_attributes.lyt_footer2.addClass('lyt_footer2')}}>
+								{{content.lyt_footer2}}
+							</div>
+						{%endif %}
+						{% if content.image2 %}
+							<div{{region_attributes.image2.addClass('image2')}}>
+								{{content.image2}}
+							</div>
+						{%endif %}
+					</div>
+					{%endif%}
+				</div>
+			</div>
+		</section>
+	{% endif  %}

@@ -1,5 +1,4 @@
 <?php
-
 namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\formatage_models\Plugin\Layout\FormatageModels;
@@ -26,15 +25,17 @@ use Drupal\Core\Form\FormStateInterface;
  *   }
  * )
  */
-class FormatageModelsArticleHeader extends FormatageModels {
+class FormatageModelsArticleHeader extends FormatageModels
+{
 
     /**
      *
      * {@inheritdoc}
      */
-    public function defaultConfiguration() {
+    public function defaultConfiguration()
+    {
         return parent::defaultConfiguration() + [
-          'class_col' => 'col-md-8',
+            'class_col' => 'col-md-8'
         ];
     }
 
@@ -42,13 +43,14 @@ class FormatageModelsArticleHeader extends FormatageModels {
      *
      * {@inheritdoc}
      */
-    public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    public function buildConfigurationForm(array $form, FormStateInterface $form_state)
+    {
         $form = parent::buildConfigurationForm($form, $form_state);
 
         $form['class_col'] = [
-          '#type' => 'textfield',
-          '#title' => $this->t('class_col'),
-          '#default_value' => $this->configuration['class_col']
+            '#type' => 'textfield',
+            '#title' => $this->t('class_col'),
+            '#default_value' => $this->configuration['class_col']
         ];
         return $form;
     }
@@ -57,9 +59,9 @@ class FormatageModelsArticleHeader extends FormatageModels {
      *
      * {@inheritdoc}
      */
-    public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    public function submitConfigurationForm(array &$form, FormStateInterface $form_state)
+    {
         parent::submitConfigurationForm($form, $form_state);
         $this->configuration['class_col'] = $form_state->getValue('class_col');
     }
-
 }

@@ -1,0 +1,31 @@
+{{ attach_library('formatage_models/formatage_models_swiper_big') }}
+<!-- Slider main container -->
+<div class="swiper-big">
+	<div class="swiper-wrapper">
+		{% for row in rows %}
+			<div class="swiper-slide">
+				<div class="swiper-image">
+					<div class="cover-img">
+						{{ row.img_avant }}
+					</div>
+					<div class="cover-text">
+						<h4 class="sub_title">
+							{{row.sub_title| layout_value}}
+						</h4>
+						<h1 class="title">
+							{{row.title | layout_value}}
+						</h1>
+						<div class="description">
+							{{ row.description }}
+						</div>
+						<div class="button">
+							{{ row.button }}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	<!-- If we need pagination -->
+	<div class="swiper-pagination"></div>
+</div>
