@@ -96,6 +96,11 @@ function formatage_models_preprocess_layout(&$vars)
     // dump($vars);
 }
 
+function formatage_models_preprocess_formatage_models_teaser_small(&$vars)
+{
+    FormatageModelsThemes::mergeContentAttributes($vars);
+}
+
 function formatage_models_preprocess_formatage_models_textcotebg(&$vars)
 {
     FormatageModelsThemes::mergeContentAttributes($vars);
@@ -138,11 +143,15 @@ function formatage_models_theme()
     return FormatageModelsThemes::getThemeHooks();
 }
 
+function formatage_models_preprocess_formatage_models_comments(&$vars)
+{
+    FormatageModelsThemes::mergeContentAttributes($vars);
+}
+
 function formatage_models_preprocess_formatage_models_titre_description(array &$variables)
 {
     // dump($variables);
     // FormatageModelsThemes::addLayoutEditBlock($variables);
-    FormatageModelsThemes::ApplyAttributes($variables);
     FormatageModelsThemes::mergeContentAttributes($variables);
 }
 

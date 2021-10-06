@@ -40,12 +40,33 @@ vuejs:
 #################################################################################################################################################
 # -50 <weight> +50
 
+formatage-models-teaser-small:
+  js:
+    layouts/js/formatage-models-teaser-small.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser-small.css: { weight: 10 }
+
+formatage-models-comments:
+  js:
+    layouts/js/formatage-models-comments.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-comments.css: { weight: 10 }
+
 formatage_models_swiper_big:
   js:
     layouts/js/formatage_models_swiper_big.js: {}
   css:
     theme:
       layouts/css/formatage_models_swiper_big.css: { weight: 10 }
+
+formatage_models_swiper_unique:
+  js:
+    layouts/js/formatage_models_swiper_unique.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_swiper_unique.css: { weight: 10 }
 
 formatage-models-textcotebg:
   js:

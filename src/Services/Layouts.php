@@ -86,6 +86,14 @@ class Layouts
             '#title' => 'Class css du container parent',
             '#default_value' => $this->configuration['css']
         ];
+        if (! empty($this->configuration['derivate']['options']))
+            $form['css_class']['derivate'] = [
+                '#type' => 'select',
+                '#title' => 'Selectionner une derivée ',
+                '#default_value' => $this->configuration['derivate']['value'],
+                '#options' => $this->configuration['derivate']['options'],
+                '#empty_option' => '- Select -'
+            ];
         $this->buildClassCssRegion($form);
         $this->BuilderConfigForm->prepareBuildForms($this->configuration, $form);
     }
@@ -116,11 +124,16 @@ class Layouts
      */
     function submitConfigurationForm(array &$configuration, FormStateInterface $form_state)
     {
+        $configuration['load_libray'] = $form_state->getValue('load_libray');
         $configuration['css'] = $form_state->getValue([
             'css_class',
             'css'
         ]);
-        $configuration['load_libray'] = $form_state->getValue('load_libray');
+        if (! empty($this->configuration['derivate']['options']))
+            $configuration['derivate']['value'] = $form_state->getValue([
+                'css_class',
+                'derivate'
+            ]);
         foreach ($this->regions as $region => $label) {
             $configuration['region_css_' . $region] = $form_state->getValue([
                 'css_class',
@@ -134,7 +147,7 @@ class Layouts
                 $configuration[$key]['info'] = array_merge($field['info'], $form_state->getValue($key)['info']);
                 $configuration[$key]['fields'] = array_merge($field['fields'], $form_state->getValue($key)['fields']);
                 // cette function n'est plus necessaire.
-                $this->saveImage($configuration[$key]['fields']);
+                // $this->saveImage($configuration[$key]['fields']);
             }
         }
         // debugLog::kintDebugDrupal($configuration, "submitConfigurationForm");

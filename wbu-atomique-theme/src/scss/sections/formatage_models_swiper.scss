@@ -66,6 +66,10 @@
         .sub_title {
           transform: translate3d(0, 20%, 0);
           transition-duration: 0.5s;
+          color: #fff;
+          text-shadow: 1px 0 1px #000000;
+          line-height: 1.5;
+          letter-spacing: 0.5px;
           @include media-min("MD") {
             font-size: 3rem;
           }
@@ -98,7 +102,7 @@
       .swiper-image {
         .cover-text {
           &::before {
-            background-color: rgba(#333, 0.43);
+            background-color: rgba(#333, 0.7);
           }
           > * {
             opacity: 1;

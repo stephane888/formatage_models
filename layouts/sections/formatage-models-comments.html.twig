@@ -1,0 +1,27 @@
+{% if content %}
+	<section {{attributes.addClass('comments-left')}}>
+		<div class="row">
+			<div{{region_attributes.entete.addClass('entete')}}>
+				{%if content.entete %}
+					{{content.entete}}
+				{%endif %}
+				<h2{{region_attributes.title.addClass('title')}}>
+					{{content.title}}
+				</h2>
+				<div{{region_attributes.description.addClass('description')}}>
+					{{content.description}}
+				</div>
+				{%if content.call_action %}
+					<div{{region_attributes.call_action.addClass('call_action')}}>
+						{{content.call_action}}
+					</div>
+				{% endif %}
+				{%if content.lyt_footer %}
+					<div{{region_attributes.lyt_footer.addClass('lyt_footer')}}>
+						{{content.lyt_footer}}
+					</div>
+				{%endif %}
+			</div>
+		</div>
+	</section>
+{% endif  %}

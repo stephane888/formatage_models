@@ -1,0 +1,16 @@
+{%if content %}
+	<div{{attributes.addClass(['teaser-small'])}}>
+		<div{{region_attributes.image.addClass('image')}}>
+			{{content.image|layout_value}}
+		</div>
+		<div class="content-text d-flex align-items-center justify-content-left flex-column">
+			<h4{{region_attributes.titre.addClass('titre')}}>
+				{{content.titre|layout_value}}
+			</h4>
+			<div{{region_attributes.description.addClass('description')}}>
+				<i class="icon-picons-date"></i>
+				{{content.description|layout_value}}
+			</div>
+		</div>
+	</div>
+{% endif %}

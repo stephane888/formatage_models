@@ -1,6 +1,6 @@
 {{ attach_library('formatage_models/formatage_models_swiper') }}
 <!-- Slider main container -->
-<div class="swiper">
+<section class="swiper">
 	<div class="swiper-wrapper">
 		{% for row in rows %}
 			<div class="swiper-slide d-flex flex-wrap">
@@ -9,9 +9,9 @@
 						{{ row.img_avant }}
 					</div>
 					<div class="cover-text">
-						<h1 class="title">
+						<h2 class="title">
 							{{row.title | layout_value}}
-						</h1>
+						</h2>
 						<h4 class="sub_title">
 							{{row.sub_title| layout_value}}
 						</h4>
@@ -32,4 +32,4 @@
 	</div>
 	<!-- If we need pagination -->
 	<div class="swiper-pagination"></div>
-</div>
+</section>

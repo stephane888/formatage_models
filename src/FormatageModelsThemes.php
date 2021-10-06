@@ -59,11 +59,18 @@ class FormatageModelsThemes
             ],
             'file' => 'themes/formatage_models.theme.inc'
         ];
+        $hooks['formatage_models_swiper_unique'] = [
+            'preprocess functions' => [
+                'template_preprocess_formatage_models_swiper_unique'
+            ],
+            'file' => 'themes/formatage_models.theme.inc'
+        ];
         return $hooks;
     }
 
     public static function ViewsGetValues(array &$vars)
     {
+        // dump($vars);
         /**
          *
          * @var \Drupal\views\ViewExecutable $view
@@ -71,27 +78,63 @@ class FormatageModelsThemes
         $view = $vars['view'];
         // dump($view->style_plugin->options);
         $options = $view->style_plugin->options;
-        if (! empty($options['view_layouts_options'])) {
-            $regions = $options['view_layouts_options'];
-            foreach ($regions as $region => $fieldnames) {
-                // $fieldnames = array_values($fieldnames);
-                foreach ($vars['rows'] as $id => $row) {
-                    $elements = Element::children($row);
-                    foreach ($elements as $fieldname) {
-                        if (! empty($fieldnames[$fieldname])) {
-                            // dump($fieldname, $fieldnames);
-                            $row[$fieldname]['#label_display'] = true;
-                            $row[$fieldname]['#attributes'] = [
-                                'class' => [
-                                    $region
-                                ]
-                            ];
-                            $vars['rows'][$id][$region][] = $row[$fieldname];
+        $regions = $options['view_layouts_options'];
+
+        if (! empty($options['view_layouts_options']) & $view->style_plugin->usesFields()) {
+            foreach ($vars['rows'] as $row_index => $row) {
+                $viewRow = $row['#view'];
+                $viewRow->row_index = $row_index;
+                $row['view'] = $viewRow;
+                $row['row'] = $row['#row'];
+                $row['options'] = $row['#options'];
+                template_preprocess_views_view_fields($row);
+                if (! empty($row['fields'])) {
+                    $vars['rows'][$row_index] = $row;
+                    foreach ($row['fields'] as $fieldname => $field) {
+                        /**
+                         *
+                         * @var \Drupal\views\Plugin\views\field\EntityField $fieldHanler
+                         */
+                        $fieldHanler = $field->handler;
+                        $vars['rows'][$row_index][$fieldname]['#markup'] = $fieldHanler->advancedRender($row['row']);
+                        // $vars['rows'][$row_index][$fieldname] = $field;
+                        // $fieldHanler->ren
+                    }
+                    /**
+                     * On selectionne une region et on y charge tous les champs qui sont rattaché.
+                     */
+                    foreach ($regions as $region => $fieldnames) {
+                        // $vars['rows'][$row_index][$region] = [];
+                        foreach ($fieldnames as $fieldnameR) {
+                            if (! empty($vars['rows'][$row_index][$fieldnameR])) {
+                                $vars['rows'][$row_index][$region][] = $vars['rows'][$row_index][$fieldnameR];
+                            }
                         }
                     }
                 }
             }
         }
+        // ancienne logique, fonctionne si le rendu ne se fait pas avec les champs.
+        // if (! empty($options['view_layouts_options'])) {
+        // foreach ($regions as $region => $fieldnames) {
+        // // $fieldnames = array_values($fieldnames);
+        // foreach ($vars['rows'] as $id => $row) {
+        // $elements = Element::children($row);
+        // foreach ($elements as $fieldname) {
+        // if (! empty($fieldnames[$fieldname])) {
+        // // dump($fieldname, $fieldnames);
+        // $row[$fieldname]['#label_display'] = true;
+        // $row[$fieldname]['#attributes'] = [
+        // 'class' => [
+        // $region
+        // ]
+        // ];
+        // $vars['rows'][$id][$region][] = $row[$fieldname];
+        // }
+        // }
+        // }
+        // }
+        // }
     }
 
     /**

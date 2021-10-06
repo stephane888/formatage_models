@@ -1,18 +1,12 @@
-// import Swiper JS
-// import Swiper from "swiper/bundle";
-//--
 import Swiper, { Navigation, Pagination, Parallax, Autoplay } from "swiper";
 // configure Swiper to use modules
 Swiper.use([Navigation, Pagination, Parallax, Autoplay]);
 // import Swiper styles
 import "swiper/css/bundle";
 
-//custom style
-import "../../scss/sections/formatage_models_swiper_big.scss";
-/**
- * --
- */
-var mySwiper = new Swiper(".swiper-big", {
+import "../../scss/sections/formatage_models_swiper_unique.scss";
+
+var mySwiper = new Swiper(".swiper-unique", {
   direction: "horizontal",
   loop: true,
   pagination: { el: ".swiper-pagination", type: "bullets", clickable: true },
@@ -22,7 +16,7 @@ var mySwiper = new Swiper(".swiper-big", {
   //effect: "slide",
   //mousewheelControl: 1,
   autoplay: {
-    delay: 8000,
+    delay: 12000,
   },
   //autoplay: false,
 });

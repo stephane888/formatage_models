@@ -12,14 +12,14 @@ use Stephane888\Debug\debugLog;
  * @ingroup views_style_plugins
  *
  * @ViewsStyle(
- *   id = "formatage-models-swiper-big-views-style",
- *   title = @Translation(" Slider swiper big text-left "),
+ *   id = "formatage-models-swiper-unique",
+ *   title = @Translation(" Slider swiper Unique "),
  *   help = @Translation("Render default model"),
- *   theme = "formatage_models_swiper_big_views_style",
+ *   theme = "formatage_models_swiper_unique",
  *   display_types = { "normal" }
  * )
  */
-class FormatageModelsSwiperBigViewsStyle extends StylePluginBase
+class FormatageModelsSwiperUnique extends StylePluginBase
 {
 
     /**
@@ -53,9 +53,7 @@ class FormatageModelsSwiperBigViewsStyle extends StylePluginBase
         $options['view_layouts_options'] = [
             'default' => null,
             'title' => [],
-            'sub_title' => [],
             'description' => [],
-            'button' => [],
             'img' => []
         ];
         return $options;
@@ -71,7 +69,6 @@ class FormatageModelsSwiperBigViewsStyle extends StylePluginBase
 
         $labels = $this->displayHandler->getFieldLabels(TRUE);
 
-        // debugLog::kintDebugDrupal($this->options, 'buildOptionsForm__options');
         /**
          * add section
          */
@@ -87,23 +84,12 @@ class FormatageModelsSwiperBigViewsStyle extends StylePluginBase
             '#options' => $labels,
             '#default_value' => (! empty($this->options['view_layouts_options']['title'])) ? $this->options['view_layouts_options']['title'] : []
         ];
-        $form['view_layouts_options']['sub_title'] = [
-            '#type' => 'checkboxes',
-            '#title' => 'Sous titre',
-            '#options' => $labels,
-            '#default_value' => (! empty($this->options['view_layouts_options']['sub_title'])) ? $this->options['view_layouts_options']['sub_title'] : ''
-        ];
+
         $form['view_layouts_options']['description'] = [
             '#type' => 'checkboxes',
             '#title' => 'Description',
             '#options' => $labels,
             '#default_value' => (! empty($this->options['view_layouts_options']['description'])) ? $this->options['view_layouts_options']['description'] : ''
-        ];
-        $form['view_layouts_options']['button'] = [
-            '#type' => 'checkboxes',
-            '#title' => 'Button',
-            '#options' => $labels,
-            '#default_value' => (! empty($this->options['view_layouts_options']['button'])) ? $this->options['view_layouts_options']['button'] : ''
         ];
         $form['view_layouts_options']['img'] = [
             '#type' => 'checkboxes',

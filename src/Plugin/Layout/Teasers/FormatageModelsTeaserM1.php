@@ -45,6 +45,6 @@ class FormatageModelsTeaserM1 extends FormatageModels
     {
         // TODO Auto-generated method stub
         parent::__construct($configuration, $plugin_id, $plugin_definition);
-        $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage-models-teaser-m1.png");
+        $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/teasers/formatage-models-teaser-m1.png");
     }
 }

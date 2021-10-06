@@ -71,7 +71,7 @@ class FormatageModelsSwiperViewsStyle extends StylePluginBase
 
         $labels = $this->displayHandler->getFieldLabels(TRUE);
 
-        debugLog::kintDebugDrupal($this->options, 'buildOptionsForm__options');
+        // debugLog::kintDebugDrupal($this->options, 'buildOptionsForm__options');
         /**
          * add section
          */

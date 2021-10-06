@@ -45,8 +45,14 @@ class TitreDescription extends FormatageModelsSection
     {
         return parent::defaultConfiguration() + [
             'load_libray' => true,
-            "css" => 'container text-center',
-
+            "css" => 'container',
+            "derivate" => [
+                'value' => 'text-center',
+                'options' => [
+                    'text-center' => 'Default',
+                    'custom-text-left' => 'Titre à gauche, text à droite'
+                ]
+            ],
             'sf' => [
                 'builder-form' => true,
                 'info' => [

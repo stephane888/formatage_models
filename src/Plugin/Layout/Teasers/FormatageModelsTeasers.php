@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\formatage_models\Plugin\Layout\Sections;
+namespace Drupal\formatage_models\Plugin\Layout\Teasers;
 
 use Drupal\formatage_models\Plugin\Layout\FormatageModels;
 use Drupal\Core\Form\FormStateInterface;
@@ -7,7 +7,7 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 
-class FormatageModelsSection extends FormatageModels implements ContainerFactoryPluginInterface
+class FormatageModelsTeasers extends FormatageModels implements ContainerFactoryPluginInterface
 {
 
     /**
@@ -40,20 +40,19 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
 
     public function build(array $regions)
     {
+        // dump($this->configuration);
         $build = parent::build($regions);
         $layout = $this->getPluginDefinition();
         // classes and attributes.
-        // if (str_contains($layout->getTemplatePath(), "layouts/sections")) {
         if (! isset($build['#attributes']['class'])) {
             $build['#attributes']['class'] = [];
         }
-        $build['#attributes']['class'][] = 'space_bottom';
+        // $build['#attributes']['class'][] = 'space_bottom';
         $build['#attributes']['class'][] = $this->configuration['css'];
-        // dump($this->configuration);
         if (! empty($this->configuration['derivate']['value'])) {
             $build['#attributes']['class'][] = $this->configuration['derivate']['value'];
         }
-        // }
+
         // Regions classes and attributes.
         foreach ($this->getPluginDefinition()->getRegionNames() as $region_name) {
             $build[$region_name]['#attributes']['class'] = [
