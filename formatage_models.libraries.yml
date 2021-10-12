@@ -40,6 +40,27 @@ vuejs:
 #################################################################################################################################################
 # -50 <weight> +50
 
+formatage_models_swiper_big_v3:
+  js:
+    layouts/js/formatage_models_swiper_big_v3.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_swiper_big_v3.css: { weight: 10 } 
+
+formatage-models-text-hover:
+  js:
+    layouts/js/formatage-models-text-hover.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-text-hover.css: { weight: 10 }
+
+formatage-models-cardsimple:
+  js:
+    layouts/js/formatage-models-cardsimple.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-cardsimple.css: { weight: 10 }
+
 formatage-models-teaser-small:
   js:
     layouts/js/formatage-models-teaser-small.js: {}
@@ -53,6 +74,13 @@ formatage-models-comments:
   css:
     theme:
       layouts/css/formatage-models-comments.css: { weight: 10 }
+
+formatage_models_swiper_big_v2:
+  js:
+    layouts/js/formatage_models_swiper_big_v2.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_swiper_big_v2.css: { weight: 10 }
 
 formatage_models_swiper_big:
   js:
