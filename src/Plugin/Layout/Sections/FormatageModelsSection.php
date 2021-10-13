@@ -38,7 +38,11 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
   
   public function build(array $regions) {
     $build = parent::build($regions);
-    $layout = $this->getPluginDefinition();
+    $currentDomain = $this->Layouts::getCurrentdomain();
+    if (!empty($this->configuration[$currentDomain])) {
+      $build['#settings'] = $this->configuration[$currentDomain];
+    }
+    
     // classes and attributes.
     // if (str_contains($layout->getTemplatePath(), "layouts/sections")) {
     if (!isset($build['#attributes']['class'])) {
@@ -72,6 +76,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
   public function defaultConfiguration() {
     return [
       'load_libray' => true,
+      'save_by_domain' => false,
       'container_wrapper' => [
         // The dynamic bootstrap styles storage.
         'bootstrap_styles' => []
