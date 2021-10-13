@@ -73,6 +73,12 @@ class FormatageModelsSwiperUnique extends StylePluginBase {
     
     $labels = $this->displayHandler->getFieldLabels(TRUE);
     
+    $form['library'] = [
+      '#type' => 'checkbox',
+      '#title' => ' Charger la librarie de style ',
+      '#default_value' => (isset($this->options['library'])) ? $this->options['library'] : true
+    ];
+    
     /**
      * add section
      */

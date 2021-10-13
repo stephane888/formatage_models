@@ -1,22 +1,2 @@
-import Swiper, { Navigation, Pagination, Parallax, Autoplay } from "swiper";
-// configure Swiper to use modules
-Swiper.use([Navigation, Pagination, Parallax, Autoplay]);
-// import Swiper styles
-import "swiper/css/bundle";
-
-import "../../scss/sections/formatage_models_swiper_unique.scss";
-
-var mySwiper = new Swiper(".swiper-unique", {
-  direction: "horizontal",
-  loop: true,
-  pagination: { el: ".swiper-pagination", type: "bullets", clickable: true },
-  //grabCursor: true,
-  speed: 1000,
-  parallax: true,
-  //effect: "slide",
-  //mousewheelControl: 1,
-  autoplay: {
-    delay: 12000,
-  },
-  //autoplay: false,
-});
+import "@stephane888/wbu-atomique/js/swiper/swiper-unique.js";
+import "@stephane888/wbu-atomique/scss/organisme/sections/swiper-unique.scss";
