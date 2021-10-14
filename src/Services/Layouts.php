@@ -159,10 +159,11 @@ class Layouts {
       }
     }
     
-    if ($configuration['save_by_domain']) {
-      if (!empty($currentDomain)) {
-        $configuration[$currentDomain] = $SubConfiguration;
-      }
+    if ($configuration['save_by_domain'] && !empty($currentDomain)) {
+      $configuration[$currentDomain] = $SubConfiguration;
+    }
+    else {
+      $configuration = $SubConfiguration;
     }
     // dump($configuration);
   }
