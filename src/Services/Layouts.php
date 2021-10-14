@@ -40,6 +40,7 @@ class Layouts {
     if (!empty($configuration['save_by_domain']) && !empty($configuration[$currentDomain])) {
       $this->configuration = $configuration[$currentDomain];
     }
+    // dump($configuration);
   }
   
   //
@@ -155,7 +156,7 @@ class Layouts {
         $SubConfiguration[$key]['info'] = array_merge($field['info'], $form_state->getValue($key)['info']);
         $SubConfiguration[$key]['fields'] = array_merge($field['fields'], $form_state->getValue($key)['fields']);
         // cette function n'est plus necessaire.
-        // $this->saveImage($configuration[$key]['fields']);
+        $this->saveImage($SubConfiguration[$key]['fields']);
       }
     }
     
@@ -184,7 +185,7 @@ class Layouts {
   private function saveImage(array &$fields) {
     foreach ($fields as $field) {
       if (!empty($field['img_bg'])) {
-        $this->getImageUrlByFid($field['img_bg']['fids']);
+        $this->ChangeStatusImage($field['img_bg']['fids']);
       }
     }
   }
@@ -196,7 +197,7 @@ class Layouts {
    * @param String $image_style
    * @return string|array
    */
-  public function getImageUrlByFid($fid, $image_style = null) {
+  public function ChangeStatusImage($fid, $image_style = null) {
     if (!empty($fid[0])) {
       $file = File::load($fid[0]);
       if ($file) {
