@@ -40,6 +40,13 @@ vuejs:
 #################################################################################################################################################
 # -50 <weight> +50
 
+formatage-models-footer1:
+  js:
+    layouts/js/formatage-models-footer1.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-footer1.css: { weight: 10 } 
+
 formatage_models_swiper_big_v3:
   js:
     layouts/js/formatage_models_swiper_big_v3.js: {}

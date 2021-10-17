@@ -137,6 +137,10 @@ function formatage_models_theme() {
   return FormatageModelsThemes::getThemeHooks();
 }
 
+function formatage_models_preprocess_formatage_models_footer1(&$vars) {
+  FormatageModelsThemes::mergeContentAttributes($vars);
+}
+
 function formatage_models_preprocess_formatage_models_comments(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
