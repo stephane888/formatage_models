@@ -11,6 +11,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-    	"drupal/bootstrap_layout_builder": "^2.0"
+    	"drupal/bootstrap_styles": "^2.0"
     }
 }
