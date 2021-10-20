@@ -1,9 +1,9 @@
-<?php 
+<?php
+
 namespace Drupal\formatage_models\Plugin\Layout;
 
-
-use Drupal\Core\Layout\LayoutDefault;
-use Drupal\Core\Form\FormStateInterface;
+use Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers;
+use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 
 /**
  * A very advanced custom layout.
@@ -29,43 +29,32 @@ use Drupal\Core\Form\FormStateInterface;
  *     "url" = {
  *       "label" = @Translation("Url sur l'affichage")
  *     },
+ *     "description" = {
+ *       "label" = @Translation("Description")
+ *     }
  *   }
  * )
  */
-class FormatageModelsBlogTeaser extends LayoutDefault {
-	/**
-	 * {@inheritdoc}
-	 */
-	public function defaultConfiguration() {
-		return parent::defaultConfiguration()+[
-			'css' => '',
-		];
-	}
-	
-	/**
-	 * {@inheritdoc}
-	 */
-	public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-		$form = parent::buildConfigurationForm($form, $form_state);
-		$form['css'] = [
-			'#type' => 'textfield',
-			'#title' => $this->t('Class css'),
-			'#default_value' => $this->configuration['css'],
-		];
-		return $form;
-	}
-	
-	/**
-	 * {@inheritdoc}
-	 */
-	public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {
-	}
-	
-	/**
-	 * {@inheritdoc}
-	 */
-	public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
-		parent::submitConfigurationForm($form, $form_state);
-		$this->configuration['css'] = $form_state->getValue('css');
-	}
+class FormatageModelsBlogTeaser extends FormatageModelsTeasers {
+  
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
+   */
+  public function __construct(array $configuration, $plugin_id,
+      $plugin_definition, StylesGroupManager $styles_group_manager) {
+    // TODO Auto-generated method stub
+    parent::__construct($configuration, $plugin_id, $plugin_definition,
+        $styles_group_manager);
+    $this->pluginDefinition->set('icon',
+        drupal_get_path('module', 'formatage_models') .
+        "/icones/teasers/formatage-models-teaser.png");
+  }
+  
+  public function defaultConfiguration() {
+    return parent::defaultConfiguration() + ['css' => ''
+    ];
+  }
+  
 }
