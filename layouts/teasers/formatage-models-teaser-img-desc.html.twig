@@ -1,7 +1,7 @@
 {% if content %}
 	<div{{attributes.addClass(['teaser-img-desc','d-flex'])}}>
 		{% if content.bgimage %}
-			{% if content.link and content.link.layout_builder_add_block is empty %}
+			{% if content.link|has_value and content.link.layout_builder_add_block is empty %}
 				{% set textUrl = content.link|render|striptags|trim %}
 				<a href="{{ textUrl }}">
 				{% endif %}
@@ -39,7 +39,7 @@
 					</div>
 				{% endif %}
 			</div>
-			{% if content.link and content.link.layout_builder_add_block is empty %}
+			{% if content.link|has_value and content.link.layout_builder_add_block is empty %}
 			</a>
 		{% endif %}
 	</div>
