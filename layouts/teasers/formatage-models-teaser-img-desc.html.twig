@@ -1,10 +1,12 @@
 {% if content %}
 	<div{{attributes.addClass(['teaser-img-desc','d-flex'])}}>
 		{% if content.bgimage %}
-			{% if content.link %}
+			{% if content.link and content.link.layout_builder_add_block is empty %}
 				{% set textUrl = content.link|render|striptags|trim %}
 				<a href="{{ textUrl }}">
-					{{content.link.layout_builder_add_block}}
+				{% endif %}
+				{% if content.link.layout_builder_add_block %}
+					{{content.link}}
 				{% endif %}
 				<div class="teaser-img-desc__image">
 					<div {{region_attributes.categorie.addclass('categorie')}}>
@@ -37,7 +39,7 @@
 					</div>
 				{% endif %}
 			</div>
-			{% if content.link %}
+			{% if content.link and content.link.layout_builder_add_block is empty %}
 			</a>
 		{% endif %}
 	</div>
