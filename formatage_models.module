@@ -36,7 +36,7 @@ function formatage_models_preprocess_page(&$variables) {
   // dump(implode(" , ", $listes));
   // $Container = \Drupal::service("validation.constraint");
   // dump($Container);
-  
+
   // ***********
   // $Markup = new Markup();
   // $Markup->__toString()
@@ -58,7 +58,7 @@ function formatage_models_preprocess_page(&$variables) {
 }
 
 function formatage_models_preprocess_menu__extras(&$vars) {
-  if (!empty($vars['menu_name']) && $vars['menu_name'] == "main") {
+  if (! empty($vars['menu_name']) && $vars['menu_name'] == "main") {
     foreach ($vars['items'] as $item) {
       //
     }
@@ -77,7 +77,7 @@ function formatage_models_link_alter(&$vars) {
   // $url = $vars['url'];
   // if ($url->isRouted()){
   // $url->
-  
+
   // }
   // dump($url->getRouteName());
   // // debugLog::kintDebugDrupal($vars, 'formatage_models_link_alter' . rand(1,
@@ -88,7 +88,7 @@ function formatage_models_link_alter(&$vars) {
  * Implement hook__layouts
  */
 function formatage_models_preprocess_layout(&$vars) {
-  if (!empty($vars['region_attributes'])) {
+  if (! empty($vars['region_attributes'])) {
     foreach ($vars['region_attributes'] as $key => $region_attribute) {
       $vars['region_attributes'][$key]->addClass('layout-region');
     }
@@ -121,7 +121,7 @@ function formatage_models_page_bigbackground(&$vars) {
  * Implement hook__layouts
  */
 function formatage_models_preprocess_blb_section(&$vars) {
-  if (!empty($vars['region_attributes'])) {
+  if (! empty($vars['region_attributes'])) {
     foreach ($vars['region_attributes'] as $key => $region_attribute) {
       $vars['region_attributes'][$key]->addClass('layout-region');
     }

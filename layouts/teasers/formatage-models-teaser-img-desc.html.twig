@@ -3,15 +3,17 @@
 		{% if content.bgimage %}
 			{% if content.link|has_value and content.link.layout_builder_add_block is empty %}
 				{% set textUrl = content.link|render|striptags|trim %}
-				<a href="{{ textUrl }}">
+				<a href="{{ textUrl }}" class="cover-test">
 				{% endif %}
 				{% if content.link.layout_builder_add_block %}
 					{{content.link}}
 				{% endif %}
 				<div class="teaser-img-desc__image">
-					<div {{region_attributes.categorie.addclass('categorie')}}>
-						{{ content.categorie|layout_value }}
-					</div>
+					{% if content.categorie|has_value %}
+						<div {{region_attributes.categorie.addclass('categorie')}}>
+							{{ content.categorie|layout_value }}
+						</div>
+					{% endif %}
 					<div {{region_attributes.bgimage.addClass('bgimage','img')}}>
 						{{ content.bgimage|layout_value }}
 					</div>
@@ -33,7 +35,7 @@
 						{% endif %}
 					</div>
 				{% endif %}
-				{% if content.time_read %}
+				{% if content.time_read|has_value %}
 					<div {{region_attributes.time_read.addClass('time_read')}}>
 						{{ content.time_read }}
 					</div>
@@ -42,5 +44,10 @@
 			{% if content.link|has_value and content.link.layout_builder_add_block is empty %}
 			</a>
 		{% endif %}
+	</div>
+{% endif %}
+{% if layout_quickedit %}
+	<div class="m-4 border p-4">
+		{{layout_quickedit}}
 	</div>
 {% endif %}
