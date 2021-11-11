@@ -1,0 +1,37 @@
+{#
+{{ attach_library('formatage_models/formatage_models_swiper') }}
+#}
+<!-- Slider main container -->
+<section class="swiper">
+	<div class="swiper-wrapper">
+		{% for row in rows %}
+			<div class="swiper-slide d-flex flex-wrap">
+				<div class="swiper-image" data-swiper-parallax-y="-50%">
+					<div class="cover-img">
+						{{ row.img_avant }}
+					</div>
+					<div class="cover-text">
+						<h2 class="title">
+							{{row.title | layout_value}}
+						</h2>
+						<h4 class="sub_title">
+							{{row.sub_title| layout_value}}
+						</h4>
+					</div>
+				</div>
+				<div class="swiper-image">
+					<div class="cover-text">
+						<div class="description">
+							{{ row.description }}
+						</div>
+					</div>
+					<div class="cover-img">
+						{{ row.img_apres }}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	<!-- If we need pagination -->
+	<div class="swiper-pagination"></div>
+</section>

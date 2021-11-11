@@ -1,0 +1,21 @@
+{% if content %}
+	<section {{attributes.addClass('bloc_description_html')}}>
+		<div class="container">
+			<div class="row">
+				<div{{region_attributes.left.addClass('left')}}>
+					{{content.left}}
+				</div>
+				{% if content.center %}
+					<div{{region_attributes.center.addClass('center')}}>
+						{{content.center}}
+					</div>
+				{% endif %}
+				{% if content.right %}
+					<div{{region_attributes.right.addClass('right')}}>
+						{{content.right}}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+{% endif  %}

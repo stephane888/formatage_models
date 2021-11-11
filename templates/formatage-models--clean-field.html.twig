@@ -1,0 +1,11 @@
+{% if content_all_clean %}
+	{% for block in content_all_clean %}
+		{% if tag_fields %}<{{- tag_fields -}}{{ tag_fields_attibutes }}>{% endif %}
+		{% for field in block %}
+            {% if tag_fields %}<{{- tag_field -}}{{ tag_field_attibutes }}>{% endif %}{{- field.value|raw -}}{% if tag_fields %}</{{- tag_field -}}>{% endif %}
+		{% endfor %}
+		{% if tag_fields %}</{{- tag_fields -}}>{% endif %}
+	{% endfor %}
+{% else %}
+    {{ content_all }}
+{% endif %}

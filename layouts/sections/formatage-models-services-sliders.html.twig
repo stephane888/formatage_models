@@ -1,0 +1,34 @@
+{% if content  %}
+    <section {{ attributes.addClass(['services-sliders','space-padding']) }}>
+         <div class="container">
+              <div class="row">
+                   <div class="col-lg-6">
+                        <h1 class="titre">
+                             {{ settings.titre }}
+                        </h1>
+                        <h4 class="sub_title">
+                             {{ settings.sub_title }}
+                        </h4>
+                        {% if content.main %}
+                            <div{{ region_attributes.main.addClass(['main']) }}>
+                                 <div class="owl-carousel owl-theme"
+                                      data-owlresponsive='{"items":1,"nav":false,"dots":true,"loop":true,"autoplayTimeout":150000,"autoplayHoverPause":true,"autoplay":true}'>
+                                      {% for block in  content.main %}
+                                          {% if block["#theme"] %}
+                                              <div >{{ block }}</div>
+                                          {% endif %}
+                                      {% endfor %}
+                                 </div>
+                            </div>
+                        {% endif %}
+                   </div>
+                   <div class="col-lg-6">
+                        {% if settings.bgimage %}
+                            <div class="img-bg" style="background-image: url('{{settings.bgimage.url}}')"></div>
+                        {% endif %}
+                   </div>
+              </div>
+         </div>
+    </section>
+    {% include '@formatage_models/includes/add-region-edit.html.twig' %}
+{% endif %}

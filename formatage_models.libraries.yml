@@ -1,0 +1,351 @@
+# Custom module library for general purposes.
+formatage_models:
+  js:
+    js/formatage-models.js: {}
+  css:
+    theme:
+      css/formatage-models.css: {}
+  dependencies:
+    - core/drupalSettings
+    - formatage_models/jquery-labelauty
+
+# Third-party library (self hosted).
+jquery-labelauty:
+  remote: https://github.com/fntneves/jquery-labelauty
+  version: 1.1.0
+  license:
+    name: MIT
+    url: https://github.com/fntneves/jquery-labelauty/blob/v1.1.0/LICENSE
+    gpl-compatible: true
+  js:
+    /libraries/jquery-labelauty/source/jquery-labelauty.js: {}
+  css:
+    theme:
+      /libraries/jquery-labelauty/source/jquery-labelauty.css: {}
+  dependencies:
+    - core/jquery
+
+# Third-party library (CDN).
+vuejs:
+  remote: https://vuejs.org
+  version: 2.0.5
+  license:
+    name: MIT
+    url: https://github.com/vuejs/vue/blob/dev/LICENSE
+    gpl-compatible: true
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js:
+      { type: external, minified: true }
+
+#################################################################################################################################################
+# -50 <weight> +50
+
+formatage-models-footer1:
+  js:
+    layouts/js/formatage-models-footer1.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-footer1.css: { weight: 10 } 
+
+formatage_models_swiper_big_v3:
+  js:
+    layouts/js/formatage_models_swiper_big_v3.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_swiper_big_v3.css: { weight: 10 } 
+
+# for a new site web 
+formatage-models-hero-block:
+  js:
+    layouts/js/formatage-models-hero-block.js: {}
+  css: 
+    theme:
+      layouts/css/formatage-models-hero-block.css: {}
+# fin de la modif par spaker ici 
+
+formatage-models-text-hover:
+  js:
+    layouts/js/formatage-models-text-hover.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-text-hover.css: { weight: 10 }
+
+formatage-models-cardsimple:
+  js:
+    layouts/js/formatage-models-cardsimple.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-cardsimple.css: { weight: 10 }
+
+formatage-models-teaser-small:
+  js:
+    layouts/js/formatage-models-teaser-small.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser-small.css: { weight: 10 }
+
+formatage-models-comments:
+  js:
+    layouts/js/formatage-models-comments.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-comments.css: { weight: 10 }
+
+formatage_models_swiper_big_v2:
+  js:
+    layouts/js/formatage_models_swiper_big_v2.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_swiper_big_v2.css: { weight: 10 }
+
+formatage_models_swiper_big:
+  js:
+    layouts/js/formatage_models_swiper_big.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_swiper_big.css: { weight: 10 }
+
+formatage_models_swiper_unique:
+  js:
+    layouts/js/formatage_models_swiper_unique.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_swiper_unique.css: { weight: 10 }
+
+formatage-models-textcotebg:
+  js:
+    layouts/js/formatage-models-textcotebg.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-textcotebg.css: { weight: 10 }
+
+formatage-models-description:
+  js:
+    layouts/js/formatage-models-description.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-description.css: { weight: 10 }
+
+formatage_models_swiper:
+  js:
+    layouts/js/formatage_models_swiper.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_swiper.css: { weight: 10 }
+
+formatage-models-header1":
+  js:
+    layouts/js/formatage-models-header1.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-header1.css: { weight: 10 }
+
+formatage-models-teaser-m1:
+  js:
+    layouts/js/formatage-models-teaser-m1.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser-m1.css: { weight: 10 }
+
+formatage-models-empty-results:
+  js:
+    layouts/js/formatage-models-empty-results.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-empty-results.css: { weight: 10 }
+
+formatage-models-page-bigbackground:
+  js:
+    layouts/js/formatage-models-page-bigbackground.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-page-bigbackground.css: { weight: 10 }
+
+formatage-models-product-teaser:
+  js:
+    layouts/js/formatage-models-product-teaser.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-product-teaser.css: { weight: 10 }
+###
+formatage-models-titre-description:
+  js:
+    layouts/js/formatage-models-titre-description.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-titre-description.css: { weight: 10 }
+###
+formatage-models-hero-thegem-18:
+  js:
+    layouts/js/formatage-models-hero-thegem-18.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-thegem-18.css: { weight: 10 }
+###
+formatage-models-menu01:
+  js:
+    layouts/js/formatage-models-menu01.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-menu01.css: { weight: 10 }
+###
+formatage-models-header-thegem-01:
+  js:
+    layouts/js/formatage-models-header-thegem-01.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-header-thegem-01.css: { weight: 10 }
+
+formatage-models-item-section:
+  js:
+    layouts/js/formatage-models-item-section.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-item-section.css: { weight: 10 }
+###
+formatage-models-images-bg:
+  js:
+    layouts/js/formatage-models-images-bg.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-images-bg.css: { weight: 10 }
+###
+formatage-models-services-sliders:
+  js:
+    layouts/js/formatage-models-services-sliders.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-services-sliders.css: { weight: 10 }
+###
+formatage-models-titre:
+  js:
+    layouts/js/formatage-models-titre.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-titre.css: { weight: 10 }
+###
+formatage-models-service-icone:
+  js:
+    layouts/js/formatage-models-service-icone.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-service-icone.css: { weight: 10 }
+###
+formatage-models-lmsg-call-toaction:
+  js:
+    layouts/js/formatage-models-lmsg-call-toaction.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-lmsg-call-toaction.css: { weight: 10 }
+###
+formatage-models-image-after-before:
+  js:
+    layouts/js/formatage-models-image-after-before.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-image-after-before.css: { weight: 10 }
+###
+formatage-models-expert-solution:
+  js:
+    layouts/js/formatage-models-expert-solution.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-expert-solution.css: { weight: 10 }
+
+formatage-models-hero-slider-popup:
+  js:
+    layouts/js/formatage-models-hero-slider-popup.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-slider-popup.css: { weight: 10 }
+
+formatage-models-single-blog:
+  js:
+    layouts/js/formatage-models-single-blog.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-single-blog.css: { weight: 10 }
+
+formatage-models-teaser-img-desc:
+  js:
+    layouts/js/formatage-models-teaser-img-desc.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser-img-desc.css: { weight: 10 }
+
+formatage-models-teaser-img-title:
+  js:
+    layouts/js/formatage-models-teaser-img-title.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser-img-title.css: { weight: 10 }
+
+formatage-models-bg-header:
+  js:
+    layouts/js/formatage-models-bg-header.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-bg-header.css: { weight: 10 }
+
+formatage-models-article-header:
+  js:
+    layouts/js/formatage-models-article-header.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-article-header.css: { weight: 10 }
+
+formatage-models-teaser-svg-titre-text:
+  js:
+    layouts/js/formatage-models-teaser-svg-titre-text.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser-svg-titre-text.css: { weight: 10 }
+
+formatage-models-service-svg-titre-text:
+  js:
+    layouts/js/formatage-models-service-svg-titre-text.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-service-svg-titre-text.css: { weight: 10 }
+
+formatage-models-realisation-small:
+  js:
+    layouts/js/formatage-models-realisation-small.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-realisation-small.css: { weight: 10 }
+
+formatage-models-realisation-big:
+  js:
+    layouts/js/formatage-models-realisation-big.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-realisation-big.css: { weight: 10 }
+
+formatage-models-teaser:
+  js:
+    layouts/js/formatage-models-teaser.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-teaser.css: { weight: 10 }
+
+formatage-models-blog-call-toaction:
+  js:
+    layouts/js/formatage-models-blog-call-toaction.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-blog-call-toaction.css: { weight: 10 }
+
+formatage-models-galery-title:
+  js:
+    layouts/js/formatage-models-galery-title.js: {}
+  css:
+    component:
+      layouts/css/formatage-models-galery-title.css: {}
+
+formatage-models-project-summary:
+  js:
+    layouts/js/formatage-models-project-summary.js: {}
+  css:
+    component:
+      layouts/css/formatage-models-project-summary.css: {}

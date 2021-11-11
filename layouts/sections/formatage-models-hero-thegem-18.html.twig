@@ -1,0 +1,16 @@
+{# empty Twig template #}
+{% if content %}
+    <section{{ attributes.addClass(['fm-hero-thegem-18','align-items-center','d-flex']) }} style="background-image: url('{{settings.infos.fields.bg_image.img_bg.url}}')">
+         <div class="container">
+              <div class="d-flex ">
+                   <div class="fm-hero-thegem-18__border"></div>
+                   <div class="fm-hero-thegem-18__content">
+                        <h1 class="title"> {{ settings.infos.fields.title.text_html.value|raw }} </h1>
+                        <div class="desscription">
+                             {{ settings.infos.fields.description.text_html.value|raw }}
+                        </div>
+                   </div>
+              </div>
+         </div>
+    </section>
+{% endif %}

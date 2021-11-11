@@ -1,0 +1,10 @@
+{% if content %}
+	<div{{attributes.addClass('titre-description')}}>
+		<h2 {{ region_attributes.title.addClass(['title']) }}>
+			{{ content.title|layout_value }}
+		</h2>
+		<div {{ region_attributes.description.addClass(['description']) }}>
+			{{ content.description|layout_value }}
+		</div>
+	</div>
+{% endif %}

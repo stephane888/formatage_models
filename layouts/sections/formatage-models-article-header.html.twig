@@ -1,0 +1,18 @@
+{% if content %}
+	<div{{attributes}}>
+		<div class="row">
+			<div class="{{settings.class_col}}">
+				<header class="header-blog">
+					<div {{ region_attributes.title.addClass(['title']) }}>
+						<h1>
+							{{ content.title|layout_value }}
+						</h1>
+					</div>
+					<div {{ region_attributes.description.addClass(['description']) }}>
+						{{ content.description|layout_value }}
+					</div>
+				</header>
+			</div>
+		</div>
+	</div>
+{% endif %}

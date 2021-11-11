@@ -1,0 +1,11 @@
+uuid: 22dda34b-e52a-4012-bed5-de68edd7873e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.bloc_call_to_action_blog_
+id: block_content.bloc_call_to_action_blog_
+target_entity_type_id: block_content
+target_bundle: bloc_call_to_action_blog_
+default_langcode: site_default
+language_alterable: false

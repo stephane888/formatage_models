@@ -1,0 +1,9 @@
+{% if content_all_clean %}
+	{% for block in content_all_clean %}
+		{% for field in block %}
+            {{- field.img_url|trim -}}
+		{% endfor %}
+	{% endfor %}
+{% else %}
+    {{ content_all }}
+{% endif %}

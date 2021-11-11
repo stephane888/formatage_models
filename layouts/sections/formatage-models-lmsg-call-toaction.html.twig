@@ -1,0 +1,46 @@
+{% if content %}
+	<section{{attributes.addclass('lmsg_call_toaction')}} data-quickedit-entity-id="block_content/6">
+		<div class="lmsg_call_toaction__container container">
+			<div class="row">
+				<div class="col-lg-6 d-flex justify-content-center align-items-center">
+					<h3 {{ region_attributes.titre.addClass(['titre','d-flex','justify-content-center']) }}>{{ content.titre }}</h3>
+					<div class="new-badge">
+						<svg width="14" height="17" viewbox="0 0 14 17" fill="none">
+							<path d="M11.9401 10.7033C11.9141 10.6803 11.8961 10.6453 11.8936 10.6094L11.5918 6.29366C11.4207 3.84681 9.43901 1.95823 7.07929 1.89498L7.00695 0.86047C6.98965 0.613087 6.77686 0.424572 6.53409 0.441548C6.29132 0.458524 6.10685 0.674818 6.12415 0.922201L6.19649 1.95671C3.86854 2.34775 2.16896 4.49376 2.34006 6.9406L2.64184 11.2563C2.64436 11.2923 2.63143 11.3294 2.60888 11.3558L1.58196 12.5598C1.40363 12.7689 1.31594 13.0372 1.33528 13.3138L1.35934 13.6579C1.39945 14.2314 1.88885 14.665 2.45163 14.6256L5.54585 14.4092C5.76938 15.3541 6.63708 16.0279 7.6192 15.9592C8.60131 15.8905 9.36679 15.1025 9.45665 14.1358L12.5509 13.9194C13.1137 13.8801 13.5379 13.3826 13.4978 12.8091L13.4738 12.465C13.4544 12.1884 13.3303 11.9349 13.1246 11.7527L11.9401 10.7033ZM7.55629 15.0596C7.06413 15.0941 6.62815 14.7901 6.45513 14.3457L8.54737 14.1994C8.43789 14.6635 8.04845 15.0252 7.55629 15.0596ZM12.615 12.8708C12.6204 12.9473 12.563 13.0146 12.488 13.0198L2.38873 13.726C2.31369 13.7313 2.24749 13.6726 2.24214 13.5962L2.21808 13.2521C2.21557 13.2161 2.22629 13.1792 2.25105 13.1526L3.27797 11.9486C3.45629 11.7395 3.54399 11.4712 3.52464 11.1946L3.22286 6.87887C3.07582 4.77611 4.63567 2.94723 6.69922 2.80293C8.76276 2.65863 10.562 4.25263 10.709 6.35539L11.0108 10.6711C11.0301 10.9477 11.1543 11.2012 11.36 11.3834L12.5445 12.4328C12.5727 12.4557 12.5885 12.4908 12.591 12.5267L12.615 12.8708Z" fill="black"></path>
+						</svg>
+						Nouveau
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="content-txt">
+						<div{{region_attributes.description}}>{{ content.description }}</div>
+						<div>
+							{% if content.Link.layout_builder_add_block %}
+								{{ content.Link }}
+							{% else %}
+								{% set url = "" %}
+								{% for block in content.Link | layout_raw %}
+									{% for field in block %}
+										{% if field %}
+											{% set url = field.value %}
+										{% endif %}
+									{% endfor %}
+								{% endfor %}
+								{{field}}
+							{% endif %}
+						</div>
+						<a href="{{ url }}" class="seeMore d-flex">
+							{% if content.link_text|layout_raw %}
+								{{ content.link_text|layout_value }}
+							{% else %}
+								En savoir plus
+							{% endif %}
+							<svg class="icon svg-angle-left" width="12" height="10" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M.6 5.55h9.352L6.733 8.768a.6.6 0 10.849.849l4.242-4.243a.606.606 0 00.075-.091c.01-.015.017-.032.026-.047.01-.019.021-.037.029-.056.008-.02.013-.042.02-.063.004-.016.01-.032.014-.05A.6.6 0 0012 4.95v-.001a.605.605 0 00-.012-.116c-.003-.018-.01-.035-.015-.053-.006-.02-.01-.04-.019-.06-.009-.02-.02-.04-.031-.059-.008-.014-.015-.03-.024-.044a.588.588 0 00-.075-.092L7.582.283a.6.6 0 00-.849.849L9.951 4.35H.6a.6.6 0 000 1.2z" fill="#fff"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	{% endif %}

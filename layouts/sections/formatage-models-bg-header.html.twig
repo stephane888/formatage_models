@@ -1,0 +1,22 @@
+{% if content %}
+    {% set RenderBgimage = {
+                  '#theme': 'formatage_models__img_url',
+                  '#content_all': content.bgimage,
+                  '#tag_fields': '',
+                  '#tag_field': '',
+                  '#tag_field_attibutes': {}
+                }
+    %}
+    {% set RenderBgimagHtml %}
+        {{ render_var(RenderBgimage) }}
+    {% endset %}
+    <section class="page-header-bg"
+             style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}'); background-size:{{settings.bg_size}}; background-position:{{settings.bg_position}};">
+         {% if content.title %}
+             <div class="container">
+                  <div class="col-md-12">{{ content.title }}</div>
+             </div>
+         {% endif %}
+    </section>
+    {% include '@formatage_models/includes/add-region-edit.html.twig' %}
+{% endif %}

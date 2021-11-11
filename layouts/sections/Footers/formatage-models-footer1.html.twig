@@ -1,0 +1,40 @@
+{% if content %}
+	<section{{attributes.addClass('footer1')}}>
+		<footer class="footer">
+			<div class="container pad-container">
+				<div class="row">
+					<div class="col-md-4 mb-5 widget">
+						<h4{{region_attributes.title1.addClass('title1')}}>{{content.title1}}</h4>
+						<div {{region_attributes.description1.addClass('description1')}}>
+							{{content.description1}}
+						</div>
+					</div>
+					<div class="col-md-4 mb-5 widget">
+						<h4{{region_attributes.title2.addClass('title2')}}>{{content.title2}}</h4>
+						<div {{region_attributes.description2.addClass('description2')}}>
+							{{content.description2}}
+						</div>
+					</div>
+					<div class="col-md-4 mb-5 widget">
+						<h4{{region_attributes.title3.addClass('title3')}}>{{content.title3}}</h4>
+						<div {{region_attributes.description3.addClass('description3')}}>
+							{{content.description3}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<div class="bg-darker-gray">
+			<div class="container ">
+				<div class="row">
+					<div{{region_attributes.textleft.addClass('textleft')}}>
+						{{content.textleft}}
+					</div>
+					<div{{region_attributes.textright.addClass('textright')}}>
+						{{content.textright}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}

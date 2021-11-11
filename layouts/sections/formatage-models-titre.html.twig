@@ -1,0 +1,16 @@
+{% if content  %}
+	<section {{ attributes.addClass(['titre-section','space-padding']) }}>
+		<div class="container">
+			{% if content.main %}
+				<h1 {{ region_attributes.main.addClass(['main']) }}>
+					{{ content.main|layout_value }}
+				</h1>
+			{% endif %}
+			{% if content.sub_title %}
+				<h4{{region_attributes.sub_title.addClass(['sub_title'])}}>
+					{{ content.sub_title | layout_value }}
+				</h4>
+			{% endif %}
+		</div>
+	</section>
+{% endif %}

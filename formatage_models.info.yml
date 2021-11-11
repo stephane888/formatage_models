@@ -1,0 +1,9 @@
+name: formatage models
+type: module
+description: Permet de formatter les modeles tels que les champs
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:layout_builder
+  - drupal:bootstrap_styles

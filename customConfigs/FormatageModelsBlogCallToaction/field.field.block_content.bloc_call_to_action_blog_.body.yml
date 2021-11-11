@@ -1,0 +1,23 @@
+uuid: 712941ff-1284-4358-b12d-5f1041bd61e6
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.bloc_call_to_action_blog_
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.bloc_call_to_action_blog_.body
+field_name: body
+entity_type: block_content
+bundle: bloc_call_to_action_blog_
+label: Corps
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

@@ -1,0 +1,19 @@
+uuid: e0aaac09-2031-4044-969b-cddc255eb905
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.bloc_call_to_action_blog_
+    - field.storage.block_content.field_nom_utilisateur
+id: block_content.bloc_call_to_action_blog_.field_nom_utilisateur
+field_name: field_nom_utilisateur
+entity_type: block_content
+bundle: bloc_call_to_action_blog_
+label: Titre
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

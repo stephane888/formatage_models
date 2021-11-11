@@ -1,0 +1,14 @@
+{% if content %}
+	<div {{attributes.addClass('empty-results')}}>
+		{% if content.title %}
+			<div{{region_attributes.title.addClass('title')}}>
+				{{content.title|layout_value}}
+			</div>
+		{% endif %}
+		{% if content.body %}
+			<div{{region_attributes.body.addClass('body')}}>
+				{{content.body|layout_value}}
+			</div>
+		{% endif %}
+	</div>
+{% endif  %}

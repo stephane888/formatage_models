@@ -1,0 +1,41 @@
+{% if content %}
+    <div{{ attributes.addclass('projectSummary') }}>
+         <div class="projectSummary__square">
+              <div class="reinsuranceItem">
+                   <div class="reinsuranceItem__iconContainer">
+                        <div class="reinsuranceItem__assistance">
+                             <i class="icon-money"></i>
+                        </div>
+                   </div>
+                   <div{{ region_attributes.prix.addClass('reinsuranceItem__title') }}>
+                        {{ content.prix }}
+                   </div>
+                   <p>à partir de</p>
+              </div>
+         </div>
+         <div class="projectSummary__square">
+              <div class="reinsuranceItem">
+                   <div class="reinsuranceItem__iconContainer">
+                        <div class="reinsuranceItem__assistance">
+                             <i class="icon-back-in-time"></i>
+                        </div>
+                   </div>
+                   <div{{ region_attributes.duree.addClass('reinsuranceItem__title') }}>
+                        {{ content.duree }}
+                   </div>
+              </div>
+         </div>
+         <div class="projectSummary__square">
+              <div class="reinsuranceItem">
+                   <div class="reinsuranceItem__iconContainer">
+                        <div class="reinsuranceItem__assistance">
+                             <i class="icon-chart-pie"></i>
+                        </div>
+                   </div>
+                   <div{{ region_attributes.surface.addClass('reinsuranceItem__title') }}>
+                        {{ content.surface }}
+                   </div>
+              </div>
+         </div>
+    </div>
+{% endif %}

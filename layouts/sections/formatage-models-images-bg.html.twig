@@ -1,0 +1,23 @@
+{% if content  %}
+	<section {{ attributes.addClass(['images-bg','space-padding']) }} style="background-image: url('{{settings.bgimage.url}}')">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					{% if content.sub_title %}
+						<h4 {{ region_attributes.sub_title.addClass(['sub_title']) }}>
+							{{ content.sub_title|layout_value }}
+						</h4>
+					{% endif %}
+					{% if content.titre %}
+						<h1 {{ region_attributes.titre.addClass(['titre']) }}>
+							{{ content.titre|layout_value }}
+						</h1>
+					{% endif %}
+					<div{{region_attributes.link.addClass(['link'])}}>
+						{{ content.link|layout_value }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}

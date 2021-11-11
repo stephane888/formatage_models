@@ -1,0 +1,8 @@
+uuid: 75fb6fe6-1a76-482c-9988-7616aee06091
+langcode: fr
+status: true
+dependencies: {  }
+id: bloc_call_to_action_blog_
+label: 'Bloc call to action (Blog)'
+revision: 0
+description: ''

@@ -1,0 +1,24 @@
+<!-- Slider main container -->
+<section class="swiper-unique swipper">
+	<div class="swiper-wrapper">
+		{% for row in rows %}
+			<div class="swiper-slide">
+				<div class="swiper-image d-flex h-100">
+					<div class="cover-text d-flex ">
+						<div class="description">
+							{{ row.description }}
+						</div>
+						<div class="cover-img">
+							{{ row.img }}
+						</div>
+						<div class="title">
+							{{row.title | layout_value}}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	<!-- If we need pagination -->
+	<div class="swiper-pagination"></div>
+</section>

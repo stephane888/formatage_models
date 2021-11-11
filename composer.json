@@ -1,0 +1,16 @@
+{
+    "name": "stephane888/formatage_models",
+    "description": "permet de formatter les modeles tels que les champs",
+    "type": "drupal-module-custom",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "stephane888",
+            "email": "kksasteph888@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    	"drupal/bootstrap_styles": "^1.0.3"
+    }
+}

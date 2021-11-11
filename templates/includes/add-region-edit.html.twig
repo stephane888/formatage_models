@@ -1,0 +1,10 @@
+
+{% if show_region_edit and is_admin and logged_in %}
+    <div class="space-edit-admin">
+         <p><strong>Champs pour {{ settings.label }}</strong><br>
+              <i>Permet à l'administrateur d'ajouter du contenu aux champs.</i></p>
+              {% for key,region in region_attributes %}
+              <div>{{ content[key] }}</div>
+         {% endfor %}
+    </div>
+{% endif %}

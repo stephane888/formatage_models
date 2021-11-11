@@ -1,0 +1,24 @@
+{% if content %}
+	<div{{attributes.addClass('reinsuranceItem')}}>
+		<div class="reinsuranceItem__iconContainer">
+			<div {{ region_attributes.svg.addClass('reinsuranceItem__assistance') }}>
+				{% set svg = {
+                    '#theme': 'formatage_models__clean_field',
+                    '#content_all': content.svg
+                } 
+            %}
+				{{ render_var(svg) }}
+			</div>
+		</div>
+		{% if content.titre %}
+			<div {{ region_attributes.titre.addClass('reinsuranceItem__title') }}>
+				{{ content.titre|layout_value }}
+			</div>
+		{% endif %}
+		{% if content.body %}
+			<div{{region_attributes.body.addClass('reinsuranceitem__description')}}>
+				{{ content.body|layout_value }}
+			</div>
+		{% endif %}
+	</div>
+{% endif %}

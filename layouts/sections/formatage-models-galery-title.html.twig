@@ -1,0 +1,24 @@
+{% if content %}
+<div {{attributes.addClass(['galeryTitle'])}}>
+	<div class="galeryTitle__container">
+		<h1 {{region_attributes.title.addClass(['title'])}}>
+			{% set title= {
+					'#theme': 'formatage_models__clean_field',
+					'#content_all': content.title
+				} %}
+			{{ render_var(title) }}
+		</h1>
+		<h3 {{region_attributes.description.addClass(['description'])}}>
+			{% set description= {
+					'#theme': 'formatage_models__clean_field',
+					'#content_all': content.description
+				} %}
+			{{ render_var(description) }}
+		</h3>
+		<div {{region_attributes.localisation.addClass(['localisation','icon-ping']) }}>
+    			{{ content.localisation }}
+		</div>
+	</div>
+</div>
+{% include '@formatage_models/includes/add-region-edit.html.twig' %}
+{% endif %}

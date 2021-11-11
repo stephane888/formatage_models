@@ -1,0 +1,72 @@
+{% if content %}
+    <section {{ attributes }}>
+         {% if content.images %}
+             <div {{ region_attributes.images }}>
+                  {# image affiché en premier plan #}
+                  <div class="galeryImage">
+                       <div class="galeryImage__big">
+                            {{ content.images|layout_value_img({'begin':1,'number':1}, settings.infos.fields.img_style_big.img_style.value) }}
+                       </div>
+                       <div class="galeryImage__small">
+                            {% set images_small= content.images|layout_value_img({'begin':2,'number':3},settings.infos.fields.img_style_small.img_style.value) %}
+                            {% for img_block in images_small %}
+                                {% for img_sm in img_block  %}
+                                    <div class="small"> {{ img_sm }}
+                                         {% if loop.last %}
+                                             <h3 class="small__voirPlus"> Voir plus de photos </h3>
+                                         {% endif %}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                       </div>
+                  </div>
+             </div>
+             {# image popup #}
+             <div class="stanCaroussel d-flex flex-column justify-content-center">
+                  <div>
+                       <h2 class="title">
+                            {{ content.title|layout_value }}
+                       </h2>
+                       <div class="close"></div>
+                       <div class="twoBlockCarousel">
+                            <div class="bigImage">
+                                 {% for img_block in content.images|layout_value_img({}, settings.infos.fields.img_style_big.img_style.value) %}
+                                     {% for img_sm in img_block  %}
+                                         <div class="rer">
+                                              {{ img_sm }}
+                                         </div>
+                                     {% endfor %}
+                                 {% endfor %}
+                            </div>
+                            <div class="secondBlock">
+                                 <div class="smallCarousel">
+                                      {% for img_block in content.images|layout_value_img({},settings.infos.fields.img_style_small.img_style.value) %}
+                                          {% for img_sm in img_block  %}
+                                              <div class="bl">
+                                                   {{ img_sm }}
+                                              </div>
+                                          {% endfor %}
+                                      {% endfor %}
+                                 </div>
+                                 <div class="secondBlock_number">
+                                      <span id="num"></span>/ <span id="total"></span>
+                                 </div>
+                                 <div class="smallCarousell">
+                                      {% for img_block in content.images|layout_raw %}
+                                          {% for img_sm in img_block  %}
+                                              <div class="bl">
+                                                   <p>
+                                                        {{ img_sm.alt }}
+                                                   </p>
+                                              </div>
+                                          {% endfor %}
+                                      {% endfor %}
+                                 </div>
+                            </div>
+                       </div>
+                  </div>
+             </div>
+         {% endif %}
+    </section>
+    {% include '@formatage_models/includes/add-region-edit.html.twig' %}
+{% endif %}

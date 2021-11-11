@@ -1,0 +1,22 @@
+{% if content %}
+    <div {{ attributes.addClass(['home-blog']) }}>
+         <div class="row">
+              {% if content.top %}
+                  <div {{ region_attributes.top.addClass(['top', settings.css_top]) }}>
+                       {{ content.top }}
+                  </div>
+              {% endif %}
+              {% if content.left %}
+                  <div {{ region_attributes.left.addClass(['left', settings.css_left]) }}>
+                       {{ content.left }}
+                  </div>
+              {% endif %}
+              {% if content.right %}
+                  <div {{ region_attributes.right.addClass(['right', settings.css_right]) }}>
+                       {{ content.right }}
+                  </div>
+              {% endif %}
+         </div>
+    </div>
+    {% include '@formatage_models/includes/add-region-edit.html.twig' %} 
+{% endif %}
