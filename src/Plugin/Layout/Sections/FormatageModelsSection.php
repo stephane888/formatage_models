@@ -38,6 +38,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
   
   public function build(array $regions) {
     $build = parent::build($regions);
+    // à mettre sur un module externe.
     $currentDomain = $this->Layouts::getCurrentdomain();
     if (!empty($this->configuration[$currentDomain])) {
       $build['#settings'] = $this->configuration[$currentDomain];

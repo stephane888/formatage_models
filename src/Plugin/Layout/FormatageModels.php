@@ -13,7 +13,7 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  * default class for module layout module
  *
  * @author stephane
- *
+ *        
  */
 class FormatageModels extends LayoutDefault {
   
@@ -86,7 +86,14 @@ class FormatageModels extends LayoutDefault {
     $build['#layout'] = $this->pluginDefinition;
     $build['#theme'] = $this->pluginDefinition->getThemeHook();
     $library = $this->pluginDefinition->getLibrary();
-    if ($library && $this->configuration['load_libray']) {
+    $currentDomain = $this->Layouts::getCurrentdomain();
+    if (!empty($this->configuration[$currentDomain])) {
+      $build['#settings'] = $this->configuration[$currentDomain];
+      if ($this->configuration[$currentDomain]['load_libray']) {
+        $build['#attached']['library'][] = $library;
+      }
+    }
+    elseif ($library && $this->configuration['load_libray']) {
       $build['#attached']['library'][] = $library;
     }
     
