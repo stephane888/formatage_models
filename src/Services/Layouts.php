@@ -37,11 +37,10 @@ class Layouts {
   function setConfig($configuration) {
     $this->configuration = $configuration;
     $currentDomain = self::getCurrentdomain();
-    // dump($this->configuration);
+    
     if (!empty($configuration['save_by_domain']) && !empty($configuration[$currentDomain])) {
       $this->configuration = $configuration[$currentDomain];
     }
-    // dump($configuration);
   }
   
   //

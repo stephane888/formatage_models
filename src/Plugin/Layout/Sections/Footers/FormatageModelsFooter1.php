@@ -59,7 +59,7 @@ class FormatageModelsFooter1 extends FormatageModelsSection {
   
   public function defaultConfiguration() {
     // $SiteConfig = $this->configFactory->getEditable("site.config");
-    // dump($SiteConfig->getStorage());
+   
     return parent::defaultConfiguration() + [
       'region_css_textleft' => 'col-md-8',
       'region_css_textright' => 'col-md-4',

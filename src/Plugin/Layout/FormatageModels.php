@@ -49,13 +49,7 @@ class FormatageModels extends LayoutDefault {
     $this->Layouts->setConfig($this->configuration);
     $this->Layouts->setRegions($this->getPluginDefinition()->getRegions());
     
-    // dump($this->pluginDefinition->get('icon'));
-    // $this->pluginDefinition->setIconPath("my-custom-icon.jpg");
-    // dump($this->pluginDefinition->getIcon(),
-    // $this->pluginDefinition->get('icon'),
-    // $this->pluginDefinition->getIconPath(),
-    // $this->pluginDefinition->getPath(),
-    // $this->pluginDefinition->get('myicone'));
+    
   }
   
   /**
@@ -64,8 +58,6 @@ class FormatageModels extends LayoutDefault {
    */
   public function defaultConfiguration() {
     
-    // dump(' init ? ');
-    // dump($this->pluginDefinition->getIcon());
     return parent::defaultConfiguration() + $this->Layouts->defaultConfiguration() + [];
   }
   

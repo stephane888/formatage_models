@@ -36,7 +36,9 @@
 								<i class='icon-menu'></i>
 							</a>
 							<a href="/" title="Home" rel="home" class="logo">
-								{{content.logo}}
+								{% if settings.logo_url %}
+									<img src="{{settings.logo_url}}">
+								{% endif %}
 							</a>
 						</div>
 						<div>

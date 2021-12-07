@@ -87,7 +87,7 @@ class FormatageModelsThemes {
      * @var \Drupal\views\ViewExecutable $view
      */
     $view = $vars['view'];
-    // dump($view->style_plugin->options);
+    
     $options = $view->style_plugin->options;
     $regions = $options['view_layouts_options'];
     // load librairie
@@ -130,39 +130,14 @@ class FormatageModelsThemes {
         }
       }
     }
-    // ancienne logique, fonctionne si le rendu ne se fait pas avec les champs.
-    // if (! empty($options['view_layouts_options'])) {
-    // foreach ($regions as $region => $fieldnames) {
-    // // $fieldnames = array_values($fieldnames);
-    // foreach ($vars['rows'] as $id => $row) {
-    // $elements = Element::children($row);
-    // foreach ($elements as $fieldname) {
-    // if (! empty($fieldnames[$fieldname])) {
-    // // dump($fieldname, $fieldnames);
-    // $row[$fieldname]['#label_display'] = true;
-    // $row[$fieldname]['#attributes'] = [
-    // 'class' => [
-    // $region
-    // ]
-    // ];
-    // $vars['rows'][$id][$region][] = $row[$fieldname];
-    // }
-    // }
-    // }
-    // }
-    // }
+    
   }
 
   /**
    * Permet de deplacer les layouts dans une autre region.
    */
   public static function ReInjectLayoutInAnotherRegion(Block $Block, $variables) {
-    // dump($Block);
-    // debugLog::$max_depth = 6;
-    // debugLog::kintDebugDrupal($Block, 'ReInjectLayoutInAnotherRegion');
-    // $render =
-    // \Drupal::entityTypeManager()->getViewBuilder('block')->view($Block);
-    // dump($render);
+   //
   }
 
   /**

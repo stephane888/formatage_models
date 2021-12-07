@@ -37,6 +37,13 @@ vuejs:
     https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js:
       { type: external, minified: true }
 
+formatage-models-admin:
+  js:
+    layouts/js/formatage_models_admin.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_admin.css: { weight: 10 } 
+
 #################################################################################################################################################
 # -50 <weight> +50
 

@@ -19,46 +19,17 @@ use Drupal\Component\DependencyInjection\Container;
  * Implement hook_preprocess_page
  */
 function formatage_models_preprocess_page(&$variables) {
-  // $Markup = new Markup();
-  // $Markup->__toString()
-  // if (! empty($variables['page']['content'])) {
-  // foreach ( $variables['page']['content'] as $block ) {
-  // if (is_array($block) && ! empty($block["#theme"]) && $block["#theme"] ==
-  // 'block')
-  // FormatageModelsThemes::ReInjectLayoutInAnotherRegion($block["#block"],
-  // $variables);
-  // }
-  // }
-  // dump($variables['page']['content']);
-  // MdbootstrapWbu::wbupreprocess_page($variables);
-  // $Container = \Drupal::getContainer()->getServiceIds();
-  // $listes = array_keys($listes);
-  // dump(implode(" , ", $listes));
-  // $Container = \Drupal::service("validation.constraint");
-  // dump($Container);
-
-  // ***********
-  // $Markup = new Markup();
-  // $Markup->__toString()
-  // if (! empty($variables['page']['content'])) {
-  // foreach ( $variables['page']['content'] as $block ) {
-  // if (is_array($block) && ! empty($block["#theme"]) && $block["#theme"] ==
-  // 'block')
-  // FormatageModelsThemes::ReInjectLayoutInAnotherRegion($block["#block"],
-  // $variables);
-  // }
-  // }
-  // dump($variables['page']['content']);
-  // MdbootstrapWbu::wbupreprocess_page($variables);
-  // $listes = \Drupal::service('validation.constraint')->getDefinitions();
-  // $listes = array_keys($listes);
-  // dump($listes);
-  // $Container = new Container();
-  // dump($Container->getServiceIds());
+  if (\Drupal::routeMatch()->getRouteName() === 'layout_builder.overrides.node.view' || str_contains(\Drupal::routeMatch()->getRouteName(), 'layout_builder.')) {
+    $variables['page']['content']['#attached']['library'][] = 'formatage_models/formatage-models-admin';
+  }
 }
 
+/**
+ *
+ * @param array $vars
+ */
 function formatage_models_preprocess_menu__extras(&$vars) {
-  if (! empty($vars['menu_name']) && $vars['menu_name'] == "main") {
+  if (!empty($vars['menu_name']) && $vars['menu_name'] == "main") {
     foreach ($vars['items'] as $item) {
       //
     }
@@ -69,32 +40,19 @@ function formatage_models_preprocess_menu__extras(&$vars) {
  * Implements hook_menu_alter().
  */
 function formatage_models_link_alter(&$vars) {
-  // /**
-  // * The URL of the link.
-  // *
-  // * @var Url $url
-  // */
-  // $url = $vars['url'];
-  // if ($url->isRouted()){
-  // $url->
-
-  // }
-  // dump($url->getRouteName());
-  // // debugLog::kintDebugDrupal($vars, 'formatage_models_link_alter' . rand(1,
-  // 9999));
+  //
 }
 
 /**
  * Implement hook__layouts
  */
 function formatage_models_preprocess_layout(&$vars) {
-  if (! empty($vars['region_attributes'])) {
+  if (!empty($vars['region_attributes'])) {
     foreach ($vars['region_attributes'] as $key => $region_attribute) {
       $vars['region_attributes'][$key]->addClass('layout-region');
     }
   }
   // if ($vars['theme_hook_original'] == 'blb_section')
-  // dump($vars);
 }
 
 function formatage_models_preprocess_formatage_models_teaser_small(&$vars) {
@@ -121,13 +79,12 @@ function formatage_models_page_bigbackground(&$vars) {
  * Implement hook__layouts
  */
 function formatage_models_preprocess_blb_section(&$vars) {
-  if (! empty($vars['region_attributes'])) {
+  if (!empty($vars['region_attributes'])) {
     foreach ($vars['region_attributes'] as $key => $region_attribute) {
       $vars['region_attributes'][$key]->addClass('layout-region');
     }
   }
   // if ($vars['theme_hook_original'] == 'blb_section')
-  // dump($vars);
 }
 
 /**
@@ -146,7 +103,7 @@ function formatage_models_preprocess_formatage_models_comments(&$vars) {
 }
 
 function formatage_models_preprocess_formatage_models_titre_description(array &$variables) {
-  // dump($variables);
+  
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   FormatageModelsThemes::mergeContentAttributes($variables);
 }

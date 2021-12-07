@@ -25,7 +25,7 @@ class BuilderConfigForm {
    * @param ThemeUtility $ThemeUtility
    */
   function prepareBuildForms($defaultConfigs, &$form) {
-    // dump($defaultConfigs);
+    
     foreach ($defaultConfigs as $key => $item) {
       if (isset($item['builder-form']) && $item['builder-form'] && !empty($item['fields'])) {
         $this->buildcontainerFields($key, $item, $form);

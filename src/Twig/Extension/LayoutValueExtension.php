@@ -249,7 +249,6 @@ class LayoutValueExtension extends \Twig_Extension {
           $parents[$key][] = \Drupal::entityTypeManager()->getViewBuilder('taxonomy_term')->view($value, 'full');
         }
       }
-      // dump($parents);
     }
     $items = [];
     foreach ($elements as $delta) {
@@ -257,7 +256,6 @@ class LayoutValueExtension extends \Twig_Extension {
       if (! empty($parents[$delta]))
         $items[$delta]['parent'] = $parents[$delta];
     }
-    // dump($items);
     return $items;
   }
 

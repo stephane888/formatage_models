@@ -62,7 +62,6 @@ class FormatageModelsPages extends FormatageModels implements ContainerFactoryPl
             // storage.
             $this->configuration['container_wrapper']['bootstrap_styles'] // Theme wrapper that we need to apply styles to it.
         );
-        // dump($build);
         return $build;
     }
 

@@ -39,7 +39,7 @@ class FormatageModelsmenu1 extends FormatageModelsSection
     public function defaultConfiguration()
     {
         // $SiteConfig = $this->configFactory->getEditable("site.config");
-        // dump($SiteConfig->getStorage());
+       
         return parent::defaultConfiguration() + [
             'css' => 'bg-light'
         ];

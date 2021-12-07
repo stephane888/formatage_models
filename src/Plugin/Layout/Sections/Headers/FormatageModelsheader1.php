@@ -20,9 +20,6 @@ use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
  *     "topheader" = {
  *       "label" = @Translation("top header"),
  *     },
- *     "logo" = {
- *       "label" = @Translation("Logo"),
- *     },
  *     "sitename" = {
  *       "label" = @Translation("site name"),
  *     },
@@ -51,63 +48,82 @@ class FormatageModelsheader1 extends FormatageModelsSection {
    * {@inheritdoc}
    * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
    */
-  public function __construct(array $configuration, $plugin_id,
-      $plugin_definition, StylesGroupManager $styles_group_manager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
-    parent::__construct($configuration, $plugin_id, $plugin_definition,
-        $styles_group_manager);
-    $this->pluginDefinition->set('icon',
-        drupal_get_path('module', 'formatage_models') .
-        "/icones/formatage_models_header1.png");
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage_models_header1.png");
+  }
+  
+  public function build(array $regions) {
+    $build = parent::build($regions);
+    $build['#settings']['logo_url'] = theme_get_setting('logo.url');
+    return $build;
   }
   
   public function defaultConfiguration() {
     // $SiteConfig = $this->configFactory->getEditable("site.config");
-    // dump($SiteConfig->getStorage());
-    return parent::defaultConfiguration() +
-        [
-          'sf' => ['builder-form' => true,
-            'info' => ['title' => 'Contenu', 'loader' => 'static'
-            ],
-            'fields' => [
-              'topheader' => [
-                'text_html' => ['label' => 'Top header',
-                  'value' => "Un devis travaux en ligne dès que vous en avez besoin...",
-                  'format' => "basic_html"
-                ]
-              ],
-              'logo' => [
-                'img_bg' => ['label' => 'Logo', 'fids' => [], "url" => "",
-                  'style' => 'thumbnail', 'class' => 'p-3', 'inbg' => false
-                ]
-              ],
-              'sitename' => [
-                'text' => ['label' => 'Nom du site', 'value' => 'GD-SUD'
-                ]
-              ],
-              'slogan' => [
-                'text' => ['label' => 'Slogan',
-                  'value' => 'Un devis travaux en ligne dès que vous en avez besoin...'
-                ]
-              ],
-              'email' => [
-                'text' => ['label' => 'Email', 'value' => 'gd-sud@email.com'
-                ]
-              ],
-              'phone' => [
-                'text' => ['label' => 'Phone', 'value' => '07 68 97 42 98'
-                ]
-              ],
-              'call_action' => [
-                'url' => ['label' => 'Call action',
-                  'value' => ['link' => '#', 'text' => 'Estimer mes travaux',
-                    'class' => 'is-active btn btn-lg btn-outline-force'
-                  ]
-                ]
+    return parent::defaultConfiguration() + [
+      'sf' => [
+        'builder-form' => true,
+        'info' => [
+          'title' => 'Contenu',
+          'loader' => 'static'
+        ],
+        'fields' => [
+          'topheader' => [
+            'text_html' => [
+              'label' => 'Top header',
+              'value' => "Un devis travaux en ligne dès que vous en avez besoin...",
+              'format' => "basic_html"
+            ]
+          ],
+          // 'logo' => [
+          // 'img_bg' => [
+          // 'label' => 'Logo',
+          // 'fids' => [],
+          // "url" => "",
+          // 'style' => 'thumbnail',
+          // 'class' => 'p-3',
+          // 'inbg' => false
+          // ]
+          // ],
+          'sitename' => [
+            'text' => [
+              'label' => 'Nom du site',
+              'value' => 'GD-SUD'
+            ]
+          ],
+          'slogan' => [
+            'text' => [
+              'label' => 'Slogan',
+              'value' => 'Un devis travaux en ligne dès que vous en avez besoin...'
+            ]
+          ],
+          'email' => [
+            'text' => [
+              'label' => 'Email',
+              'value' => 'gd-sud@email.com'
+            ]
+          ],
+          'phone' => [
+            'text' => [
+              'label' => 'Phone',
+              'value' => '07 68 97 42 98'
+            ]
+          ],
+          'call_action' => [
+            'url' => [
+              'label' => 'Call action',
+              'value' => [
+                'link' => '#',
+                'text' => 'Estimer mes travaux',
+                'class' => 'is-active btn btn-lg btn-outline-force'
               ]
             ]
           ]
-        ];
+        ]
+      ]
+    ];
   }
   
 }
