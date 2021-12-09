@@ -2,6 +2,10 @@
   color: #ddd;
   background: #f7f8f9;
 }
+#drupal-off-canvas *, #drupal-off-canvas *:not(div){
+	color: #314b5a !important;
+}
+
 
 //// listes de layout.
 .layout-selection {

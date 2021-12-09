@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\formatage_models\Plugin\Layout\Sections;
+namespace Drupal\formatage_models\Plugin\Layout\Teasers;
 
 use Drupal\formatage_models\Plugin\Layout\FormatageModels;
 use Drupal\Core\Form\FormStateInterface;
@@ -9,24 +9,30 @@ use Drupal\Core\Form\FormStateInterface;
  * A very advanced custom layout.
  *
  * @Layout(
- *   id = "formatage_models_bg_header",
- *   label = @Translation(" Bg img header "),
+ *   id = "formatage_models_teaser_a_la_une",
+ *   label = @Translation(" blog teaser à la une "),
  *   category = @Translation("Formatage Models"),
- *   path = "layouts/sections",
- *   template = "formatage-models-bg-header",
- *   library = "formatage_models/formatage-models-bg-header",
- *   default_region = "title",
+ *   path = "layouts/teasers",
+ *   template = "formatage-models-teaser-a-la-une",
+ *   library = "formatage_models/formatage-models-teaser",
+ *   default_region = "titre",
  *   regions = {
  *     "bgimage" = {
  *       "label" = @Translation("Bg Image"),
  *     },
- *     "title" = {
+ *     "date" = {
+ *       "label" = @Translation("Date"),
+ *     },
+ *     "titre" = {
  *       "label" = @Translation("Titre")
+ *     },
+ *     "url" = {
+ *       "label" = @Translation("Url sur l'affichage")
  *     },
  *   }
  * )
  */
-class FormatageModelsBgHeader extends FormatageModels {
+class FormatageModelsblogTeaseraLaune extends FormatageModels {
   
   /**
    *
@@ -36,7 +42,7 @@ class FormatageModelsBgHeader extends FormatageModels {
   public function __construct(array $configuration, $plugin_id, $plugin_definition) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-bg-header.png");
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/teasers/formatage_models_teaser_a_la_une.png");
   }
   
   /**
@@ -45,8 +51,7 @@ class FormatageModelsBgHeader extends FormatageModels {
    */
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
-      'bg_position' => 'right center',
-      'bg_size' => '75%'
+      'css' => ''
     ];
   }
   
@@ -56,16 +61,11 @@ class FormatageModelsBgHeader extends FormatageModels {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
-    
-    $form['bg_position'] = [
+    $form['label']['#default_value'] = empty($this->configuration['label']) ? $this->getBaseId() : $this->configuration['label'];
+    $form['css'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('bg_position'),
-      '#default_value' => $this->configuration['bg_position']
-    ];
-    $form['bg_size'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('bg_size'),
-      '#default_value' => $this->configuration['bg_size']
+      '#title' => $this->t('Class css'),
+      '#default_value' => $this->configuration['css']
     ];
     return $form;
   }
@@ -74,10 +74,16 @@ class FormatageModelsBgHeader extends FormatageModels {
    *
    * {@inheritdoc}
    */
+  public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
-    $this->configuration['bg_position'] = $form_state->getValue('bg_position');
-    $this->configuration['bg_size'] = $form_state->getValue('bg_size');
+    $this->configuration['css'] = $form_state->getValue('css');
   }
   
 }
