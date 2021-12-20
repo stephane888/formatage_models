@@ -30,18 +30,15 @@
 		<div class="container">
 			<div class="header-nav">
 				<div class="row">
-					<div class="col-lg-5 d-flex align-items-center">
+					<div class="col-lg-6 d-flex align-items-center logo-bloc flex-wrap">
 						<div class="basic-wrapper">
-							<a class="mobile-menu" data-toggle="collapse" data-target=".navbar-collapse">
-								<i class='icon-menu'></i>
-							</a>
 							<a href="/" title="Home" rel="home" class="logo">
 								{% if settings.logo_url %}
 									<img src="{{settings.logo_url}}">
 								{% endif %}
 							</a>
 						</div>
-						<div>
+						<div class="basic-wrapper-slogan">
 							<div {{region_attributes.sitename.addClass('sitename','site-name')}}>
 								{{content.sitename}}
 							</div>
@@ -50,10 +47,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-7 col-xs-12 content-info justify-content-end d-flex">
-						<div class="d-flex flex-wrap data-right">
+					<div class="col-lg-6 col-xs-12 content-info justify-content-end d-flex">
+						<div class="d-flex data-right">
 							{{content.data_right}}
-							<div class="icon d-xl-flex align-items-center d-lg-none">
+							<div class="icon icon-bloc d-xl-flex align-items-center d-lg-none">
 								<i class="icon-phone-1"></i>
 								<div class="content">
 									<span {{region_attributes.phone.addClass('phone')}}>
@@ -66,7 +63,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="icon d-flex align-items-center">
+							<div class="icon icon-bloc d-flex align-items-center">
 								<i class="icon-edit"></i>
 								<div class="content">
 									{{content.call_action}}

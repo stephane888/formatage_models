@@ -284,7 +284,7 @@ function formatage_models_preprocess_formatage_models_article_header(array &$var
 function formatage_models_preprocess_formatage_models_teaser(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   // FormatageModelsThemes::ApplyAttributes($variables);
-FormatageModelsThemes::mergeContentAttributes($variables);
+  FormatageModelsThemes::mergeContentAttributes($variables);
 }
 
 /**
