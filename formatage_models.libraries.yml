@@ -47,6 +47,14 @@ formatage-models-admin:
 #################################################################################################################################################
 # -50 <weight> +50
 
+
+formatage-models-contact:
+  js:
+    layouts/js/formatage-models-contact.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-contact.css: { weight: 10 } 
+
 formatage-models-footer1:
   js:
     layouts/js/formatage-models-footer1.js: {}

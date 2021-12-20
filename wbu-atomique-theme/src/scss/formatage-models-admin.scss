@@ -50,7 +50,7 @@
   }
 }
 //@at-root
-.ui-dialog {
+.ui-dialog.ui-dialog-position-side {
   left: auto !important;
   right: 0 !important;
   width: 400px !important;
@@ -58,6 +58,25 @@
     .ui-dialog-title {
       color: #587fa1 !important;
       display: flex;
+    }
+  }
+}
+.layout-builder {
+  &__link {
+    &--add {
+      &:hover {
+        .visually-hidden {
+          width: auto;
+          height: auto;
+          overflow: visible;
+          clip: auto;
+          display: inline-block;
+          padding: 0 10px;
+          color: #333;
+          font-size: 90%;
+          font-style: italic;
+        }
+      }
     }
   }
 }

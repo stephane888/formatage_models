@@ -11,7 +11,7 @@ use Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers;
  *
  * @Layout(
  *   id = "formatage_models_teaser_svg_titre_text",
- *   label = @Translation(" blog teaser _svg_titre_text"),
+ *   label = @Translation(" blog teaser _svg_titre_text "),
  *   category = @Translation("Formatage Models"),
  *   path = "layouts/teasers",
  *   template = "formatage-models-teaser-svg-titre-text",

@@ -20,8 +20,8 @@ use Drupal\Core\Form\FormStateInterface;
  *     "bgimage" = {
  *       "label" = @Translation("Bg Image"),
  *     },
- *     "date" = {
- *       "label" = @Translation("Date"),
+ *     "description" = {
+ *       "label" = @Translation("description"),
  *     },
  *     "titre" = {
  *       "label" = @Translation("Titre")

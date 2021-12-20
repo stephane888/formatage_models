@@ -44,7 +44,7 @@ class FormatageModelsEmptyResults extends FormatageModelsSection
     {
         // TODO Auto-generated method stub
         parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-        $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage-models-images-bg.png");
+        $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-images-bg.png");
     }
 
     /**

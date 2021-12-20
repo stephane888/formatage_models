@@ -57,6 +57,7 @@ class FormatageModelsheader1 extends FormatageModelsSection {
   public function build(array $regions) {
     $build = parent::build($regions);
     $build['#settings']['logo_url'] = theme_get_setting('logo.url');
+    // dump($build['#settings']);
     return $build;
   }
   
