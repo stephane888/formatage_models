@@ -43,7 +43,7 @@ class FormatageModelsImageContact extends FormatageModelsSection {
   
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
-      'css' => '',
+      'css' => 'container',
       'region_css_content_map_google' => "col-md-8",
       'sf' => [
         'builder-form' => true,
@@ -62,7 +62,7 @@ class FormatageModelsImageContact extends FormatageModelsSection {
             'text_html' => [
               'label' => 'Description',
               'value' => '
-                <p class="mb-5"> Notre magasin est ouvert du lundi au Vendredi de 8h30 à 12h30 et de 13h30 à 17h30 et le Samedi de 8h30 à 12h30. </p>
+                <p> Notre magasin est ouvert du lundi au Vendredi de 8h30 à 12h30 et de 13h30 à 17h30 et le Samedi de 8h30 à 12h30. </p>
                 <div class="d-flex">
                   <i class="icon-edit"></i> 
                   <p>

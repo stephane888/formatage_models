@@ -55,6 +55,10 @@ function formatage_models_preprocess_layout(&$vars) {
   // if ($vars['theme_hook_original'] == 'blb_section')
 }
 
+function formatage_models_preprocess_formatage_models_contact_page(&$vars) {
+  FormatageModelsThemes::mergeContentAttributes($vars);
+}
+
 function formatage_models_preprocess_formatage_models_contact(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }

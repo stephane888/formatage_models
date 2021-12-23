@@ -48,6 +48,13 @@ formatage-models-admin:
 # -50 <weight> +50
 
 
+formatage-models-contact-page:
+  js:
+    layouts/js/formatage-models-contact-page.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-contact-page.css: { weight: 10 } 
+
 formatage-models-contact:
   js:
     layouts/js/formatage-models-contact.js: {}
