@@ -1,0 +1,23 @@
+{#
+        wbu-atomique/scss/molecule/stan/serviceBlock-module.scss
+#}
+{% if content %}
+	{% set bgImg = attributes.offsetGet('style') %}
+	<div{{attributes.addClass(['serviceBlock-module'])}}>
+		<div class="serviceBlock-module__container" {{bgImg}} style="{{ bgImg }}">
+			<div class="serviceBlock-module__serviceMessage">
+				<h3{{region_attributes.title.addClass(['title','serviceBlock-module__serviceTitle'])}}>
+					{{ content.title|layout_value }}
+				</h3>
+				<div class="serviceBlock-module__serviceDescription text-left">
+					<div{{region_attributes.body.addClass(['body','paragraphList'])}}>
+						{{content.body|layout_value}}
+					</div>
+				</div>
+				<div{{region_attributes.link.addClass(['link'])}}>
+					{{ content.link|layout_value }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}
