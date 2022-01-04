@@ -47,6 +47,20 @@ formatage-models-admin:
 #################################################################################################################################################
 # -50 <weight> +50
 
+formatage-models-title-description:
+  js:
+    layouts/js/formatage-models-title-description.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-title-description.css: { weight: 10 } 
+
+formatage-models-hero2:
+  js:
+    layouts/js/formatage-models-hero2.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero2.css: { weight: 10 } 
+
 
 formatage-models-contact-page:
   js:

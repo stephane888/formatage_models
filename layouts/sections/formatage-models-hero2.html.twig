@@ -1,0 +1,18 @@
+{# empty Twig template #}
+{% if content %}
+	<div{{attributes.addClass('hero-section')}}>
+		<div class="hero-section__block-center">
+			<div class="desc">
+				<div {{region_attributes.description.addClass('description','hp-desc')}}>
+					{{content.description|layout_value}}
+				</div>
+				<h2 {{region_attributes.title.addClass('title','desc__title')}}>
+					{{content.title|layout_value}}
+				</h2>
+			</div>
+		</div>
+		<div {{region_attributes.button.addClass('button','btn-block','text-center')}}>
+			{{content.button|layout_value}}
+		</div>
+	</div>
+{% endif %}
