@@ -48,8 +48,6 @@ class FormatageModels extends LayoutDefault {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->Layouts->setConfig($this->configuration);
     $this->Layouts->setRegions($this->getPluginDefinition()->getRegions());
-    
-    
   }
   
   /**
@@ -57,7 +55,6 @@ class FormatageModels extends LayoutDefault {
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    
     return parent::defaultConfiguration() + $this->Layouts->defaultConfiguration() + [];
   }
   
@@ -88,7 +85,6 @@ class FormatageModels extends LayoutDefault {
     elseif ($library && $this->configuration['load_libray']) {
       $build['#attached']['library'][] = $library;
     }
-    
     return $build;
   }
   
