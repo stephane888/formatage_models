@@ -1,16 +1,19 @@
 {
-    "name": "stephane888/formatage_models",
-    "description": "permet de formatter les modeles tels que les champs",
-    "type": "drupal-module-custom",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "stephane888",
-            "email": "kksasteph888@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-    	"drupal/bootstrap_styles": "^1.0.3"
+  "name": "stephane888/formatage_models",
+  "description": "permet de formatter les modeles tels que les champs",
+  "type": "drupal-module-custom",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "stephane888",
+      "email": "kksasteph888@gmail.com"
     }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "drupal/bootstrap_layout_builder": "^2.0",
+    "drupal/domain": "^1.0@beta",
+    "stephane888/htmlbootstrap": "^1.2 | dev-1x",
+    "stephane888/debug": "^1.0 | dev-1x"
+  }
 }

@@ -4,13 +4,12 @@ namespace Drupal\formatage_models\Plugin\Layout\Teasers;
 
 use Drupal\formatage_models\Plugin\Layout\FormatageModels;
 
-
 /**
  * A very advanced custom layout.
  *
  * @Layout(
  *   id = "formatage_models_realisation_big",
- *   label = @Translation(" Realisation card big "),
+ *   label = @Translation(" Card big "),
  *   category = @Translation("Formatage Models"),
  *   path = "layouts/teasers",
  *   template = "formatage-models-realisation-big",
@@ -20,8 +19,8 @@ use Drupal\formatage_models\Plugin\Layout\FormatageModels;
  *     "bgimage" = {
  *       "label" = @Translation("Bg Image"),
  *     },
- *     "date" = {
- *       "label" = @Translation("Date"),
+ *     "description" = {
+ *       "label" = @Translation("description"),
  *     },
  *     "titre" = {
  *       "label" = @Translation("Titre")
@@ -35,18 +34,17 @@ use Drupal\formatage_models\Plugin\Layout\FormatageModels;
  *   }
  * )
  */
-class FormatageModelsRealisationBig extends FormatageModels
-{
-
-	/**
-	 *
-	 * {@inheritdoc}
-	 * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
-	 */
-	public function __construct(array $configuration, $plugin_id, $plugin_definition)
-	{
-		// TODO Auto-generated method stub
-		parent::__construct($configuration, $plugin_id, $plugin_definition);
-		$this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage-models-realisation-big.png");
-	}
+class FormatageModelsRealisationBig extends FormatageModels {
+  
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition) {
+    // TODO Auto-generated method stub
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage-models-realisation-big.png");
+  }
+  
 }

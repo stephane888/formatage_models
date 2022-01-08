@@ -37,8 +37,44 @@ vuejs:
     https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js:
       { type: external, minified: true }
 
+formatage-models-admin:
+  js:
+    layouts/js/formatage_models_admin.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_admin.css: { weight: 10 } 
+
 #################################################################################################################################################
 # -50 <weight> +50
+
+formatage-models-title-description:
+  js:
+    layouts/js/formatage-models-title-description.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-title-description.css: { weight: 10 } 
+
+formatage-models-hero2:
+  js:
+    layouts/js/formatage-models-hero2.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero2.css: { weight: 10 } 
+
+
+formatage-models-contact-page:
+  js:
+    layouts/js/formatage-models-contact-page.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-contact-page.css: { weight: 10 } 
+
+formatage-models-contact:
+  js:
+    layouts/js/formatage-models-contact.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-contact.css: { weight: 10 } 
 
 formatage-models-footer1:
   js:

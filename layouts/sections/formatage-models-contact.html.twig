@@ -1,0 +1,17 @@
+{% if content %}
+	<section {{attributes.addClass('formatage-models-contact')}}>
+		<div class="row">
+			<div class="col-md-4 content-left">
+				<h2 {{region_attributes.titre.addClass('titre')}}>
+					{{ content.titre }}
+				</h2>
+				<div {{region_attributes.description.addClass('description')}}>
+					{{ content.description }}
+				</div>
+			</div>
+			<div {{region_attributes.content_map_google.addClass('content_map_google')}}>
+				{{ content.content_map_google }}
+			</div>
+		</div>
+	</section>
+{% endif %}

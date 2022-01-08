@@ -40,7 +40,7 @@ class FormatageModelsTeasers extends FormatageModels implements ContainerFactory
 
     public function build(array $regions)
     {
-        // dump($this->configuration);
+       
         $build = parent::build($regions);
         $layout = $this->getPluginDefinition();
         // classes and attributes.

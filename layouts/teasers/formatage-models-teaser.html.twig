@@ -1,9 +1,6 @@
-{# wbu-atomique/scss/molecule/stan/billetDeBlogTeaser.scss {{ dump() }}
+{# wbu-atomique/scss/molecule/stan/billetDeBlogTeaser.scss 
 #}
-
 {% if content %}
-
-
 	{# on ajoute un template #}
 	{% set RenderBgimage = {
     '#theme': 'formatage_models__img_url',
@@ -25,7 +22,6 @@
 				{% set RenderUrl %}{{- path('entity.node.canonical', {'node': RenderUrl.value}) -}}{% endset %}
 			{% endif %}
 		{% endif %}
-
 		{% if RenderUrl %}
 			<a href="{{- RenderUrl -}}" class="cover-link">
 			{% endif %}
@@ -34,6 +30,12 @@
 		{% endif %}
 		<div class="background">
 			<div class="billetDeBlogTeaser__text">
+				{% if content.description %}
+					<div{{region_attributes.description.addClass('description','d-flex')}}>
+						<i class="icon-picons-pin-2"></i>
+						{{content.description}}
+					</div>
+				{% endif %}
 				<div{{region_attributes.date.addClass('date')}}>
 					{{ content.date|layout_value }}
 				</div>
@@ -42,19 +44,15 @@
 				</div>
 			</div>
 		</div>
-
 		{% if content.bgimage.layout_builder_add_block %}
 			<div{{region_attributes.bgimage.addClass('bgimage')}}>
 				{{content.bgimage.layout_builder_add_block}}
 			</div>
 		{% endif %}
-
 		{% if content.url.layout_builder_add_block %}
 			<div{{region_attributes.url.addClass('url')}}>
 				{{content.url.layout_builder_add_block}}
 			</div>
 		{% endif %}
-
-
 	</div>
 {% endif %}

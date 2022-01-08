@@ -25,6 +25,7 @@ class BuilderConfigForm {
    * @param ThemeUtility $ThemeUtility
    */
   function prepareBuildForms($defaultConfigs, &$form) {
+    
     foreach ($defaultConfigs as $key => $item) {
       if (isset($item['builder-form']) && $item['builder-form'] && !empty($item['fields'])) {
         $this->buildcontainerFields($key, $item, $form);
@@ -57,7 +58,11 @@ class BuilderConfigForm {
     }
   }
   
-  //
+  /**
+   *
+   * @param array $field
+   * @param array $form
+   */
   function selectRenderfield($field, &$form) {
     foreach ($field as $type => $Value) {
       $key = null;
@@ -130,19 +135,19 @@ class BuilderConfigForm {
    * @param array $form
    */
   private function buildcontainerFields(string $key, array $item, array &$form) {
-    $form[$key] = array(
+    $form[$key] = [
       '#type' => 'details',
       '#title' => $item['info']['title'],
       '#open' => false,
       '#tree' => true
-    );
+    ];
     // On ajoute le chargeur de donnée.
     $options = [
       'static' => 'Charge le contenu static',
       'dynamic' => 'Charge le contenu dynamique'
     ];
     $form[$key]['info'] = [];
-    $this->ThemeUtility->addSelectTree('loader', $form[$key]['info'], $options, "selectionne la maniere donc le contenu est definit", $item['info']['loader']);
+    $this->ThemeUtility->addSelectTree('loader', $form[$key]['info'], $options, "Selectionne la maniere donc le contenu est definit", $item['info']['loader']);
   }
   
 }

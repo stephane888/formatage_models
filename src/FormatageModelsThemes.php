@@ -88,9 +88,10 @@ class FormatageModelsThemes {
      * @var \Drupal\views\ViewExecutable $view
      */
     $view = $vars['view'];
-    // dump($view->style_plugin->options);
+    
     $options = $view->style_plugin->options;
     $regions = $options['view_layouts_options'];
+    
     // load librairie
     if (!empty($options['library']) && !empty($options['library-file'])) {
       $vars['#attached']['library'][] = $options['library-file'];
@@ -131,39 +132,13 @@ class FormatageModelsThemes {
         }
       }
     }
-    // ancienne logique, fonctionne si le rendu ne se fait pas avec les champs.
-    // if (! empty($options['view_layouts_options'])) {
-    // foreach ($regions as $region => $fieldnames) {
-    // // $fieldnames = array_values($fieldnames);
-    // foreach ($vars['rows'] as $id => $row) {
-    // $elements = Element::children($row);
-    // foreach ($elements as $fieldname) {
-    // if (! empty($fieldnames[$fieldname])) {
-    // // dump($fieldname, $fieldnames);
-    // $row[$fieldname]['#label_display'] = true;
-    // $row[$fieldname]['#attributes'] = [
-    // 'class' => [
-    // $region
-    // ]
-    // ];
-    // $vars['rows'][$id][$region][] = $row[$fieldname];
-    // }
-    // }
-    // }
-    // }
-    // }
   }
   
   /**
    * Permet de deplacer les layouts dans une autre region.
    */
   public static function ReInjectLayoutInAnotherRegion(Block $Block, $variables) {
-    // dump($Block);
-    // debugLog::$max_depth = 6;
-    // debugLog::kintDebugDrupal($Block, 'ReInjectLayoutInAnotherRegion');
-    // $render =
-    // \Drupal::entityTypeManager()->getViewBuilder('block')->view($Block);
-    // dump($render);
+    //
   }
   
   /**
@@ -179,23 +154,25 @@ class FormatageModelsThemes {
      * @var \Drupal\Core\Layout\LayoutDefinition $layout
      */
     $layout = $variables['layout'];
-    if (str_contains($layout->getTemplatePath(), "layouts/sections")) {
-      $attributes->addClass('space_bottom');
-      $variables['attributes'] = $attributes;
-    }
-    
-    if (!empty($variables['settings']['css'])) {
-      $attributes->addClass(explode(" ", $variables['settings']['css']));
-      $variables['attributes'] = $attributes;
-    }
-    
-    foreach ($layout->getRegionNames() as $region) {
-      $v = new Attribute();
-      $v->addClass('layout-region');
-      $variables['region_attributes'][$region] = $v;
-      if (isset($variables['settings']['region_css_' . $region])) {
-        $v->addClass($variables['settings']['region_css_' . $region]);
+    if (!empty($layout)) {
+      if (str_contains($layout->getTemplatePath(), "layouts/sections")) {
+        $attributes->addClass('space_bottom');
+        $variables['attributes'] = $attributes;
+      }
+      
+      if (!empty($variables['settings']['css'])) {
+        $attributes->addClass(explode(" ", $variables['settings']['css']));
+        $variables['attributes'] = $attributes;
+      }
+      
+      foreach ($layout->getRegionNames() as $region) {
+        $v = new Attribute();
+        $v->addClass('layout-region');
         $variables['region_attributes'][$region] = $v;
+        if (isset($variables['settings']['region_css_' . $region])) {
+          $v->addClass($variables['settings']['region_css_' . $region]);
+          $variables['region_attributes'][$region] = $v;
+        }
       }
     }
   }
