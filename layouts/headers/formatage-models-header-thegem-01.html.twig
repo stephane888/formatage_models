@@ -1,41 +1,75 @@
-
 {% if content %}
-    <section{{ attributes.addClass(['fm-header-thegem-01']) }}>
-         <div class="container">
-              <div class="row align-items-center">
-                   <div class="col">
-                        <div class="row align-items-center">
-                             {% for item in settings.infos.fields if item['text'] %}
-                                 <div class="col-auto item">
-                                      <i class="{{item['icon-f']}}"></i> {{item['text']}}
-                                 </div>
-                             {% endfor %}
-                             <div class="col item">
-                                  <div class="d-flex socials-items">
-                                       {% for item in settings['social-items'].fields if item['icon-f'] %}
-                                           <a class="socials-item" href="{{item['url']}}" target="_blank" title="{{item['text']}}"> <i class="{{item['icon-f']}}"></i> </a>
-                                       {% endfor %}
-                                  </div>
-                             </div>
-                        </div>
-                   </div>
-                   <div class="col-md-auto">
-                        <div class="row align-items-center link-text">
-                             {% for item in settings.links.fields if item['text'] %}
-                                 <div class="col angle-right d-flex align-items-center item">
-                                      <a href="{{ item['url'] }}" class="link"> {{ item['text'] }} </a>
-                                 </div>
-                             {% endfor %}
-                             <div class="col d-flex align-items-center">
-                                  {% for item in settings['button-action'].fields if item['text'] %}
-                                      <a class="{{item['btn-variant']}}">
-                                           {{item['text']}}
-                                      </a>
-                                  {% endfor %}
-                             </div>
-                        </div>
-                   </div>
-              </div>
-         </div>
-    </section>
+	<section{{attributes.addClass(['fm-header-thegem-01'])}}>
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col">
+					<div class="row align-items-center">
+						{% if content.infos_f1 %}
+							<div {{region_attributes.infos_f1.addclass('col-auto','item','infos_f1')}}>
+								{{ content.infos_f1 }}
+							</div>
+						{% endif %}
+						{% if content.infos_f2 %}
+							<div {{region_attributes.infos_f2.addclass('col-auto','item','infos_f2')}}>
+								{{ content.infos_f2 }}
+							</div>
+						{% endif %}
+						<div class=" col item ">
+							<div class=" d-flex socials-items ">
+								{% if content.social_f1 %}
+									{{ content.social_f1 }}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-auto">
+					//
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}
+{% if content %}
+	<section{{attributes.addClass(['fm-header-thegem-01'])}}>
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col">
+					<div class="row align-items-center">
+						{% for item in settings.infos.fields if item['text'] %}
+							<div class="col-auto item">
+								<i class="fas fa-map-marker-alt"></i>
+								monsdsljhl dxfdf
+							</div>
+						{% endfor %}
+						<div class="col item">
+							<div class="d-flex socials-items">
+								{% for item in settings['social-items'].fields  %}
+									<a class="socials-item" target="_blank">
+										<i class="fab fa-instagram"></i>
+									</a>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-auto">
+					<div class="row align-items-center link-text">
+						{% for item in settings.links.fields  %}
+							<div class="col angle-right d-flex align-items-center item">
+								<a href="#" class="link">
+									helllll ooooohh
+								</a>
+							</div>
+						{% endfor %}
+						<div class="col d-flex align-items-center">
+							<a class="btn btn-info'">
+								Join now
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endif %}

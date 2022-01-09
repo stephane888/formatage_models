@@ -1,24 +1,67 @@
 {% if content %}
-<div {{attributes.addClass(['galeryTitle'])}}>
-	<div class="galeryTitle__container">
-		<h1 {{region_attributes.title.addClass(['title'])}}>
-			{% set title= {
+	<div {{attributes.addClass(['galeryTitle'])}}>
+		<div class="galeryTitle__container">
+			<h1 {{region_attributes.title.addClass(['title'])}}>
+				{% set title= {
 					'#theme': 'formatage_models__clean_field',
 					'#content_all': content.title
 				} %}
-			{{ render_var(title) }}
-		</h1>
-		<h3 {{region_attributes.description.addClass(['description'])}}>
-			{% set description= {
+				{{ render_var(title) }}
+			</h1>
+			<h3 {{region_attributes.description.addClass(['description'])}}>
+				{% set description= {
 					'#theme': 'formatage_models__clean_field',
 					'#content_all': content.description
 				} %}
-			{{ render_var(description) }}
-		</h3>
-		<div {{region_attributes.localisation.addClass(['localisation','icon-ping']) }}>
-    			{{ content.localisation }}
+				{{ render_var(description) }}
+			</h3>
+			<div {{region_attributes.localisation.addClass(['localisation','icon-ping']) }}>
+				{{ content.localisation }}
+			</div>
 		</div>
 	</div>
-</div>
-{% include '@formatage_models/includes/add-region-edit.html.twig' %}
+	{% include '@formatage_models/includes/add-region-edit.html.twig' %}
 {% endif %}
+<section{{attributes.addClass(['fm-header-thegem-01'])}}>
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col">
+				<div class="row align-items-center">
+					{% for item in settings.infos.fields if item['text'] %}
+						<div class="col-auto item">
+							<i class="fas fa-map-marker-alt"></i>
+							monsdsljhl dxfdf
+						</div>
+					{% endfor %}
+					<div class="col item">
+						<div class="d-flex socials-items">
+							{% for item in settings['social-items'].fields if item['icon-f'] %}
+								<a class="socials-item" href="{{item['url']}}" target="_blank" title="{{item['text']}}">
+									<i class="{{item['icon-f']}}"></i>
+								</a>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-auto">
+				<div class="row align-items-center link-text">
+					{% for item in settings.links.fields if item['text'] %}
+						<div class="col angle-right d-flex align-items-center item">
+							<a href="{{ item['url'] }}" class="link">
+								{{ item['text'] }}
+							</a>
+						</div>
+					{% endfor %}
+					<div class="col d-flex align-items-center">
+						{% for item in settings['button-action'].fields if item['text'] %}
+							<a class="{{item['btn-variant']}}">
+								{{item['text']}}
+							</a>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>{% endif %}

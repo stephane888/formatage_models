@@ -182,6 +182,7 @@ class FormatageModelsThemes {
    * ( pour eviter d'avoir une double sortie avec les données statiques et
    * dynamiques ).
    *
+   * @deprecated
    * @param array $variables
    */
   public static function mergeContentAttributes(array &$variables) {
@@ -267,6 +268,111 @@ class FormatageModelsThemes {
     }
   }
   
+  /**
+   * Permet de recuperer la valeur des champs dynamique et de les inserres dans
+   * la region adéquate.
+   *
+   * @param array $settings
+   * @throws \Exception
+   */
+  public static function formatSettingValues(array &$build) {
+    $settings = $build['#settings'];
+    /**
+     *
+     * @var \Drupal\Core\Layout\LayoutDefinition $layout
+     */
+    $layout = $build['#layout'];
+    $regions = $layout->getRegionLabels();
+    
+    // on parcourt les elements de settings.
+    foreach ($settings as $vals) {
+      // dump($vals);
+      if (!empty($vals["builder-form"]) && !empty($vals["fields"]) && !empty($vals["info"]['loader']) && $vals["info"]['loader'] == "static") {
+        // on parcourt les groupes de champs.
+        foreach ($vals["fields"] as $regionName => $fields) {
+          if (isset($regions[$regionName])) {
+            foreach ($fields as $key => $field) {
+              // dump($field);
+              if (!is_array($field))
+                throw new \Exception(" Le champs " . $key . " doit avoir un rendu en array value and label, \n ( region : " . $regionName . " )");
+              if (isset($field['value']) && ($field['value'] !== null && $field['value'] !== ""))
+                switch ($key) {
+                  case 'text':
+                    $build[$regionName][] = [
+                      '#type' => 'inline_template',
+                      '#template' => $field['value']
+                      // '#context' => []
+                    ];
+                    break;
+                  case 'text_html':
+                    $build[$regionName][] = [
+                      '#type' => 'inline_template',
+                      '#template' => $field['value']
+                    ];
+                    break;
+                  case 'icon-f':
+                    $build[$regionName][] = [
+                      '#type' => 'html_tag',
+                      '#tag' => 'i',
+                      '#attributes' => [
+                        'class' => [
+                          $field['value']
+                        ]
+                      ]
+                    ];
+                    break;
+                  case 'url':
+                    /**
+                     *
+                     * @var \Drupal\Core\Render\Element\Link
+                     */
+                    if (!empty($field['value']['text']))
+                      $build[$regionName][] = [
+                        '#type' => 'link',
+                        '#title' => $field['value']['text'],
+                        '#url' => \Drupal\Core\Url::fromUserInput($field['value']['link']),
+                        '#attributes' => [
+                          'class' => explode(" ", $field['value']['class'])
+                        ]
+                      ];
+                    break;
+                  default:
+                    throw new \Exception("Le champs " . $key . " n'a pas de rendu ");
+                    break;
+                }
+              elseif (!empty($field['fids'])) {
+                // le tableau filds peut avoir des doublons.
+                $file = File::load($field['fids'][0]);
+                $image_style = $field['style'];
+                if ($file) {
+                  if (!empty($image_style) && ImageStyle::load($image_style)) {
+                    $uri = $file->getFileUri();
+                  }
+                  else {
+                    $uri = $file->getFileUri();
+                  }
+                  $build[$regionName][] = [
+                    '#theme' => 'image_style',
+                    // '#width' => $variables['width'],
+                    // '#height' => $variables['height'],
+                    '#attributes' => [
+                      'class' => [
+                        !empty($field['class']) ? $field['class'] : ''
+                      ]
+                    ],
+                    '#style_name' => $image_style,
+                    '#uri' => $uri
+                  ];
+                }
+              }
+            }
+            //
+          }
+        }
+      }
+    }
+  }
+  
   public static function addLayoutEditBlock(array &$variables) {
     $route_name = \Drupal::routeMatch()->getRouteName();
     if (\strripos($route_name, "layout_builder.") !== false) {
@@ -323,6 +429,14 @@ class FormatageModelsThemes {
    */
   public static function getDatafields(FieldItemList $items) {
     return $items->getValue();
+  }
+  
+  /**
+   * Verifie le contenu de la
+   *
+   * @param array $vars
+   */
+  public static function formatage_models_menu01(array &$vars) {
   }
   
 }

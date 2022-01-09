@@ -25,7 +25,6 @@ class BuilderConfigForm {
    * @param ThemeUtility $ThemeUtility
    */
   function prepareBuildForms($defaultConfigs, &$form) {
-    
     foreach ($defaultConfigs as $key => $item) {
       if (isset($item['builder-form']) && $item['builder-form'] && !empty($item['fields'])) {
         $this->buildcontainerFields($key, $item, $form);
@@ -67,7 +66,7 @@ class BuilderConfigForm {
     foreach ($field as $type => $Value) {
       $key = null;
       $label = null;
-      $defaultValue = null;
+      $defaultValue = $Value;
       if (is_array($Value)) {
         $label = isset($Value['label']) ? $Value['label'] : null;
         if (isset($Value['value'])) {
@@ -81,10 +80,7 @@ class BuilderConfigForm {
         if ($key)
           $form[$type] = [];
       }
-      else {
-        $defaultValue = $Value;
-        $label = null;
-      }
+      
       switch ($type) {
         case 'text':
           if ($key)
@@ -100,10 +96,12 @@ class BuilderConfigForm {
           break;
         case 'icon-f':
           if ($key)
-            $this->ThemeUtility->AddFieldfontAwasone($key, $form[$type], $label ? $label : 'Icone', $defaultValue);
-          else
-            $this->ThemeUtility->AddFieldfontAwasone($type, $form, $label ? $label : 'Icone', $defaultValue);
+            $this->ThemeUtility->AddFieldfontAwasone($key, $form[$type], $label ? $label : 'Icone', $Value);
           break;
+        /**
+         * Ce champs n'a pas de cas d'utilisation, les boutons doivent etre de
+         * call action, par consequand se sont des liens.
+         */
         case 'btn-variant':
           if ($key)
             $this->ThemeUtility->addSelectBtnVariantTree($key, $form[$type], $label ? $label : 'Button', $defaultValue);
