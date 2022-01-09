@@ -59,7 +59,6 @@ class FormatageModelsFooter1 extends FormatageModelsSection {
   
   public function defaultConfiguration() {
     // $SiteConfig = $this->configFactory->getEditable("site.config");
-   
     return parent::defaultConfiguration() + [
       'region_css_textleft' => 'col-md-8',
       'region_css_textright' => 'col-md-4',
@@ -147,7 +146,7 @@ class FormatageModelsFooter1 extends FormatageModelsSection {
 							<p class="bold  t-pad30">07 68 97 42 98</p>
 							<p class="bold ">
 								<a href="#">
-									<span class="__cf_email__">lesroisdelareno@yahoo.com</span>
+									<span class="__cf_email__"> lesroisdelareno@yahoo.com </span>
 								</a>
 							</p>
 						</div>
@@ -163,13 +162,18 @@ class FormatageModelsFooter1 extends FormatageModelsSection {
           'textleft' => [
             'text_html' => [
               'label' => " Text left ",
-              'value' => " © 2021 LESROISDELARENO.COM. All rights reserved "
+              'value' => '
+  <p>© 2021 LESROISDELARENO.COM. All rights reserved</p>  <p>provided by <a href="#"> Wb-Universe</a></p> 
+'
             ]
           ],
           'textright' => [
             'text_html' => [
               'label' => " Text right ",
-              'value' => ' <p class="pl-3"> provided by <a href="#"> Wb-Universe </a> </p> '
+              'value' => ' 
+    <p class="pl-3"><strong>Paiement sécurisé</strong></p> 
+    <p class="pl-3 bg-secondary"><img alt="paiement securisé" data-entity-type="file" data-entity-uuid="b96e60f0-7db3-4229-8553-5a92b7499133" src="/sites/default/files/inline-images/patment-icon1_0.png"></p>
+'
             ]
           ]
         ]
