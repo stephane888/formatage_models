@@ -1,4 +1,7 @@
 {% if content %}
+	{% if content.bgimage.layout_builder_add_block %}
+		{{ content.bgimage }}
+	{% endif %}
 	{% set RenderBgimage = {
                   '#theme': 'formatage_models__img_url',
                   '#content_all': content.bgimage,
