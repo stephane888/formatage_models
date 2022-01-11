@@ -311,12 +311,24 @@ class FormatageModelsThemes {
                     ];
                     break;
                   case 'icon-f':
+                    // dump($field);
                     $build[$regionName][] = [
                       '#type' => 'html_tag',
-                      '#tag' => 'i',
+                      '#tag' => 'a',
                       '#attributes' => [
                         'class' => [
-                          $field['value']
+                          $field['class']
+                        ],
+                        'href' => $field['link']
+                      ],
+                      '#value' => $field['show_text'] ? $field['text'] : null,
+                      [
+                        '#type' => 'html_tag',
+                        '#tag' => 'i',
+                        '#attributes' => [
+                          'class' => [
+                            $field['value']
+                          ]
                         ]
                       ]
                     ];

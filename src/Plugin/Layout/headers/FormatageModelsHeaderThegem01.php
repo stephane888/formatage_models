@@ -2,8 +2,9 @@
 
 namespace Drupal\formatage_models\Plugin\Layout\headers;
 
-use Drupal\formatage_models\Plugin\Layout\FormatageModels;
 use Drupal\formatage_models\FormatageModelsThemes;
+use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
+use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 
 /**
  * A very advanced custom layout.
@@ -56,7 +57,18 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *   }
  * )
  */
-class FormatageModelsHeaderThegem01 extends FormatageModels {
+class FormatageModelsHeaderThegem01 extends FormatageModelsSection {
+  
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
+    // TODO Auto-generated method stub
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/headers/formatage-models-header-thegem-01.png");
+  }
   
   /**
    *
@@ -113,7 +125,8 @@ class FormatageModelsHeaderThegem01 extends FormatageModels {
               'link' => '#',
               'text' => ' Facebook ',
               'label' => ' Icon facebook ',
-              'show_text' => false
+              'show_text' => false,
+              'class' => 'socials-item'
             ]
           ],
           'social_f2' => [
@@ -122,7 +135,8 @@ class FormatageModelsHeaderThegem01 extends FormatageModels {
               'link' => '#',
               'text' => ' Linkedin ',
               'label' => ' Icon linkedin ',
-              'show_text' => false
+              'show_text' => false,
+              'class' => 'socials-item'
             ]
           ],
           'social_f3' => [
@@ -131,7 +145,8 @@ class FormatageModelsHeaderThegem01 extends FormatageModels {
               'link' => '#',
               'text' => ' Twitter ',
               'label' => ' Icon twitter ',
-              'show_text' => false
+              'show_text' => false,
+              'class' => 'socials-item'
             ]
           ],
           'social_f4' => [
@@ -140,7 +155,8 @@ class FormatageModelsHeaderThegem01 extends FormatageModels {
               'link' => '#',
               'text' => ' Instagram ',
               'label' => ' Icon instagram ',
-              'show_text' => false
+              'show_text' => false,
+              'class' => 'socials-item'
             ]
           ],
           'social_f5' => [
@@ -149,7 +165,8 @@ class FormatageModelsHeaderThegem01 extends FormatageModels {
               'link' => '#',
               'text' => ' Pinterest ',
               'label' => ' Icon pinterest ',
-              'show_text' => false
+              'show_text' => false,
+              'class' => 'socials-item'
             ]
           ],
           'social_f6' => [
@@ -158,7 +175,8 @@ class FormatageModelsHeaderThegem01 extends FormatageModels {
               'link' => '#',
               'text' => ' Youtube ',
               'label' => ' Icon youtube ',
-              'show_text' => false
+              'show_text' => false,
+              'class' => 'socials-item'
             ]
           ]
         ]
@@ -205,9 +223,12 @@ class FormatageModelsHeaderThegem01 extends FormatageModels {
         'fields' => [
           'button_f1' => [
             'url' => [
-              'link' => '#',
-              'value' => 'Join now',
-              'class' => 'btn btn-info'
+              'label' => 'url',
+              'value' => [
+                'link' => '#',
+                'text' => 'Join now',
+                'class' => 'btn btn-info'
+              ]
             ]
           ]
         ]
