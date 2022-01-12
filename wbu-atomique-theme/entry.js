@@ -1,8 +1,13 @@
 module.exports = {
-  "formatage-models-contact-page":
-    "./src/js/pages/formatage-models-contact-page.js",
-  "formatage-models-contact": "./src/js/sections/formatage-models-contact.js",
-  "formatage-models-hero2": "./src/js/sections/formatage-models-hero2.js",
-  "formatage-models-title-description":
-    "./src/js/sections/formatage-models-title-description.js",
+  "formatage-models-hero-gp": "./src/js/sections/formatage-models-hero-gp.js",
+  "formatage-models-client-logo-gp":
+    "./src/js/sections/formatage-models-client-logo-gp.js",
+  "formatage-models-features-section":
+    "./src/js/sections/formatage-models-features-section.js",
+  "formatage-models-services-section":
+    "./src/js/sections/formatage-models-services-section.js",
+  "formatage-models-portfolio-section":
+    "./src/js/sections/formatage-models-portfolio-section.js",
+  "formatage-models-footer-gp":
+    "./src/js/sections/formatage-models-footer-gp.js",
 };

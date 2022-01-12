@@ -8,12 +8,12 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  * A very advanced custom layout.
  *
  * @Layout(
- *   id = "formatage_models_hero_gp",
- *   label = @Translation(" Hero modele GP. "),
- *   category = @Translation("Formatage Models"),
+ *   id = "formatage_models_services_section",
+ *   label = @Translation(" Services section GP. "),
+ *   category = @Translation(" Formatage Models "),
  *   path = "layouts/sections",
- *   template = "formatage-models-hero-gp",
- *   library = "formatage_models/formatage-models-hero-gp",
+ *   template = "formatage-models-services-section",
+ *   library = "formatage_models/formatage-models-services-section",
  *   default_region = "title",
  *   regions = {
  *     "title" = {
@@ -55,7 +55,7 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *   }
  * )
  */
-class FormatageModelsHeroGp extends FormatageModelsSection {
+class FormatageModelsServicesSectionGP extends FormatageModelsSection {
   
   /**
    *
@@ -65,7 +65,7 @@ class FormatageModelsHeroGp extends FormatageModelsSection {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-hero-gp.png");
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-features-section.png");
   }
   
   public function defaultConfiguration() {
