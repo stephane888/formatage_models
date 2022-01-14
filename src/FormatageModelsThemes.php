@@ -310,6 +310,15 @@ class FormatageModelsThemes {
                       '#template' => $field['value']
                     ];
                     break;
+                  case 'text_html_nx':
+                    foreach ($field['value'] as $k => $val) {
+                      if (!empty($val['value']))
+                        $build[$regionName][] = [
+                          '#type' => 'inline_template',
+                          '#template' => $val['value']
+                        ];
+                    }
+                    break;
                   case 'icon-f':
                     // dump($field);
                     $build[$regionName][] = [

@@ -4,6 +4,7 @@ use Stephane888\Debug\debugLog;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Drupal\Component\DependencyInjection\Container;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  *
@@ -14,6 +15,19 @@ use Drupal\Component\DependencyInjection\Container;
  * This file is no longer required in Drupal 8.
  * @see https://www.drupal.org/node/2217931
  */
+function addTextareaTreeMultipleMoreAjax(&$form, FormStateInterface $form_state) {
+  debugLog::$max_depth = 5;
+  $parents = $form_state->getTriggeringElement()['#parents'];
+  $nbre = count($parents);
+  $field = $form;
+  for ($i = 0; $i < ($nbre - 2); $i++) {
+    if (!empty($parents[$i]) && !empty($field[$parents[$i]]))
+      $field = $field[$parents[$i]];
+  }
+  $form_state->get('nombre_field');
+  debugLog::kintDebugDrupal($field, 'addTextareaTreeMultipleMoreAjax');
+  return $field;
+}
 
 /**
  * Implement hook_preprocess_page

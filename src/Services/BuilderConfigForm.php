@@ -112,6 +112,10 @@ class BuilderConfigForm {
           if ($key)
             $this->ThemeUtility->addTextareaTree($type, $form, $label ? $label : 'Texte long', $Value);
           break;
+        case 'text_html_nx':
+          if ($key)
+            $this->ThemeUtility->addTextareaTreeMultiple($type, $form, $label ? $label : 'Texte long', $Value);
+          break;
         case 'img_bg':
           if ($key)
             $this->ThemeUtility->addImageTree($type, $form, $label ? $label : 'Image ', $Value);
