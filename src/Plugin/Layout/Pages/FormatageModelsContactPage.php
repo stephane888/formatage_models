@@ -34,7 +34,7 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *          "label" = @Translation(" subtitle "),
  *      },
  *      "socials" = {
- *          "label" = @Translation("message"),
+ *          "label" = @Translation(" Socials RX "),
  *      },
  *      "title_contact" = {
  *          "label" = @Translation(" Title contact "),
@@ -94,8 +94,65 @@ class FormatageModelsContactPage extends FormatageModelsPages {
           ],
           'socials' => [
             'text_html' => [
-              'label' => " Message ",
-              'value' => ""
+              'label' => " Socials RX ",
+              'value' => '<ul class="social-networks nav">
+					<li class="nav-item">
+						<a href="#" target="_blank" class="nav-link">
+							<i class="fab fa-whatsapp"></i>
+							<span>
+								Whatapp
+							</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" target="_blank" class="nav-link">
+							<i class="fab fa-instagram"></i>
+							<span>
+								instagram
+							</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" target="_blank" class="nav-link">
+							<i class="fab fa-facebook"></i>
+							<span>
+								Facebook
+							</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" target="_blank" class="nav-link">
+							<i class="fab fa-houzz"></i>
+							<span>
+								Houzz
+							</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" target="_blank" class="nav-link">
+							<i class="fab fa-linkedin"></i>
+							<span>
+								Linkedln
+							</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" target="_blank" class="nav-link">
+							<i class="fas fa-plus"></i>
+							<span>
+								homify
+							</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" target="_blank" class="nav-link">
+							<i class="fab fa-skype"></i>
+							<span>
+								Skype
+							</span>
+						</a>
+					</li>
+				</ul>'
             ]
           ],
           'title_contact' => [

@@ -52,7 +52,6 @@ function formatage_models_preprocess_layout(&$vars) {
       $vars['region_attributes'][$key]->addClass('layout-region');
     }
   }
-  // if ($vars['theme_hook_original'] == 'blb_section')
 }
 
 function formatage_models_preprocess_formatage_models_title_description(&$vars) {

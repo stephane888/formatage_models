@@ -3,41 +3,51 @@
 		<h1 class="single-blog--title">
 			{{ content.title }}
 		</h1>
-		<div class="single-blog--tags">
-			{% if content.tags.layout_builder_add_block %}
-				{{ content.tags }}
-			{% else %}
-				{% for block in content.tags|layout_value %}
-					{% for value in block %}
-						{% if value["#theme"] %}
-							<div class="item">{{ value }}</div>
-						{% endif %}
+		{% if content.tags %}
+			<div class="single-blog--tags">
+				{% if content.tags.layout_builder_add_block %}
+					{{ content.tags }}
+				{% else %}
+					{% for block in content.tags|layout_value %}
+						{% for value in block %}
+							{% if value["#theme"] %}
+								<div class="item">{{ value }}</div>
+							{% endif %}
+						{% endfor %}
 					{% endfor %}
-				{% endfor %}
-			{% endif %}
-		</div>
-		<div class="single-blog--icones_info">
-			{{ content.icones_info }}
-		</div>
-		<div class="single-blog--introduction">
-			{% if content.introduction.layout_builder_add_block %}
-				{{ content.introduction }}
-			{% else %}
-				{% for block in content.introduction|layout_value %}
-					{% for value in block %}
-						{% if value["#theme"] %}
-							<div class="item">{{ value }}</div>
-						{% endif %}
+				{% endif %}
+			</div>
+		{% endif %}
+		{% if content.icones_info %}
+			<div class="single-blog--icones_info">
+				{{ content.icones_info }}
+			</div>
+		{% endif %}
+		{% if content.introduction %}
+			<div class="single-blog--introduction">
+				{% if content.introduction.layout_builder_add_block %}
+					{{ content.introduction }}
+				{% else %}
+					{% for block in content.introduction|layout_value %}
+						{% for value in block %}
+							{% if value["#theme"] %}
+								<div class="item">{{ value }}</div>
+							{% endif %}
+						{% endfor %}
 					{% endfor %}
-				{% endfor %}
-			{% endif %}
-		</div>
-		<div class="single-blog--images">
-			{{ content.images }}
-		</div>
-		<div class="single-blog--body">
-			{{ content.body }}
-		</div>
+				{% endif %}
+			</div>
+		{% endif %}
+		{% if content.images %}
+			<div class="single-blog--images">
+				{{ content.images }}
+			</div>
+		{% endif %}
+		{% if content.body %}
+			<div class="single-blog--body">
+				{{ content.body }}
+			</div>
+		{% endif %}
 		{% if content.owls %}
 			<div class="single-blog--owl">
 				<div class="owl-carousel owl-theme" data-owlresponsive='{"items":1,"nav":true,"dots":false,"loop":true,"autoplayTimeout":15000,"autoplayHoverPause":true,"autoplay":true}'>
