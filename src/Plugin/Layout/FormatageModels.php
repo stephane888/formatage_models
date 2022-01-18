@@ -85,6 +85,7 @@ class FormatageModels extends LayoutDefault {
     elseif ($library && $this->configuration['load_libray']) {
       $build['#attached']['library'][] = $library;
     }
+    
     return $build;
   }
   
@@ -94,7 +95,14 @@ class FormatageModels extends LayoutDefault {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
-    $form['label']['#default_value'] = empty($this->configuration['label']) ? $this->getBaseId() : $this->configuration['label'];
+    $label = $this->getPluginDefinition()->getLabel() . ' ( ' . $this->getBaseId() . ' ) ';
+    if (empty($this->configuration['label']) || $this->configuration['label'] == $this->getBaseId()) {
+      $form['label']['#default_value'] = $label;
+    }
+    else {
+      $form['label']['#default_value'] = $this->configuration['label'];
+    }
+    
     $this->Layouts->buildConfigurationForm($form);
     // $form['style'] =
     // $this->stylesGroupManager->buildStylesFormElements($form['style'],

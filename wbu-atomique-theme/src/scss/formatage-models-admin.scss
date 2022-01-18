@@ -62,6 +62,10 @@
   }
 }
 .layout-builder {
+  &-block {
+    background-color: #fff !important;
+    color: #333 !important;
+  }
   &__link {
     &--add {
       &:hover {
