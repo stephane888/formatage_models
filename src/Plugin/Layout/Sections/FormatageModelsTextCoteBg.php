@@ -1,4 +1,5 @@
 <?php
+
 namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
@@ -54,50 +55,47 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *   }
  * )
  */
-class FormatageModelsTextCoteBg extends FormatageModelsSection
-{
-
-    /**
-     *
-     * {@inheritdoc}
-     * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
-     */
-    public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager)
-    {
-        // TODO Auto-generated method stub
-        parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-        $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage-models-textcotebg.png");
-    }
-
-    public function defaultConfiguration()
-    {
-        return parent::defaultConfiguration() + [
-            'css' => '',
-            'region_css_entete' => "col-md-6 ml-auto",
-            'region_css_entete2' => "col-md-6",
-            'sf' => [
-                'builder-form' => true,
-                'info' => [
-                    'title' => 'Contenu 1',
-                    'loader' => 'static'
-                ],
-                'fields' => [
-                    'title' => [
-                        'text_html' => [
-                            'label' => 'titre',
-                            'value' => "Fort de plus<br>de 20 ans d'expérience"
-                        ]
-                    ],
-                    'description' => [
-                        'text_html' => [
-                            'label' => 'Description',
-                            'value' => "WB-U intervient aussi bien dans l’industrie : Industrie Pétrolière, Chimique, Industrie agro, Industries métallurgique et aussi de la prestation de services sur les projets de constructions."
-                        ]
-                    ],
-                    'call_action' => [
-                        'text_html' => [
-                            'label' => 'Call action',
-                            'value' => '<div class="row">
+class FormatageModelsTextCoteBg extends FormatageModelsSection {
+  
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
+    // TODO Auto-generated method stub
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage-models-textcotebg.png");
+  }
+  
+  public function defaultConfiguration() {
+    return parent::defaultConfiguration() + [
+      'css' => '',
+      'region_css_entete' => "col-md-6 ml-auto",
+      'region_css_entete2' => "col-md-6",
+      'sf' => [
+        'builder-form' => true,
+        'info' => [
+          'title' => 'Contenu 1',
+          'loader' => 'static'
+        ],
+        'fields' => [
+          'title' => [
+            'text_html' => [
+              'label' => 'titre',
+              'value' => "Fort de plus<br>de 20 ans d'expérience"
+            ]
+          ],
+          'description' => [
+            'text_html' => [
+              'label' => 'Description',
+              'value' => "WB-U intervient aussi bien dans l’industrie : Industrie Pétrolière, Chimique, Industrie agro, Industries métallurgique et aussi de la prestation de services sur les projets de constructions."
+            ]
+          ],
+          'call_action' => [
+            'text_html' => [
+              'label' => 'Call action',
+              'value' => '<div class="row">
                                         	<div class="d-flex col-md-6">
                                         		<div class="pr-3">
                                         			<i class="icon-picons-umbrella"></i>
@@ -117,73 +115,74 @@ class FormatageModelsTextCoteBg extends FormatageModelsSection
                                         		</div>
                                         	</div>
                                         </div>'
-                        ]
-                    ],
-                    'entete' => [
-                        'text_html' => [
-                            'label' => 'Entete',
-                            'value' => ""
-                        ]
-                    ],
-                    'lyt_footer' => [
-                        'text_html' => [
-                            'label' => 'Footer',
-                            'value' => ""
-                        ]
-                    ],
-                    'image' => [
-                        'img_bg' => [
-                            'label' => 'Image',
-                            'fids' => []
-                        ]
-                    ]
-                ]
-            ],
-            'sf2' => [
-                'builder-form' => true,
-                'info' => [
-                    'title' => 'Contenu 2',
-                    'loader' => 'static'
-                ],
-                'fields' => [
-                    'title2' => [
-                        'text_html' => [
-                            'label' => 'titre',
-                            'value' => ""
-                        ]
-                    ],
-                    'description2' => [
-                        'text_html' => [
-                            'label' => 'Description',
-                            'value' => ""
-                        ]
-                    ],
-                    'call_action2' => [
-                        'text_html' => [
-                            'label' => 'Call action',
-                            'value' => ''
-                        ]
-                    ],
-                    'entete2' => [
-                        'text_html' => [
-                            'label' => 'Entete',
-                            'value' => ""
-                        ]
-                    ],
-                    'lyt_footer2' => [
-                        'text_html' => [
-                            'label' => 'Footer',
-                            'value' => ""
-                        ]
-                    ],
-                    'image2' => [
-                        'img_bg' => [
-                            'label' => 'Image',
-                            'fids' => []
-                        ]
-                    ]
-                ]
             ]
-        ];
-    }
+          ],
+          'entete' => [
+            'text_html' => [
+              'label' => 'Entete',
+              'value' => ""
+            ]
+          ],
+          'lyt_footer' => [
+            'text_html' => [
+              'label' => 'Footer',
+              'value' => ""
+            ]
+          ],
+          'image' => [
+            'img_bg' => [
+              'label' => 'Image',
+              'fids' => []
+            ]
+          ]
+        ]
+      ],
+      'sf2' => [
+        'builder-form' => true,
+        'info' => [
+          'title' => 'Contenu 2',
+          'loader' => 'static'
+        ],
+        'fields' => [
+          'title2' => [
+            'text_html' => [
+              'label' => 'titre',
+              'value' => ""
+            ]
+          ],
+          'description2' => [
+            'text_html' => [
+              'label' => 'Description',
+              'value' => ""
+            ]
+          ],
+          'call_action2' => [
+            'text_html' => [
+              'label' => 'Call action',
+              'value' => ''
+            ]
+          ],
+          'entete2' => [
+            'text_html' => [
+              'label' => 'Entete',
+              'value' => ""
+            ]
+          ],
+          'lyt_footer2' => [
+            'text_html' => [
+              'label' => 'Footer',
+              'value' => ""
+            ]
+          ],
+          'image2' => [
+            'img_bg' => [
+              'label' => 'Image',
+              'fids' => []
+            ]
+          ]
+        ]
+      ]
+    ];
+  }
+  
 }

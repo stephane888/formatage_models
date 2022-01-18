@@ -1,18 +1,16 @@
 {% if content %}
 	<div{{attributes.addClass('reinsuranceBlock')}}>
 		<hr class="reinsuranceBlock__hr"/>
-		<div class="reinsuranceBlock__h3">
-			{% if settings.titre != '' %}
-				{{ settings.titre }}
-			{% endif %}
-		</div>
+		{% if content.titre  %}
+			<div {{region_attributes.titre.addClass('titre','reinsuranceBlock__h3')}}>
+				{{ content.titre }}
+			</div>
+		{% endif %}
 		{{ content.items }}
-		<div class="reinsuranceBlock__bouton">
-			{% if settings.text_url != '' %}
-				<a class="btn btn-radius" href="{{ settings.url }}">
-					{{ settings.text_url }}
-				</a>
-			{% endif %}
-		</div>
+		{% if content.link %}
+			<div {{region_attributes.link.addClass('link','reinsuranceBlock__bouton')}}>
+				{{ content.link }}
+			</div>
+		{% endif %}
 	</div>
 {% endif %}

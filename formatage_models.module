@@ -66,7 +66,6 @@ function formatage_models_preprocess_layout(&$vars) {
       $vars['region_attributes'][$key]->addClass('layout-region');
     }
   }
-  // if ($vars['theme_hook_original'] == 'blb_section')
 }
 
 function formatage_models_preprocess_formatage_models_menu01(&$vars) {
@@ -232,9 +231,8 @@ function formatage_models_preprocess_formatage_models_titre(array &$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
-function formatage_models_preprocess_formatage_models_lmsg_call_toaction(array &$variables) {
-  // FormatageModelsThemes::addLayoutEditBlock($variables);
-  FormatageModelsThemes::ApplyAttributes($variables);
+function formatage_models_preprocess_formatage_models_lmsg_call_toaction(array &$vars) {
+  FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
 function formatage_models_preprocess_formatage_models_service_icone(array &$variables) {

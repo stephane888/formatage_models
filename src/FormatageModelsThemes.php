@@ -219,16 +219,30 @@ class FormatageModelsThemes {
                       /**
                        *
                        * @var \Drupal\Core\Render\Element\Link
+                       * @deprecated
                        */
-                      if (!empty($field['value']['text']))
+                      if (!empty($field['value']['text'])) {
+                        $options = [];
+                        $typeLink = 'internal:';
+                        if (!(strpos($field['value']['link'], 'http') === false)) {
+                          $typeLink = '';
+                          $options['absolute'] = true;
+                          $options['external'] = true;
+                          $options['attributes']['target'] = 'blank';
+                        }
                         $variables['content'][$regionName][] = [
                           '#type' => 'link',
-                          '#title' => $field['value']['text'],
-                          '#url' => \Drupal\Core\Url::fromUserInput($field['value']['link']),
+                          '#title' => [
+                            '#type' => 'inline_template',
+                            '#template' => $field['value']['text']
+                          ],
+                          '#url' => \Drupal\Core\Url::fromUri($typeLink . $field['value']['link'], $options),
                           '#attributes' => [
                             'class' => explode(" ", $field['value']['class'])
                           ]
                         ];
+                      }
+                      
                       break;
                     default:
                       throw new \Exception("Le champs " . $key . " n'a pas de rendu ");

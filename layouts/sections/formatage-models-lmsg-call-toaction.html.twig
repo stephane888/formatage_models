@@ -13,32 +13,10 @@
 				</div>
 				<div class="col-lg-6">
 					<div class="content-txt">
-						<div{{region_attributes.description}}>{{ content.description }}</div>
-						<div>
-							{% if content.Link.layout_builder_add_block %}
-								{{ content.Link }}
-							{% else %}
-								{% set url = "" %}
-								{% for block in content.Link | layout_raw %}
-									{% for field in block %}
-										{% if field %}
-											{% set url = field.value %}
-										{% endif %}
-									{% endfor %}
-								{% endfor %}
-								{{field}}
-							{% endif %}
+						<div {{region_attributes.description}}>
+							{{ content.description }}
 						</div>
-						<a href="{{ url }}" class="seeMore d-flex">
-							{% if content.link_text|layout_raw %}
-								{{ content.link_text|layout_value }}
-							{% else %}
-								En savoir plus
-							{% endif %}
-							<svg class="icon svg-angle-left" width="12" height="10" fill="none">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M.6 5.55h9.352L6.733 8.768a.6.6 0 10.849.849l4.242-4.243a.606.606 0 00.075-.091c.01-.015.017-.032.026-.047.01-.019.021-.037.029-.056.008-.02.013-.042.02-.063.004-.016.01-.032.014-.05A.6.6 0 0012 4.95v-.001a.605.605 0 00-.012-.116c-.003-.018-.01-.035-.015-.053-.006-.02-.01-.04-.019-.06-.009-.02-.02-.04-.031-.059-.008-.014-.015-.03-.024-.044a.588.588 0 00-.075-.092L7.582.283a.6.6 0 00-.849.849L9.951 4.35H.6a.6.6 0 000 1.2z" fill="#fff"></path>
-							</svg>
-						</a>
+						{{content.link}}
 					</div>
 				</div>
 			</div>

@@ -27,8 +27,10 @@ class BuilderConfigForm {
   function prepareBuildForms($defaultConfigs, &$form) {
     foreach ($defaultConfigs as $key => $item) {
       if (isset($item['builder-form']) && $item['builder-form'] && !empty($item['fields'])) {
+        
         $this->buildcontainerFields($key, $item, $form);
         $this->buildRenderField($item['fields'], $form[$key]);
+        // dump($item);
       }
     }
   }
@@ -58,6 +60,7 @@ class BuilderConfigForm {
   }
   
   /**
+   * Tous les champs doivent avoir value et label.
    *
    * @param array $field
    * @param array $form
@@ -91,8 +94,6 @@ class BuilderConfigForm {
         case 'url':
           if ($key)
             $this->ThemeUtility->addUrlTree($key, $form[$type], $label ? $label : 'Url', $defaultValue);
-          else
-            $this->ThemeUtility->addUrlTree($type, $form, $label ? $label : 'Url', $defaultValue);
           break;
         case 'icon-f':
           if ($key)
