@@ -6,4 +6,5 @@ core: 8.x
 core_version_requirement: ^8 || ^9
 dependencies:
   - drupal:layout_builder
-  - drupal:bootstrap_styles
+  - drupal:bootstrap_layout_builder
+  - drupal:domain

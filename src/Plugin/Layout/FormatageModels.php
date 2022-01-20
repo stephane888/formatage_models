@@ -13,7 +13,7 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  * default class for module layout module
  *
  * @author stephane
- *
+ *        
  */
 class FormatageModels extends LayoutDefault {
   
@@ -48,14 +48,6 @@ class FormatageModels extends LayoutDefault {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->Layouts->setConfig($this->configuration);
     $this->Layouts->setRegions($this->getPluginDefinition()->getRegions());
-    
-    // dump($this->pluginDefinition->get('icon'));
-    // $this->pluginDefinition->setIconPath("my-custom-icon.jpg");
-    // dump($this->pluginDefinition->getIcon(),
-    // $this->pluginDefinition->get('icon'),
-    // $this->pluginDefinition->getIconPath(),
-    // $this->pluginDefinition->getPath(),
-    // $this->pluginDefinition->get('myicone'));
   }
   
   /**
@@ -63,9 +55,6 @@ class FormatageModels extends LayoutDefault {
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    
-    // dump(' init ? ');
-    // dump($this->pluginDefinition->getIcon());
     return parent::defaultConfiguration() + $this->Layouts->defaultConfiguration() + [];
   }
   
@@ -86,7 +75,14 @@ class FormatageModels extends LayoutDefault {
     $build['#layout'] = $this->pluginDefinition;
     $build['#theme'] = $this->pluginDefinition->getThemeHook();
     $library = $this->pluginDefinition->getLibrary();
-    if ($library && $this->configuration['load_libray']) {
+    $currentDomain = $this->Layouts::getCurrentdomain();
+    if (!empty($this->configuration[$currentDomain])) {
+      $build['#settings'] = $this->configuration[$currentDomain];
+      if ($this->configuration[$currentDomain]['load_libray']) {
+        $build['#attached']['library'][] = $library;
+      }
+    }
+    elseif ($library && $this->configuration['load_libray']) {
       $build['#attached']['library'][] = $library;
     }
     
@@ -99,7 +95,14 @@ class FormatageModels extends LayoutDefault {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
-    $form['label']['#default_value'] = empty($this->configuration['label']) ? $this->getBaseId() : $this->configuration['label'];
+    $label = $this->getPluginDefinition()->getLabel() . ' ( ' . $this->getBaseId() . ' ) ';
+    if (empty($this->configuration['label']) || $this->configuration['label'] == $this->getBaseId()) {
+      $form['label']['#default_value'] = $label;
+    }
+    else {
+      $form['label']['#default_value'] = $this->configuration['label'];
+    }
+    
     $this->Layouts->buildConfigurationForm($form);
     // $form['style'] =
     // $this->stylesGroupManager->buildStylesFormElements($form['style'],

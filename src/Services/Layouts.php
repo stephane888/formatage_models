@@ -26,19 +26,21 @@ class Layouts {
    * @return string[]|boolean[]
    */
   function defaultConfiguration() {
-    return ['css' => '', 'load_libray' => false, 'save_by_domain' => false
+    return [
+      'css' => '',
+      'load_libray' => false,
+      'save_by_domain' => false
     ];
   }
   
   //
   function setConfig($configuration) {
     $this->configuration = $configuration;
-    // $currentDomain = self::getCurrentdomain();
-    // if (!empty($configuration['save_by_domain']) &&
-    // !empty($configuration[$currentDomain])) {
-    // $this->configuration = $configuration[$currentDomain];
-    // }
-    // dump($configuration);
+    $currentDomain = self::getCurrentdomain();
+    
+    if (!empty($configuration['save_by_domain']) && !empty($configuration[$currentDomain])) {
+      $this->configuration = $configuration[$currentDomain];
+    }
   }
   
   //
@@ -53,10 +55,10 @@ class Layouts {
    */
   function buildClassCssRegion(array &$form) {
     foreach ($this->regions as $region => $label) {
-      $form['css_class']['region_css_' . $region] = ['#type' => 'textfield',
+      $form['css_class']['region_css_' . $region] = [
+        '#type' => 'textfield',
         '#title' => 'Class css region : ' . $label['label'],
-        '#default_value' => isset($this->configuration['region_css_' . $region]) ? $this->configuration['region_css_' .
-        $region] : ''
+        '#default_value' => isset($this->configuration['region_css_' . $region]) ? $this->configuration['region_css_' . $region] : ''
       ];
     }
   }
@@ -66,29 +68,35 @@ class Layouts {
    * @param array $form
    */
   function buildConfigurationForm(array &$form) {
-    $form["load_libray"] = ['#type' => 'checkbox',
+    $form["load_libray"] = [
+      '#type' => 'checkbox',
       '#title' => "Charge les styles",
       '#default_value' => $this->configuration['load_libray']
     ];
-    $form["save_by_domain"] = ['#type' => 'checkbox',
+    $form["save_by_domain"] = [
+      '#type' => 'checkbox',
       '#title' => "Enregistre en fonction du domain",
       '#default_value' => $this->configuration['save_by_domain']
     ];
     
-    $form['css_class'] = array('#type' => 'details', '#title' => 'Class html',
+    $form['css_class'] = array(
+      '#type' => 'details',
+      '#title' => 'Class html',
       '#open' => false
     );
-    $form['css_class']['css'] = ['#type' => 'textfield',
+    $form['css_class']['css'] = [
+      '#type' => 'textfield',
       '#title' => 'Class css du container parent',
       '#default_value' => $this->configuration['css']
     ];
-    // if (!empty($this->configuration['derivate']['options']))
-    // $form['css_class']['derivate'] = ['#type' => 'select',
-    // '#title' => 'Selectionner une derivée ',
-    // '#default_value' => $this->configuration['derivate']['value'],
-    // '#options' => $this->configuration['derivate']['options'],
-    // '#empty_option' => '- Select -'
-    // ];
+    if (!empty($this->configuration['derivate']['options']))
+      $form['css_class']['derivate'] = [
+        '#type' => 'select',
+        '#title' => 'Selectionner une derivée ',
+        '#default_value' => $this->configuration['derivate']['value'],
+        '#options' => $this->configuration['derivate']['options'],
+        '#empty_option' => '- Select -'
+      ];
     $this->buildClassCssRegion($form);
     $this->BuilderConfigForm->prepareBuildForms($this->configuration, $form);
   }
@@ -118,47 +126,49 @@ class Layouts {
    * @param array $configuration
    * @param FormStateInterface $form_state
    */
-  function submitConfigurationForm(array &$configuration,
-      FormStateInterface $form_state) {
-    // $currentDomain = self::getCurrentdomain();
+  function submitConfigurationForm(array &$configuration, FormStateInterface $form_state) {
+    $currentDomain = self::getCurrentdomain();
+    
     $SubConfiguration = $configuration;
-    // if (!empty($currentDomain) && !empty($configuration[$currentDomain])) {
-    // $SubConfiguration = $configuration[$currentDomain];
-    // }
+    if (!empty($currentDomain) && !empty($configuration[$currentDomain])) {
+      $SubConfiguration = $configuration[$currentDomain];
+    }
+    else {
+      $SubConfiguration['save_by_domain'] = $form_state->getValue('save_by_domain');
+    }
     $SubConfiguration['load_libray'] = $form_state->getValue('load_libray');
     
-    $SubConfiguration['css'] = $form_state->getValue(['css_class', 'css'
+    $SubConfiguration['css'] = $form_state->getValue([
+      'css_class',
+      'css'
     ]);
-    // if (!empty($this->configuration['derivate']['options']))
-    // $SubConfiguration['derivate']['value'] = $form_state->getValue(
-    // ['css_class', 'derivate'
-    // ]);
+    if (!empty($this->configuration['derivate']['options']))
+      $SubConfiguration['derivate']['value'] = $form_state->getValue([
+        'css_class',
+        'derivate'
+      ]);
     foreach ($this->regions as $region => $label) {
-      $SubConfiguration['region_css_' . $region] = $form_state->getValue(
-          ['css_class', 'region_css_' . $region
-          ]);
+      $SubConfiguration['region_css_' . $region] = $form_state->getValue([
+        'css_class',
+        'region_css_' . $region
+      ]);
     }
-    
     //
     foreach ($SubConfiguration as $key => $field) {
       if (!empty($field['builder-form'])) {
-        $SubConfiguration[$key]['info'] = array_merge($field['info'],
-            $form_state->getValue($key)['info']);
-        $SubConfiguration[$key]['fields'] = array_merge($field['fields'],
-            $form_state->getValue($key)['fields']);
+        $SubConfiguration[$key]['info'] = array_merge($field['info'], $form_state->getValue($key)['info']);
+        $SubConfiguration[$key]['fields'] = array_merge($field['fields'], $form_state->getValue($key)['fields']);
         // cette function n'est plus necessaire.
         $this->saveImage($SubConfiguration[$key]['fields']);
       }
     }
     
-    // if ($configuration['save_by_domain'] && !empty($currentDomain)) {
-    // $configuration[$currentDomain] = $SubConfiguration;
-    // }
-    // else {
-    // $configuration = $SubConfiguration;
-    // }
-    $configuration = $SubConfiguration;
-    // dump($configuration);
+    if ($configuration['save_by_domain'] && !empty($currentDomain)) {
+      $configuration[$currentDomain] = $SubConfiguration;
+    }
+    else {
+      $configuration = $SubConfiguration;
+    }
   }
   
   /**
@@ -167,17 +177,15 @@ class Layouts {
    * @deprecated
    * @return string|number|NULL
    */
-  // public static function getCurrentdomain()
-  // {
-  // /** @var \Drupal\domain\Entity\Domain $active */
-  // $active = \Drupal::service('domain.negotiator')->getActiveDomain();
-  // if (empty($active)) {
-  // $active =
-  // \Drupal::entityTypeManager()->getStorage('domain')->loadDefaultDomain();
-  // }
-  // if (! empty($active))
-  // return $active->id();
-  // }
+  public static function getCurrentdomain() {
+    /** @var \Drupal\domain\Entity\Domain $active */
+    $active = \Drupal::service('domain.negotiator')->getActiveDomain();
+    if (empty($active)) {
+      $active = \Drupal::entityTypeManager()->getStorage('domain')->loadDefaultDomain();
+    }
+    if (!empty($active))
+      return $active->id();
+  }
   
   /**
    *
@@ -208,8 +216,7 @@ class Layouts {
         // set usage;
         /** @var \Drupal\file\FileUsage\FileUsageInterface $file_usage */
         $file_usage = \Drupal::service('file.usage');
-        $file_usage->add($file, 'formatage_models', 'layout',
-            \Drupal::currentUser()->id());
+        $file_usage->add($file, 'formatage_models', 'layout', \Drupal::currentUser()->id());
       }
     }
   }

@@ -37,8 +37,89 @@ vuejs:
     https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js:
       { type: external, minified: true }
 
+formatage-models-admin:
+  js:
+    layouts/js/formatage_models_admin.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_admin.css: { weight: 10 } 
+
+
+
 #################################################################################################################################################
 # -50 <weight> +50
+
+formatage-models-footer-gp:
+  js:
+    layouts/js/formatage-models-footer-gp.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-footer-gp.css: { weight: 10 }  
+
+formatage-models-portfolio-section:
+  js:
+    layouts/js/formatage-models-portfolio-section.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-portfolio-section.css: { weight: 10 }
+
+formatage-models-services-section:
+  js:
+    layouts/js/formatage-models-services-section.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-services-section.css: { weight: 10 }
+
+formatage-models-features-section:
+  js:
+    layouts/js/formatage-models-features-section.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-features-section.css: { weight: 10 }
+
+formatage-models-client-logo-gp:
+  js:
+    layouts/js/formatage-models-client-logo-gp.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-client-logo-gp.css: { weight: 10 }
+
+formatage-models-hero-gp:
+  js:
+    layouts/js/formatage-models-hero-gp.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-gp.css: { weight: 10 } 
+
+formatage-models-title-description:
+  js:
+    layouts/js/formatage-models-title-description.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-title-description.css: { weight: 10 } 
+
+
+formatage-models-hero2:
+  js:
+    layouts/js/formatage-models-hero2.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero2.css: { weight: 10 } 
+
+
+formatage-models-contact-page:
+  js:
+    layouts/js/formatage-models-contact-page.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-contact-page.css: { weight: 10 } 
+
+formatage-models-contact:
+  js:
+    layouts/js/formatage-models-contact.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-contact.css: { weight: 10 } 
 
 formatage-models-footer1:
   js:

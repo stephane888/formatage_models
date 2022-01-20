@@ -1,0 +1,21 @@
+{# empty Twig template #}
+{% if content %}
+	<div{{attributes.addClass('block__whoAreWe--plain')}}>
+		<div class="block__whoAreWe">
+			<h2 {{region_attributes.title.addClass('title','h2Title')}}>
+				{{content.title|layout_value}}
+			</h2>
+			{% if content.sub_title %}
+				<div {{region_attributes.sub_title.addClass('sub_title','hp-desc')}}>
+					{{content.sub_title|layout_value}}
+				</div>
+			{% endif %}
+			<span class="line"></span>
+			{% if content.description %}
+				<div {{region_attributes.description.addClass('description','subDescription')}}>
+					{{content.description|layout_value}}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endif %}

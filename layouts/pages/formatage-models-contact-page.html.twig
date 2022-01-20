@@ -1,0 +1,43 @@
+{{ attach_library('formatage_models/formatage-models-contact-page') }}
+{#{ dump() }#}
+{# library font awesome pour icone  #}
+<link
+rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/> {# library to load typed.min.js #}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
+<section {{ attributes.addClass('the-content') }}>
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="presentation">
+				<h3{{region_attributes.title.addClass('title')}}>
+					{{ content.title }}
+				</h3>
+				<h5{{region_attributes.subtitle.addClass('subtitle')}}>
+					{{ content.subtitle }}
+				</h5>
+			</div>
+			<div {{region_attributes.socials.addClass('social-networks-icon')}}>
+				{{ content.socials }}
+			</div>
+			<h5 {{region_attributes.title_contact.addClass('title_contact')}}>
+				{{ content.title_contact }}
+				<div {{region_attributes.title_contact_anime.addClass('title_contact_anime')}}>
+					{{ content.title_contact_anime }}
+				</div>
+			</h5>
+			<div {{region_attributes.headercontact.addClass('headercontact')}}>
+				{{content.headercontact}}
+			</div>
+			<div {{region_attributes.textcontact.addClass('textcontact')}}>
+				{{content.textcontact}}
+			</div>
+		</div>
+		<div class="col-md-8 right_content">
+			<div {{region_attributes.map.addClass("map")}}>
+				{{ content.map }}
+			</div>
+			<div {{region_attributes.form.addClass("form")}}>
+				{{ content.form }}
+			</div>
+		</div>
+	</div>
+</section>

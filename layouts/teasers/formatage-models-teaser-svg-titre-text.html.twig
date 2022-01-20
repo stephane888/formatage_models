@@ -2,12 +2,7 @@
 	<div{{attributes.addClass('reinsuranceItem')}}>
 		<div class="reinsuranceItem__iconContainer">
 			<div {{ region_attributes.svg.addClass('reinsuranceItem__assistance') }}>
-				{% set svg = {
-                    '#theme': 'formatage_models__clean_field',
-                    '#content_all': content.svg
-                } 
-            %}
-				{{ render_var(svg) }}
+				{{content.svg}}
 			</div>
 		</div>
 		{% if content.titre %}

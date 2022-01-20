@@ -38,23 +38,23 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
   
   public function build(array $regions) {
     $build = parent::build($regions);
+    
+    // à mettre sur un module externe.
     $currentDomain = $this->Layouts::getCurrentdomain();
     if (!empty($this->configuration[$currentDomain])) {
       $build['#settings'] = $this->configuration[$currentDomain];
     }
     
     // classes and attributes.
-    // if (str_contains($layout->getTemplatePath(), "layouts/sections")) {
     if (!isset($build['#attributes']['class'])) {
       $build['#attributes']['class'] = [];
     }
     $build['#attributes']['class'][] = 'space_bottom';
     $build['#attributes']['class'][] = $this->configuration['css'];
-    // dump($this->configuration);
     if (!empty($this->configuration['derivate']['value'])) {
       $build['#attributes']['class'][] = $this->configuration['derivate']['value'];
     }
-    // }
+    
     // Regions classes and attributes.
     foreach ($this->getPluginDefinition()->getRegionNames() as $region_name) {
       $build[$region_name]['#attributes']['class'] = [

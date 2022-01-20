@@ -1,4 +1,5 @@
 {% if content %}
+	{{layout_quickedit}}
 	<div{{attributes.addClass('ourAchievments-module')}}>
 		{# url #}
 		{% if content.url %}
@@ -32,13 +33,20 @@
 							{% if content.listes.layout_builder_add_block %}
 								{{content.listes|layout_value}}
 							{% else %}
-								{% for block in content.listes|layout_value %}
-									<button class="btn-radius">
-										{{block}}
-									</button>
+								{% for block in content.listes %}
+									{% if (block["#theme"] or block['#items']) %}
+										<button class="btn-radius">
+											{{block}}
+										</button>
+									{% endif %}
 								{% endfor %}
 							{% endif %}
 						</ul>
+					{% endif %}
+					{% if content.description %}
+						<div {{region_attributes.description.addClass('description')}}>
+							{{content.description}}
+						</div>
 					{% endif %}
 				</div>
 			</div>

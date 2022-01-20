@@ -27,8 +27,10 @@ class BuilderConfigForm {
   function prepareBuildForms($defaultConfigs, &$form) {
     foreach ($defaultConfigs as $key => $item) {
       if (isset($item['builder-form']) && $item['builder-form'] && !empty($item['fields'])) {
+        
         $this->buildcontainerFields($key, $item, $form);
         $this->buildRenderField($item['fields'], $form[$key]);
+        // dump($item);
       }
     }
   }
@@ -57,12 +59,17 @@ class BuilderConfigForm {
     }
   }
   
-  //
+  /**
+   * Tous les champs doivent avoir value et label.
+   *
+   * @param array $field
+   * @param array $form
+   */
   function selectRenderfield($field, &$form) {
     foreach ($field as $type => $Value) {
       $key = null;
       $label = null;
-      $defaultValue = null;
+      $defaultValue = $Value;
       if (is_array($Value)) {
         $label = isset($Value['label']) ? $Value['label'] : null;
         if (isset($Value['value'])) {
@@ -76,10 +83,7 @@ class BuilderConfigForm {
         if ($key)
           $form[$type] = [];
       }
-      else {
-        $defaultValue = $Value;
-        $label = null;
-      }
+      
       switch ($type) {
         case 'text':
           if ($key)
@@ -90,15 +94,15 @@ class BuilderConfigForm {
         case 'url':
           if ($key)
             $this->ThemeUtility->addUrlTree($key, $form[$type], $label ? $label : 'Url', $defaultValue);
-          else
-            $this->ThemeUtility->addUrlTree($type, $form, $label ? $label : 'Url', $defaultValue);
           break;
         case 'icon-f':
           if ($key)
-            $this->ThemeUtility->AddFieldfontAwasone($key, $form[$type], $label ? $label : 'Icone', $defaultValue);
-          else
-            $this->ThemeUtility->AddFieldfontAwasone($type, $form, $label ? $label : 'Icone', $defaultValue);
+            $this->ThemeUtility->AddFieldfontAwasone($type, $form, $label ? $label : 'Icone', $Value);
           break;
+        /**
+         * Ce champs n'a pas de cas d'utilisation, les boutons doivent etre de
+         * call action, par consequand se sont des liens.
+         */
         case 'btn-variant':
           if ($key)
             $this->ThemeUtility->addSelectBtnVariantTree($key, $form[$type], $label ? $label : 'Button', $defaultValue);
@@ -108,6 +112,10 @@ class BuilderConfigForm {
         case 'text_html':
           if ($key)
             $this->ThemeUtility->addTextareaTree($type, $form, $label ? $label : 'Texte long', $Value);
+          break;
+        case 'text_html_nx':
+          if ($key)
+            $this->ThemeUtility->addTextareaTreeMultiple($type, $form, $label ? $label : 'Texte long', $Value);
           break;
         case 'img_bg':
           if ($key)
@@ -130,19 +138,19 @@ class BuilderConfigForm {
    * @param array $form
    */
   private function buildcontainerFields(string $key, array $item, array &$form) {
-    $form[$key] = array(
+    $form[$key] = [
       '#type' => 'details',
       '#title' => $item['info']['title'],
       '#open' => false,
       '#tree' => true
-    );
+    ];
     // On ajoute le chargeur de donnée.
     $options = [
       'static' => 'Charge le contenu static',
       'dynamic' => 'Charge le contenu dynamique'
     ];
     $form[$key]['info'] = [];
-    $this->ThemeUtility->addSelectTree('loader', $form[$key]['info'], $options, "selectionne la maniere donc le contenu est definit", $item['info']['loader']);
+    $this->ThemeUtility->addSelectTree('loader', $form[$key]['info'], $options, "Selectionne la maniere donc le contenu est definit", $item['info']['loader']);
   }
   
 }

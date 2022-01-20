@@ -58,7 +58,7 @@ class FormatageModelsSwiperBigViewsStyleV3 extends StylePluginBase {
       'img' => []
     ];
     $options['library'] = [
-      'default' => true
+      'default' => 1
     ];
     $options['library-file'] = [
       'default' => 'formatage_models/formatage_models_swiper_big_v3'
@@ -72,15 +72,15 @@ class FormatageModelsSwiperBigViewsStyleV3 extends StylePluginBase {
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     parent::buildOptionsForm($form, $form_state);
-    
+    // dump($this->options);
     $labels = $this->displayHandler->getFieldLabels(TRUE);
     
-    // debugLog::kintDebugDrupal($this->options, 'buildOptionsForm__options');
     $form['library'] = [
       '#type' => 'checkbox',
       '#title' => ' Charger la librarie de style ',
-      '#default_value' => (isset($this->options['library'])) ? $this->options['library'] : true
+      '#default_value' => isset($this->options['library']) ? $this->options['library'] : 1
     ];
+    
     /**
      * add section
      */
@@ -90,6 +90,8 @@ class FormatageModelsSwiperBigViewsStyleV3 extends StylePluginBase {
       "#tree" => true,
       '#open' => true
     ];
+    
+    // debugLog::kintDebugDrupal($this->options, 'buildOptionsForm__options');
     $form['view_layouts_options']['title'] = [
       '#type' => 'checkboxes',
       '#title' => 'Titre',

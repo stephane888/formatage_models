@@ -1,8 +1,10 @@
 <?php
+
 namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\formatage_models\Plugin\Layout\FormatageModels;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 
 /**
  * A very advanced custom layout.
@@ -25,43 +27,51 @@ use Drupal\Core\Form\FormStateInterface;
  *   }
  * )
  */
-class FormatageModelsArticleHeader extends FormatageModels
-{
-
-    /**
-     *
-     * {@inheritdoc}
-     */
-    public function defaultConfiguration()
-    {
-        return parent::defaultConfiguration() + [
-            'class_col' => 'col-md-8'
-        ];
-    }
-
-    /**
-     *
-     * {@inheritdoc}
-     */
-    public function buildConfigurationForm(array $form, FormStateInterface $form_state)
-    {
-        $form = parent::buildConfigurationForm($form, $form_state);
-
-        $form['class_col'] = [
-            '#type' => 'textfield',
-            '#title' => $this->t('class_col'),
-            '#default_value' => $this->configuration['class_col']
-        ];
-        return $form;
-    }
-
-    /**
-     *
-     * {@inheritdoc}
-     */
-    public function submitConfigurationForm(array &$form, FormStateInterface $form_state)
-    {
-        parent::submitConfigurationForm($form, $form_state);
-        $this->configuration['class_col'] = $form_state->getValue('class_col');
-    }
+class FormatageModelsArticleHeader extends FormatageModelsSection {
+  
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
+    // TODO Auto-generated method stub
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-article-header.png");
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function defaultConfiguration() {
+    return parent::defaultConfiguration() + [
+      'class_col' => 'col-md-8'
+    ];
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form = parent::buildConfigurationForm($form, $form_state);
+    
+    $form['class_col'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('class_col'),
+      '#default_value' => $this->configuration['class_col']
+    ];
+    return $form;
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['class_col'] = $form_state->getValue('class_col');
+  }
+  
 }

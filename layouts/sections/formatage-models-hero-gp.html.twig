@@ -1,0 +1,32 @@
+{% if content %}
+	<!-- ======= Hero Section ======= -->
+	<section id="hero" {{attributes.addClass('d-flex','align-items-center','justify-content-center','gp-hero')}}>
+		<div class="container" data-aos="fade-up">
+			<div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+				<div class="col-xl-6 col-lg-8">
+					{% if content.title %}
+						<h1 {{ region_attributes.title.addClass('title') }}>
+							{{content.title}}
+							<span>.</span>
+						</h1>
+					{% endif %}
+					{% if content.description %}
+						<h2 {{region_attributes.description.addClass('description')}}>
+							{{content.description}}
+						</h2>
+					{% endif %}
+				</div>
+			</div>
+			<div {{region_attributes.blocks.addClass('blocks','row','gy-4','mt-5','justify-content-center')}} data-aos="zoom-in" data-aos-delay="250">
+				{% for bloc in content.blocks  if bloc['#type'] %}
+					<div class="col-xl-2 col-md-4 mt-5">
+						<div class="icon-box">
+							{{bloc}}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- End Hero -->
+{% endif %}

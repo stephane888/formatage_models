@@ -1,0 +1,75 @@
+#drupal-off-canvas {
+  color: #ddd;
+  background: #f7f8f9;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  max-width: -webkit-fill-available;
+}
+#drupal-off-canvas *,
+#drupal-off-canvas :not(.form-submit),
+#drupal-off-canvas :not(div) {
+  color: #314b5a;
+}
+.layout-selection {
+  background: #575858 !important;
+}
+.layout-selection .list-group-item {
+  position: relative !important;
+}
+.layout-selection .list-group-item:before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -20px !important;
+  bottom: 0 !important;
+  right: auto !important;
+  width: 0 !important;
+  background: #89caeb !important;
+  display: block !important;
+}
+.layout-selection .list-group-item:hover {
+  background: rgba(137, 202, 235, 0.14) !important;
+}
+.layout-selection .list-group-item:hover:before {
+  width: 3px !important;
+}
+.layout-selection .list-group-item a {
+  text-decoration: none !important;
+}
+.layout-selection img {
+  max-width: 100% !important;
+  max-height: 160px !important;
+}
+.ui-dialog-content input:not(.form-submit) {
+  background: #fff !important;
+  border: 1px solid #d1d1d1 !important;
+  border-radius: 3px !important;
+}
+.ui-dialog.ui-dialog-position-side {
+  left: auto !important;
+  right: 0 !important;
+  width: 400px !important;
+}
+.ui-dialog.ui-dialog-position-side .ui-dialog-titlebar .ui-dialog-title {
+  color: #587fa1 !important;
+  display: flex;
+}
+.layout-builder-block {
+  background-color: #fff !important;
+  color: #333 !important;
+}
+.layout-builder__link--add:hover .visually-hidden {
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  display: inline-block;
+  padding: 0 10px;
+  color: #333;
+  font-size: 90%;
+  font-style: italic;
+}
+.layout-builder__add-section {
+  position: relative;
+  z-index: 99;
+}
