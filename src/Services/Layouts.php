@@ -4,6 +4,7 @@ namespace Drupal\formatage_models\Services;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\Entity\File;
+use Stephane888\Debug\debugLog;
 
 class Layouts {
   protected $configuration = [];
@@ -158,11 +159,19 @@ class Layouts {
       if (!empty($field['builder-form'])) {
         $SubConfiguration[$key]['info'] = array_merge($field['info'], $form_state->getValue($key)['info']);
         $SubConfiguration[$key]['fields'] = array_merge($field['fields'], $form_state->getValue($key)['fields']);
-        // cette function n'est plus necessaire.
-        $this->saveImage($SubConfiguration[$key]['fields']);
+        if (empty($SubConfiguration[$key]['fields'])) {
+          // dump($key, $form_state->getValues());
+          // die();
+        }
+        // Cette function n'est plus necessaire.
+        // $this->saveImage($SubConfiguration[$key]['fields']);
       }
     }
-    
+    debugLog::$max_depth = 7;
+    debugLog::kintDebugDrupal([
+      $SubConfiguration,
+      $form_state->getValues()
+    ], 'submitConfigurationForm', true);
     if ($configuration['save_by_domain'] && !empty($currentDomain)) {
       $configuration[$currentDomain] = $SubConfiguration;
     }
