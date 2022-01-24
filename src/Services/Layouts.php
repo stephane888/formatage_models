@@ -167,11 +167,7 @@ class Layouts {
         // $this->saveImage($SubConfiguration[$key]['fields']);
       }
     }
-    debugLog::$max_depth = 7;
-    debugLog::kintDebugDrupal([
-      $SubConfiguration,
-      $form_state->getValues()
-    ], 'submitConfigurationForm', true);
+    
     if ($configuration['save_by_domain'] && !empty($currentDomain)) {
       $configuration[$currentDomain] = $SubConfiguration;
     }

@@ -120,12 +120,6 @@ class BuilderConfigForm {
           if ($key)
             $this->ThemeUtility->addImageTree($type, $form, $label ? $label : 'Image ', $Value);
           break;
-        case 'img_style': // not use
-          if ($key)
-            $this->ThemeUtility->selectImageStyles($key, $form[$type], $label ? $label : 'Style image', $defaultValue);
-          else
-            $this->ThemeUtility->selectImageStyles($type, $form, $label ? $label : 'Style image', $defaultValue);
-          break;
       }
     }
   }
