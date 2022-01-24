@@ -1,0 +1,37 @@
+{% if content %}
+	<section id="hero" {{attributes.addClass('ac-about')}}>
+		<div class="container">
+			<div class="row d-flex align-items-center">
+				<div class="col-md-7 content-image">
+					{% if content.image1 %}
+						<div {{ region_attributes.image1.addClass('image1') }}>
+							{{ content.image1 }}
+						</div>
+					{% endif %}
+					{% if content.image2 %}
+						<div {{ region_attributes.image2.addClass('image2') }}>
+							{{ content.image2 }}
+						</div>
+					{% endif %}
+				</div>
+				<div class="col-md-5">
+					{% if content.subtitle %}
+						<h4 {{ region_attributes.subtitle.addClass('subtitle') }}>
+							{{ content.subtitle }}
+						</h4>
+					{% endif %}
+					{% if content.title %}
+						<h2 {{ region_attributes.title.addClass('title') }}>
+							{{ content.title }}
+						</h2>
+					{% endif %}
+					{% if content.description %}
+						<div {{ region_attributes.description.addClass('description') }}>
+							{{ content.description }}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}

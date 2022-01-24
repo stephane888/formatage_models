@@ -9,33 +9,33 @@ use Drupal\formatage_models\FormatageModelsThemes;
  * A very advanced custom layout.
  *
  * @Layout(
- *   id = "formatage_models_about_ac",
- *   label = @Translation(" About AC. "),
- *   category = @Translation("Formatage Models"),
+ *   id = "formatage_models_sections_ac",
+ *   label = @Translation(" Sections AC. "),
+ *   category = @Translation(" Formatage Models "),
  *   path = "layouts/sections",
- *   template = "formatage-models-about-ac",
- *   library = "formatage_models/formatage-models-about-ac",
- *   default_region = "title",
+ *   template = "formatage-models-sections-ac",
+ *   library = "formatage_models/formatage-models-sections-ac",
+ *   default_region = " Title ",
  *   regions = {
  *     "subtitle" = {
  *       "label" = @Translation(" Subtitle "),
  *     },
  *     "title" = {
- *       "label" = @Translation(" Title"),
+ *       "label" = @Translation(" Title "),
  *     },
  *     "description" = {
  *       "label" = @Translation(" Description "),
  *     },
- *     "image1" = {
- *       "label" = @Translation(" Image 1 "),
+ *     "button" = {
+ *       "label" = @Translation(" Button "),
  *     },
- *     "image2" = {
- *       "label" = @Translation(" Image 2 "),
+ *     "image" = {
+ *       "label" = @Translation(" Image "),
  *     }
  *   }
  * )
  */
-class FormatageModelsAboutAC extends FormatageModelsSection {
+class FormatageModelsServicesAC extends FormatageModelsSection {
   
   /**
    *
@@ -45,7 +45,7 @@ class FormatageModelsAboutAC extends FormatageModelsSection {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-about-ac.png");
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-hero-ac.png");
   }
   
   /**
@@ -90,15 +90,19 @@ class FormatageModelsAboutAC extends FormatageModelsSection {
               'value' => " Nous croyons dans le pouvoir de l’intelligence et de la technologie pour optimiser vos performances "
             ]
           ],
-          'image1' => [
-            'img_bg' => [
-              'label' => " Image 1",
-              'fids' => []
+          'button' => [
+            'url' => [
+              'label' => " Button ",
+              'value' => [
+                'text' => 'Contactez-nous',
+                'class' => '',
+                'link' => '#'
+              ]
             ]
           ],
-          'image2' => [
+          'image' => [
             'img_bg' => [
-              'label' => " Image 2",
+              'label' => " Image ",
               'fids' => []
             ]
           ]
