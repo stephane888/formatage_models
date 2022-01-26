@@ -47,6 +47,27 @@ formatage-models-admin:
 #################################################################################################################################################
 # -50 <weight> +50
 
+formatage-models-titre-rc:
+  js:
+    layouts/js/formatage-models-titre-rc.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-titre-rc.css: { weight: 10 } 
+
+formatage-models-list-section:
+  js:
+    layouts/js/formatage-models-list-section.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-list-section.css: { weight: 10 } 
+
+formatage-bloc-price:
+  js:
+    layouts/js/formatage-bloc-price.js: {}
+  css:
+    theme:
+      layouts/css/formatage-bloc-price.css: { weight: 10 } 
+
 formatage-models-title-description:
   js:
     layouts/js/formatage-models-title-description.js: {}

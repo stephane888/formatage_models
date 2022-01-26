@@ -1,0 +1,38 @@
+{% if content  %}
+	<!-- ======= price-block ======= -->
+	<div {{attributes.addClass('price-block')}}>
+		<div class="item-price">
+			<div class="item-price__head">
+				{% if content.titre %}
+					<div class="name-wrap">
+						<h2>
+							{{content.titre}}
+						</h2>
+					</div>
+				{% endif %}
+				<div class="item-price__wrap">
+					<p></p>
+					<span class="per-mn"></span>
+				</div>
+			</div>
+			<div class="item-price__body">
+				<ul>
+					{% for field in content.listes %}
+						{% if (field["#theme"] or field['#items']) %}
+							{% for fieldcontent in field.content %}
+								{% if fieldcontent["#type"] %}
+									<li>
+										{{fieldcontent}}
+									</li>
+								{% endif %}
+							{% endfor %}
+						{% endif %}
+					{% endfor %}
+					<li>
+						{{content.lien}}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+{% endif %}
