@@ -40,7 +40,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     $build = parent::build($regions);
     
     // à mettre sur un module externe.
-    $currentDomain = $this->Layouts::getCurrentdomain();
+    $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
     if (!empty($this->configuration[$currentDomain])) {
       $build['#settings'] = $this->configuration[$currentDomain];
     }
@@ -80,7 +80,8 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
       'container_wrapper' => [
         // The dynamic bootstrap styles storage.
         'bootstrap_styles' => []
-      ]
+      ],
+      'css' => ''
     ];
   }
   
