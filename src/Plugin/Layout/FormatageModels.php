@@ -74,8 +74,7 @@ class FormatageModels extends LayoutDefault {
    *
    * {@inheritdoc}
    */
-  public function build(array $regions) {
-    
+  public function build(array $regions) {    
     // Ensure $build only contains defined regions and in the order defined.
     $build = [];
     foreach ($this->getPluginDefinition()->getRegionNames() as $region_name) {
