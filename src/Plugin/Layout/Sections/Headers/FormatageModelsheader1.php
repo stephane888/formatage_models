@@ -65,6 +65,7 @@ class FormatageModelsheader1 extends FormatageModelsSection {
   public function defaultConfiguration() {
     // $SiteConfig = $this->configFactory->getEditable("site.config");
     return parent::defaultConfiguration() + [
+      'css' => 'mb-0',
       'sf' => [
         'builder-form' => true,
         'info' => [
