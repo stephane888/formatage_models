@@ -8,6 +8,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
+use Drupal\Component\Utility\NestedArray;
 
 /**
  * default class for module layout module
@@ -59,11 +60,21 @@ class FormatageModels extends LayoutDefault {
   }
   
   /**
+   * Si le contenu est MAJ par l'utilisateur, on doit mettre egalment celui present dans l'objet Layouts.
    *
    * {@inheritdoc}
    */
-  public function build(array $regions) {
-    
+  public function setConfiguration(array $configuration) {
+    $this->configuration = NestedArray::mergeDeep($this->defaultConfiguration(), $configuration);
+    // dump($this->configuration);
+    $this->Layouts->setConfig($this->configuration);
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function build(array $regions) {    
     // Ensure $build only contains defined regions and in the order defined.
     $build = [];
     foreach ($this->getPluginDefinition()->getRegionNames() as $region_name) {
@@ -75,7 +86,7 @@ class FormatageModels extends LayoutDefault {
     $build['#layout'] = $this->pluginDefinition;
     $build['#theme'] = $this->pluginDefinition->getThemeHook();
     $library = $this->pluginDefinition->getLibrary();
-    $currentDomain = $this->Layouts::getCurrentdomain();
+    $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
     if (!empty($this->configuration[$currentDomain])) {
       $build['#settings'] = $this->configuration[$currentDomain];
       if ($this->configuration[$currentDomain]['load_libray']) {

@@ -161,7 +161,7 @@ function formatage_models_theme() {
  * @param array $vars
  */
 function formatage_models_preprocess_formatage_models_footer1(&$vars) {
-  FormatageModelsThemes::mergeContentAttributes($vars);
+  // FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
 /**
@@ -183,7 +183,7 @@ function formatage_models_preprocess_formatage_models_titre_description(array &$
 }
 
 function formatage_models_preprocess_formatage_models_header1(&$vars) {
-  FormatageModelsThemes::mergeContentAttributes($vars);
+  // FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
 /**

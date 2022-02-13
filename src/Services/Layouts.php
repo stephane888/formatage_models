@@ -16,7 +16,7 @@ class Layouts {
   }
   
   /**
-   * permert d'ajouter un formulaire d'edition.
+   * Permert d'ajouter un formulaire d'edition.
    *
    * @var array
    */
@@ -34,11 +34,13 @@ class Layouts {
     ];
   }
   
-  //
+  /**
+   *
+   * @param \Drupal\formatage_models\Services\Layouts $configuration
+   */
   function setConfig($configuration) {
     $this->configuration = $configuration;
-    $currentDomain = self::getCurrentdomain();
-    
+    $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
     if (!empty($configuration['save_by_domain']) && !empty($configuration[$currentDomain])) {
       $this->configuration = $configuration[$currentDomain];
     }
@@ -128,7 +130,7 @@ class Layouts {
    * @param FormStateInterface $form_state
    */
   function submitConfigurationForm(array &$configuration, FormStateInterface $form_state) {
-    $currentDomain = self::getCurrentdomain();
+    $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
     
     $SubConfiguration = $configuration;
     if (!empty($currentDomain) && !empty($configuration[$currentDomain])) {
@@ -167,29 +169,13 @@ class Layouts {
         // $this->saveImage($SubConfiguration[$key]['fields']);
       }
     }
-    
+    //
     if ($configuration['save_by_domain'] && !empty($currentDomain)) {
       $configuration[$currentDomain] = $SubConfiguration;
     }
     else {
       $configuration = $SubConfiguration;
     }
-  }
-  
-  /**
-   * cette function doit etre sur un autre module externe à ce dernier.
-   *
-   * @deprecated
-   * @return string|number|NULL
-   */
-  public static function getCurrentdomain() {
-    /** @var \Drupal\domain\Entity\Domain $active */
-    $active = \Drupal::service('domain.negotiator')->getActiveDomain();
-    if (empty($active)) {
-      $active = \Drupal::entityTypeManager()->getStorage('domain')->loadDefaultDomain();
-    }
-    if (!empty($active))
-      return $active->id();
   }
   
   /**

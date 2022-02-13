@@ -4,6 +4,8 @@ namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\Core\Form\FormStateInterface;
+use Stephane888\HtmlBootstrap\ThemeUtility;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * A very advanced custom layout.
@@ -24,6 +26,11 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class FormatageModelsServicesSliders extends FormatageModelsSection {
+  /**
+   *
+   * @var \Stephane888\HtmlBootstrap\ThemeUtility
+   */
+  protected $ThemeUtility;
   
   /**
    *
@@ -34,6 +41,7 @@ class FormatageModelsServicesSliders extends FormatageModelsSection {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-expert-solution.png");
+    $this->ThemeUtility = \Drupal::service('formatage_models.theme-utility');
   }
   
   /**
@@ -70,6 +78,7 @@ class FormatageModelsServicesSliders extends FormatageModelsSection {
       '#default_value' => $this->configuration['bgimage']['fid'],
       '#upload_location' => 'public://layouts'
     ];
+    
     return $form;
   }
   
@@ -79,11 +88,12 @@ class FormatageModelsServicesSliders extends FormatageModelsSection {
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
+    $fid = $form_state->getValue('bgimage');
     $this->configuration['titre'] = $form_state->getValue('titre');
     $this->configuration['sub_title'] = $form_state->getValue('sub_title');
     $this->configuration['bgimage'] = [
       'fid' => $form_state->getValue('bgimage'),
-      'url' => $this->Layouts->getImageUrlByFid($form_state->getValue('bgimage'))
+      'url' => (!empty($fid)) ? $this->ThemeUtility->getImageUrlByFid($fid[0]) : ''
     ];
     $this->Layouts->saveFilePermanent($form_state->getValue('bgimage'));
   }

@@ -4,6 +4,7 @@ namespace Drupal\formatage_models\Plugin\Layout\Sections\Headers;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
+use Drupal\formatage_models\FormatageModelsThemes;
 
 /**
  * A very advanced custom layout.
@@ -57,13 +58,14 @@ class FormatageModelsheader1 extends FormatageModelsSection {
   public function build(array $regions) {
     $build = parent::build($regions);
     $build['#settings']['logo_url'] = theme_get_setting('logo.url');
-    // dump($build['#settings']);
+    FormatageModelsThemes::formatSettingValues($build);
     return $build;
   }
   
   public function defaultConfiguration() {
     // $SiteConfig = $this->configFactory->getEditable("site.config");
     return parent::defaultConfiguration() + [
+      'css' => 'mb-0',
       'sf' => [
         'builder-form' => true,
         'info' => [
@@ -72,10 +74,9 @@ class FormatageModelsheader1 extends FormatageModelsSection {
         ],
         'fields' => [
           'topheader' => [
-            'text_html' => [
+            'text' => [
               'label' => 'Top header',
-              'value' => "Un devis travaux en ligne dès que vous en avez besoin...",
-              'format' => "basic_html"
+              'value' => "Un devis travaux en ligne dès que vous en avez besoin..."
             ]
           ],
           // 'logo' => [
