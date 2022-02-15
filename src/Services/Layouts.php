@@ -41,6 +41,7 @@ class Layouts {
   function setConfig($configuration) {
     $this->configuration = $configuration;
     $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
+    // dump($configuration);
     if (!empty($configuration['save_by_domain']) && !empty($configuration[$currentDomain])) {
       $this->configuration = $configuration[$currentDomain];
     }

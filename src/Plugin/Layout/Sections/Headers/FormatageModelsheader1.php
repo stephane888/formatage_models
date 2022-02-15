@@ -57,9 +57,16 @@ class FormatageModelsheader1 extends FormatageModelsSection {
   
   public function build(array $regions) {
     $build = parent::build($regions);
+    // dump($this->configuration);
     $build['#settings']['logo_url'] = theme_get_setting('logo.url');
     FormatageModelsThemes::formatSettingValues($build);
     return $build;
+  }
+  
+  public function buildConfigurationForm($form, $form_state) {
+    $form = parent::buildConfigurationForm($form, $form_state);
+    // dump($this->configuration);
+    return $form;
   }
   
   public function defaultConfiguration() {

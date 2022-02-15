@@ -115,6 +115,14 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     $style_tab = [
       'blb_style'
     ];
+    // on ajoute un function de verification.( car suivant certains on cree des bugs).
+    if (!isset($this->configuration['container_wrapper']['bootstrap_styles'])) {
+      $this->configuration['container_wrapper'] = [
+        'bootstrap_styles' => []
+      ];
+      $message = " Une erreur s'est produit lors de la derniere sauvegarde ";
+      \Drupal::messenger()->addWarning($message);
+    }
     $this->configuration['container_wrapper']['bootstrap_styles'] = $this->stylesGroupManager->submitStylesFormElements($form['blb_style'], $form_state, $style_tab, $this->configuration['container_wrapper']['bootstrap_styles'], 'bootstrap_layout_builder.styles');
   }
   
