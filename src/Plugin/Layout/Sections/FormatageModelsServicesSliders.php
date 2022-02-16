@@ -20,8 +20,14 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   default_region = "main",
  *   regions = {
  *     "main" = {
- *       "label" = @Translation("Main"),
- *     }
+ *       "label" = @Translation(" Main "),
+ *     },
+ *     "titre" = {
+ *       "label" = @Translation(" Titre "),
+ *     },
+ *     "sub_title" = {
+ *       "label" = @Translation(" Sub title "),
+ *     },
  *   }
  * )
  */
@@ -40,7 +46,7 @@ class FormatageModelsServicesSliders extends FormatageModelsSection {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-expert-solution.png");
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-services-sliders.png");
     $this->ThemeUtility = \Drupal::service('formatage_models.theme-utility');
   }
   
@@ -52,7 +58,28 @@ class FormatageModelsServicesSliders extends FormatageModelsSection {
     return parent::defaultConfiguration() + [
       'titre' => '',
       'sub_title' => '',
-      'bgimage' => []
+      'bgimage' => [],
+      'sf' => [
+        'builder-form' => true,
+        'info' => [
+          'title' => ' Contenu 1 ',
+          'loader' => 'static'
+        ],
+        'fields' => [
+          'titre' => [
+            'text' => [
+              'label' => 'Titre',
+              'value' => "NOS SERVICES"
+            ]
+          ],
+          'sub_title' => [
+            'text_html' => [
+              'label' => " Description ",
+              'value' => " Un devis travaux en ligne dès que vous en avez besoin... "
+            ]
+          ]
+        ]
+      ]
     ];
   }
   

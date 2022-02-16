@@ -4,12 +4,15 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<h1 class="titre">
-						{{ settings.titre }}
+						{{ content.titre }}
 					</h1>
 					<h4 class="sub_title">
-						{{ settings.sub_title }}
+						{{ content.sub_title }}
 					</h4>
 					{% if content.main %}
+						{% if content.main.layout_builder_add_block %}
+							{{ content.main }}
+						{% endif %}
 						<div{{region_attributes.main.addClass(['main'])}}>
 							<div class="owl-carousel owl-theme" data-owlresponsive='{"items":1,"nav":false,"dots":true,"loop":true,"autoplayTimeout":150000,"autoplayHoverPause":true,"autoplay":true}'>
 								{% for block in  content.main %}
