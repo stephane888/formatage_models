@@ -1,5 +1,11 @@
 {% if content  %}
-	<section {{ attributes.addClass(['images-bg','space-padding']) }} style="background-image: url('{{settings.bgimage.url}}')">
+	{% if content.bgimage %}
+		{% if content.bgimage.layout_builder_add_block %}
+			{{ content.bgimage }}
+		{% endif %}
+		{% set imgUrl %}{{content.bgimage|layout_value}}{% endset %}
+	{% endif %}
+	<section {{ attributes.addClass(['images-bg','space-padding']) }} style="background-image: url('{{ imgUrl|striptags|trim }}')">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">

@@ -28,6 +28,9 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *     "link" = {
  *       "label" = @Translation("Lien"),
  *     },
+ *     "bgimage" = {
+ *       "label" = @Translation(" Image "),
+ *     }
  *   }
  * )
  */

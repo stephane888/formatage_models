@@ -28,6 +28,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *     "sub_title" = {
  *       "label" = @Translation(" Sub title "),
  *     },
+ *     "bgimage" = {
+ *       "label" = @Translation(" Image "),
+ *     }
  *   }
  * )
  */
