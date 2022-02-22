@@ -344,3 +344,7 @@ function formatage_models_preprocess_formatage_models_bg_header(array &$vars) {
   // FormatageModelsThemes::ApplyAttributes($variables);
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
+
+
+
+

@@ -52,6 +52,9 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *     "image2" = {
  *       "label" = @Translation(" Image 2 "),
  *     },
+ *     "imagebg" = {
+ *       "label" = @Translation(" Image background "),
+ *     },
  *   }
  * )
  */
