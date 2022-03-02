@@ -86,7 +86,10 @@ class FormatageModels extends LayoutDefault {
     $build['#layout'] = $this->pluginDefinition;
     $build['#theme'] = $this->pluginDefinition->getThemeHook();
     $library = $this->pluginDefinition->getLibrary();
-    $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
+    $currentDomain = null;
+    if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
+      $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
+    }
     if (!empty($this->configuration[$currentDomain])) {
       $build['#settings'] = $this->configuration[$currentDomain];
       if ($this->configuration[$currentDomain]['load_libray']) {

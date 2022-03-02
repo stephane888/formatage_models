@@ -70,7 +70,10 @@ class FormatageModelsPages extends FormatageModels implements ContainerFactoryPl
     $build = parent::build($regions);
     
     // à mettre sur un module externe.
-    $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
+    $currentDomain = null;
+    if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
+      $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
+    }
     if (!empty($this->configuration[$currentDomain])) {
       $build['#settings'] = $this->configuration[$currentDomain];
     }

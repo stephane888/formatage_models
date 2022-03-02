@@ -40,7 +40,10 @@ class Layouts {
    */
   function setConfig($configuration) {
     $this->configuration = $configuration;
-    $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
+    $currentDomain = null;
+    if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
+      $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
+    }
     // dump($configuration);
     if (!empty($configuration['save_by_domain']) && !empty($configuration[$currentDomain])) {
       $this->configuration = $configuration[$currentDomain];
@@ -131,7 +134,10 @@ class Layouts {
    * @param FormStateInterface $form_state
    */
   function submitConfigurationForm(array &$configuration, FormStateInterface $form_state) {
-    $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
+    $currentDomain = null;
+    if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
+      $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
+    }
     
     $SubConfiguration = $configuration;
     if (!empty($currentDomain) && !empty($configuration[$currentDomain])) {
