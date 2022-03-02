@@ -13,8 +13,8 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *   label = @Translation(" Sections AC. "),
  *   category = @Translation(" Formatage Models "),
  *   path = "layouts/sections",
- *   template = "formatage-models-sections-ac",
- *   library = "formatage_models/formatage-models-sections-ac",
+ *   template = "formatage-models-hero-ac",
+ *   library = "formatage_models/formatage-models-hero-ac",
  *   default_region = " Title ",
  *   regions = {
  *     "subtitle" = {
