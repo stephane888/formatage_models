@@ -109,14 +109,6 @@ function formatage_models_preprocess_formatage_models_teaser_small(&$vars) {
  *
  * @param array $vars
  */
-function formatage_models_preprocess_formatage_models_textcotebg(&$vars) {
-  FormatageModelsThemes::mergeContentAttributes($vars);
-}
-
-/**
- *
- * @param array $vars
- */
 function formatage_models_preprocess_formatage_models_description(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }

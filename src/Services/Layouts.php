@@ -85,7 +85,7 @@ class Layouts {
       '#title' => "Enregistre en fonction du domain",
       '#default_value' => $this->configuration['save_by_domain']
     ];
-    
+    //
     $form['css_class'] = array(
       '#type' => 'details',
       '#title' => 'Class html',
@@ -105,7 +105,24 @@ class Layouts {
         '#empty_option' => '- Select -'
       ];
     $this->buildClassCssRegion($form);
+    //
+    $form['tag_html'] = array(
+      '#type' => 'details',
+      '#title' => 'Html tags',
+      '#open' => false
+    );
+    $this->buildTagHtmlRegion($form);
     $this->BuilderConfigForm->prepareBuildForms($this->configuration, $form);
+  }
+  
+  function buildTagHtmlRegion(array &$form) {
+    foreach ($this->regions as $region => $label) {
+      $form['tag_html']['region_tag_' . $region] = [
+        '#type' => 'textfield',
+        '#title' => 'Tag html region : ' . $label['label'],
+        '#default_value' => isset($this->configuration['region_tag_' . $region]) ? $this->configuration['region_tag_' . $region] : ''
+      ];
+    }
   }
   
   /**
@@ -147,7 +164,7 @@ class Layouts {
       $SubConfiguration['save_by_domain'] = $form_state->getValue('save_by_domain');
     }
     $SubConfiguration['load_libray'] = $form_state->getValue('load_libray');
-    
+    // Save css.
     $SubConfiguration['css'] = $form_state->getValue([
       'css_class',
       'css'
@@ -163,6 +180,14 @@ class Layouts {
         'region_css_' . $region
       ]);
     }
+    // Save html tag.
+    foreach ($this->regions as $region => $label) {
+      $SubConfiguration['region_tag_' . $region] = $form_state->getValue([
+        'tag_html',
+        'region_tag_' . $region
+      ]);
+    }
+    
     //
     foreach ($SubConfiguration as $key => $field) {
       if (!empty($field['builder-form'])) {
