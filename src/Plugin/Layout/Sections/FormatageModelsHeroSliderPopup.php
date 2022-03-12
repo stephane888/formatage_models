@@ -3,7 +3,6 @@
 namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\formatage_models\Plugin\Layout\FormatageModels;
-use Drupal\Core\Form\FormStateInterface;
 
 /**
  * A very advanced custom layout.
@@ -27,5 +26,5 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class FormatageModelsHeroSliderPopup extends FormatageModels {
-
+  
 }

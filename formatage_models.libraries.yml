@@ -47,6 +47,13 @@ formatage-models-admin:
 #################################################################################################################################################
 # -50 <weight> +50
 
+formatage-models-hero-ason:
+  js:
+    layouts/js/formatage-models-hero-ason.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-ason.css: { weight: 10 }
+
 formatage-models-about-ac:
   js:
     layouts/js/formatage-models-about-ac.js: {}

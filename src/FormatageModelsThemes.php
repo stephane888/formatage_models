@@ -382,24 +382,23 @@ class FormatageModelsThemes {
                 $file = File::load($field['fids'][0]);
                 $image_style = $field['style'];
                 if ($file) {
-                  if (!empty($image_style) && ImageStyle::load($image_style)) {
-                    $uri = $file->getFileUri();
-                  }
-                  else {
-                    $uri = $file->getFileUri();
-                  }
-                  $build[$regionName][] = [
+                  $uri = $file->getFileUri();
+                  $renderImg = [
                     '#theme' => 'image_style',
-                    // '#width' => $variables['width'],
-                    // '#height' => $variables['height'],
                     '#attributes' => [
                       'class' => [
                         !empty($field['class']) ? $field['class'] : ''
                       ]
                     ],
-                    '#style_name' => $image_style,
                     '#uri' => $uri
                   ];
+                  if (!empty($image_style) && ImageStyle::load($image_style)) {
+                    $renderImg['#style_name'] = $image_style;
+                  }
+                  else {
+                    $renderImg['#theme'] = 'image';
+                  }
+                  $build[$regionName][] = $renderImg;
                 }
               }
             }

@@ -197,8 +197,8 @@ class Layouts {
           // dump($key, $form_state->getValues());
           // die();
         }
-        // Cette function n'est plus necessaire.
-        // $this->saveImage($SubConfiguration[$key]['fields']);
+        // .
+        $this->saveImage($SubConfiguration[$key]['fields']);
       }
     }
     //
@@ -223,7 +223,7 @@ class Layouts {
   }
   
   /**
-   * Retourne le chemin absolue sans le domaine.
+   * Enregistre une image comme permanent;
    *
    * @param array $fid
    * @param String $image_style
