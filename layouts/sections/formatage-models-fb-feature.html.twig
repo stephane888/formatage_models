@@ -1,0 +1,122 @@
+{% if content %}
+	<link rel="stylesheet" href="https://preview.uideck.com/items/fusion/assets/css/animate.css"/>
+	<section class="section-padding fub-features space_bottom">
+		<div class="container">
+			<div class="section-header text-center">
+				{% if content.title %}
+					<h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s;-moz-animation-delay: 0.3s; ">
+						{{content.title}}
+					</h2>
+				{% endif %}
+				<div class="shape wow fadeInDown animated" data-wow-delay="0.3s" style=" visibility: visible; -webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s; "></div>
+			</div>
+			<div class="row row-handler align-items-center">
+				<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+					<div class="content-left">
+						<div class="box-item wow fadeInLeft animated" data-wow-delay="0.3s" style="  visibility: visible; -webkit-animation-delay: 0.3s;-moz-animation-delay: 0.3s; animation-delay: 0.3s; ">
+							<span class="icon">
+								<i class="">{{content.svg_blocl1}}</i>
+							</span>
+							<div class="text">
+								{% if content.title_blocl1 %}
+									<h4>
+										{{content.title_blocl1}}
+									</h4>
+								{% endif %}
+								{% if content.desc_blocl1 %}
+									{{content.desc_blocl1}}
+								{% endif %}
+							</div>
+						</div>
+						<div class="box-item wow fadeInLeft animated" data-wow-delay="0.6s" style="  visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;  ">
+							<span class="icon">
+								<i class="">{{content.svg_blocl2}}</i>
+							</span>
+							<div class="text">
+								{% if content.title_blocl2 %}
+									<h4>
+										{{content.title_blocl2}}
+									</h4>
+								{% endif %}
+								{% if content.desc_blocl2 %}
+									{{content.desc_blocl2}}
+								{% endif %}
+							</div>
+						</div>
+						<div class="box-item wow fadeInLeft animated" data-wow-delay="0.9s" style=" visibility: visible;-webkit-animation-delay: 0.9s; -moz-animation-delay: 0.9s; animation-delay: 0.9s; ">
+							<span class="icon">
+								<i class="">{{content.svg_blocl3}}</i>
+							</span>
+							<div class="text">
+								{% if content.title_blocl3 %}
+									<h4>
+										{{content.title_blocl3}}
+									</h4>
+								{% endif %}
+								{% if content.desc_blocl3 %}
+									{{content.desc_blocl3}}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 img-handler col-md-12 col-sm-12 col-xs-12">
+					<div class="show-box wow fadeInUp animated" data-wow-delay="0.3s" style="  visibility: visible; -webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s; ">
+						<img src="https://preview.uideck.com/items/fusion/assets/img/feature/intro-mobile.png" alt=""/>
+					</div>
+				</div>
+				<div class="col-lg-4 right-content-handler col-md-12 col-sm-12 col-xs-12">
+					<div class="content-right">
+						<div class="box-item wow fadeInRight animated" data-wow-delay="0.3s" style=" visibility: visible; -webkit-animation-delay: 0.3s;-moz-animation-delay: 0.3s; animation-delay: 0.3s; ">
+							<span class="icon">
+								<i class="">{{ content.svg_blocl4 }}</i>
+							</span>
+							<div class="text">
+								{% if content.title_blocl4 %}
+									<h4>
+										{{content.title_blocl4}}
+									</h4>
+								{% endif %}
+								{% if content.desc_blocl4 %}
+									{{content.desc_blocl4}}
+								{% endif %}
+							</div>
+						</div>
+						<div class="box-item wow fadeInRight animated" data-wow-delay="0.6s" style=" visibility: visible; -webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s; ">
+							<span class="icon">
+								<i class="">
+									{{content.svg_blocl5}}
+								</i>
+							</span>
+							<div class="text">
+								{% if content.title_blocl5 %}
+									<h4>
+										{{content.title_blocl5}}
+									</h4>
+								{% endif %}
+								{% if content.desc_blocl5 %}
+									{{content.desc_blocl5}}
+								{% endif %}
+							</div>
+						</div>
+						<div class="box-item wow fadeInRight animated" data-wow-delay="0.9s" style=" visibility: visible; -webkit-animation-delay: 0.9s;  -moz-animation-delay: 0.9s;  animation-delay: 0.9s;  ">
+							<span class="icon">
+								<i class="">{{content.svg_blocl6}}</i>
+							</span>
+							<div class="text">
+								{% if content.title_blocl6 %}
+									<h4>
+										{{content.title_blocl6}}
+									</h4>
+								{% endif %}
+								{% if content.desc_blocl6 %}
+									{{content.desc_blocl6}}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}
