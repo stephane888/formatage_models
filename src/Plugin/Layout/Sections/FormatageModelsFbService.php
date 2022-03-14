@@ -126,7 +126,7 @@ class FormatageModelsFbService extends FormatageModelsSection {
             ]
           ],
           'title_blocl1' => [
-            'text' => [
+            'text_html' => [
               'label' => 'titre',
               'value' => "Bootstrap 4 Based"
             ]
@@ -157,7 +157,7 @@ class FormatageModelsFbService extends FormatageModelsSection {
         ],
         'fields' => [
           'title_blocl2' => [
-            'text' => [
+            'text_html' => [
               'label' => 'titre',
               'value' => "Bootstrap 4 Based"
             ]
@@ -186,7 +186,7 @@ class FormatageModelsFbService extends FormatageModelsSection {
         ],
         'fields' => [
           'title_blocl3' => [
-            'text' => [
+            'text_html' => [
               'label' => 'titre',
               'value' => "Bootstrap 4 Based"
             ]
@@ -215,7 +215,7 @@ class FormatageModelsFbService extends FormatageModelsSection {
         ],
         'fields' => [
           'title_blocl4' => [
-            'text' => [
+            'text_html' => [
               'label' => 'titre',
               'value' => "Bootstrap 4 Based"
             ]
@@ -245,7 +245,7 @@ class FormatageModelsFbService extends FormatageModelsSection {
         ],
         'fields' => [
           'title_blocl5' => [
-            'text' => [
+            'text_html' => [
               'label' => 'titre',
               'value' => "Bootstrap 4 Based"
             ]
@@ -274,7 +274,7 @@ class FormatageModelsFbService extends FormatageModelsSection {
         ],
         'fields' => [
           'title_blocl6' => [
-            'text' => [
+            'text_html' => [
               'label' => 'titre',
               'value' => "Bootstrap 4 Based"
             ]
