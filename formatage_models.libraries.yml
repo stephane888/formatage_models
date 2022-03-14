@@ -47,6 +47,13 @@ formatage-models-admin:
 #################################################################################################################################################
 # -50 <weight> +50
 
+formatage-models-fb-service:
+  js:
+    layouts/js/formatage-models-fb-service.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-fb-service.css: { weight: 10 }
+
 formatage-models-fb-feature:
   js:
     layouts/js/formatage-models-fb-feature.js: {}
