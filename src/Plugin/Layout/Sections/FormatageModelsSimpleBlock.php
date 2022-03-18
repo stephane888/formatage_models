@@ -65,7 +65,7 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
           'main' => [
             'text_html' => [
               'label' => 'Drescription',
-              'value' => " votre conteni ici "
+              'value' => ""
             ]
           ]
         ]
