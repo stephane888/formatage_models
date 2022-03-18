@@ -15,4 +15,6 @@ module.exports = {
   "formatage-models-hero-lgb": "./src/js/sections/formatage-models-hero-lgb.js",
   "formatage-models-left-right":
     "./src/js/sections/formatage-models-left-right.js",
+  "formatage-models-type-parquet":
+    "./src/js/sections/formatage-models-type-parquet.js",
 };

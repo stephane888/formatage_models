@@ -4,6 +4,7 @@ namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * A very advanced custom layout.
@@ -68,8 +69,8 @@ class FormatageModelsLeftRight extends FormatageModelsSection {
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
       'css' => '',
-      'region_css_entete' => "col-md-6 ml-auto",
-      'region_css_entete2' => "col-md-6",
+      'left' => 'col-md-7',
+      'right' => 'col-md-5',
       'region_tag_title' => 'h2',
       'region_tag_subtitle' => 'h4',
       'sf' => [
@@ -119,6 +120,35 @@ class FormatageModelsLeftRight extends FormatageModelsSection {
         ]
       ]
     ];
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form = parent::buildConfigurationForm($form, $form_state);
+    $form['left'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('class left'),
+      '#default_value' => $this->configuration['left']
+    ];
+    $form['right'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('class right'),
+      '#default_value' => $this->configuration['right']
+    ];
+    return $form;
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['left'] = $form_state->getValue('left');
+    $this->configuration['right'] = $form_state->getValue('right');
   }
   
 }

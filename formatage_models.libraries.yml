@@ -47,6 +47,13 @@ formatage-models-admin:
 #################################################################################################################################################
 # -50 <weight> +50
 
+formatage-models-type-parquet:
+  js:
+    layouts/js/formatage-models-type-parquet.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-type-parquet.css: { weight: 10 }
+
 formatage-models-left-right:
   js:
     layouts/js/formatage-models-left-right.js: {}

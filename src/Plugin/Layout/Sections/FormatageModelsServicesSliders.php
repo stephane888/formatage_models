@@ -4,7 +4,6 @@ namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\Core\Form\FormStateInterface;
-use Stephane888\HtmlBootstrap\ThemeUtility;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
