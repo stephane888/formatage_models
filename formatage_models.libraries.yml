@@ -47,6 +47,20 @@ formatage-models-admin:
 #################################################################################################################################################
 # -50 <weight> +50
 
+formatage-models-left-right:
+  js:
+    layouts/js/formatage-models-left-right.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-left-right.css: { weight: 10 }
+
+formatage-models-hero-lgb:
+  js:
+    layouts/js/formatage-models-hero-lgb.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-lgb.css: { weight: 10 }
+
 formatage-models-fb-service:
   js:
     layouts/js/formatage-models-fb-service.js: {}

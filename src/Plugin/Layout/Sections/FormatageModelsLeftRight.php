@@ -9,12 +9,12 @@ use Drupal\formatage_models\FormatageModelsThemes;
  * A very advanced custom layout.
  *
  * @Layout(
- *   id = "formatage_models_hero_ac",
- *   label = @Translation(" Hero modele AC. "),
- *   category = @Translation("Formatage Models"),
+ *   id = "formatage_models_left_right",
+ *   label = @Translation(" Hero modele LR. "),
+ *   category = @Translation(" Formatage Models "),
  *   path = "layouts/sections",
- *   template = "formatage-models-hero-ac",
- *   library = "formatage_models/formatage-models-hero-ac",
+ *   template = "formatage-models-left-right",
+ *   library = "formatage_models/formatage-models-left-right",
  *   default_region = "title",
  *   regions = {
  *     "subtitle" = {
@@ -35,7 +35,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *   }
  * )
  */
-class FormatageModelsHeroAC extends FormatageModelsSection {
+class FormatageModelsLeftRight extends FormatageModelsSection {
   
   /**
    *
@@ -45,7 +45,7 @@ class FormatageModelsHeroAC extends FormatageModelsSection {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-hero-ac.png");
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage-models-left-right.png");
   }
   
   /**
@@ -70,44 +70,49 @@ class FormatageModelsHeroAC extends FormatageModelsSection {
       'css' => '',
       'region_css_entete' => "col-md-6 ml-auto",
       'region_css_entete2' => "col-md-6",
+      'region_tag_title' => 'h2',
+      'region_tag_subtitle' => 'h4',
       'sf' => [
         'builder-form' => true,
         'info' => [
-          'title' => ' Contenu 1 ',
+          'title' => ' Contenu ',
           'loader' => 'static'
         ],
         'fields' => [
           'subtitle' => [
             'text' => [
               'label' => 'Sous titre',
-              'value' => "L'agence Web qui vous offre une solution All-In-One !"
+              'value' => " Comment poncer un parquet ? "
             ]
           ],
           'title' => [
             'text' => [
               'label' => " Titre ",
-              'value' => " Habeuk Digital "
+              'value' => " Le ponçage du parquet "
             ]
           ],
           'description' => [
             'text_html' => [
               'label' => " Description ",
-              'value' => " Nous croyons dans le pouvoir de l’intelligence et de la technologie pour optimiser vos performances "
+              'value' => ' <p >Pour<strong> poncer efficacement un parquet</strong>, vous aurez besoin d’utiliser des machines particulières&nbsp;disponibles dans les 
+                magasins de location d’outils. <br>Une fois que vous êtes outillé, commencez par équiper votre <strong>ponceuse </strong>d’un papier grossier puis terminez avec une 
+                gamme plus fine pour enlever les rayures. Passez ensuite l’aspirateur sur la surface du sol. Une <strong>ponceuse bordure spéciale</strong> est nécessaire&nbsp;
+                pour atteindre des pièces qui ne peuvent être poncées avec la plus grande machine.</p>'
             ]
           ],
           'button' => [
             'url' => [
               'label' => " Button ",
               'value' => [
-                'text' => 'Contactez-nous',
-                'class' => '',
+                'text' => " Estimez les travaux ",
+                'class' => 'btn btn-primary',
                 'link' => '#'
               ]
             ]
           ],
           'image' => [
             'img_bg' => [
-              'label' => " Image Bg",
+              'label' => " Image",
               'fids' => []
             ]
           ]

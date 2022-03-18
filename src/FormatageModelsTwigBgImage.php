@@ -3,7 +3,6 @@
 namespace Drupal\formatage_models;
 
 use Drupal\Core\Render\Element;
-use Drupal\Core\TypedData\TypedDataInterface;
 use Drupal\Core\Template\Attribute;
 
 trait FormatageModelsTwigBgImage {
@@ -21,10 +20,17 @@ trait FormatageModelsTwigBgImage {
     $conf = null;
     foreach ($build as $value) {
       if (is_array($value) && !empty($value)) {
-        if (!empty($value['#theme']) && $value['#theme'] == 'block' && !empty($value['content'])) {
-          if (!empty($vals['#configuration']))
-            $conf = $vals['#configuration'];
-          return $this->getFieldImgBg($value['content'], $conf);
+        if (!empty($value['#theme'])) {
+          if ($value['#theme'] == 'block' && !empty($value['content'])) {
+            if (!empty($vals['#configuration']))
+              $conf = $vals['#configuration'];
+            return $this->getFieldImgBg($value['content'], $conf);
+          }
+          elseif ($value['#theme'] == 'image' && !empty($value['#uri'])) {
+            $Attribute = new Attribute();
+            $url = \Drupal::service('file_url_generator')->generateAbsoluteString($value['#uri']);
+            return $Attribute->setAttribute('style', 'background-image:url(' . $url . ');');
+          }
         }
       }
     }
@@ -38,7 +44,7 @@ trait FormatageModelsTwigBgImage {
    * @param string $styleImage
    * @return NULL|array
    */
-  private function getFieldImgBg($build, $conf) {
+  private function getFieldImgBg($build, $conf = null) {
     if (!$this->isFieldRenderArray($build)) {
       return NULL;
     }

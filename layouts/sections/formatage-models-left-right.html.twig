@@ -1,0 +1,29 @@
+{% if content %}
+	<section {{ attributes.addClass('lgb-left-right') }}>
+		<{{settings.region_tag_title}} {{ region_attributes.title.addClass('title') }}>
+			{{ content.title }}
+		</{{settings.region_tag_title}}>
+		<div class="row">
+			<div class="col-md-7 lgb-left-right--image">
+				<div {{ region_attributes.images.addClass('image') }}>
+					{{ content.image }}
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div class="lgb-left-right--content">
+					<{{settings.region_tag_subtitle}} {{ region_attributes.subtitle.addClass('subtitle') }}>
+						{{ content.subtitle }}
+					</{{settings.region_tag_subtitle}}>
+					{% if content.description %}
+						<div {{ region_attributes.description.addClass('description') }}>
+							{{ content.description }}
+						</div>
+					{% endif %}
+					{% if content.button %}
+						{{content.button}}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}
