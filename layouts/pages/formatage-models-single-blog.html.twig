@@ -8,10 +8,10 @@
 				{% if content.tags.layout_builder_add_block %}
 					{{ content.tags }}
 				{% else %}
-					{% for block in content.tags|layout_value %}
+					{% for block in content.tags|layout_value %}					
 						{% for value in block %}
-							{% if value["#theme"] %}
-								<div class="item">{{ value }}</div>
+							{% if value['#theme'] or value['#type'] %}
+								<div class="item"> {{ value }} </div> 
 							{% endif %}
 						{% endfor %}
 					{% endfor %}
@@ -25,16 +25,8 @@
 		{% endif %}
 		{% if content.introduction %}
 			<div class="single-blog--introduction">
-				{% if content.introduction.layout_builder_add_block %}
+				{% if content.introduction%}
 					{{ content.introduction }}
-				{% else %}
-					{% for block in content.introduction|layout_value %}
-						{% for value in block %}
-							{% if value["#theme"] %}
-								<div class="item">{{ value }}</div>
-							{% endif %}
-						{% endfor %}
-					{% endfor %}
 				{% endif %}
 			</div>
 		{% endif %}
@@ -53,7 +45,7 @@
 				<div class="owl-carousel owl-theme" data-owlresponsive='{"items":1,"nav":true,"dots":false,"loop":true,"autoplayTimeout":15000,"autoplayHoverPause":true,"autoplay":true}'>
 					{% for block in content.owls|layout_value  %}
 						{% for field in block %}
-							{% if field["#type"] %}
+							{% if field['#type'] or field['#theme'] %}
 								<div>{{ field }}</div>
 							{% endif %}
 						{% endfor %}
@@ -78,7 +70,7 @@
 						<div class="splide__list">
 							{% for block in content.slick_carousel_img|layout_value %}
 								{% for field in block %}
-									{% if field["#type"] %}
+									{% if field['#type'] or field['#theme'] %}
 										<div class="splide__slide">
 											{{ field }}
 										</div>
@@ -91,5 +83,4 @@
 			{% endif %}
 		</div>
 	{% endif %}
-	{% include '@formatage_models/includes/add-region-edit.html.twig' %}
 {% endif %}
