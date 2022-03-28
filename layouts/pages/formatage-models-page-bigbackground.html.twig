@@ -21,7 +21,14 @@
 			{% endif %}
 			<div class="container">
 				<div class="d-flex flex-wrap content-header align-items-center">
-					<h1 {{region_attributes.title.addClass('title')}}>{{content.title|layout_value}}</h1>
+					<div>
+    					<h1 {{region_attributes.title.addClass('title')}}> {{content.title|layout_value}} </h1>
+                        {% if content.sub_title %}
+                            <h3 {{ region_attributes.sub_title.addClass('sub-title') }}>
+                             {{ content.sub_title }}
+                            </h3>
+                        {% endif %}
+					</div>
 				</div>
 			</div>
 		</header>
