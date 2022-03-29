@@ -101,9 +101,9 @@ function formatage_models_preprocess_formatage_models_blog_call_toaction(&$vars)
  *
  * @param array $vars
  */
-function formatage_models_preprocess_formatage_models_teaser_small(&$vars) {
-  FormatageModelsThemes::mergeContentAttributes($vars);
-}
+// function formatage_models_preprocess_formatage_models_teaser_small(&$vars) {
+// FormatageModelsThemes::mergeContentAttributes($vars);
+// }
 
 /**
  *
@@ -266,11 +266,11 @@ function formatage_models_preprocess_formatage_models_galery_title(array &$varia
  *
  * @param array $variables
  */
-function formatage_models_preprocess_formatage_models_teaser_img_desc(array &$variables) {
-  // FormatageModelsThemes::addLayoutEditBlock($variables);
-  // FormatageModelsThemes::ApplyAttributes($variables);
-  FormatageModelsThemes::mergeContentAttributes($variables);
-}
+// function formatage_models_preprocess_formatage_models_teaser_img_desc(array &$variables) {
+// // FormatageModelsThemes::addLayoutEditBlock($variables);
+// // FormatageModelsThemes::ApplyAttributes($variables);
+// FormatageModelsThemes::mergeContentAttributes($variables);
+// }
 
 /**
  *
