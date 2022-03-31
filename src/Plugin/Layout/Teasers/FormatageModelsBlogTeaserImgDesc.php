@@ -73,7 +73,7 @@ class FormatageModelsBlogTeaserImgDesc extends FormatageModelsTeasers {
     return parent::defaultConfiguration() + [
       'limit_text' => 150,
       "derivate" => [
-        'value' => 'card-vertical',
+        'value' => 'card-horizontal',
         'options' => [
           'card-horizontal' => 'Horizontal',
           'card-vertical' => 'Vertical'
