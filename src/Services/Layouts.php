@@ -4,7 +4,7 @@ namespace Drupal\formatage_models\Services;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\Entity\File;
-use Stephane888\Debug\debugLog;
+
 
 class Layouts {
   protected $configuration = [];
@@ -133,8 +133,7 @@ class Layouts {
   function saveFilePermanent(array $fids) {
     foreach ($fids as $fid) {
       if ($file = \Drupal\file\Entity\File::load($fid)) {
-        // debugLog::kintDebugDrupal($file, 'saveFilePermanent2', null,
-        // 'lesroisdelareno');
+        
         $file->setPermanent();
         $file->save();
         $file_usage = \Drupal::service('file.usage');

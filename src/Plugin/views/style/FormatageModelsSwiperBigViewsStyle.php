@@ -4,7 +4,7 @@ namespace Drupal\formatage_models\Plugin\views\style;
 
 use Drupal\views\Plugin\views\style\StylePluginBase;
 use Drupal\core\form\FormStateInterface;
-use Stephane888\Debug\debugLog;
+
 
 /**
  * Style plugin to render a list of years and months
@@ -76,8 +76,7 @@ class FormatageModelsSwiperBigViewsStyle extends StylePluginBase {
     
     $labels = $this->displayHandler->getFieldLabels(TRUE);
     
-    // debugLog::kintDebugDrupal($this->options, 'buildOptionsForm__options');
-    
+        
     $form['library'] = [
       '#type' => 'checkbox',
       '#title' => ' Charger la librarie de style ',

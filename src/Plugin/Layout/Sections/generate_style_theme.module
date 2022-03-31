@@ -2,7 +2,6 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\generate_style_theme\Entity\ConfigThemeEntity;
 use Drupal\Core\Entity\EntityInterface;
-use Stephane888\Debug\debugLog;
 use Drupal\generate_style_theme\Services\GenerateStyleTheme;
 use Drupal\generate_style_theme\SectionStorageHelp;
 use Drupal\generate_style_theme\GenerateStyleTheme as GenerateStyleThemeHook;

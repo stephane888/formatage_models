@@ -42,6 +42,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
 class FormatageModelsBlogTeaserImgDesc extends FormatageModelsTeasers {
   
   /**
+   * // formatage_models_teaser_img_desc
    *
    * {@inheritdoc}
    * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
@@ -71,6 +72,13 @@ class FormatageModelsBlogTeaserImgDesc extends FormatageModelsTeasers {
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
       'limit_text' => 150,
+      "derivate" => [
+        'value' => 'card-vertical',
+        'options' => [
+          'card-horizontal' => 'Horizontal',
+          'card-vertical' => 'Vertical'
+        ]
+      ],
       'sf' => [
         'builder-form' => true,
         'info' => [
