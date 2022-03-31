@@ -44,6 +44,13 @@ class FormatageModelsHero2 extends FormatageModelsSection {
   function defaultConfiguration() {
     return parent::defaultConfiguration() + [
       'load_libray' => true,
+      "derivate" => [
+        'value' => 'simple',
+        'options' => [
+          'simple' => 'simple',
+          'cover-bg' => 'Cover background'
+        ]
+      ],
       'infos' => [
         'builder-form' => true,
         'info' => [
