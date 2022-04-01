@@ -3,7 +3,7 @@
 	<section class="section-padding fub-features space_bottom">
 		<div class="container">
 		      
-		    {% if content.title %}
+		    {% if content.title|has_value %}
 			<div class="section-header text-center">				
 					<h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s;-moz-animation-delay: 0.3s; ">
 						{{content.title}}
