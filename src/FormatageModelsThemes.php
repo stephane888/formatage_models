@@ -423,11 +423,12 @@ class FormatageModelsThemes {
                 }
               }
               /**
-               * on retire les champs vide ou null;
+               * on retire les champs vide ou null; Les champs vide contienne uniquement la clée : #attributes
                * ( pour permettre d'avoir un html propre ).
                */
-              elseif (!empty($build[$regionName])) {
-                unset($build[$regionName]);
+              elseif (!empty($build[$regionName]['#attributes'])) {
+                if (count($build[$regionName]) == 1)
+                  unset($build[$regionName]);
               }
             }
             //
