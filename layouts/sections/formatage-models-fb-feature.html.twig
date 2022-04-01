@@ -2,14 +2,14 @@
 	<link rel="stylesheet" href="https://preview.uideck.com/items/fusion/assets/css/animate.css"/>
 	<section class="section-padding fub-features space_bottom">
 		<div class="container">
-			<div class="section-header text-center">
-				{% if content.title %}
+		    {% if content.title %}
+			<div class="section-header text-center">				
 					<h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s;-moz-animation-delay: 0.3s; ">
 						{{content.title}}
-					</h2>
-				{% endif %}
+					</h2>				
 				<div class="shape wow fadeInDown animated" data-wow-delay="0.3s" style=" visibility: visible; -webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s; "></div>
 			</div>
+			{% endif %}
 			<div class="row row-handler align-items-center">
 				<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 					<div class="content-left">
