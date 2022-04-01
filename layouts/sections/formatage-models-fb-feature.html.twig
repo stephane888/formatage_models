@@ -2,7 +2,9 @@
 	<link rel="stylesheet" href="https://preview.uideck.com/items/fusion/assets/css/animate.css"/>
 	<section class="section-padding fub-features space_bottom">
 		<div class="container">
+		      
 		    {% if content.title %}
+		    {{ dump(content.title) }}
 			<div class="section-header text-center">				
 					<h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s;-moz-animation-delay: 0.3s; ">
 						{{content.title}}

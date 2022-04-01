@@ -422,6 +422,13 @@ class FormatageModelsThemes {
                   $build[$regionName][] = $renderImg;
                 }
               }
+              /**
+               * on retire les champs vide ou null;
+               * ( pour permettre d'avoir un html propre ).
+               */
+              elseif (!empty($build[$regionName])) {
+                unset($build[$regionName]);
+              }
             }
             //
           }
