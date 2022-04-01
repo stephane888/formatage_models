@@ -4,6 +4,7 @@ namespace Drupal\formatage_models\Plugin\Layout\Teasers;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * A very advanced custom layout.
@@ -70,8 +71,33 @@ class FormatageModelsBlogTeaser extends FormatageModelsTeasers {
    */
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
-      'css' => ''
+      'css' => '',
+      'height' => ''
     ];
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form = parent::buildConfigurationForm($form, $form_state);
+    $form['height'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('height'),
+      '#default_value' => $this->configuration['height'],
+      '#description' => 'example : 400px '
+    ];
+    return $form;
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['height'] = $form_state->getValue('height');
   }
   
 }

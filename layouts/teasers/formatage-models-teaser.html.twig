@@ -12,7 +12,7 @@
 	{{ render_var(RenderBgimage) }}
 	{% endset %}
 	<div
-		{{attributes.addClass('billetDeBlogTeaser')}} style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}');">
+		{{attributes.addClass('billetDeBlogTeaser')}} style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}'); {% if settings.height %} height:{{ settings.height }} {% endif %}">
 		{# url #}
 		{% if content.url %}
 			{% set RenderUrl = content.url | layout_raw(0) %}
