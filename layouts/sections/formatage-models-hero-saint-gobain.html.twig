@@ -1,0 +1,42 @@
+{% if content %}
+	<section {{attributes.addClass('hero-saint-gobain')}}>
+		<div class="module-empty"></div>
+		<div class="module-text">
+			{% if content.title %}
+				<h2 class="module-text__title">
+					{{content.title}}
+				</h2>
+			{% endif %}
+			{% if content.subtitle %}
+				<div class="module-text__small">
+					{{content.subtitle}}
+				</div>
+			{% endif %}
+			{% if content.button %}
+				<div class="module-text__btn">
+					{{content.button}}
+				</div>
+			{% endif %}
+			{% if content.description %}
+				{% set attrib_desc = region_attributes.description %}
+				{% set attrib_desc2 = region_attributes.description %}
+				<div {{attrib_desc.addClass('module-grille','module-grille--sm')}}>
+					{{content.description}}
+				</div>
+			{% endif %}
+		</div>
+		{% if content.imagebg.layout_builder_add_block %}
+			{{ content.imagebg }}
+		{% endif %}
+		{% set imgbg = content.imagebg|layout_bg_img %}
+		{% if imgbg %}
+			{% set attribute_imgbg = region_attributes.imagebg.merge(imgbg) %}
+			<div {{attribute_imgbg.addClass('module-img')}}></div>
+		{% endif %}
+		{% if content.description %}
+			<div {{attrib_desc2.addClass('module-grille').removeClass('module-grille--sm')}}>
+				{{content.description}}
+			</div>
+		{% endif %}
+	</section>
+{% endif %}

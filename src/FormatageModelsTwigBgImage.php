@@ -15,9 +15,12 @@ trait FormatageModelsTwigBgImage {
    *        begin: (index de debut), number: ( number dimage à retourner ).
    * @return null|\Drupal\Core\Template\Attribute
    */
-  public function getLayoutBgImage(array $build) {
+  public function getLayoutBgImage($build) {
     $vals = null;
     $conf = null;
+    if (!is_array($build)) {
+      return $build;
+    }
     foreach ($build as $value) {
       if (is_array($value) && !empty($value)) {
         if (!empty($value['#theme'])) {

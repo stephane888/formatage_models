@@ -14,7 +14,7 @@ use Drupal\Core\Form\FormStateInterface;
  * This file is no longer required in Drupal 8.
  * @see https://www.drupal.org/node/2217931
  */
-function addTextareaTreeMultipleMoreAjax(&$form, FormStateInterface $form_state) {  
+function addTextareaTreeMultipleMoreAjax(&$form, FormStateInterface $form_state) {
   $parents = $form_state->getTriggeringElement()['#parents'];
   $nbre = count($parents);
   $field = $form;
@@ -74,10 +74,9 @@ function formatage_models_preprocess_formatage_models_title_description(&$vars) 
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
-function formatage_models_preprocess_formatage_models_hero2(&$vars) {
-  FormatageModelsThemes::mergeContentAttributes($vars);
-}
-
+// function formatage_models_preprocess_formatage_models_hero2(&$vars) {
+// FormatageModelsThemes::mergeContentAttributes($vars);
+// }
 function formatage_models_preprocess_formatage_models_contact_page(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }

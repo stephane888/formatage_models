@@ -37,6 +37,7 @@ vuejs:
     https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js:
       { type: external, minified: true }
 
+
 formatage-models-admin:
   js:
     layouts/js/formatage_models_admin.js: {}
@@ -46,6 +47,15 @@ formatage-models-admin:
 
 #################################################################################################################################################
 # -50 <weight> +50
+
+
+
+formatage-models-hero-saint-gobain:
+  js:
+    layouts/js/formatage-models-hero-saint-gobain.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-saint-gobain.css: { weight: 10 }
 
 formatage-models-type-parquet:
   js:
