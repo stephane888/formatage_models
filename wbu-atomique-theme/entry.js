@@ -17,5 +17,8 @@ module.exports = {
     "./src/js/sections/formatage-models-left-right.js",
   "formatage-models-type-parquet":
     "./src/js/sections/formatage-models-type-parquet.js",
-  "formatage-models-hero-saint-gobain": "./src/js/sections/formatage-models-hero-saint-gobain.js"
+  "formatage-models-hero-saint-gobain":
+    "./src/js/sections/formatage-models-hero-saint-gobain.js",
+  "formatage-models-price-saint-gobain":
+    "./src/js/sections/formatage-models-price-saint-gobain.js",
 };

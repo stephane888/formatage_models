@@ -49,7 +49,13 @@ formatage-models-admin:
 # -50 <weight> +50
 
 
-
+formatage-models-price-saint-gobain:
+  js:
+    layouts/js/formatage-models-price-saint-gobain.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-price-saint-gobain.css: { weight: 10 }
+      
 formatage-models-hero-saint-gobain:
   js:
     layouts/js/formatage-models-hero-saint-gobain.js: {}
