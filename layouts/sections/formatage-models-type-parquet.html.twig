@@ -22,7 +22,7 @@
 				{{content.description}}
 			{% endif %}
 			<div class="wp-block-columns">
-				{% if content.titre_button1 or content.description_button1 %}
+				{% if content.titre_button1|has_value or content.description_button1|has_value %}
 					<div class="wp-block-column">
 						{% if content.titre_button1 %}
 							<p class="wp-block-column__p">
@@ -38,7 +38,7 @@
 						{% endif %}
 					</div>
 				{% endif %}
-				{% if content.titre_button2 or content.description_button2 %}
+				{% if content.titre_button2|has_value or content.description_button2|has_value %}
 					<div class="wp-block-column">
 						{% if content.titre_button2 %}
 							<p class="wp-block-column__p">
