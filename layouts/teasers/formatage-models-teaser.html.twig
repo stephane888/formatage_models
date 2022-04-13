@@ -1,18 +1,16 @@
 {% if content %}
 	{# on ajoute un template #}
-	{% set RenderBgimage = {
-    '#theme': 'formatage_models__img_url',
-    '#content_all': content.bgimage,
-    '#tag_fields': '',
-    '#tag_field': '',
-    '#tag_field_attibutes': {}
-  }
-    %}
-	{% set RenderBgimagHtml %}
-	{{ render_var(RenderBgimage) }}
-	{% endset %}
-	<div
-		{{attributes.addClass('billetDeBlogTeaser')}} style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}'); {% if settings.height %} height:{{ settings.height }} {% endif %}">
+	{% if content.bgimage.layout_builder_add_block %}
+       {{content.bgimage}}
+    {% endif %}	
+	{% if content.bgimage|layout_bg_img %}
+        {% set attributes=attributes.merge(content.bgimage|layout_bg_img) %}
+    {% endif %}
+    {#
+        il faut aussi ajouter la hauteur.
+        {% if settings.height %} height:{{ settings.height }} {% endif %}    
+    #}
+	<div {{attributes.addClass('billetDeBlogTeaser')}}>
 		{# url #}
 		{% if content.url %}
 			{% set RenderUrl = content.url | layout_raw(0) %}
@@ -53,11 +51,7 @@
 				{% endif %}
 			</div>
 		</div>
-		{% if content.bgimage.layout_builder_add_block %}
-			<div {{region_attributes.bgimage.addClass('bgimage')}}>
-				{{content.bgimage.layout_builder_add_block}}
-			</div>
-		{% endif %}
+		
 		{% if content.url.layout_builder_add_block %}
 			<div {{region_attributes.url.addClass('url')}}>
 				{{content.url.layout_builder_add_block}}
