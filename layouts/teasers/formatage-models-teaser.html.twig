@@ -26,31 +26,33 @@
 			{% if RenderUrl %}
 			</a>
 		{% endif %}
-		<div class="background">
+		{% if content.description|has_value or content.date|has_value or content.titre|has_value or content.home|has_value %}
+		<div class="background">		    
 			<div class="billetDeBlogTeaser__text">
-				{% if content.description %}
+				{% if content.description|has_value %}
 					<div {{region_attributes.description.addClass('description','d-flex')}}>
 						<i class="icon-picons-pin-2"></i>
 						{{content.description}}
 					</div>
 				{% endif %}
-				{% if content.date %}
+				{% if content.date|has_value %}
 					<div {{region_attributes.date.addClass('date')}}>
 						{{ content.date|layout_value }}
 					</div>
 				{% endif %}
-				{% if content.home %}
+				{% if content.home|has_value %}
 					<div {{region_attributes.home.addClass('home')}}>
 						{{content.home}}
 					</div>
 				{% endif %}
-				{% if content.titre %}
+				{% if content.titre|has_value %}
 					<div {{region_attributes.titre.addClass('title')}}>
 						{{content.titre|layout_value}}
 					</div>
 				{% endif %}
-			</div>
+			</div>			
 		</div>
+		{% endif %}
 		
 		{% if content.url.layout_builder_add_block %}
 			<div {{region_attributes.url.addClass('url')}}>
