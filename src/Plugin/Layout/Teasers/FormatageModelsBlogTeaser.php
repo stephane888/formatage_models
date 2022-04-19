@@ -72,7 +72,14 @@ class FormatageModelsBlogTeaser extends FormatageModelsTeasers {
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
       'css' => '',
-      'height' => ''
+      'height' => '',
+      "derivate" => [
+        'value' => 'default',
+        'options' => [
+          'default' => 'Default',
+          'show-text-hover' => 'Show text on hover'
+        ]
+      ]
     ];
   }
   

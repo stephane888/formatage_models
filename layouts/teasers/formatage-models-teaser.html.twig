@@ -10,7 +10,11 @@
         il faut aussi ajouter la hauteur.
         {% if settings.height %} height:{{ settings.height }} {% endif %}    
     #}
-	<div {{attributes.addClass('billetDeBlogTeaser')}}>
+    {% if settings.height and settings.height != "" %}
+        {% set attributes = attributes|add_style_css('height',settings.height) %}
+    {% endif %}
+    
+	<div {{ attributes.addClass('billetDeBlogTeaser') }}>
 		{# url #}
 		{% if content.url %}
 			{% set RenderUrl = content.url | layout_raw(0) %}
@@ -45,9 +49,9 @@
 						{{content.home}}
 					</div>
 				{% endif %}
-				{% if content.titre|has_value %}
+				{% if content.titre %}
 					<div {{region_attributes.titre.addClass('title')}}>
-						{{content.titre|layout_value}}
+						{{content.titre}}
 					</div>
 				{% endif %}
 			</div>			

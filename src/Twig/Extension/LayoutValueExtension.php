@@ -6,6 +6,7 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\TypedData\TypedDataInterface;
 use Drupal\formatage_models\FormatageModelsTwigImg;
 use Drupal\formatage_models\FormatageModelsTwigBgImage;
+use Drupal\formatage_models\ManageStyleCss;
 
 /**
  * Creation d'une extention pour twig.
@@ -18,6 +19,7 @@ class LayoutValueExtension extends \Twig_Extension {
   
   use FormatageModelsTwigImg;
   use FormatageModelsTwigBgImage;
+  use ManageStyleCss;
   
   /**
    *
@@ -91,6 +93,11 @@ class LayoutValueExtension extends \Twig_Extension {
       new \Twig\TwigFilter('layout_terms_value', [
         $this,
         'getLayoutTermsValues'
+      ]),
+      // add style css
+      new \Twig\TwigFilter('add_style_css', [
+        $this,
+        'addStyleCss'
       ])
     ];
   }
