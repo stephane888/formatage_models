@@ -5,7 +5,6 @@ namespace Drupal\formatage_models\Services;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\Entity\File;
 
-
 class Layouts {
   protected $configuration = [];
   protected $regions = [];
@@ -40,6 +39,11 @@ class Layouts {
    */
   function setConfig($configuration) {
     $this->configuration = $configuration;
+  }
+  
+  function setConfigNone($configuration) {
+    $this->configuration = $configuration;
+    // dump($this->configuration);
     $currentDomain = null;
     if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
       $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
@@ -48,6 +52,7 @@ class Layouts {
     if (!empty($configuration['save_by_domain']) && !empty($configuration[$currentDomain])) {
       $this->configuration = $configuration[$currentDomain];
     }
+    // dump($this->configuration);
   }
   
   //
@@ -113,6 +118,7 @@ class Layouts {
     );
     $this->buildTagHtmlRegion($form);
     $this->BuilderConfigForm->prepareBuildForms($this->configuration, $form);
+    // dump($this->configuration);
   }
   
   function buildTagHtmlRegion(array &$form) {
@@ -150,6 +156,48 @@ class Layouts {
    * @param FormStateInterface $form_state
    */
   function submitConfigurationForm(array &$configuration, FormStateInterface $form_state) {
+    $configuration['save_by_domain'] = $form_state->getValue('save_by_domain');
+    $configuration['load_libray'] = $form_state->getValue('load_libray');
+    // Save css.
+    $configuration['css'] = $form_state->getValue([
+      'css_class',
+      'css'
+    ]);
+    if (!empty($this->configuration['derivate']['options']))
+      $configuration['derivate']['value'] = $form_state->getValue([
+        'css_class',
+        'derivate'
+      ]);
+    foreach ($this->regions as $region => $label) {
+      $configuration['region_css_' . $region] = $form_state->getValue([
+        'css_class',
+        'region_css_' . $region
+      ]);
+    }
+    // Save html tag.
+    foreach ($this->regions as $region => $label) {
+      $configuration['region_tag_' . $region] = $form_state->getValue([
+        'tag_html',
+        'region_tag_' . $region
+      ]);
+    }
+    
+    //
+    foreach ($configuration as $key => $field) {
+      if (!empty($field['builder-form'])) {
+        $configuration[$key]['info'] = array_merge($field['info'], $form_state->getValue($key)['info']);
+        $configuration[$key]['fields'] = array_merge($field['fields'], $form_state->getValue($key)['fields']);
+        // if (empty($configuration[$key]['fields'])) {
+        // // dump($key, $form_state->getValues());
+        // // die();
+        // }
+        // .
+        $this->saveImage($configuration[$key]['fields']);
+      }
+    }
+  }
+  
+  function submitConfigurationFormNone(array &$configuration, FormStateInterface $form_state) {
     $currentDomain = null;
     if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
       $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();

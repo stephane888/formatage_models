@@ -76,13 +76,13 @@ class FormatageModelsheader1 extends FormatageModelsSection {
       'sf' => [
         'builder-form' => true,
         'info' => [
-          'title' => 'Contenu',
+          'title' => " Configurez l'entete du site ",
           'loader' => 'static'
         ],
         'fields' => [
           'topheader' => [
             'text' => [
-              'label' => 'Top header',
+              'label' => "Titre de l'entete",
               'value' => "Un devis travaux en ligne dès que vous en avez besoin..."
             ]
           ],
