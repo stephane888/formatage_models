@@ -77,6 +77,7 @@ class FormatageModels extends LayoutDefault {
       // On doit avoir une sauvegarde de la config en function du domaine, //et cette sauvegarde doit bien specier de l'utiliser via([save_by_domain])
       // cette approche ne permet pas de revenir en arriere. ( ce qui n'est pas forcement mauvais ).// à revoir plus tard.
       if (!empty($this->configuration[$this->currentDomain]) && $this->configuration['save_by_domain']) {
+        // $this->messenger()->addStatus($plugin_id . ' chargé à partir du sous domaine ' . $this->currentDomain);
         $this->subConfiguration = $this->configuration[$this->currentDomain];
         $this->Layouts->setConfig($this->subConfiguration);
       }
@@ -97,27 +98,13 @@ class FormatageModels extends LayoutDefault {
   }
   
   /**
-   *
-   * {@inheritdoc}
-   * @see \Drupal\Core\Layout\LayoutDefault::getConfiguration()
-   */
-  public function getConfiguration() {
-    // return $this->configuration;
-    $this->configuration = parent::getConfiguration();
-    return $this->filterConfigurationByDomain();
-  }
-  
-  /**
-   * --
+   * Renvoit la configuration Globale.
+   * NB: Cette function peut etre utiliser par d'autres modules afin de recuperer la configuration.
    *
    * @return array
    */
-  private function filterConfigurationByDomain() {
-    if ($this->subConfiguration) {
-      return $this->subConfiguration;
-    }
-    else
-      return $this->configuration;
+  public function getConfiguration() {
+    return parent::getConfiguration();
   }
   
   /**
@@ -131,9 +118,6 @@ class FormatageModels extends LayoutDefault {
   public function setConfiguration(array $configuration) {
     parent::setConfiguration($configuration);
     //
-    if ($this->subConfiguration) {
-      $this->subConfiguration = $configuration;
-    }
     $this->Layouts->setConfig($configuration);
   }
   
@@ -143,6 +127,15 @@ class FormatageModels extends LayoutDefault {
    */
   public function getSubConfiguration() {
     return $this->subConfiguration;
+  }
+  
+  /**
+   *
+   * @return array
+   */
+  public function setSubConfiguration($configuration) {
+    $this->subConfiguration = $configuration;
+    $this->Layouts->setConfig($configuration);
   }
   
   /**
@@ -188,13 +181,7 @@ class FormatageModels extends LayoutDefault {
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    // dump($this->configuration);
-    // if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
-    // $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
-    // if (!empty($this->configuration[$currentDomain])) {
-    // $this->configuration = $this->configuration[$currentDomain];
-    // }
-    // }
+    // NB : on change la valeur de configuration à ce stade, pour que le ou les formuailes parent puissent avaoir les bonnes valeurs.
     if ($this->subConfiguration) {
       $this->configuration = $this->subConfiguration;
     }
@@ -252,7 +239,9 @@ class FormatageModels extends LayoutDefault {
     }
     // Cas ou on ajoute une configuration pour un domaine.
     elseif (!empty($this->configuration['save_by_domain']) && $this->currentDomain) {
+      // $this->messenger()->addStatus($this->currentDomain . ': ajout de la config ', true);
       $this->configuration[$this->currentDomain] = $this->removeAnotherDomainId($this->configuration);
+      // $this->configuration[$this->currentDomain] = $this->configuration;
     }
     // $db['end $globalConfiguration'] = $this->globalConfiguration;
     // $db['end $configuration'] = $this->configuration;
@@ -267,8 +256,10 @@ class FormatageModels extends LayoutDefault {
   protected function removeAnotherDomainId(array $Conf) {
     $hostNames = \Drupal\wbumenudomain\Wbumenudomain::getAlldomaines();
     foreach ($hostNames as $k => $value) {
-      if (isset($Conf[$k]))
+      if (isset($Conf[$k])) {
+        // $this->messenger()->addStatus($k . ' config delete ', true);
         unset($Conf[$k]);
+      }
     }
     return $Conf;
   }
