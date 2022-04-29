@@ -104,6 +104,9 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
       '#title' => 'Style',
       '#open' => false
     ];
+    // vise à corriger les erreurs.
+    if (empty($this->configuration['container_wrapper']['bootstrap_styles']))
+      $this->configuration['container_wrapper']['bootstrap_styles'] = [];
     
     $this->stylesGroupManager->buildStylesFormElements($form['blb_style'], $form_state, $this->configuration['container_wrapper']['bootstrap_styles'], 'bootstrap_layout_builder.styles');
     return $form;
