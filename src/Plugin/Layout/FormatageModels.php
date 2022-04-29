@@ -94,7 +94,13 @@ class FormatageModels extends LayoutDefault {
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return parent::defaultConfiguration() + $this->Layouts->defaultConfiguration() + [];
+    $regions = $this->getPluginDefinition()->getRegions();
+    $regions_css = [];
+    foreach ($regions as $region => $label) {
+      $regions_css['region_css_' . $region] = '';
+    }
+    
+    return $regions_css + parent::defaultConfiguration() + $this->Layouts->defaultConfiguration() + [];
   }
   
   /**

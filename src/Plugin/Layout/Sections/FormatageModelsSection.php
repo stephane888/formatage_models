@@ -82,7 +82,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return [
+    return parent::defaultConfiguration() + [
       'load_libray' => true,
       'save_by_domain' => false,
       'container_wrapper' => [

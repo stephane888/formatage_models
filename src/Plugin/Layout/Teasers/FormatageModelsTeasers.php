@@ -70,7 +70,7 @@ class FormatageModelsTeasers extends FormatageModels implements ContainerFactory
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return [
+    return parent::defaultConfiguration() + [
       'load_libray' => true,
       'container_wrapper' => [
         // The dynamic bootstrap styles storage.
