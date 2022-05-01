@@ -41,20 +41,6 @@ class Layouts {
     $this->configuration = $configuration;
   }
   
-  function setConfigNone($configuration) {
-    $this->configuration = $configuration;
-    // dump($this->configuration);
-    $currentDomain = null;
-    if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
-      $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
-    }
-    // dump($configuration);
-    if (!empty($configuration['save_by_domain']) && !empty($configuration[$currentDomain])) {
-      $this->configuration = $configuration[$currentDomain];
-    }
-    // dump($this->configuration);
-  }
-  
   //
   function setRegions($regions) {
     $this->regions = $regions;
@@ -85,11 +71,13 @@ class Layouts {
       '#title' => "Charge les styles",
       '#default_value' => $this->configuration['load_libray']
     ];
-    $form["save_by_domain"] = [
-      '#type' => 'checkbox',
-      '#title' => "Enregistre en fonction du domain",
-      '#default_value' => $this->configuration['save_by_domain']
-    ];
+    if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
+      $form["save_by_domain"] = [
+        '#type' => 'checkbox',
+        '#title' => "Enregistre en fonction du domain",
+        '#default_value' => $this->configuration['save_by_domain']
+      ];
+    }
     //
     $form['css_class'] = array(
       '#type' => 'details',
@@ -194,66 +182,6 @@ class Layouts {
         // .
         $this->saveImage($configuration[$key]['fields']);
       }
-    }
-  }
-  
-  function submitConfigurationFormNone(array &$configuration, FormStateInterface $form_state) {
-    $currentDomain = null;
-    if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
-      $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
-    }
-    
-    $SubConfiguration = $configuration;
-    if (!empty($currentDomain) && !empty($configuration[$currentDomain])) {
-      $SubConfiguration = $configuration[$currentDomain];
-    }
-    else {
-      $SubConfiguration['save_by_domain'] = $form_state->getValue('save_by_domain');
-    }
-    $SubConfiguration['load_libray'] = $form_state->getValue('load_libray');
-    // Save css.
-    $SubConfiguration['css'] = $form_state->getValue([
-      'css_class',
-      'css'
-    ]);
-    if (!empty($this->configuration['derivate']['options']))
-      $SubConfiguration['derivate']['value'] = $form_state->getValue([
-        'css_class',
-        'derivate'
-      ]);
-    foreach ($this->regions as $region => $label) {
-      $SubConfiguration['region_css_' . $region] = $form_state->getValue([
-        'css_class',
-        'region_css_' . $region
-      ]);
-    }
-    // Save html tag.
-    foreach ($this->regions as $region => $label) {
-      $SubConfiguration['region_tag_' . $region] = $form_state->getValue([
-        'tag_html',
-        'region_tag_' . $region
-      ]);
-    }
-    
-    //
-    foreach ($SubConfiguration as $key => $field) {
-      if (!empty($field['builder-form'])) {
-        $SubConfiguration[$key]['info'] = array_merge($field['info'], $form_state->getValue($key)['info']);
-        $SubConfiguration[$key]['fields'] = array_merge($field['fields'], $form_state->getValue($key)['fields']);
-        if (empty($SubConfiguration[$key]['fields'])) {
-          // dump($key, $form_state->getValues());
-          // die();
-        }
-        // .
-        $this->saveImage($SubConfiguration[$key]['fields']);
-      }
-    }
-    //
-    if ($configuration['save_by_domain'] && !empty($currentDomain)) {
-      $configuration[$currentDomain] = $SubConfiguration;
-    }
-    else {
-      $configuration = $SubConfiguration;
     }
   }
   
