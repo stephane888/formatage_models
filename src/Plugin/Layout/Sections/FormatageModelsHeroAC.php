@@ -60,6 +60,27 @@ class FormatageModelsHeroAC extends FormatageModelsSection {
     return $build;
   }
   
+  public function buildConfigurationForm($form, $form_state) {
+    $form = parent::buildConfigurationForm($form, $form_state);
+    $form['css_left'] = [
+      '#type' => 'textfield',
+      '#title' => 'css left',
+      '#default_value' => $this->configuration['css_left']
+    ];
+    $form['css_right'] = [
+      '#type' => 'textfield',
+      '#title' => 'css right',
+      '#default_value' => $this->configuration['css_right']
+    ];
+    return $form;
+  }
+  
+  public function submitConfigurationForm(array &$form, $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['css_left'] = $form_state->getValue('css_left');
+    $this->configuration['css_right'] = $form_state->getValue('css_right');
+  }
+  
   /**
    *
    * {@inheritdoc}
@@ -68,8 +89,8 @@ class FormatageModelsHeroAC extends FormatageModelsSection {
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
       'css' => '',
-      'region_css_entete' => "col-md-6 ml-auto",
-      'region_css_entete2' => "col-md-6",
+      'css_left' => "col-md-6",
+      'css_right' => "col-md-6",
       'sf' => [
         'builder-form' => true,
         'info' => [
@@ -100,7 +121,7 @@ class FormatageModelsHeroAC extends FormatageModelsSection {
               'label' => " Button ",
               'value' => [
                 'text' => 'Contactez-nous',
-                'class' => '',
+                'class' => 'btn btn-light btn-lg',
                 'link' => '#'
               ]
             ]
