@@ -1,1 +1,1 @@
-import "../../scss/sections/formatage-models-empty-results.scss";
+import "@stephane888/wbu-atomique/scss/molecule/steph/empty-results.scss";

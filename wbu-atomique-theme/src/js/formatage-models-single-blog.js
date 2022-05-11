@@ -1,1 +1,1 @@
-import "../scss/formatage-models-single-blog.scss";
+import "@stephane888/wbu-atomique/scss/organisme/steph/lamaisonsaintgobain/single-blog";

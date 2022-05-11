@@ -1,1 +1,1 @@
-import "../../scss/sections/formatage-models-item-section.scss";
+import "@stephane888/wbu-atomique/scss/organisme/steph/lamaisonsaintgobain/item-section.scss";

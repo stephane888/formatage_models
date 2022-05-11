@@ -1,1 +1,1 @@
-import "../../scss/teasers/formatage-models-cardsimple.scss";
+import "@stephane888/wbu-atomique/scss/organisme/teasers/teaser-cardsimple.scss";

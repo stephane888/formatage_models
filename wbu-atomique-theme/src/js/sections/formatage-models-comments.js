@@ -1,1 +1,1 @@
-import "../../scss/sections/formatage-models-comments.scss";
+import "@stephane888/wbu-atomique/scss/organisme/sections/comments-left.scss";

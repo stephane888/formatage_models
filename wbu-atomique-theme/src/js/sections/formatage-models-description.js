@@ -1,1 +1,1 @@
-import "../../scss/sections/formatage-models-description.scss";
+import "@stephane888/wbu-atomique/scss/organisme/sections/description.scss";
