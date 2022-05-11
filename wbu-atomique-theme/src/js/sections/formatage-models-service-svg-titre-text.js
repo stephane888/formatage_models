@@ -1,1 +1,1 @@
-import "@stephane888/wbu-atomique/scss/molecule/stan/reinsuranceItem.scss";
+import "@stephane888/wbu-atomique/scss/molecule/stan/formatage-models-service-svg-titre-text-reinsuranceItem.scss";
