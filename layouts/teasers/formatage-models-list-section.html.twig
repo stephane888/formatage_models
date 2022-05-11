@@ -1,0 +1,21 @@
+<!-- about section -->
+<section {{attributes.addClass('list-section','container')}}>
+	{% for field in content.listes %}
+		{% if (field["#theme"] or field['#items']) %}
+			{% for fieldcontent in field.content %}
+				{% if fieldcontent["#type"] %}
+					<div class="list-block">
+						<h2 class="list-block__title">
+							{{fieldcontent}}
+						</h2>
+						<div class="list-block__price">
+							<span></span>
+							<p></p>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	{% endfor %}
+</section>
+<!-- -->

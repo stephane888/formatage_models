@@ -3,6 +3,8 @@
 namespace Drupal\formatage_models\Plugin\Layout\Teasers;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
+use Drupal\formatage_models\FormatageModelsThemes;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * A very advanced custom layout.
@@ -21,6 +23,9 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *     },
  *     "date" = {
  *       "label" = @Translation("Date"),
+ *     },
+ *     "home" = {
+ *       "label" = @Translation("nom de l'entreprise"),
  *     },
  *     "titre" = {
  *       "label" = @Translation("Titre")
@@ -50,12 +55,56 @@ class FormatageModelsBlogTeaser extends FormatageModelsTeasers {
   /**
    *
    * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::build()
+   */
+  public function build(array $regions) {
+    // TODO Auto-generated method stub
+    $build = parent::build($regions);
+    FormatageModelsThemes::formatSettingValues($build);
+    return $build;
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
    * @see \Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers::defaultConfiguration()
    */
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
-      'css' => ''
+      'css' => '',
+      'height' => '',
+      "derivate" => [
+        'value' => 'default',
+        'options' => [
+          'default' => 'Default',
+          'show-text-hover' => 'Show text on hover'
+        ]
+      ]
     ];
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form = parent::buildConfigurationForm($form, $form_state);
+    $form['height'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('height'),
+      '#default_value' => $this->configuration['height'],
+      '#description' => 'example : 400px '
+    ];
+    return $form;
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['height'] = $form_state->getValue('height');
   }
   
 }

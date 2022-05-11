@@ -1,0 +1,19 @@
+{% if content  %}
+	{#  il faut retirer l'url du champs s'il existe et le mettre en lien au dessus. 	#}
+	{% for field in content.titre %}
+		{% if (field["#theme"] or field['#items']) %}
+			{% for fieldcontent in field.content %}
+				{% if fieldcontent["#type"] %}
+					{% set arr = fieldcontent | filter((v, k) => k != '#url') %}
+					{% set urlLink %}{{fieldcontent["#url"]}}{% endset %}
+					<div {{attributes.addClass('titre-rc-web')}}>
+						<a class="col-el d-block" href="{{ urlLink|trim }}">
+							{{arr["#title"]}}
+							<div class="hover-element"></div>
+						</a>
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	{% endfor %}
+{% endif %}

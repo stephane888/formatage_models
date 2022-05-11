@@ -1,19 +1,11 @@
 {% if content %}
+	{% set custom_image %}
+	{{ content.bgimage }}
+	{% endset %}
 	{% if content.bgimage.layout_builder_add_block %}
 		{{ content.bgimage }}
 	{% endif %}
-	{% set RenderBgimage = {
-                  '#theme': 'formatage_models__img_url',
-                  '#content_all': content.bgimage,
-                  '#tag_fields': '',
-                  '#tag_field': '',
-                  '#tag_field_attibutes': {}
-                }
-    %}
-	{% set RenderBgimagHtml %}
-	{{ render_var(RenderBgimage) }}
-	{% endset %}
-	<section {{attributes.addClass('page-header-bg')}} style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}'); background-size:{{settings.bg_size}}; background-position:{{settings.bg_position}};">
+	<section {{attributes.addClass('page-header-bg')}} style="background-image: url('{{ custom_image|striptags|trim }}'); background-size:{{settings.bg_size}}; background-position:{{settings.bg_position}};">
 		{% if content.title %}
 			<div class="container">
 				<div class="col-md-12">

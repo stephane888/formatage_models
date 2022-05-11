@@ -37,24 +37,94 @@ vuejs:
     https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js:
       { type: external, minified: true }
 
+
 formatage-models-admin:
   js:
     layouts/js/formatage_models_admin.js: {}
   css:
     theme:
-      layouts/css/formatage_models_admin.css: { weight: 10 } 
-
-
+      layouts/css/formatage_models_admin.css: { weight: 10 }
 
 #################################################################################################################################################
 # -50 <weight> +50
+
+
+formatage-models-price-saint-gobain:
+  js:
+    layouts/js/formatage-models-price-saint-gobain.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-price-saint-gobain.css: { weight: 10 }
+      
+formatage-models-hero-saint-gobain:
+  js:
+    layouts/js/formatage-models-hero-saint-gobain.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-saint-gobain.css: { weight: 10 }
+
+formatage-models-type-parquet:
+  js:
+    layouts/js/formatage-models-type-parquet.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-type-parquet.css: { weight: 10 }
+
+formatage-models-left-right:
+  js:
+    layouts/js/formatage-models-left-right.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-left-right.css: { weight: 10 }
+
+formatage-models-hero-lgb:
+  js:
+    layouts/js/formatage-models-hero-lgb.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-lgb.css: { weight: 10 }
+
+formatage-models-fb-service:
+  js:
+    layouts/js/formatage-models-fb-service.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-fb-service.css: { weight: 10 }
+
+formatage-models-fb-feature:
+  js:
+    layouts/js/formatage-models-fb-feature.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-fb-feature.css: { weight: 10 }
+
+formatage-models-hero-ason:
+  js:
+    layouts/js/formatage-models-hero-ason.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-ason.css: { weight: 10 }
+
+formatage-models-about-ac:
+  js:
+    layouts/js/formatage-models-about-ac.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-about-ac.css: { weight: 10 }
+
+formatage-models-hero-ac:
+  js:
+    layouts/js/formatage-models-hero-ac.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-hero-ac.css: { weight: 10 }
 
 formatage-models-footer-gp:
   js:
     layouts/js/formatage-models-footer-gp.js: {}
   css:
     theme:
-      layouts/css/formatage-models-footer-gp.css: { weight: 10 }  
+      layouts/css/formatage-models-footer-gp.css: { weight: 10 }
 
 formatage-models-portfolio-section:
   js:
@@ -89,51 +159,69 @@ formatage-models-hero-gp:
     layouts/js/formatage-models-hero-gp.js: {}
   css:
     theme:
-      layouts/css/formatage-models-hero-gp.css: { weight: 10 } 
+      layouts/css/formatage-models-hero-gp.css: { weight: 10 }
+formatage-models-titre-rc:
+  js:
+    layouts/js/formatage-models-titre-rc.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-titre-rc.css: { weight: 10 }
+
+formatage-models-list-section:
+  js:
+    layouts/js/formatage-models-list-section.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-list-section.css: { weight: 10 }
+
+formatage-bloc-price:
+  js:
+    layouts/js/formatage-bloc-price.js: {}
+  css:
+    theme:
+      layouts/css/formatage-bloc-price.css: { weight: 10 }
 
 formatage-models-title-description:
   js:
     layouts/js/formatage-models-title-description.js: {}
   css:
     theme:
-      layouts/css/formatage-models-title-description.css: { weight: 10 } 
-
+      layouts/css/formatage-models-title-description.css: { weight: 10 }
 
 formatage-models-hero2:
   js:
     layouts/js/formatage-models-hero2.js: {}
   css:
     theme:
-      layouts/css/formatage-models-hero2.css: { weight: 10 } 
-
+      layouts/css/formatage-models-hero2.css: { weight: 10 }
 
 formatage-models-contact-page:
   js:
     layouts/js/formatage-models-contact-page.js: {}
   css:
     theme:
-      layouts/css/formatage-models-contact-page.css: { weight: 10 } 
+      layouts/css/formatage-models-contact-page.css: { weight: 10 }
 
 formatage-models-contact:
   js:
     layouts/js/formatage-models-contact.js: {}
   css:
     theme:
-      layouts/css/formatage-models-contact.css: { weight: 10 } 
+      layouts/css/formatage-models-contact.css: { weight: 10 }
 
 formatage-models-footer1:
   js:
     layouts/js/formatage-models-footer1.js: {}
   css:
     theme:
-      layouts/css/formatage-models-footer1.css: { weight: 10 } 
+      layouts/css/formatage-models-footer1.css: { weight: 10 }
 
 formatage_models_swiper_big_v3:
   js:
     layouts/js/formatage_models_swiper_big_v3.js: {}
   css:
     theme:
-      layouts/css/formatage_models_swiper_big_v3.css: { weight: 10 } 
+      layouts/css/formatage_models_swiper_big_v3.css: { weight: 10 }
 
 formatage-models-text-hover:
   js:

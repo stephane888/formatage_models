@@ -12,7 +12,6 @@
   "minimum-stability": "dev",
   "require": {
     "drupal/bootstrap_layout_builder": "^2.0",
-    "drupal/domain": "^1.0@beta",
     "stephane888/htmlbootstrap": "^1.2 | dev-1x",
     "stephane888/debug": "^1.0 | dev-1x"
   }

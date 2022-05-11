@@ -3,6 +3,7 @@
 namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
+use Drupal\formatage_models\FormatageModelsThemes;
 
 /**
  * A very advanced custom layout.
@@ -41,9 +42,28 @@ class FormatageModelsHero2 extends FormatageModelsSection {
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-hero2.png");
   }
   
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::build()
+   */
+  public function build(array $regions) {
+    // TODO Auto-generated method stub
+    $build = parent::build($regions);
+    FormatageModelsThemes::formatSettingValues($build);
+    return $build;
+  }
+  
   function defaultConfiguration() {
     return parent::defaultConfiguration() + [
       'load_libray' => true,
+      "derivate" => [
+        'value' => 'simple',
+        'options' => [
+          'simple' => 'simple',
+          'cover-bg' => 'Cover background'
+        ]
+      ],
       'infos' => [
         'builder-form' => true,
         'info' => [

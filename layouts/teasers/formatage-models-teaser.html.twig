@@ -1,25 +1,27 @@
-{# wbu-atomique/scss/molecule/stan/billetDeBlogTeaser.scss 
-#}
 {% if content %}
 	{# on ajoute un template #}
-	{% set RenderBgimage = {
-    '#theme': 'formatage_models__img_url',
-    '#content_all': content.bgimage,
-    '#tag_fields': '',
-    '#tag_field': '',
-    '#tag_field_attibutes': {}
-  }
-    %}
-	{% set RenderBgimagHtml %}
-	{{ render_var(RenderBgimage) }}
-	{% endset %}
-	<div
-		{{attributes.addClass('billetDeBlogTeaser')}} style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}');">
+	{% if content.bgimage.layout_builder_add_block %}
+       {{content.bgimage}}
+    {% endif %}	
+	{% if content.bgimage|layout_bg_img %}
+        {% set attributes=attributes.merge(content.bgimage|layout_bg_img) %}
+    {% endif %}
+    {#
+        il faut aussi ajouter la hauteur.
+        {% if settings.height %} height:{{ settings.height }} {% endif %}    
+    #}
+    {% if settings.height and settings.height != "" %}
+        {% set attributes = attributes|add_style_css('height',settings.height) %}
+    {% endif %}
+    
+	<div {{ attributes.addClass('billetDeBlogTeaser') }}>
 		{# url #}
 		{% if content.url %}
 			{% set RenderUrl = content.url | layout_raw(0) %}
 			{% if RenderUrl.value %}
-				{% set RenderUrl %}{{- path('entity.node.canonical', {'node': RenderUrl.value}) -}}{% endset %}
+				{% set RenderUrl %}
+				{{- path('entity.node.canonical', {'node': RenderUrl.value}) -}}
+				{% endset %}
 			{% endif %}
 		{% endif %}
 		{% if RenderUrl %}
@@ -28,29 +30,36 @@
 			{% if RenderUrl %}
 			</a>
 		{% endif %}
-		<div class="background">
+		{% if content.description|has_value or content.date|has_value or content.titre|has_value or content.home|has_value %}
+		<div class="background">		    
 			<div class="billetDeBlogTeaser__text">
-				{% if content.description %}
-					<div{{region_attributes.description.addClass('description','d-flex')}}>
+				{% if content.description|has_value %}
+					<div {{region_attributes.description.addClass('description','d-flex')}}>
 						<i class="icon-picons-pin-2"></i>
 						{{content.description}}
 					</div>
 				{% endif %}
-				<div{{region_attributes.date.addClass('date')}}>
-					{{ content.date|layout_value }}
-				</div>
-				<div {{region_attributes.titre.addClass('title')}}>
-					{{content.titre|layout_value}}
-				</div>
-			</div>
+				{% if content.date|has_value %}
+					<div {{region_attributes.date.addClass('date')}}>
+						{{ content.date|layout_value }}
+					</div>
+				{% endif %}
+				{% if content.home|has_value %}
+					<div {{region_attributes.home.addClass('home')}}>
+						{{content.home}}
+					</div>
+				{% endif %}
+				{% if content.titre %}
+					<div {{region_attributes.titre.addClass('title')}}>
+						{{content.titre}}
+					</div>
+				{% endif %}
+			</div>			
 		</div>
-		{% if content.bgimage.layout_builder_add_block %}
-			<div{{region_attributes.bgimage.addClass('bgimage')}}>
-				{{content.bgimage.layout_builder_add_block}}
-			</div>
 		{% endif %}
+		
 		{% if content.url.layout_builder_add_block %}
-			<div{{region_attributes.url.addClass('url')}}>
+			<div {{region_attributes.url.addClass('url')}}>
 				{{content.url.layout_builder_add_block}}
 			</div>
 		{% endif %}

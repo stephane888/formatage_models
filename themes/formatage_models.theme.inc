@@ -1,6 +1,5 @@
 <?php
 use Drupal\formatage_models\FormatageModelsThemes;
-use Stephane888\Debug\debugLog;
 
 function template_preprocess_formatage_models_swiper_views_style(&$vars) {
   FormatageModelsThemes::ViewsGetValues($vars);
@@ -23,7 +22,7 @@ function template_preprocess_formatage_models_swiper_unique(&$vars) {
      * @var \Drupal\views\ViewExecutable $view
      */
     $view = $vars['view'];
-    $id = $view->id(); // $vars['theme_hook_suggestions'] = []; }
+    $id = $view->id(); // $vars['theme_hook_suggestions'] = [];}
   }
 }
 

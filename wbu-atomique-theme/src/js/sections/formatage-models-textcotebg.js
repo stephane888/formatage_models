@@ -1,1 +1,1 @@
-import "../../scss/sections/formatage-models-textcotebg.scss";
+import "@stephane888/wbu-atomique/scss/organisme/sections/textcotebg.scss";

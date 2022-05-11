@@ -1,0 +1,42 @@
+{% if content %}
+	{% if content.imagebg.layout_builder_add_block %}
+		{{ content.imagebg }}
+	{% endif %}
+	{% set img_bg = content.imagebg|layout_bg_img %}
+	{% if img_bg %}
+		{% set attributes=attributes.merge(img_bg) %}
+	{% endif %}
+	<section {{attributes.addClass('lgb-hero')}}>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7 mx-auto">
+					<div class="lgb-hero--content">
+						{% if content.subtitle %}
+							<{{settings.region_tag_subtitle|trim}} {{ region_attributes.subtitle.addClass('subtitle') }}>
+								{{ content.subtitle }}
+							</{{settings.region_tag_subtitle|trim}}>
+						{% endif %}
+						{% if content.title %}
+							<{{settings.region_tag_title}} {{ region_attributes.title.addClass('title') }}>
+								{{ content.title }}
+							</{{settings.region_tag_title}}>
+						{% endif %}
+						{% if content.introduction %}
+							<div {{ region_attributes.introduction.addClass('introduction') }}>
+								{{ content.introduction }}
+							</div>
+						{% endif %}
+						{% if content.description %}
+							<div {{ region_attributes.description.addClass('description') }}>
+								{{ content.description }}
+							</div>
+						{% endif %}
+						{% if content.button %}
+							{{ content.button }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}

@@ -193,6 +193,7 @@ class FormatageModelsThemes {
        */
       $layout = $variables['layout'];
       $regions = $layout->getRegionNames();
+      
       foreach ($variables['settings'] as $vals) {
         if (!empty($vals["builder-form"]) && !empty($vals["fields"]) && !empty($vals["info"]['loader']) && $vals["info"]['loader'] == "static") {
           foreach ($vals["fields"] as $regionName => $fields) {
@@ -297,11 +298,12 @@ class FormatageModelsThemes {
      */
     $layout = $build['#layout'];
     $regions = $layout->getRegionLabels();
-    
+    // dump($settings);
     // on parcourt les elements de settings.
     foreach ($settings as $vals) {
       // dump($vals);
-      if (!empty($vals["builder-form"]) && !empty($vals["fields"]) && !empty($vals["info"]['loader']) && $vals["info"]['loader'] == "static") {
+      if (!empty($vals["fields"]) && !empty($vals["info"]['loader']) && $vals["info"]['loader'] == "static") {
+        
         // on parcourt les groupes de champs.
         foreach ($vals["fields"] as $regionName => $fields) {
           if (isset($regions[$regionName])) {
@@ -361,15 +363,36 @@ class FormatageModelsThemes {
                      *
                      * @var \Drupal\Core\Render\Element\Link
                      */
-                    if (!empty($field['value']['text']))
+                    // if (!empty($field['value']['text']))
+                    // $build[$regionName][] = [
+                    // '#type' => 'link',
+                    // '#title' => $field['value']['text'],
+                    // '#url' => \Drupal\Core\Url::fromUserInput($field['value']['link']),
+                    // '#attributes' => [
+                    // 'class' => explode(" ", $field['value']['class'])
+                    // ]
+                    // ];
+                    if (!empty($field['value']['text'])) {
+                      $options = [];
+                      $typeLink = 'internal:';
+                      if (!(strpos($field['value']['link'], 'http') === false)) {
+                        $typeLink = '';
+                        $options['absolute'] = true;
+                        $options['external'] = true;
+                        $options['attributes']['target'] = 'blank';
+                      }
                       $build[$regionName][] = [
                         '#type' => 'link',
-                        '#title' => $field['value']['text'],
-                        '#url' => \Drupal\Core\Url::fromUserInput($field['value']['link']),
+                        '#title' => [
+                          '#type' => 'inline_template',
+                          '#template' => $field['value']['text']
+                        ],
+                        '#url' => \Drupal\Core\Url::fromUri($typeLink . $field['value']['link'], $options),
                         '#attributes' => [
                           'class' => explode(" ", $field['value']['class'])
                         ]
                       ];
+                    }
                     break;
                   default:
                     throw new \Exception("Le champs " . $key . " n'a pas de rendu ");
@@ -380,24 +403,23 @@ class FormatageModelsThemes {
                 $file = File::load($field['fids'][0]);
                 $image_style = $field['style'];
                 if ($file) {
-                  if (!empty($image_style) && ImageStyle::load($image_style)) {
-                    $uri = $file->getFileUri();
-                  }
-                  else {
-                    $uri = $file->getFileUri();
-                  }
-                  $build[$regionName][] = [
+                  $uri = $file->getFileUri();
+                  $renderImg = [
                     '#theme' => 'image_style',
-                    // '#width' => $variables['width'],
-                    // '#height' => $variables['height'],
                     '#attributes' => [
                       'class' => [
                         !empty($field['class']) ? $field['class'] : ''
                       ]
                     ],
-                    '#style_name' => $image_style,
                     '#uri' => $uri
                   ];
+                  if (!empty($image_style) && ImageStyle::load($image_style)) {
+                    $renderImg['#style_name'] = $image_style;
+                  }
+                  else {
+                    $renderImg['#theme'] = 'image';
+                  }
+                  $build[$regionName][] = $renderImg;
                 }
               }
             }

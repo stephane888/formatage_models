@@ -1,0 +1,64 @@
+{% if content %}
+	<div {{ attributes.addClass('saint-gaobin--price-block') }}>
+		<div class="container d-flex flex-wrap justify-content-around">
+			<div class="item">
+				{% if content.title %}
+					<h3 {{region_attributes.title.addClass('title')}}>
+						{{content.title}}
+					</h3>
+				{% endif %}
+				<div class="price d-flex justify-content-center align-items-center">
+					{% if content.montant %}
+						<div {{region_attributes.montant.addClass('price-montant')}}>
+							{{content.montant}}
+						</div>
+					{% endif %}
+					{% if content.currency %}
+						<div {{region_attributes.currency.addClass('price-currency')}}>
+							{{content.currency}}
+						</div>
+					{% endif %}
+				</div>
+				{% if content.description %}
+					<div {{region_attributes.description.addClass('header')}}>
+						{{content.description}}
+					</div>
+				{% endif %}
+				{% if content.list_options %}
+					<div {{region_attributes.list_options.addClass('contain-options')}}>
+						{{content.list_options}}
+					</div>
+				{% endif %}
+			</div>
+			<div class="item">
+				{% if content.title1 %}
+					<h3 {{region_attributes.title1.addClass('title')}}>
+						{{content.title1}}
+					</h3>
+				{% endif %}
+				<div class="price d-flex justify-content-center align-items-center">
+					{% if content.montant1 %}
+						<div {{region_attributes.montant1.addClass('price-montant')}}>
+							{{content.montant1}}
+						</div>
+					{% endif %}
+					{% if content.currency1 %}
+						<div {{region_attributes.currency1.addClass('price-currency')}}>
+							{{content.currency1}}
+						</div>
+					{% endif %}
+				</div>
+				{% if content.description1 %}
+					<div {{region_attributes.description1.addClass('header')}}>
+						{{content.description1}}
+					</div>
+				{% endif %}
+				{% if content.list_options1 %}
+					<div {{region_attributes.list_options1.addClass('contain-options')}}>
+						{{content.list_options1}}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endif %}

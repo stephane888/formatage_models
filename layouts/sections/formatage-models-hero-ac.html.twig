@@ -1,0 +1,37 @@
+{% if content %}
+	<section id="hero" {{attributes.addClass('ac-hero')}}>
+		<div class="container">
+			<div class="row">
+				<div class="{{ settings.css_left }} content-text">
+					<div>
+    					{% if content.subtitle %}
+                            <h4 {{ region_attributes.subtitle.addClass('subtitle') }}>
+                                {{ content.subtitle }}
+                            </h4>
+                        {% endif %}
+                        {% if content.title %}
+                            <h1 {{ region_attributes.title.addClass('title') }}>
+                                {{ content.title }}
+                            </h1>
+                        {% endif %}
+                        {% if content.description %}
+                            <div {{ region_attributes.description.addClass('description') }}>
+                                {{ content.description }}
+                            </div>
+                        {% endif %}
+                        {% if content.button %}
+                            {{ content.button }}
+                        {% endif %}
+					</div>
+				</div>
+				<div class="{{ settings.css_right }} content-image">
+					{% if content.image %}
+						<div {{ region_attributes.image.addClass('image') }}>
+							{{ content.image }}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}

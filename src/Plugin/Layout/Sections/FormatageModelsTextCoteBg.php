@@ -3,6 +3,7 @@
 namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
+use Drupal\formatage_models\FormatageModelsThemes;
 
 /**
  * A very advanced custom layout.
@@ -52,6 +53,9 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *     "image2" = {
  *       "label" = @Translation(" Image 2 "),
  *     },
+ *     "imagebg" = {
+ *       "label" = @Translation(" Image background "),
+ *     },
  *   }
  * )
  */
@@ -66,6 +70,18 @@ class FormatageModelsTextCoteBg extends FormatageModelsSection {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage-models-textcotebg.png");
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::build()
+   */
+  public function build(array $regions) {
+    // TODO Auto-generated method stub
+    $build = parent::build($regions);
+    FormatageModelsThemes::formatSettingValues($build);
+    return $build;
   }
   
   public function defaultConfiguration() {

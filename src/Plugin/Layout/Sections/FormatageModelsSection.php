@@ -36,11 +36,19 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     return new static($configuration, $plugin_id, $plugin_definition, $container->get('plugin.manager.bootstrap_styles_group'));
   }
   
+  /**
+   * On a remplcer $this->configuration => $build['#settings'].
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::build()
+   */
   public function build(array $regions) {
     $build = parent::build($regions);
-    
     // à mettre sur un module externe.
-    $currentDomain = $this->Layouts::getCurrentdomain();
+    $currentDomain = null;
+    if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
+      $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
+    }
     if (!empty($this->configuration[$currentDomain])) {
       $build['#settings'] = $this->configuration[$currentDomain];
     }
@@ -50,9 +58,9 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
       $build['#attributes']['class'] = [];
     }
     $build['#attributes']['class'][] = 'space_bottom';
-    $build['#attributes']['class'][] = $this->configuration['css'];
+    $build['#attributes']['class'][] = $build['#settings']['css'];
     if (!empty($this->configuration['derivate']['value'])) {
-      $build['#attributes']['class'][] = $this->configuration['derivate']['value'];
+      $build['#attributes']['class'][] = $build['#settings']['derivate']['value'];
     }
     
     // Regions classes and attributes.
@@ -61,7 +69,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
         'layout-region'
       ];
       if (isset($this->configuration['region_css_' . $region_name])) {
-        $build[$region_name]['#attributes']['class'][] = $this->configuration['region_css_' . $region_name];
+        $build[$region_name]['#attributes']['class'][] = $build['#settings']['region_css_' . $region_name];
       }
     }
     $build = $this->stylesGroupManager->buildStyles($build, $this->configuration['container_wrapper']['bootstrap_styles']);
@@ -74,13 +82,14 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return [
+    return parent::defaultConfiguration() + [
       'load_libray' => true,
       'save_by_domain' => false,
       'container_wrapper' => [
         // The dynamic bootstrap styles storage.
         'bootstrap_styles' => []
-      ]
+      ],
+      'css' => ''
     ];
   }
   
@@ -95,6 +104,10 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
       '#title' => 'Style',
       '#open' => false
     ];
+    // vise à corriger les erreurs.
+    if (empty($this->configuration['container_wrapper']['bootstrap_styles']))
+      $this->configuration['container_wrapper']['bootstrap_styles'] = [];
+    
     $this->stylesGroupManager->buildStylesFormElements($form['blb_style'], $form_state, $this->configuration['container_wrapper']['bootstrap_styles'], 'bootstrap_layout_builder.styles');
     return $form;
   }
@@ -108,6 +121,14 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     $style_tab = [
       'blb_style'
     ];
+    // on ajoute un function de verification.( car suivant certains on cree des bugs).
+    if (!isset($this->configuration['container_wrapper']['bootstrap_styles'])) {
+      $this->configuration['container_wrapper'] = [
+        'bootstrap_styles' => []
+      ];
+      $message = " Une erreur s'est produit lors de la derniere sauvegarde ";
+      \Drupal::messenger()->addWarning($message);
+    }
     $this->configuration['container_wrapper']['bootstrap_styles'] = $this->stylesGroupManager->submitStylesFormElements($form['blb_style'], $form_state, $style_tab, $this->configuration['container_wrapper']['bootstrap_styles'], 'bootstrap_layout_builder.styles');
   }
   

@@ -1,4 +1,10 @@
 {% if content %}
+	{% if content.imagebg.layout_builder_add_block %}
+		{{ content.imagebg }}
+	{% endif %}
+	{% if content.imagebg|layout_bg_img %}
+		{% set attributes=attributes.merge(content.imagebg|layout_bg_img) %}
+	{% endif %}
 	<section {{attributes.addClass('textcotebg')}}>
 		<div class="container">
 			<div class="row">
@@ -6,9 +12,15 @@
 					{%if content.entete %}
 						{{content.entete}}
 					{%endif %}
-					<h2{{region_attributes.title.addClass('title')}}>
-						{{content.title}}
-					</h2>
+					{% if settings.region_tag_title != '' %}
+						<{{settings.region_tag_title}} {{region_attributes.title.addClass('title')}}>
+							{{ content.title|layout_value }}
+						</{{settings.region_tag_title}}>
+					{% else %}
+						<h2{{region_attributes.title.addClass('title')}}>
+							{{content.title}}
+						</h2>
+					{% endif %}
 					<div{{region_attributes.description.addClass('description')}}>
 						{{content.description}}
 					</div>

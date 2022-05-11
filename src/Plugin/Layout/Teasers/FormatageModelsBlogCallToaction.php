@@ -6,7 +6,6 @@ use Drupal\Core\Layout\LayoutDefault;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\formatage_models\Services\Layouts;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Stephane888\Debug\debugLog;
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 
 /**

@@ -15,7 +15,7 @@ class Layouts {
   }
   
   /**
-   * permert d'ajouter un formulaire d'edition.
+   * Permert d'ajouter un formulaire d'edition.
    *
    * @var array
    */
@@ -33,14 +33,12 @@ class Layouts {
     ];
   }
   
-  //
+  /**
+   *
+   * @param \Drupal\formatage_models\Services\Layouts $configuration
+   */
   function setConfig($configuration) {
     $this->configuration = $configuration;
-    $currentDomain = self::getCurrentdomain();
-    
-    if (!empty($configuration['save_by_domain']) && !empty($configuration[$currentDomain])) {
-      $this->configuration = $configuration[$currentDomain];
-    }
   }
   
   //
@@ -73,12 +71,14 @@ class Layouts {
       '#title' => "Charge les styles",
       '#default_value' => $this->configuration['load_libray']
     ];
-    $form["save_by_domain"] = [
-      '#type' => 'checkbox',
-      '#title' => "Enregistre en fonction du domain",
-      '#default_value' => $this->configuration['save_by_domain']
-    ];
-    
+    if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
+      $form["save_by_domain"] = [
+        '#type' => 'checkbox',
+        '#title' => "Enregistre en fonction du domain",
+        '#default_value' => $this->configuration['save_by_domain']
+      ];
+    }
+    //
     $form['css_class'] = array(
       '#type' => 'details',
       '#title' => 'Class html',
@@ -98,7 +98,25 @@ class Layouts {
         '#empty_option' => '- Select -'
       ];
     $this->buildClassCssRegion($form);
+    //
+    $form['tag_html'] = array(
+      '#type' => 'details',
+      '#title' => 'Html tags',
+      '#open' => false
+    );
+    $this->buildTagHtmlRegion($form);
     $this->BuilderConfigForm->prepareBuildForms($this->configuration, $form);
+    // dump($this->configuration);
+  }
+  
+  function buildTagHtmlRegion(array &$form) {
+    foreach ($this->regions as $region => $label) {
+      $form['tag_html']['region_tag_' . $region] = [
+        '#type' => 'textfield',
+        '#title' => 'Tag html region : ' . $label['label'],
+        '#default_value' => isset($this->configuration['region_tag_' . $region]) ? $this->configuration['region_tag_' . $region] : ''
+      ];
+    }
   }
   
   /**
@@ -109,8 +127,7 @@ class Layouts {
   function saveFilePermanent(array $fids) {
     foreach ($fids as $fid) {
       if ($file = \Drupal\file\Entity\File::load($fid)) {
-        // debugLog::kintDebugDrupal($file, 'saveFilePermanent2', null,
-        // 'lesroisdelareno');
+        
         $file->setPermanent();
         $file->save();
         $file_usage = \Drupal::service('file.usage');
@@ -127,64 +144,45 @@ class Layouts {
    * @param FormStateInterface $form_state
    */
   function submitConfigurationForm(array &$configuration, FormStateInterface $form_state) {
-    $currentDomain = self::getCurrentdomain();
-    
-    $SubConfiguration = $configuration;
-    if (!empty($currentDomain) && !empty($configuration[$currentDomain])) {
-      $SubConfiguration = $configuration[$currentDomain];
-    }
-    else {
-      $SubConfiguration['save_by_domain'] = $form_state->getValue('save_by_domain');
-    }
-    $SubConfiguration['load_libray'] = $form_state->getValue('load_libray');
-    
-    $SubConfiguration['css'] = $form_state->getValue([
+    $configuration['save_by_domain'] = $form_state->getValue('save_by_domain');
+    $configuration['load_libray'] = $form_state->getValue('load_libray');
+    // Save css.
+    $configuration['css'] = $form_state->getValue([
       'css_class',
       'css'
     ]);
     if (!empty($this->configuration['derivate']['options']))
-      $SubConfiguration['derivate']['value'] = $form_state->getValue([
+      $configuration['derivate']['value'] = $form_state->getValue([
         'css_class',
         'derivate'
       ]);
     foreach ($this->regions as $region => $label) {
-      $SubConfiguration['region_css_' . $region] = $form_state->getValue([
+      $configuration['region_css_' . $region] = $form_state->getValue([
         'css_class',
         'region_css_' . $region
       ]);
     }
-    //
-    foreach ($SubConfiguration as $key => $field) {
-      if (!empty($field['builder-form'])) {
-        $SubConfiguration[$key]['info'] = array_merge($field['info'], $form_state->getValue($key)['info']);
-        $SubConfiguration[$key]['fields'] = array_merge($field['fields'], $form_state->getValue($key)['fields']);
-        // cette function n'est plus necessaire.
-        $this->saveImage($SubConfiguration[$key]['fields']);
-      }
+    // Save html tag.
+    foreach ($this->regions as $region => $label) {
+      $configuration['region_tag_' . $region] = $form_state->getValue([
+        'tag_html',
+        'region_tag_' . $region
+      ]);
     }
     
-    if ($configuration['save_by_domain'] && !empty($currentDomain)) {
-      $configuration[$currentDomain] = $SubConfiguration;
+    //
+    foreach ($configuration as $key => $field) {
+      if (!empty($field['builder-form'])) {
+        $configuration[$key]['info'] = array_merge($field['info'], $form_state->getValue($key)['info']);
+        $configuration[$key]['fields'] = array_merge($field['fields'], $form_state->getValue($key)['fields']);
+        // if (empty($configuration[$key]['fields'])) {
+        // // dump($key, $form_state->getValues());
+        // // die();
+        // }
+        // .
+        $this->saveImage($configuration[$key]['fields']);
+      }
     }
-    else {
-      $configuration = $SubConfiguration;
-    }
-  }
-  
-  /**
-   * cette function doit etre sur un autre module externe à ce dernier.
-   *
-   * @deprecated
-   * @return string|number|NULL
-   */
-  public static function getCurrentdomain() {
-    /** @var \Drupal\domain\Entity\Domain $active */
-    $active = \Drupal::service('domain.negotiator')->getActiveDomain();
-    if (empty($active)) {
-      $active = \Drupal::entityTypeManager()->getStorage('domain')->loadDefaultDomain();
-    }
-    if (!empty($active))
-      return $active->id();
   }
   
   /**
@@ -200,7 +198,7 @@ class Layouts {
   }
   
   /**
-   * Retourne le chemin absolue sans le domaine.
+   * Enregistre une image comme permanent;
    *
    * @param array $fid
    * @param String $image_style
