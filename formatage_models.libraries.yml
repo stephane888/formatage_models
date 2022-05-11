@@ -341,6 +341,13 @@ formatage-models-hero-thegem-18:
   css:
     theme:
       layouts/css/formatage-models-hero-thegem-18.css: { weight: 10 }
+## menu1 -- mod by spaker --
+formatage-models-menu1:
+  js:
+    layouts/js/formatage-models-menu1.js: {}
+  css:
+    theme:
+      layouts/css/formatage-models-menu1.css: { weight: 10 }
 ###
 formatage-models-menu01:
   js:

@@ -13,6 +13,7 @@ use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
  *   category = @Translation("Formatage Models"),
  *   path = "layouts/sections/menus",
  *   template = "formatage-models-menu1",
+ *   library = "formatage_models/formatage-models-menu1",
  *   default_region = "site_main_menu",
  *   regions = {
  *     "site_main_menu" = {
