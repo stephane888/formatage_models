@@ -10,7 +10,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *
  * @Layout(
  *   id = "formatage_models_hero_lgb",
- *   label = @Translation(" Hero modele LGB. "),
+ *   label = @Translation(" Hero modele LGB. GOOD "),
  *   category = @Translation("Formatage Models"),
  *   path = "layouts/sections",
  *   template = "formatage-models-hero-lgb",
