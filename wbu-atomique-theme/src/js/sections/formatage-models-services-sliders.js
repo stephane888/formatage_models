@@ -1,1 +1,1 @@
-import "../../scss/sections/formatage-models-services-sliders.scss";
+import "@stephane888/wbu-atomique/scss/organisme/steph/lesroidelareno/services-sliders.scss";
