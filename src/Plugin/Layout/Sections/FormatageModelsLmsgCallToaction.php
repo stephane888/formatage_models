@@ -13,6 +13,7 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *   category = @Translation("Formatage Models"),
  *   path = "layouts/sections",
  *   template = "formatage-models-lmsg-call-toaction",
+ *   library = "formatage_models/formatage-models-lmsg-call-toaction",
  *   default_region = "titre",
  *   regions = {
  *     "titre" = {
