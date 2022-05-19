@@ -69,7 +69,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
         'layout-region'
       ];
       if (isset($this->configuration['region_css_' . $region_name])) {
-        $build[$region_name]['#attributes']['class'][] = $build['#settings']['region_css_' . $region_name];
+        $build[$region_name]['#attributes']['class'][] = isset($build['#settings']['region_css_' . $region_name]) ? $build['#settings']['region_css_' . $region_name] : $this->configuration['region_css_' . $region_name];
       }
     }
     $build = $this->stylesGroupManager->buildStyles($build, $this->configuration['container_wrapper']['bootstrap_styles']);
@@ -121,7 +121,8 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     $style_tab = [
       'blb_style'
     ];
-    // on ajoute un function de verification.( car suivant certains on cree des bugs).
+    // on ajoute un function de verification.( car suivant certains on cree des
+    // bugs).
     if (!isset($this->configuration['container_wrapper']['bootstrap_styles'])) {
       $this->configuration['container_wrapper'] = [
         'bootstrap_styles' => []

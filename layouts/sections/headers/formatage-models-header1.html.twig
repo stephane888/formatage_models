@@ -10,6 +10,11 @@
 				</div>
 				<div class="col-lg-6 right">
 					<div class="d-flex justify-content-end pt-2">
+					    {% if content.topheader_right %}
+						<div {{ region_attributes.topheader_right.addClass('topheader_right') }}>
+						    {{ content.topheader_right }}
+						</div>
+						{% endif %}
 						<div class="header_search_1">
 							{% if logged_in == true %}
 								<a href="/user/logout" id="header-search-button">

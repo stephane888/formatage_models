@@ -21,6 +21,9 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *     "topheader" = {
  *       "label" = @Translation("top header"),
  *     },
+ *     "topheader_right" = {
+ *       "label" = @Translation("Top header right"),
+ *     },
  *     "sitename" = {
  *       "label" = @Translation("site name"),
  *     },
