@@ -76,6 +76,7 @@ class FormatageModelsheader1 extends FormatageModelsSection {
     // $SiteConfig = $this->configFactory->getEditable("site.config");
     return parent::defaultConfiguration() + [
       'css' => 'mb-0',
+      'region_css_call_action' => 'btn btn-outline-primary btn-outline-force',
       'sf' => [
         'builder-form' => true,
         'info' => [

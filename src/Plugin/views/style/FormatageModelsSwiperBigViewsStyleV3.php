@@ -4,7 +4,8 @@ namespace Drupal\formatage_models\Plugin\views\style;
 
 use Drupal\views\Plugin\views\style\StylePluginBase;
 use Drupal\core\form\FormStateInterface;
-
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\layoutgenentitystyles\Services\LayoutgenentitystylesServices;
 
 /**
  * Style plugin to render a list of years and months
@@ -45,6 +46,34 @@ class FormatageModelsSwiperBigViewsStyleV3 extends StylePluginBase {
   
   /**
    *
+   * @var LayoutgenentitystylesServices
+   */
+  protected $LayoutgenentitystylesServices;
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+    $instance->LayoutgenentitystylesServices = $container->get('layoutgenentitystyles.add.style.theme');
+    return $instance;
+  }
+  
+  public function submitOptionsForm(&$form, FormStateInterface $form_state) {
+    parent::submitOptionsForm($form, $form_state);
+    // On recupere la valeur de la librairie et on ajoute:
+    $library = $form_state->getValue([
+      'style_options',
+      'layoutgenentitystyles_view'
+    ]);
+    if (!empty($library)) {
+      $this->LayoutgenentitystylesServices->addStyleFromView($library, $this->view->id(), $this->view->current_display);
+    }
+  }
+  
+  /**
+   *
    * {@inheritdoc}
    */
   protected function defineOptions() {
@@ -57,11 +86,8 @@ class FormatageModelsSwiperBigViewsStyleV3 extends StylePluginBase {
       'button' => [],
       'img' => []
     ];
-    $options['library'] = [
-      'default' => 1
-    ];
-    $options['library-file'] = [
-      'default' => 'formatage_models/formatage_models_swiper_big_v3'
+    $options['layoutgenentitystyles_view'] = [
+      'default' => 'formatage_models/swiper-big-v3'
     ];
     return $options;
   }
@@ -75,12 +101,6 @@ class FormatageModelsSwiperBigViewsStyleV3 extends StylePluginBase {
     // dump($this->options);
     $labels = $this->displayHandler->getFieldLabels(TRUE);
     
-    $form['library'] = [
-      '#type' => 'checkbox',
-      '#title' => ' Charger la librarie de style ',
-      '#default_value' => isset($this->options['library']) ? $this->options['library'] : 1
-    ];
-    
     /**
      * add section
      */
@@ -90,7 +110,6 @@ class FormatageModelsSwiperBigViewsStyleV3 extends StylePluginBase {
       "#tree" => true,
       '#open' => true
     ];
-    
     
     $form['view_layouts_options']['title'] = [
       '#type' => 'checkboxes',
@@ -121,6 +140,12 @@ class FormatageModelsSwiperBigViewsStyleV3 extends StylePluginBase {
       '#title' => 'Image',
       '#options' => $labels,
       '#default_value' => (!empty($this->options['view_layouts_options']['img'])) ? $this->options['view_layouts_options']['img'] : ''
+    ];
+    $form['layoutgenentitystyles_view'] = [
+      '#type' => 'hidden',
+      '#title' => $this->t('itemsDesktopSmall'),
+      '#description' => $this->t(''),
+      '#default_value' => 'formatage_models/swiper-big-v3'
     ];
   }
   

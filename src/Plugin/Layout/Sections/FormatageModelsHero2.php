@@ -26,6 +26,9 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *     "description" = {
  *       "label" = @Translation("Description")
  *     },
+ *     "image_bg" = {
+ *       "label" = @Translation("Image bg")
+ *     },
  *   }
  * )
  */
@@ -91,6 +94,11 @@ class FormatageModelsHero2 extends FormatageModelsSection {
                 "text" => "Contactez-nous",
                 "class" => "btn-carre"
               ]
+            ]
+          ],
+          'image_bg' => [
+            'img_bg' => [
+              'inbg' => true
             ]
           ]
         ]

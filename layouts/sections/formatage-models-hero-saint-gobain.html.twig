@@ -1,4 +1,10 @@
 {% if content %}
+{% if content.imagebg2.layout_builder_add_block %}
+		{{ content.imagebg2 }}
+	{% endif %}
+	{% if content.imagebg2|layout_bg_img %}
+		{% set attributes=attributes.merge(content.imagebg2|layout_bg_img) %}
+	{% endif %}
 	<section {{attributes.addClass('hero-saint-gobain')}}>
 		<div class="module-empty"></div>
 		<div class="module-text">

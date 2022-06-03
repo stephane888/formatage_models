@@ -30,8 +30,11 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *       "label" = @Translation("Description")
  *     },
  *     "imagebg" = {
- *       "label" = @Translation(" Image bg "),
- *     }
+ *       "label" = @Translation(" Image bg right "),
+ *     },
+ *     "imagebg2" = {
+ *       "label" = @Translation(" Image bg left "),
+ *     },
  *   }
  * )
  */
@@ -101,7 +104,13 @@ class FormatageModelsHeroSaintGobain extends FormatageModelsSection {
           ],
           'imagebg' => [
             'img_bg' => [
-              'label' => " Image Bg",
+              'label' => " Image Bg right",
+              'fids' => []
+            ]
+          ],
+          'imagebg2' => [
+            'img_bg' => [
+              'label' => " Image Bg left",
               'fids' => []
             ]
           ],

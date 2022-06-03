@@ -48,14 +48,16 @@ class FormatageModels extends LayoutDefault {
   
   /**
    * permet de recuperation la config en function du domaine, si elle existe.
-   * Si ce paramettre est definie alors les données sont enregistrées en function du domaine.
+   * Si ce paramettre est definie alors les données sont enregistrées en
+   * function du domaine.
    *
    * @var array
    */
   protected $subConfiguration = null;
   
   /**
-   * Le fait que le domaine existe, n'entrainne pas que les données vont etre enregistrer en function de ce dernier.
+   * Le fait que le domaine existe, n'entrainne pas que les données vont etre
+   * enregistrer en function de ce dernier.
    *
    * @var String
    */
@@ -69,15 +71,20 @@ class FormatageModels extends LayoutDefault {
     // $this->Layouts = $Layouts;
     $this->Layouts = \Drupal::service('formatage_models.layouts');
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    // on ne modifie pas la configuration à ce stade, car cela pourra avoir des comportements imprevisible.
-    // on va le modifier lors de la constrction du layout et lors de la construction du formulaire.
+    // on ne modifie pas la configuration à ce stade, car cela pourra avoir des
+    // comportements imprevisible.
+    // on va le modifier lors de la constrction du layout et lors de la
+    // construction du formulaire.
     $this->globalConfiguration = $this->configuration;
     if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
       $this->currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
-      // On doit avoir une sauvegarde de la config en function du domaine, //et cette sauvegarde doit bien specier de l'utiliser via([save_by_domain])
-      // cette approche ne permet pas de revenir en arriere. ( ce qui n'est pas forcement mauvais ).// à revoir plus tard.
+      // On doit avoir une sauvegarde de la config en function du domaine, //et
+      // cette sauvegarde doit bien specier de l'utiliser via([save_by_domain])
+      // cette approche ne permet pas de revenir en arriere. ( ce qui n'est pas
+      // forcement mauvais ).// à revoir plus tard.
       if (!empty($this->configuration[$this->currentDomain]) && $this->configuration['save_by_domain']) {
-        // $this->messenger()->addStatus($plugin_id . ' chargé à partir du sous domaine ' . $this->currentDomain);
+        // $this->messenger()->addStatus($plugin_id . ' chargé à partir du sous
+        // domaine ' . $this->currentDomain);
         $this->subConfiguration = $this->configuration[$this->currentDomain];
         $this->Layouts->setConfig($this->subConfiguration);
       }
@@ -100,12 +107,13 @@ class FormatageModels extends LayoutDefault {
       $regions_css['region_css_' . $region] = '';
     }
     
-    return $regions_css + parent::defaultConfiguration() + $this->Layouts->defaultConfiguration() + [];
+    return $regions_css + parent::defaultConfiguration() + $this->Layouts->defaultConfiguration();
   }
   
   /**
    * Renvoit la configuration Globale.
-   * NB: Cette function peut etre utiliser par d'autres modules afin de recuperer la configuration.
+   * NB: Cette function peut etre utiliser par d'autres modules afin de
+   * recuperer la configuration.
    *
    * @return array
    */
@@ -114,10 +122,14 @@ class FormatageModels extends LayoutDefault {
   }
   
   /**
-   * Si le contenu est MAJ par l'utilisateur, on doit mettre egalment celui present dans l'objet Layouts.
-   * ( seul les données present dans le formulaire seront enregistrées en BD, donc si on charge le plugin à partir de la BD uniquement, on aurra pas toutes les données,
+   * Si le contenu est MAJ par l'utilisateur, on doit mettre egalment celui
+   * present dans l'objet Layouts.
+   * ( seul les données present dans le formulaire seront enregistrées en BD,
+   * donc si on charge le plugin à partir de la BD uniquement, on aurra pas
+   * toutes les données,
    * pareil si on initialise le plugin ).
-   * Cette function a été testé pour le cas ou on initialise la plugin, puis on charge les donnnées et on merge.
+   * Cette function a été testé pour le cas ou on initialise la plugin, puis on
+   * charge les donnnées et on merge.
    *
    * {@inheritdoc}
    */
@@ -187,7 +199,8 @@ class FormatageModels extends LayoutDefault {
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    // NB : on change la valeur de configuration à ce stade, pour que le ou les formuailes parent puissent avaoir les bonnes valeurs.
+    // NB : on change la valeur de configuration à ce stade, pour que le ou les
+    // formuailes parent puissent avaoir les bonnes valeurs.
     if ($this->subConfiguration) {
       $this->configuration = $this->subConfiguration;
     }
@@ -235,7 +248,8 @@ class FormatageModels extends LayoutDefault {
     parent::submitConfigurationForm($form, $form_state);
     $this->Layouts->submitConfigurationForm($this->configuration, $form_state);
     // $db['Layouts $configuration'] = $this->configuration;
-    // On applique la configuration actuele ( $this->configuration) à la configuration globale ($this->configuration).
+    // On applique la configuration actuele ( $this->configuration) à la
+    // configuration globale ($this->configuration).
     // puis on retourne la configuration;
     if ($this->subConfiguration) {
       if (!empty($this->globalConfiguration[$this->currentDomain])) {
@@ -245,7 +259,8 @@ class FormatageModels extends LayoutDefault {
     }
     // Cas ou on ajoute une configuration pour un domaine.
     elseif (!empty($this->configuration['save_by_domain']) && $this->currentDomain) {
-      // $this->messenger()->addStatus($this->currentDomain . ': ajout de la config ', true);
+      // $this->messenger()->addStatus($this->currentDomain . ': ajout de la
+      // config ', true);
       $this->configuration[$this->currentDomain] = $this->removeAnotherDomainId($this->configuration);
       // $this->configuration[$this->currentDomain] = $this->configuration;
     }
@@ -255,7 +270,8 @@ class FormatageModels extends LayoutDefault {
   }
   
   /**
-   * Permet de supprimer les enregistrement de domaine dans un sous enregistrement.
+   * Permet de supprimer les enregistrement de domaine dans un sous
+   * enregistrement.
    *
    * @param array $Conf
    */

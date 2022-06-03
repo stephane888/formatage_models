@@ -33,3 +33,13 @@ function template_preprocess_formatage_models_swiper_big_views_style_v2(&$vars) 
 function template_preprocess_formatage_models_swiper_big_views_style_v3(&$vars) {
   FormatageModelsThemes::ViewsGetValues($vars);
 }
+
+function template_preprocess_formatage_models_menu(&$vars) {
+  $vars['items'] = $vars['element']['#items'];
+  $vars['children'] = $vars['element']['#children'];
+}
+
+function template_preprocess_layoutmenu_formatage_models_menu1(&$vars) {
+  $vars['items'] = $vars['element']['#items'];
+  $vars['children'] = $vars['element']['#children'];
+}

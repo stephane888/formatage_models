@@ -78,6 +78,22 @@ class FormatageModelsThemes {
       ],
       'file' => 'themes/formatage_models.theme.inc'
     ];
+    // theme de base pour les menus. layoutmenu--fast-models-fn-first-menu
+    $hooks['formatage_models_menu'] = [
+      'preprocess functions' => [
+        'template_preprocess_formatage_models_menu'
+      ],
+      'render element' => 'element',
+      'file' => 'themes/formatage_models.theme.inc'
+    ];
+    // theme de base pour les menus. layoutmenu--fast-models-fn-first-menu
+    $hooks['layoutmenu_formatage_models_menu1'] = [
+      'preprocess functions' => [
+        'template_preprocess_layoutmenu_formatage_models_menu1'
+      ],
+      'render element' => 'element',
+      'file' => 'themes/formatage_models.theme.inc'
+    ];
     return $hooks;
   }
   
@@ -91,11 +107,6 @@ class FormatageModelsThemes {
     
     $options = $view->style_plugin->options;
     $regions = $options['view_layouts_options'];
-    
-    // load librairie
-    if (!empty($options['library']) && !empty($options['library-file'])) {
-      $vars['#attached']['library'][] = $options['library-file'];
-    }
     
     if (!empty($options['view_layouts_options']) & $view->style_plugin->usesFields()) {
       foreach ($vars['rows'] as $row_index => $row) {
@@ -367,7 +378,8 @@ class FormatageModelsThemes {
                     // $build[$regionName][] = [
                     // '#type' => 'link',
                     // '#title' => $field['value']['text'],
-                    // '#url' => \Drupal\Core\Url::fromUserInput($field['value']['link']),
+                    // '#url' =>
+                    // \Drupal\Core\Url::fromUserInput($field['value']['link']),
                     // '#attributes' => [
                     // 'class' => explode(" ", $field['value']['class'])
                     // ]

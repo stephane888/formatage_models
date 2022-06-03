@@ -18,12 +18,12 @@
 						<div class="header_search_1">
 							{% if logged_in == true %}
 								<a href="/user/logout" id="header-search-button">
-									<i class="icon-logout"></i>
+									<i class="fas fa-sign-out-alt"></i>
 								</a>
 							{% else %}
 								<a href="/user/login" id="header-search-button">
-									<i class="icon-user"></i>
-									Connexion
+									<i class="fas fa-sign-in-alt"></i>
+									{{ 'Login'|trans }}
 								</a>
 							{% endif %}
 						</div>
@@ -56,7 +56,7 @@
 						<div class="d-flex flex-wrap data-right">
 							{{content.data_right}}
 							<div class="icon icon-bloc d-xl-flex align-items-center d-lg-none">
-								<i class="icon-phone-1"></i>
+								<i class="fas fa-phone"></i>
 								<div class="content">
 									<span {{region_attributes.phone.addClass('phone')}}>
 										{{content.phone}}
@@ -68,9 +68,9 @@
 									</div>
 								</div>
 							</div>
-							<div class="icon icon-bloc d-flex align-items-center">
-								<i class="icon-edit"></i>
-								<div class="content">
+							<div class="icon icon-bloc d-flex align-items-center"> 
+								<i class="fas fa-bullhorn"></i>
+								<div {{region_attributes.call_action.addClass(['content','call_action'])}}>								
 									{{content.call_action}}
 								</div>
 							</div>

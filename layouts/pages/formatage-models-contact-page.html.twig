@@ -1,6 +1,4 @@
-<link
-rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/> {# library to load typed.min.js #}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
+{% if content %}
 <section {{ attributes.addClass('the-content') }}>
 	<div class="row">
 		<div class="col-lg-4">
@@ -38,3 +36,4 @@ rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.
 		</div>
 	</div>
 </section>
+{% endif %}

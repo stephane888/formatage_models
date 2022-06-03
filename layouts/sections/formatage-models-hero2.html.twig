@@ -1,5 +1,11 @@
 {# empty Twig template #}
 {% if content %}
+    {% if content.image_bg.layout_builder_add_block %}
+		{{ content.image_bg }}
+	{% endif %}
+	{% if content.image_bg|layout_bg_img %}
+		{% set attributes=attributes.merge(content.image_bg|layout_bg_img) %}
+	{% endif %}
 	<div{{attributes.addClass('hero-section-rc-web')}}>
 		<div class="hero-section-rc-web__block-center">
 			<div class="desc">
