@@ -31,6 +31,7 @@
           item.content["#is_empty_layout"] == false and items|first.menu_level == 0 ? 'has-submenu0',
           menuId
     ] %}
+    
 				<li{{item.attributes.addClass(menu_item_classes)}}>
 					{% if items|first.menu_level == 0 %}
 						{% if (item.content["#is_empty_layout"] == false and items|first.menu_level == 0) or (item.below and items|first.menu_level == 0 ? 'dropdown-toggle') %}
@@ -38,7 +39,7 @@
 						{% else %}
 							{% set ClassA={} %}
 						{% endif %}
-						{{ link(item.title, item.url, ClassA) }}
+						{{ link(item.title, item.url) }}
 					{% endif %}
 					{% set rendered_content = item.content|without('')|render %}
 					{% if rendered_content %}

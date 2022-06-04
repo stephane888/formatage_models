@@ -72,8 +72,10 @@ class FormatageModelsmenu1 extends FormatageModelsSection {
               'menu'
             ]
           ];
-          if (!empty($region[$k]['content'][$delta]['#items']))
+          if (!empty($region[$k]['content'][$delta]['#items'])) {
             $this->formatListMenus($region[$k]['content'][$delta]['#items']);
+            // dump($region[$k]['content'][$delta]['#items']);
+          }
         }
       }
     }
