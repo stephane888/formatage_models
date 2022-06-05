@@ -44,6 +44,13 @@ formatage-models-admin:
   css:
     theme:
       layouts/css/formatage_models_admin.css: { weight: 10 }
+      
+formatage-models-admin-paragraph:
+  js:
+    layouts/js/formatage_models_admin_paragraph.js: {}
+  css:
+    theme:
+      layouts/css/formatage_models_admin_paragraph.css: { weight: 10 }
 
 #################################################################################################################################################
 # -50 <weight> +50

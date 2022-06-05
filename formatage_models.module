@@ -30,8 +30,12 @@ function addTextareaTreeMultipleMoreAjax(&$form, FormStateInterface $form_state)
  * Implement hook_preprocess_page
  */
 function formatage_models_preprocess_page(&$variables) {
-  if (\Drupal::routeMatch()->getRouteName() === 'layout_builder.overrides.node.view' || str_contains(\Drupal::routeMatch()->getRouteName(), 'layout_builder.')) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name === 'layout_builder.overrides.node.view' || str_contains($route_name, 'layout_builder.')) {
     $variables['page']['content']['#attached']['library'][] = 'formatage_models/formatage-models-admin';
+  }
+  elseif ($route_name == 'entity.paragraphs_type.collection') {
+    $variables['page']['content']['#attached']['library'][] = 'formatage_models/formatage-models-admin-paragraph';
   }
 }
 
@@ -187,7 +191,8 @@ function formatage_models_preprocess_formatage_models_hero_thegem_18(array &$var
  *
  * @param array $vars
  */
-// function formatage_models_preprocess_formatage_models_single_blog(array &$variables) {
+// function formatage_models_preprocess_formatage_models_single_blog(array
+// &$variables) {
 // // FormatageModelsThemes::addLayoutEditBlock($variables);
 // FormatageModelsThemes::ApplyAttributes($variables);
 // }
@@ -262,7 +267,8 @@ function formatage_models_preprocess_formatage_models_galery_title(array &$varia
  *
  * @param array $variables
  */
-// function formatage_models_preprocess_formatage_models_teaser_img_desc(array &$variables) {
+// function formatage_models_preprocess_formatage_models_teaser_img_desc(array
+// &$variables) {
 // // FormatageModelsThemes::addLayoutEditBlock($variables);
 // // FormatageModelsThemes::ApplyAttributes($variables);
 // FormatageModelsThemes::mergeContentAttributes($variables);

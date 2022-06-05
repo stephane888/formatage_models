@@ -16,6 +16,9 @@
 				</div>
 			</div>
 			<div class="item-price__body">
+				{% if content.listes.layout_builder_add_block %}
+					{{ content.listes }}
+				{% endif %}
 				<ul>
 					{% for field in content.listes %}
 						{% if (field["#theme"] or field['#items']) %}
