@@ -7,6 +7,7 @@ use Drupal\Core\TypedData\TypedDataInterface;
 use Drupal\formatage_models\FormatageModelsTwigImg;
 use Drupal\formatage_models\FormatageModelsTwigBgImage;
 use Drupal\formatage_models\ManageStyleCss;
+use Twig\Extension\AbstractExtension;
 
 /**
  * Creation d'une extention pour twig.
@@ -15,7 +16,7 @@ use Drupal\formatage_models\ManageStyleCss;
  * @author stephane
  *        
  */
-class LayoutValueExtension extends \Twig_Extension {
+class LayoutValueExtension extends AbstractExtension {
   
   use FormatageModelsTwigImg;
   use FormatageModelsTwigBgImage;
@@ -35,6 +36,11 @@ class LayoutValueExtension extends \Twig_Extension {
     ];
   }
   
+  /**
+   *
+   * @param integer $block_id
+   * @return NULL
+   */
   public function LoadBlockContent($block_id) {
     $block_content = null;
     $block = \Drupal\block_content\Entity\BlockContent::load($block_id);
@@ -89,7 +95,8 @@ class LayoutValueExtension extends \Twig_Extension {
         $this,
         'getLayoutBgImage'
       ]),
-      // Le layout permet deja de rendre l'elment et l'element parent, il faut voir au niveau du rendu du terme.
+      // Le layout permet deja de rendre l'elment et l'element parent, il faut
+      // voir au niveau du rendu du terme.
       new \Twig\TwigFilter('layout_terms_value', [
         $this,
         'getLayoutTermsValues'
@@ -133,7 +140,9 @@ class LayoutValueExtension extends \Twig_Extension {
   public function getLayoutValues($build, $keySearch = null) {
     $vals = [];
     $key = 0;
-    // La condifition sur layout_builder_add_block permet un affichage par defaut si on est en administration.
+    
+    // La condifition sur layout_builder_add_block permet un affichage par
+    // defaut si on est en administration.
     if (is_array($build) && !isset($build['layout_builder_add_block'])) {
       foreach ($build as $key => $value) {
         if (is_array($value) && !empty($value)) {
@@ -148,7 +157,8 @@ class LayoutValueExtension extends \Twig_Extension {
             }
           }
           else {
-            // la clee est important, car certains elments comme #attributes ne doivent pas etre rendu.
+            // la clee est important, car certains elments comme #attributes ne
+            // doivent pas etre rendu.
             $vals[$key] = $value;
           }
         }
@@ -207,7 +217,8 @@ class LayoutValueExtension extends \Twig_Extension {
    * @param string $key
    *        The name of the field value to retrieve.
    *        
-   * @return array|null Single field value or array of field values. If the field value is not
+   * @return array|null Single field value or array of field values. If the
+   *         field value is not
    *         found, null is returned.
    */
   public function getFieldRawValues($build, $key = '') {
@@ -241,7 +252,8 @@ class LayoutValueExtension extends \Twig_Extension {
    * @param array|null $build
    *        Render array of a field.
    *        
-   * @return array Array of render array(s) of field value(s). If $build is not the render
+   * @return array Array of render array(s) of field value(s). If $build is not
+   *         the render
    *         array of a field, NULL is returned.
    */
   public function getFieldValue($build) {

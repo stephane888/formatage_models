@@ -39,23 +39,28 @@ function formatage_models_preprocess_page(&$variables) {
   }
 }
 
-/**
- *
- * @param array $vars
- */
-function formatage_models_preprocess_menu__extras(&$vars) {
-  if (!empty($vars['menu_name']) && $vars['menu_name'] == "main") {
-    foreach ($vars['items'] as $item) {
-      //
-    }
-  }
+function formatage_models_preprocess_item_list__layouts(&$variables) {
+  // \Stephane888\Debug\debugLog::$max_depth = 5;
+  // \Stephane888\Debug\debugLog::kintDebugDrupal($variables['items'],
+  // '_item_list__layouts');
 }
 
 /**
- * Implements hook_menu_alter().
+ * Permet de supprimer les blocs qui ne sont pas generelement utilisé.
+ *
+ * @param array $definitions
+ * @param array $extra
  */
-function formatage_models_link_alter(&$vars) {
-  //
+function formatage_models_plugin_filter_layout__layout_builder_alter(array &$definitions, array $extra) {
+  foreach ($definitions as $layout_id => $layout) {
+    $module = $layout->getProvider();
+    if (!$module) {
+      unset($definitions[$layout_id]);
+    }
+    elseif ($module == 'layout_builder' || $module == 'layout_discovery' || $module == 'bootstrap_barrio') {
+      unset($definitions[$layout_id]);
+    }
+  }
 }
 
 /**
@@ -279,15 +284,6 @@ function formatage_models_preprocess_formatage_models_galery_title(array &$varia
  * @param array $variables
  */
 function formatage_models_preprocess_formatage_models_blog_list(array &$variables) {
-  FormatageModelsThemes::ApplyAttributes($variables);
-  // FormatageModelsThemes::addLayoutEditBlock($variables);
-}
-
-/**
- *
- * @param array $variables
- */
-function formatage_models_preprocess_formatage_models_article_header(array &$variables) {
   FormatageModelsThemes::ApplyAttributes($variables);
   // FormatageModelsThemes::addLayoutEditBlock($variables);
 }

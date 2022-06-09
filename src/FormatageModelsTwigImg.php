@@ -9,11 +9,13 @@ trait FormatageModelsTwigImg {
   
   /**
    * Permet de recuperer un ou un enssemble d'image;
-   * Dans certains cas on a besoin de recuperer x1 images pour tels regions et recurer x2 images pour une autre region.
+   * Dans certains cas on a besoin de recuperer x1 images pour tels regions et
+   * recurer x2 images pour une autre region.
    *
    * @param array $build
    * @param array $keySearch
-   *        begin: (index de debut), number: ( number dimage à retourner ).
+   *        begin: (index de debut, first number 1 ), number: ( number dimage à
+   *        retourner ).
    */
   public function getLayoutValuesImg(array $build, array $keySearch = [], $styleImage = null) {
     $vals = [];

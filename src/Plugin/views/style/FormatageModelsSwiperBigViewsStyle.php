@@ -4,7 +4,8 @@ namespace Drupal\formatage_models\Plugin\views\style;
 
 use Drupal\views\Plugin\views\style\StylePluginBase;
 use Drupal\core\form\FormStateInterface;
-
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\layoutgenentitystyles\Services\LayoutgenentitystylesServices;
 
 /**
  * Style plugin to render a list of years and months
@@ -45,6 +46,22 @@ class FormatageModelsSwiperBigViewsStyle extends StylePluginBase {
   
   /**
    *
+   * @var LayoutgenentitystylesServices
+   */
+  protected $LayoutgenentitystylesServices;
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+    $instance->LayoutgenentitystylesServices = $container->get('layoutgenentitystyles.add.style.theme');
+    return $instance;
+  }
+  
+  /**
+   *
    * {@inheritdoc}
    */
   protected function defineOptions() {
@@ -76,7 +93,6 @@ class FormatageModelsSwiperBigViewsStyle extends StylePluginBase {
     
     $labels = $this->displayHandler->getFieldLabels(TRUE);
     
-        
     $form['library'] = [
       '#type' => 'checkbox',
       '#title' => ' Charger la librarie de style ',

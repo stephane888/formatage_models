@@ -5,6 +5,7 @@ namespace Drupal\formatage_models\Plugin\Layout\Sections;
 use Drupal\formatage_models\Plugin\Layout\FormatageModels;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
+use Drupal\formatage_models\FormatageModelsThemes;
 
 /**
  * A very advanced custom layout.
@@ -48,6 +49,18 @@ class FormatageModelsArticleHeader extends FormatageModelsSection {
     return parent::defaultConfiguration() + [
       'class_col' => 'col-md-8'
     ];
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::build()
+   */
+  public function build(array $regions) {
+    // TODO Auto-generated method stub
+    $build = parent::build($regions);
+    FormatageModelsThemes::formatSettingValues($build);
+    return $build;
   }
   
   /**
