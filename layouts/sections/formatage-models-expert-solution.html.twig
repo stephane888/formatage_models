@@ -33,18 +33,7 @@
 						<div {{ region_attributes.titre_avantage.addClass('titre_avantage') }}>
 							{{ content.titre_avantage }}
 						</div>
-						<ul {{ region_attributes.avantages.addClass(['avantages','puce-check']) }}>
-							{% for blocks in content.avantages|layout_value %}
-								{% for field in blocks %}
-									{% if (field["#theme"] or field["#type"]) %}
-										<li>{{ field }}</li>
-									{% endif %}
-								{% endfor %}
-							{% endfor %}
-						</ul>
-						{% if content.avantages.layout_builder_add_block %}
-							{{content.avantages|layout_value}}
-						{% endif %}
+						{{ content.avantages }}
 					</div>
 				</div>
 			{% endif %}

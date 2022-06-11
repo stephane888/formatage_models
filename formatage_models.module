@@ -79,13 +79,6 @@ function formatage_models_preprocess_formatage_models_menu01(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
-function formatage_models_preprocess_formatage_models_title_description(&$vars) {
-  FormatageModelsThemes::mergeContentAttributes($vars);
-}
-
-// function formatage_models_preprocess_formatage_models_hero2(&$vars) {
-// FormatageModelsThemes::mergeContentAttributes($vars);
-// }
 function formatage_models_preprocess_formatage_models_contact_page(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }

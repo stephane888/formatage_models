@@ -1,7 +1,7 @@
 {% if content %}
-    <section {{ attributes }}>
+    <section {{ attributes.addClass('hero-slider-popup') }}>
          {% if content.images %}
-             <div {{ region_attributes.images }}>
+             <div {{ region_attributes.images.addClass('images') }}>
                   {# image affiché en premier plan #}
                   <div class="galeryImage">
                        <div class="galeryImage__big">
@@ -67,6 +67,9 @@
                   </div>
              </div>
          {% endif %}
+         {% if content.images.layout_builder_add_block %}
+         	  {{ content.images }}       
+         {% endif %}
     </section>
-    {% include '@formatage_models/includes/add-region-edit.html.twig' %}
+    
 {% endif %}

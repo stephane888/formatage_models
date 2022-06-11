@@ -3,6 +3,7 @@
 namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
+use Drupal\formatage_models\FormatageModelsThemes;
 
 /**
  * A very advanced custom layout.
@@ -39,6 +40,19 @@ class FormatageModelsTitleDescription extends FormatageModelsSection {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-title-description.png");
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::build()
+   */
+  public function build(array $regions) {
+    // TODO Auto-generated method stub
+    $build = parent::build($regions);
+    FormatageModelsThemes::formatSettingValues($build);
+    // dump($build);
+    return $build;
   }
   
   function defaultConfiguration() {

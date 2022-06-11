@@ -12,8 +12,8 @@
 						{{ content.image2|layout_value  }}
 					</div>
 				</div>
-				<div class="container-vue-general tab-pane fade " role="tabpanel" id="tab-vue-general">
-					{{ content.image|layout_value  }}
+				<div {{ region_attributes.image.addClass( ['container-vue-general', 'tab-pane', 'fade'] ) }} role="tabpanel" id="tab-vue-general">
+					{{ content.image }}
 				</div>
 			</div>
 		</div>

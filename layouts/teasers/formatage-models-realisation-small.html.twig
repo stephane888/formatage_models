@@ -1,7 +1,9 @@
 {% if content %}
-	{{layout_quickedit}}
 	<div{{attributes.addClass('ourAchievments-module')}}>
 		{# url #}
+		{% if content.url.layout_builder_add_block  %}
+				{{ content.url }}
+			{% endif %}
 		{% if content.url %}
 			{% set RenderUrl = content.url|layout_raw(0) %}
 			{% if RenderUrl.value %}
@@ -12,6 +14,9 @@
 			<a href="{{- RenderUrl -}}">
 			{% endif %}
 			{# on ajoute un template #}
+			{% if content.bgimage.layout_builder_add_block  %}
+				{{ content.bgimage }}
+			{% endif %}
 			{% set RenderBgimage = {
           '#theme':'formatage_models__img_url',
           '#content_all': content.bgimage,
@@ -34,7 +39,7 @@
 								{{content.listes|layout_value}}
 							{% else %}
 								{% for block in content.listes %}
-									{% if (block["#theme"] or block['#items']) %}
+									{% if (block['#theme'] or block['#items']) %}
 										<button class="btn-radius">
 											{{block}}
 										</button>

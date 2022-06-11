@@ -258,6 +258,12 @@ class LayoutValueExtension extends AbstractExtension {
    */
   public function getFieldValue($build) {
     if (!$this->isFieldRenderArray($build)) {
+      if (!empty($build)) {
+        $test = reset($build);
+        if (!empty($test['#type'])) {
+          return $build;
+        }
+      }
       return NULL;
     }
     

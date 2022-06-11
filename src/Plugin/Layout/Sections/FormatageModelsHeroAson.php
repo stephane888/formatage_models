@@ -2,7 +2,6 @@
 
 namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
-use Drupal\formatage_models\Plugin\Layout\FormatageModels;
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;
 

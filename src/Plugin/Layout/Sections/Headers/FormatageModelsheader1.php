@@ -5,6 +5,7 @@ namespace Drupal\formatage_models\Plugin\Layout\Sections\Headers;
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
 use Drupal\formatage_models\FormatageModelsThemes;
+use Stephane888\Debug\Repositories\ConfigDrupal;
 
 /**
  * A very advanced custom layout.
@@ -60,7 +61,6 @@ class FormatageModelsheader1 extends FormatageModelsSection {
   
   public function build(array $regions) {
     $build = parent::build($regions);
-    // dump($this->configuration);
     $build['#settings']['logo_url'] = theme_get_setting('logo.url');
     FormatageModelsThemes::formatSettingValues($build);
     return $build;
