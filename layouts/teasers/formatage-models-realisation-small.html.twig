@@ -2,8 +2,8 @@
 	<div{{attributes.addClass('ourAchievments-module')}}>
 		{# url #}
 		{% if content.url.layout_builder_add_block  %}
-				{{ content.url }}
-			{% endif %}
+			{{ content.url }}
+		{% endif %}
 		{% if content.url %}
 			{% set RenderUrl = content.url|layout_raw(0) %}
 			{% if RenderUrl.value %}

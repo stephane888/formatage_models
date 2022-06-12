@@ -1,6 +1,9 @@
 {% if content %}
 	<div{{attributes.addClass('projecthero-module')}}>
 		{# url #}
+		{% if content.url.layout_builder_add_block  %}
+			{{ content.url }}
+		{% endif %}
 		{% if content.url %}
 			{% set RenderUrl = content.url|layout_raw(0) %}
 			{% if RenderUrl.value %}
@@ -11,21 +14,24 @@
 			<a href="{{- RenderUrl -}}">
 			{% endif %}
 			{# on ajoute un template #}
-			{% set RenderBgimage = {
-          '#theme':'formatage_models__img_url',
-          '#content_all': content.bgimage,
-          '#tag_fields': '',
-          '#tag_field': '',
-          '#tag_field_attibutes':{}
-        }
-              %}
-			{% set RenderBgimagHtml %}{{ render_var(RenderBgimage) }}{% endset %}
-			<div class="projecthero-module__image" style="background-image: url('{{ RenderBgimagHtml|striptags|trim }}');"></div>
+			{% if content.bgimage.layout_builder_add_block  %}
+				{{ content.bgimage }}
+			{% endif %}
+			{# #}
+			{% if content.bgimage|layout_bg_img %}
+        		{% set region_bgimage = region_attributes.bgimage.merge(content.bgimage|layout_bg_img) %}
+        	{% else %}
+        		{% set region_bgimage = region_attributes.bgimage %}
+        	{% endif %}
+			<div {{region_bgimage.addClass('projecthero-module__image')}}></div>
+			
 			<div {{region_attributes.listes.addclass('listes','projecthero-module__header')}}>
-				{% if content.listes %}
+                    {% if content.listes.layout_builder_add_block %}
+						{{content.listes|layout_value}}
+					{% else %}
 					<ul class="layout-region">
 						{% for field in content.listes %}
-							{% if (field["#theme"] or field['#items']) %}
+							{% if (field['#theme'] or field['#items']) %}
 								<button class="btn-radius">
 									{{ field }}
 								</button>
