@@ -83,13 +83,9 @@ class FormatageModelsImagesBg extends FormatageModelsSection {
             ]
           ],
           'link' => [
-            'url' => [
+            'text_html' => [
               'label' => "Lien",
-              "value" => [
-                "link" => "#",
-                "text" => " ESTIMER MES TRAVAUX ",
-                "class" => "seeMore"
-              ]
+              "value" => '<a href="#">Un dévis</a>'
             ]
           ]
         ]
