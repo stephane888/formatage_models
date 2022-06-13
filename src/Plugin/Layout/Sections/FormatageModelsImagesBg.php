@@ -22,9 +22,6 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *     "sub_title" = {
  *       "label" = @Translation("sub_title"),
  *     },
- *     "bgimage" = {
- *       "label" = @Translation("Image d'arriere plan"),
- *     },
  *     "link" = {
  *       "label" = @Translation("Lien"),
  *     },
@@ -71,6 +68,12 @@ class FormatageModelsImagesBg extends FormatageModelsSection {
             'text' => [
               'label' => 'Titre',
               'value' => "Enfin, vos travaux de rénovation simples et sans surprise !"
+            ]
+          ],
+          'bgimage' => [
+            'text' => [
+              'label' => 'Image d\'arrière plan',
+              "value" => ""
             ]
           ],
           'sub_title' => [
