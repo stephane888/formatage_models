@@ -58,8 +58,9 @@ class FormatageModelsHero2 extends FormatageModelsSection {
   }
   
   function defaultConfiguration() {
-    return parent::defaultConfiguration() + [
+    return [
       'load_libray' => true,
+      'region_tag_title' => 'h1',
       "derivate" => [
         'value' => 'simple',
         'options' => [
@@ -103,7 +104,7 @@ class FormatageModelsHero2 extends FormatageModelsSection {
           ]
         ]
       ]
-    ];
+    ] + parent::defaultConfiguration();
   }
   
 }

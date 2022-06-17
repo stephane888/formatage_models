@@ -3,7 +3,7 @@
 		{{ content.imagebg }}
 	{% endif %}
 	{% if content.imagebg|layout_bg_img %}
-		{% set attributes=attributes.merge(content.imagebg|layout_bg_img) %}
+		{% set attributes = attributes.merge(content.imagebg|layout_bg_img) %}
 	{% endif %}
 	<section {{attributes.addClass('appson-section-handler')}}>
 		<div class="container">

@@ -18,7 +18,10 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *   regions = {
  *     "main" = {
  *       "label" = @Translation("Main"),
- *     }
+ *     },
+ *     "image_bg" = {
+ *       "label" = @Translation("Image bg")
+ *     },
  *   }
  * )
  */
@@ -66,6 +69,12 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
             'text_html' => [
               'label' => 'Drescription',
               'value' => ""
+            ]
+          ],
+          'image_bg' => [
+            'img_bg' => [
+              'label' => 'image',
+              'fids' => []
             ]
           ]
         ]
