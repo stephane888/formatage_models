@@ -147,6 +147,7 @@ class LayoutValueExtension extends AbstractExtension {
       foreach ($build as $key => $value) {
         if (is_array($value) && !empty($value)) {
           if (!empty($value['#theme']) && $value['#theme'] == 'block' && !empty($value['content'])) {
+            
             if ($keySearch !== null) {
               if ($key === $keySearch) {
                 return $this->getFieldValue($value['content'], $keySearch);
@@ -259,8 +260,12 @@ class LayoutValueExtension extends AbstractExtension {
   public function getFieldValue($build) {
     if (!$this->isFieldRenderArray($build)) {
       if (!empty($build)) {
+        // si c'est un rendu avec #type
         $test = reset($build);
         if (!empty($test['#type'])) {
+          return $build;
+        }
+        elseif (!empty($build['#theme'])) {
           return $build;
         }
       }

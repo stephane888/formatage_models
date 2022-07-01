@@ -8,7 +8,11 @@
 <div {{attributes.addClass('one-column')}}>	
 	{% if content.main %}
 	<div {{region_attributes.main.addClass('main')}}>
-		{{ content.main }}
+		{% if settings.load_clean_value %}
+		    {{ content.main|layout_value }}
+		{% else %}
+		    {{ content.main }}
+		{% endif %}
 	</div>
 	{% endif %}
 </div>

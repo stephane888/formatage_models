@@ -206,6 +206,7 @@ class FormatageModelsThemes {
       $regions = $layout->getRegionNames();
       
       foreach ($variables['settings'] as $vals) {
+        
         if (!empty($vals["builder-form"]) && !empty($vals["fields"]) && !empty($vals["info"]['loader']) && $vals["info"]['loader'] == "static") {
           foreach ($vals["fields"] as $regionName => $fields) {
             if (in_array($regionName, $regions)) {
@@ -312,8 +313,7 @@ class FormatageModelsThemes {
     // dump($settings);
     // on parcourt les elements de settings.
     foreach ($settings as $vals) {
-      // dump($vals);
-      if (!empty($vals["fields"]) && !empty($vals["info"]['loader']) && $vals["info"]['loader'] == "static") {
+      if (!empty($vals["builder-form"]) && !empty($vals["fields"]) && !empty($vals["info"]['loader']) && $vals["info"]['loader'] == "static") {
         
         // on parcourt les groupes de champs.
         foreach ($vals["fields"] as $regionName => $fields) {

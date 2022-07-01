@@ -29,6 +29,7 @@ class Layouts {
     return [
       'css' => '',
       'load_libray' => false,
+      'load_clean_value' => false,
       'save_by_domain' => false
     ];
   }
@@ -70,6 +71,11 @@ class Layouts {
       '#type' => 'checkbox',
       '#title' => "Charge les styles",
       '#default_value' => $this->configuration['load_libray']
+    ];
+    $form["load_clean_value"] = [
+      '#type' => 'checkbox',
+      '#title' => "Clean html render",
+      '#default_value' => $this->configuration['load_clean_value']
     ];
     if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
       $form["save_by_domain"] = [
@@ -146,6 +152,7 @@ class Layouts {
   function submitConfigurationForm(array &$configuration, FormStateInterface $form_state) {
     $configuration['save_by_domain'] = $form_state->getValue('save_by_domain');
     $configuration['load_libray'] = $form_state->getValue('load_libray');
+    $configuration['load_clean_value'] = $form_state->getValue('load_clean_value');
     // Save css.
     $configuration['css'] = $form_state->getValue([
       'css_class',
