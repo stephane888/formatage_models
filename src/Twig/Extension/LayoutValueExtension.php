@@ -265,7 +265,7 @@ class LayoutValueExtension extends AbstractExtension {
         if (!empty($test['#type'])) {
           return $build;
         }
-        elseif (!empty($build['#theme'])) {
+        elseif (isset($build['#theme']) || isset($build['#type'])) {
           return $build;
         }
       }

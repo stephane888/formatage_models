@@ -131,6 +131,8 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
       \Drupal::messenger()->addWarning($message);
     }
     $this->configuration['container_wrapper']['bootstrap_styles'] = $this->stylesGroupManager->submitStylesFormElements($form['blb_style'], $form_state, $style_tab, $this->configuration['container_wrapper']['bootstrap_styles'], 'bootstrap_layout_builder.styles');
+    //
+    \Stephane888\Debug\debugLog::kintDebugDrupal($this->configuration, 'submitConfigurationForm_FormatageModelsSection', true);
   }
   
 }
