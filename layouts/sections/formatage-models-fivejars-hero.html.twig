@@ -1,0 +1,32 @@
+{% if content %}
+	{% if content.imagebg.layout_builder_add_block %}
+		{{ content.imagebg }}
+	{% endif %}
+	{% if content.imagebg|layout_bg_img %}
+		{% set attributes = attributes.merge(content.imagebg|layout_bg_img) %}
+	{% endif %}
+	<section {{attributes.addClass('fivejar-hero')}}>
+		<div class="container">
+			<header>
+				{% if content.title %}
+					<h1 {{region_attributes.title.addClass('title')}}>
+						{{ content.title }}
+					</h1>
+				{% endif %}
+				{% if content.sub_title %}
+					<h3 {{region_attributes.sub_title.addClass('sub_title','mx-auto','with-phone')}}>
+						{{ content.sub_title }}
+					</h3>
+				{% endif %}
+			</header>
+			{% if content.svg %}
+				<div {{region_attributes.svg.addClass('svg')}}>
+					{{content.svg}}
+				</div>
+			{% endif %}
+			{% if content.call_action %}
+				{{ content.call_action }}
+			{% endif %}
+		</div>
+	</section>
+{% endif %}

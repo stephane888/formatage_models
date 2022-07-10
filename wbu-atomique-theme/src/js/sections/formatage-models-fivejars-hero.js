@@ -1,0 +1,1 @@
+import "@stephane888/wbu-atomique/scss/organisme/fivejars/fivejars-hero.scss";

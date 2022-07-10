@@ -1,0 +1,19 @@
+{% if content %}
+	<div {{attributes.addClass('fivejars-w-card')}}>
+		{% if content.icone %}
+			<div {{region_attributes.icone.addClass('icone')}}>
+				{{content.icone}}
+			</div>
+		{% endif %}
+		{% if content.titre %}
+			<h3 {{region_attributes.titre.addClass('titre')}}>
+				{{content.titre}}
+			</h3>
+		{% endif %}
+		{% if content.description %}
+			<div {{region_attributes.description.addClass('description')}}>
+				{{content.description}}
+			</div>
+		{% endif %}
+	</div>
+{% endif %}
