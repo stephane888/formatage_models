@@ -32,48 +32,47 @@ use Drupal\Core\Form\FormStateInterface;
  *   }
  * )
  */
-
 class FormatageModelsItemSection extends FormatageModels {
-
-    /**
-     *
-     * {@inheritdoc}
-     */
-    public function defaultConfiguration() {
-        return parent::defaultConfiguration() + [
-          'titre_light' => 'Notre',
-          'titre_bolt' => 'sélection'
-        ];
-    }
-
-    /**
-     *
-     * {@inheritdoc}
-     */
-    public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-        $form = parent::buildConfigurationForm($form, $form_state);
-
-        $form['titre_light'] = [
-          '#type' => 'textfield',
-          '#title' => $this->t('Sous titre section'),
-          '#default_value' => $this->configuration['titre_light']
-        ];
-        $form['titre_bolt'] = [
-          '#type' => 'textfield',
-          '#title' => $this->t('titre_bolt'),
-          '#default_value' => $this->configuration['titre_bolt']
-        ];
-        return $form;
-    }
-
-    /**
-     *
-     * {@inheritdoc}
-     */
-    public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
-        parent::submitConfigurationForm($form, $form_state);
-        $this->configuration['titre_light'] = $form_state->getValue('titre_light');
-        $this->configuration['titre_bolt'] = $form_state->getValue('titre_bolt');
-    }
-
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function defaultConfiguration() {
+    return parent::defaultConfiguration() + [
+      'titre_light' => 'Notre',
+      'titre_bolt' => 'sélection'
+    ];
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form = parent::buildConfigurationForm($form, $form_state);
+    
+    $form['titre_light'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Sous titre section'),
+      '#default_value' => $this->configuration['titre_light']
+    ];
+    $form['titre_bolt'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('titre_bolt'),
+      '#default_value' => $this->configuration['titre_bolt']
+    ];
+    return $form;
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['titre_light'] = $form_state->getValue('titre_light');
+    $this->configuration['titre_bolt'] = $form_state->getValue('titre_bolt');
+  }
+  
 }
