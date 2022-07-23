@@ -14,15 +14,16 @@ use Drupal\Core\Block\BlockBase;
  * )
  */
 class ExampleBlock extends BlockBase {
-
+  
   /**
+   *
    * {@inheritdoc}
    */
   public function build() {
     $build['content'] = [
-      '#markup' => $this->t('It works!'),
+      '#markup' => $this->t('It works!')
     ];
     return $build;
   }
-
+  
 }

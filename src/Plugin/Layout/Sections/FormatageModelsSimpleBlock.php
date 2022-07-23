@@ -49,6 +49,7 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
     // TODO Auto-generated method stub
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
+    
     return $build;
   }
   
@@ -70,12 +71,18 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
       '#open' => false,
       '#tree' => true
     ];
+    $form['layoutrestrictions']['use_roles'] = [
+      '#type' => 'checkbox',
+      '#title' => 'use roles',
+      '#default_value' => $this->configuration['layoutrestrictions']['use_roles']
+    ];
     $form['layoutrestrictions']['roles'] = [
       '#type' => 'checkboxes',
       '#title' => 'selectionner les roles',
       '#options' => $roles,
       '#default_value' => $this->configuration['layoutrestrictions']['roles']
     ];
+    
     return $form;
   }
   
