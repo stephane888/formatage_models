@@ -2,29 +2,26 @@
 
 namespace Drupal\formatage_models\Plugin\views\display;
 
-use Drupal\views\Plugin\views\display\Block;
+use Drupal\views\Plugin\views\display\Page;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * The plugin that handles a block.
+ * The plugin that handles a full page.
  *
  * @ingroup views_display_plugins
  *
  * @ViewsDisplay(
- *   id = "block_render",
- *   title = @Translation("Block render "),
- *   help = @Translation("Display the view as a block."),
- *   theme = "views_view_render",
- *   register_theme = FALSE,
- *   uses_hook_block = TRUE,
- *   contextual_links_locations = {"block"},
- *   admin = @Translation("Block")
+ *   id = "page_render",
+ *   title = @Translation("Page render"),
+ *   help = @Translation("Display the view as a page, with a URL and menu links."),
+ *   uses_menu_links = TRUE,
+ *   uses_route = TRUE,
+ *   contextual_links_locations = {"page"},
+ *   theme = "views_view_render_page",
+ *   admin = @Translation("Page")
  * )
- *
- * @see \Drupal\views\Plugin\Block\ViewsBlock
- * @see \Drupal\views\Plugin\Derivative\ViewsBlock
  */
-class BlockRender extends Block {
+class PageRender extends Page {
   
   /**
    *
@@ -46,31 +43,6 @@ class BlockRender extends Block {
     ];
     
     return $options;
-  }
-  
-  /**
-   * Returns plugin-specific settings for the block.
-   *
-   * @param array $settings
-   *        The settings of the block.
-   *        
-   * @return array An array of block-specific settings to override the defaults
-   *         provided in
-   *         \Drupal\views\Plugin\Block\ViewsBlock::defaultConfiguration().
-   *        
-   * @see \Drupal\views\Plugin\Block\ViewsBlock::defaultConfiguration()
-   */
-  public function blockSettings(array $settings) {
-    $settings = parent::blockSettings($settings);
-    return $settings;
-  }
-  
-  /**
-   * The display block handler returns the structure necessary for a block.
-   */
-  public function execute() {
-    $element = parent::execute();
-    return $element;
   }
   
   /**

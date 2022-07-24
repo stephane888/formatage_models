@@ -94,6 +94,8 @@ class FormatageModelsThemes {
       'render element' => 'element',
       'file' => 'themes/formatage_models.theme.inc'
     ];
+    //
+    
     return $hooks;
   }
   

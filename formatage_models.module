@@ -4,6 +4,7 @@ use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Drupal\Component\DependencyInjection\Container;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Template\Attribute;
 
 /**
  *
@@ -328,6 +329,102 @@ function formatage_models_preprocess_formatage_models_bg_header(array &$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
+/**
+ *
+ * @param array $vars
+ */
+function formatage_models_preprocess_views_view_render_page(&$vars) {
+  module_load_include('inc', 'views', 'views.theme');
+  template_preprocess_views_view($vars);
+  /**
+   *
+   * @var \Drupal\views\ViewExecutable $view
+   */
+  $view = $vars['view'];
+  //
+  $css = $view->display_handler->getOption('view_row_css');
+  
+  if ($css) {
+    $Attribute = new Attribute();
+    $css = explode(" ", $css);
+    $Attribute->addClass($css);
+    $vars['rows']['attributes'] = $Attribute;
+  }
+  //
+  $css = $view->display_handler->getOption('view_header_css');
+  if ($css) {
+    $Attribute = new Attribute();
+    $css = explode(" ", $css);
+    $Attribute->addClass($css);
+    $vars['header']['#attributes'] = $Attribute;
+  }
+  //
+  $css = $view->display_handler->getOption('view_form_css');
+  if ($css) {
+    $Attribute = new Attribute();
+    $css = explode("", $css);
+    $Attribute->addClass($css);
+    if (!empty($vars['exposed']['#attributes']))
+      $vars['exposed']['#attributes']->addClass($css);
+    else
+      $vars['exposed']['#attributes'] = $Attribute;
+  }
+  //
+  $css = $view->display_handler->getOption('view_footer_css');
+  if ($css) {
+    $Attribute = new Attribute();
+    $css = explode(" ", $css);
+    $Attribute->addClass($css);
+    $vars['footer']['#attributes'] = $Attribute;
+  }
+}
+
+/**
+ *
+ * @param array $vars
+ */
+function formatage_models_preprocess_views_view_render(&$vars) {
+  /**
+   *
+   * @var \Drupal\views\ViewExecutable $view
+   */
+  $view = $vars['view'];
+  //
+  $css = $view->display_handler->getOption('view_row_css');
+  if ($css) {
+    $Attribute = new Attribute();
+    $css = explode(" ", $css);
+    $Attribute->addClass($css);
+    $vars['rows']['#attributes'] = $Attribute;
+  }
+  //
+  $css = $view->display_handler->getOption('view_header_css');
+  if ($css) {
+    $Attribute = new Attribute();
+    $css = explode(" ", $css);
+    $Attribute->addClass($css);
+    $vars['header']['#attributes'] = $Attribute;
+  }
+  //
+  $css = $view->display_handler->getOption('view_form_css');
+  if ($css) {
+    $Attribute = new Attribute();
+    $css = explode("", $css);
+    $Attribute->addClass($css);
+    if (!empty($vars['exposed']['#attributes']))
+      $vars['exposed']['#attributes']->addClass($css);
+    else
+      $vars['exposed']['#attributes'] = $Attribute;
+  }
+  //
+  $css = $view->display_handler->getOption('view_footer_css');
+  if ($css) {
+    $Attribute = new Attribute();
+    $css = explode(" ", $css);
+    $Attribute->addClass($css);
+    $vars['footer']['#attributes'] = $Attribute;
+  }
+}
 
 
 
