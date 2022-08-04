@@ -7,6 +7,7 @@ use Drupal\Core\TypedData\TypedDataInterface;
 use Drupal\formatage_models\FormatageModelsTwigImg;
 use Drupal\formatage_models\FormatageModelsTwigBgImage;
 use Drupal\formatage_models\ManageStyleCss;
+use Drupal\formatage_models\ArrayElements;
 use Twig\Extension\AbstractExtension;
 
 /**
@@ -21,6 +22,7 @@ class LayoutValueExtension extends AbstractExtension {
   use FormatageModelsTwigImg;
   use FormatageModelsTwigBgImage;
   use ManageStyleCss;
+  use ArrayElements;
   
   /**
    *
@@ -105,6 +107,10 @@ class LayoutValueExtension extends AbstractExtension {
       new \Twig\TwigFilter('add_style_css', [
         $this,
         'addStyleCss'
+      ]),
+      new \Twig\TwigFilter('array_elements', [
+        $this,
+        'getElements'
       ])
     ];
   }

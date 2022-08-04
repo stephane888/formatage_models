@@ -7,14 +7,26 @@
 	{% endif %}
 <div {{attributes.addClass('one-column')}}>	
 	{% if content.main %}
-	<div {{region_attributes.main.addClass('main')}}>
-		{% if settings.load_clean_value %}
-		    {{ content.main|layout_value }}
+		{# verification #}
+		{% if settings.region_tag_main %}
+			<{{settings.region_tag_main}} {{region_attributes.main.addClass('main')}}>
+        		{% if settings.load_clean_value %}
+        		    {{ content.main|layout_value }}
+        		{% else %}
+        		    {{ content.main }}
+        		{% endif %}
+        	</{{settings.region_tag_main}}>		
 		{% else %}
-		    {{ content.main }}
-		{% endif %}
-	</div>
+        	<div {{region_attributes.main.addClass('main')}}>
+        		{% if settings.load_clean_value %}
+        		    {{ content.main|layout_value }}
+        		{% else %}
+        		    {{ content.main }}
+        		{% endif %}
+        	</div>
+        {% endif %}
 	{% endif %}
 </div>
 {% endif %}
+
 

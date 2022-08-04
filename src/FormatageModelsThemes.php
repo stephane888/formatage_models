@@ -94,6 +94,16 @@ class FormatageModelsThemes {
       'render element' => 'element',
       'file' => 'themes/formatage_models.theme.inc'
     ];
+    
+    //
+    // theme de base pour les menus. layoutmenu--fast-models-fn-first-menu
+    $hooks['formatage_models_fieldgalleries'] = [
+      'preprocess functions' => [
+        'template_preprocess_formatage_models_fieldgalleries'
+      ],
+      'render element' => 'element',
+      'file' => 'themes/formatage_models.theme.inc'
+    ];
     //
     
     return $hooks;

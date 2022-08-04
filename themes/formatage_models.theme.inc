@@ -1,9 +1,29 @@
   <?php
   use Drupal\formatage_models\FormatageModelsThemes;
-  use Drupal\menu_item_extras\Utility\Utility;
   
   function template_preprocess_formatage_models_swiper_views_style(&$vars) {
     FormatageModelsThemes::ViewsGetValues($vars);
+  }
+  
+  function template_preprocess_formatage_models_fieldgalleries(&$vars, $hook) {
+    $element = $vars['element'];
+    // Creating variables for the template.
+    $vars['entity_type'] = $element['#entity_type'];
+    $vars['field_name'] = $element['#field_name'];
+    $vars['field_type'] = $element['#field_type'];
+    $vars['label_display'] = $element['#label_display'];
+    
+    $vars['label_hidden'] = ($element['#label_display'] == 'hidden');
+    // Always set the field label - allow themes to decide whether to display
+    // it.
+    // In addition the label should be rendered but hidden to support screen
+    // readers.
+    $vars['label'] = $element['#title'];
+    
+    $vars['multiple'] = $element['#is_multiple'];
+    //
+    $vars['items'] = $element['items'];
+    $vars['conf'] = $element['#conf'];
   }
   
   function template_preprocess_formatage_models_swiper_big_views_style(&$vars) {

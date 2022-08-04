@@ -101,8 +101,9 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
    * @see \Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection::defaultConfiguration()
    */
   public function defaultConfiguration() {
-    return parent::defaultConfiguration() + [
+    return [
       'css' => '',
+      'region_tag_main' => 'div',
       'layoutrestrictions' => [
         'roles' => []
       ],
@@ -127,7 +128,7 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
           ]
         ]
       ]
-    ];
+    ] + parent::defaultConfiguration();
   }
   
 }

@@ -1,0 +1,7 @@
+field.formatter.settings.formatage_models_fieldgalleries:
+  type: mapping
+  label: FieldGalleries formatter settings
+  mapping:
+    foo:
+      type: string
+      label: Foo

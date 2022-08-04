@@ -61,7 +61,7 @@ class FormatageModelsFivejarsHero extends FormatageModelsSection {
   
   public function defaultConfiguration() {
     return [
-      'css' => 'd-flex align-items-center text-white text-center',
+      'css' => 'd-flex d-flex align-items-center align-items-md-end text-white text-center',
       'region_tag_title' => 'h2',
       'sf' => [
         'builder-form' => true,
