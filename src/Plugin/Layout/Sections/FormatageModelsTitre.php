@@ -48,6 +48,13 @@ class FormatageModelsTitre extends FormatageModelsSection {
     return parent::defaultConfiguration() + [
       'load_libray' => true,
       'css' => 'text-center bg-dark text-white',
+      "derivate" => [
+        'value' => 'default',
+        'options' => [
+          'default' => 'default',
+          'titre-section-icon' => 'titre-section-icon'
+        ]
+      ],
       'sf' => [
         'builder-form' => true,
         'info' => [
