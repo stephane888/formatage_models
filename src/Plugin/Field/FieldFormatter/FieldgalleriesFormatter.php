@@ -95,6 +95,7 @@ class FieldgalleriesFormatter extends ImageFormatter {
     $tmp_impaire = 0;
     $nombre = count($elements);
     $gabarits = [];
+    //
     for ($i = 0; $i < $nombre; $i++) {
       if ($tmp_impaire < $impaire) {
         $gabarits[] = $this->addImageInRow($impaire, $i, $elements);
@@ -107,7 +108,6 @@ class FieldgalleriesFormatter extends ImageFormatter {
         $tmp_paire = $paire;
       }
     }
-    
     //
     // rendu m-1-2-1
     // if ($conf['gabarit'] == 'm-1-2-1') {
@@ -118,7 +118,7 @@ class FieldgalleriesFormatter extends ImageFormatter {
     // '#markup' => $item->value
     // ];
     // }
-    
+    //
     return [
       '#theme' => 'formatage_models_fieldgalleries',
       'items' => $gabarits,
@@ -137,7 +137,8 @@ class FieldgalleriesFormatter extends ImageFormatter {
     $row = [];
     $n = count($allItems);
     if ($nbre_img == 2) {
-      if (($n - ($nbre_img + $i))) {
+      if (($n - ($nbre_img + $i)) >= 0) {
+        //
         $row[] = [
           '#type' => 'html_tag',
           '#tag' => 'div',
@@ -153,6 +154,7 @@ class FieldgalleriesFormatter extends ImageFormatter {
           ],
           $allItems[$i + $nbre_img - 2]
         ];
+        //
         $row[] = [
           '#type' => 'html_tag',
           '#tag' => 'div',
@@ -193,7 +195,6 @@ class FieldgalleriesFormatter extends ImageFormatter {
         $allItems[$i + $nbre_img - 1]
       ];
     }
-    
     return $row;
   }
   

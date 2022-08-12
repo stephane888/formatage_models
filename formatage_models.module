@@ -384,6 +384,7 @@ function formatage_models_preprocess_views_view_render_page(&$vars) {
  * @param array $vars
  */
 function formatage_models_preprocess_views_view_render(&$vars) {
+  
   /**
    *
    * @var \Drupal\views\ViewExecutable $view
@@ -395,7 +396,7 @@ function formatage_models_preprocess_views_view_render(&$vars) {
     $Attribute = new Attribute();
     $css = explode(" ", $css);
     $Attribute->addClass($css);
-    $vars['rows']['#attributes'] = $Attribute;
+    $vars['rows']['attributes'] = $Attribute;
   }
   //
   $css = $view->display_handler->getOption('view_header_css');

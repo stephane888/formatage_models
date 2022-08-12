@@ -7,18 +7,21 @@ use Drupal\Core\Form\FormStateInterface;
 
 /**
  * The plugin that handles a block.
+ * views.module
+ * if (!isset($def['theme']) || empty($def['register_theme'])) {
+ * ... => Il faut mettre register_theme = TRUE
  *
  * @ingroup views_display_plugins
  *
  * @ViewsDisplay(
  *   id = "block_render",
- *   title = @Translation("Block render "),
+ *   title = @Translation("Block render"),
  *   help = @Translation("Display the view as a block."),
  *   theme = "views_view_render",
- *   register_theme = FALSE,
+ *   register_theme = TRUE,
  *   uses_hook_block = TRUE,
  *   contextual_links_locations = {"block"},
- *   admin = @Translation("Block")
+ *   admin = @Translation("Block render")
  * )
  *
  * @see \Drupal\views\Plugin\Block\ViewsBlock

@@ -37,6 +37,7 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
+
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {{ title }}
@@ -52,7 +53,9 @@
   {{ attachment_before }}
 
   {% if rows -%}
-    {{ rows }}
+  <div {{ rows.attributes }}>
+    {{ rows|without('attributes') }}
+  </div>
   {% elseif empty -%}
     {{ empty }}
   {% endif %}
