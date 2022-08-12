@@ -9,7 +9,7 @@
 					</div>
 				</div>
 				<div class="col-lg-6 right">
-					<div class="d-flex justify-content-end pt-2">
+					<div class="d-flex justify-content-between justify-content-md-end justify-content-end pt-md-2 align-items-center h-100">
 					    {% if content.topheader_right %}
 						<div {{ region_attributes.topheader_right.addClass('topheader_right') }}>
 						    {{ content.topheader_right }}
@@ -17,13 +17,13 @@
 						{% endif %}
 						<div class="header_search_1">
 							{% if logged_in == true %}
-								<a href="/user/logout" id="header-search-button">
+								<a href="/user/logout" id="header-search-button" class="d-flex align-items-baseline">
 									<i class="fas fa-sign-out-alt"></i>
 								</a>
 							{% else %}
-								<a href="/user/login" id="header-search-button">
+								<a href="/user/login" id="header-search-button" class="d-flex align-items-baseline">
 									<i class="fas fa-sign-in-alt"></i>
-									{{ 'Login'|trans }}
+									<span class="text">{{ 'Login'|trans }}</span>
 								</a>
 							{% endif %}
 						</div>
@@ -35,7 +35,7 @@
 		<div class="container">
 			<div class="header-nav">
 				<div class="row">
-					<div class="col-lg-6 d-flex align-items-center logo-bloc flex-wrap">
+					<div class="col-4 col-lg-6 d-flex align-items-center logo-bloc flex-wrap">
 						<div class="basic-wrapper">
 							<a href="/" title="Home" rel="home" class="logo">								
 								{% if settings.logo_url %}
@@ -52,10 +52,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6 col-xs-12 content-info justify-content-end d-flex">
+					<div class="col-8 col-lg-6 col-xs-12 content-info justify-content-end d-flex">
 						<div class="d-flex flex-wrap data-right align-items-center">
 							{{content.data_right}}
-							<div class="icon icon-bloc d-xl-flex align-items-center d-lg-none">
+							<div class="icon icon-bloc d-flex align-items-center icon-bloc-phone">
 								<i class="fas fa-phone"></i>
 								<div class="content">
 									<span {{region_attributes.phone.addClass('phone')}}>
@@ -68,7 +68,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="icon icon-bloc d-flex align-items-center"> 
+							<div class="icon icon-bloc d-none d-md-flex align-items-center icon-bloc-callaction"> 
 								<i class="fas fa-bullhorn"></i>
 								<div {{region_attributes.call_action.addClass(['content','call_action'])}}>								
 									{{content.call_action}}
