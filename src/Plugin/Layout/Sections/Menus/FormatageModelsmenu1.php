@@ -26,7 +26,7 @@ use Drupal\Core\Render\Element;
  * )
  */
 class FormatageModelsmenu1 extends FormatageModelsSection {
-  
+
   /**
    *
    * {@inheritdoc}
@@ -37,22 +37,23 @@ class FormatageModelsmenu1 extends FormatageModelsSection {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/menus/formatage-models-menu1.png");
   }
-  
+
   public function build(array $regions) {
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
+    // dump($build);
     if (is_array($build['site_main_menu']))
       $build['site_main_menu'] = $this->getMenus($build['site_main_menu']);
-    
+
     return $build;
   }
-  
+
   private function getMenus(array $region) {
     foreach ($region as $k => $m) {
       if (isset($m['#base_plugin_id']) && $m['#base_plugin_id'] === 'system_menu_block') {
         // set new theme.
         $region[$k]['content']['#theme'] = 'layoutmenu_formatage_models_menu1';
-        
+
         // add class
         $region[$k]['content']['#attributes'] = [
           'class' => [
@@ -81,7 +82,7 @@ class FormatageModelsmenu1 extends FormatageModelsSection {
     }
     return $region;
   }
-  
+
   private function formatListMenus(array &$items) {
     foreach ($items as $k => $item) {
       if (!empty($item['attributes'])) {
@@ -113,12 +114,12 @@ class FormatageModelsmenu1 extends FormatageModelsSection {
       }
     }
   }
-  
+
   public function defaultConfiguration() {
     return [
       'css' => 'bg-light',
       'region_css_site_main_menu' => ''
     ] + parent::defaultConfiguration();
   }
-  
+
 }
