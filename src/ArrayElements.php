@@ -12,13 +12,13 @@ trait ArrayElements {
    * @var \Drupal\Core\Template\AttributeString
    */
   public $stringAttri = '';
-  
+
   function getElements($build, Attribute $atttribute = null) {
     if (!$atttribute)
       $atttribute = new Attribute();
-    
+
     $elements = [];
-    
+
     // La condifition sur layout_builder_add_block permet un affichage par
     // defaut si on est en administration.
     if (is_array($build) && !isset($build['layout_builder_add_block'])) {
@@ -43,6 +43,15 @@ trait ArrayElements {
             }
             elseif (!empty($build[$key]['content'][$i]['#type']) && $build[$key]['content'][$i]['#type'] == 'link') {
               $build[$key]['content'][$i]['#attributes'] = $atttribute->toArray();
+              // un peu de forcing.
+              // on recuperer la class definie dans field_formatter_class et on
+              // l'ajoute dans la balise a.
+              if (!empty($build[$key]['content']['#third_party_settings']['field_formatter_class']['class'])) {
+                if (empty($build[$key]['content'][$i]['#options']['attributes']['class']))
+                  $build[$key]['content'][$i]['#options']['attributes']['class'] = [];
+                //
+                $build[$key]['content'][$i]['#options']['attributes']['class'][] = $build[$key]['content']['#third_party_settings']['field_formatter_class']['class'];
+              }
               $elements[] = $build[$key]['content'][$i];
             }
             else {
@@ -70,5 +79,5 @@ trait ArrayElements {
       $elements[] = $build;
     return $elements;
   }
-  
+
 }
