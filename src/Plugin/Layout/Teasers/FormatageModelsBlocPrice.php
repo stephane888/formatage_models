@@ -25,12 +25,18 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *     },
  *     "lien" = {
  *       "label" = @Translation(" Lien ")
+ *     },
+ *     "price_info" = {
+ *       "label" = @Translation(" price_info ")
+ *     },
+ *     "periode" = {
+ *       "label" = @Translation(" periode ")
  *     }
  *   }
  * )
  */
 class FormatageModelsBlocPrice extends FormatageModelsTeasers {
-  
+
   /**
    *
    * {@inheritdoc}
@@ -41,7 +47,7 @@ class FormatageModelsBlocPrice extends FormatageModelsTeasers {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/teasers/formatage-bloc-price.png");
   }
-  
+
   /**
    *
    * {@inheritdoc}
@@ -53,7 +59,7 @@ class FormatageModelsBlocPrice extends FormatageModelsTeasers {
     FormatageModelsThemes::formatSettingValues($build);
     return $build;
   }
-  
+
   /**
    *
    * {@inheritdoc}
@@ -94,6 +100,6 @@ class FormatageModelsBlocPrice extends FormatageModelsTeasers {
       ]
     ];
   }
-  
+
 }
 

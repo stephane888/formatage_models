@@ -5,9 +5,13 @@
 			<div class="item-price__head">
 				{% if content.titre %}
 					<div class="name-wrap">
-						<h2>
-							{{content.titre}}
+						<h2 {{ region_attibutes.titre.addClass('titre') }}>
+							{{content.titre|layout_value}}
 						</h2>
+						<span {{ region_attributes.periode.addClass(['price_info','d-flex']) }}>
+							{{ content.price_info }}
+							<span {{ region_attributes.periode.addClass('periode') }}>{{ content.periode }} </span>
+						</span>
 					</div>
 				{% endif %}
 				<div class="item-price__wrap">
