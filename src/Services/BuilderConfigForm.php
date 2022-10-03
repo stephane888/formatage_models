@@ -12,11 +12,11 @@ use Stephane888\HtmlBootstrap\ThemeUtility;
 class BuilderConfigForm {
   protected $ThemeUtility;
   private $setValue = [];
-  
+
   function __construct(ThemeUtility $ThemeUtility) {
     $this->ThemeUtility = $ThemeUtility;
   }
-  
+
   /**
    * Construit le formulaire de gestion de champs.
    *
@@ -33,7 +33,7 @@ class BuilderConfigForm {
       }
     }
   }
-  
+
   /**
    * Les champs ont une logique qui est assez simple, afin d'ajouter facilement
    * les blocs configurables.
@@ -57,7 +57,7 @@ class BuilderConfigForm {
       $this->selectRenderfield($field, $form['fields'][$key]);
     }
   }
-  
+
   /**
    * Tous les champs doivent avoir value et label.
    *
@@ -82,7 +82,7 @@ class BuilderConfigForm {
         if ($key)
           $form[$type] = [];
       }
-      
+
       switch ($type) {
         case 'text':
           if ($key)
@@ -95,8 +95,9 @@ class BuilderConfigForm {
             $this->ThemeUtility->addUrlTree($key, $form[$type], $label ? $label : 'Url', $defaultValue);
           break;
         case 'icon-f':
-          if ($key)
-            $this->ThemeUtility->AddFieldfontAwasone($type, $form, $label ? $label : 'Icone', $Value);
+          if ($key) {
+            $this->ThemeUtility->AddFieldfontAwasone($key, $form[$type], $label ? $label : 'Icone', $Value);
+          }
           break;
         /**
          * Ce champs n'a pas de cas d'utilisation, les boutons doivent etre de
@@ -123,7 +124,7 @@ class BuilderConfigForm {
       }
     }
   }
-  
+
   /**
    *
    * @param string $key
@@ -145,5 +146,5 @@ class BuilderConfigForm {
     $form[$key]['info'] = [];
     $this->ThemeUtility->addSelectTree('loader', $form[$key]['info'], $options, "Selectionne la maniere donc le contenu est definit", $item['info']['loader']);
   }
-  
+
 }

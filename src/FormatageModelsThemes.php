@@ -12,9 +12,9 @@ use Drupal\Core\Render\Element;
 
 // use Stephane888\HtmlBootstrap\Traits\Portions;
 class FormatageModelsThemes {
-  
+
   // use Portions;
-  
+
   /**
    * Returns the theme hook definition information.
    */
@@ -94,7 +94,7 @@ class FormatageModelsThemes {
       'render element' => 'element',
       'file' => 'themes/formatage_models.theme.inc'
     ];
-    
+
     //
     // theme de base pour les menus. layoutmenu--fast-models-fn-first-menu
     $hooks['formatage_models_fieldgalleries'] = [
@@ -105,21 +105,20 @@ class FormatageModelsThemes {
       'file' => 'themes/formatage_models.theme.inc'
     ];
     //
-    
+
     return $hooks;
   }
-  
+
   public static function ViewsGetValues(array &$vars) {
-    
     /**
      *
      * @var \Drupal\views\ViewExecutable $view
      */
     $view = $vars['view'];
-    
+
     $options = $view->style_plugin->options;
     $regions = $options['view_layouts_options'];
-    
+
     if (!empty($options['view_layouts_options']) & $view->style_plugin->usesFields()) {
       foreach ($vars['rows'] as $row_index => $row) {
         $viewRow = $row['#view'];
@@ -156,14 +155,14 @@ class FormatageModelsThemes {
       }
     }
   }
-  
+
   /**
    * Permet de deplacer les layouts dans une autre region.
    */
   public static function ReInjectLayoutInAnotherRegion(Block $Block, $variables) {
     //
   }
-  
+
   /**
    * Ajoute les attributs sur les balises.
    *
@@ -182,12 +181,12 @@ class FormatageModelsThemes {
         $attributes->addClass('space_bottom');
         $variables['attributes'] = $attributes;
       }
-      
+
       if (!empty($variables['settings']['css'])) {
         $attributes->addClass(explode(" ", $variables['settings']['css']));
         $variables['attributes'] = $attributes;
       }
-      
+
       foreach ($layout->getRegionNames() as $region) {
         $v = new Attribute();
         $v->addClass('layout-region');
@@ -199,7 +198,7 @@ class FormatageModelsThemes {
       }
     }
   }
-  
+
   /**
    * Ajoute le contenu definit dans fields[][] dans le rendu de la region,
    * ( pour eviter d'avoir une double sortie avec les données statiques et
@@ -216,9 +215,9 @@ class FormatageModelsThemes {
        */
       $layout = $variables['layout'];
       $regions = $layout->getRegionNames();
-      
+
       foreach ($variables['settings'] as $vals) {
-        
+
         if (!empty($vals["builder-form"]) && !empty($vals["fields"]) && !empty($vals["info"]['loader']) && $vals["info"]['loader'] == "static") {
           foreach ($vals["fields"] as $regionName => $fields) {
             if (in_array($regionName, $regions)) {
@@ -267,7 +266,7 @@ class FormatageModelsThemes {
                           ]
                         ];
                       }
-                      
+
                       break;
                     default:
                       throw new \Exception("Le champs " . $key . " n'a pas de rendu ");
@@ -306,7 +305,7 @@ class FormatageModelsThemes {
       }
     }
   }
-  
+
   /**
    * Permet de recuperer la valeur des champs dynamique et de les inserres dans
    * la region adéquate.
@@ -326,14 +325,16 @@ class FormatageModelsThemes {
     // on parcourt les elements de settings.
     foreach ($settings as $vals) {
       if (!empty($vals["builder-form"]) && !empty($vals["fields"]) && !empty($vals["info"]['loader']) && $vals["info"]['loader'] == "static") {
-        
+
         // on parcourt les groupes de champs.
         foreach ($vals["fields"] as $regionName => $fields) {
           if (isset($regions[$regionName])) {
             foreach ($fields as $key => $field) {
               // dump($field);
-              if (!is_array($field))
+              if (!is_array($field)) {
                 throw new \Exception(" Le champs " . $key . " doit avoir un rendu en array value and label, \n ( region : " . $regionName . " )");
+              }
+
               if (isset($field['value']) && ($field['value'] !== null && $field['value'] !== ""))
                 switch ($key) {
                   case 'text':
@@ -453,14 +454,14 @@ class FormatageModelsThemes {
       }
     }
   }
-  
+
   public static function addLayoutEditBlock(array &$variables) {
     $route_name = \Drupal::routeMatch()->getRouteName();
     if (\strripos($route_name, "layout_builder.") !== false) {
       $variables['show_region_edit'] = true;
     }
   }
-  
+
   /**
    * Cette fonction permet de supprime le rendu du block;
    *
@@ -473,7 +474,7 @@ class FormatageModelsThemes {
     }
     return $param;
   }
-  
+
   /**
    * permet de recuper l'url d'une image ou de tout autre fichier.
    */
@@ -486,7 +487,7 @@ class FormatageModelsThemes {
     }
     return $files;
   }
-  
+
   public static function getImageUrlByFid($fid, $image_style = null) {
     if (!empty($fid)) {
       $file = \Drupal\file\Entity\File::load($fid);
@@ -504,14 +505,14 @@ class FormatageModelsThemes {
     }
     return [];
   }
-  
+
   /**
    * permet de recuper les données dans un preprocess Field.
    */
   public static function getDatafields(FieldItemList $items) {
     return $items->getValue();
   }
-  
+
   /**
    * Verifie le contenu de la
    *
@@ -519,5 +520,5 @@ class FormatageModelsThemes {
    */
   public static function formatage_models_menu01(array &$vars) {
   }
-  
+
 }
