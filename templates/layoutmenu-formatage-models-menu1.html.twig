@@ -28,13 +28,12 @@
           item.is_expanded ? 'menu-item--expanded',
           item.is_collapsed ? 'menu-item--collapsed',
           item.in_active_trail ? 'menu-item--active-trail',
-          item.content["#is_empty_layout"] == false and items|first.menu_level == 0 ? 'has-submenu0',
+          item.content['#is_empty_layout'] == false and items|first.menu_level == 0 ? 'has-submenu0',
           menuId
-    ] %}
-    
+    ] %}    
 				<li{{item.attributes.addClass(menu_item_classes)}}>
 					{% if items|first.menu_level == 0 %}
-						{% if (item.content["#is_empty_layout"] == false and items|first.menu_level == 0) or (item.below and items|first.menu_level == 0 ? 'dropdown-toggle') %}
+						{% if (item.content['#is_empty_layout'] == false and items|first.menu_level == 0) or (item.below and items|first.menu_level == 0 ? 'dropdown-toggle') %}
 							{% set ClassA= {'class':['dropdown-toggle'],'data-toggle':'dropdown','aria-expanded':false,'id':menuId} %}
 						{% else %}
 							{% set ClassA={} %}

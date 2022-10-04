@@ -41,10 +41,8 @@ class FormatageModelsmenu1 extends FormatageModelsSection {
   public function build(array $regions) {
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
-    // dump($build);
     if (is_array($build['site_main_menu']))
       $build['site_main_menu'] = $this->getMenus($build['site_main_menu']);
-
     return $build;
   }
 
@@ -63,6 +61,19 @@ class FormatageModelsmenu1 extends FormatageModelsSection {
         if (!empty($region[$k]['content']['#items']))
           $this->formatListMenus($region[$k]['content']['#items']);
       }
+      elseif (isset($m['#base_plugin_id']) && $m['#base_plugin_id'] === 'field_block') {
+        // set new theme.
+        $region[$k]['content']['#theme'] = 'layoutmenu_formatage_models_menu1';
+
+        // add class
+        $region[$k]['content']['#attributes'] = [
+          'class' => [
+            'menu'
+          ]
+        ];
+        if (!empty($region[$k]['content'][0]['#items']))
+          $this->formatListMenus($region[$k]['content'][0]['#items']);
+      }
       elseif (isset($m['#plugin_id']) && str_contains($m['#plugin_id'], ":menus")) {
         $elements = Element::children($region[$k]['content']);
         foreach ($elements as $delta) {
@@ -80,6 +91,7 @@ class FormatageModelsmenu1 extends FormatageModelsSection {
         }
       }
     }
+
     return $region;
   }
 

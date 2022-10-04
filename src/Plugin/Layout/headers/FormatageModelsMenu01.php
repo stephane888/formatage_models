@@ -43,6 +43,11 @@ class FormatageModelsMenu01 extends FormatageModels {
 
   public function build($regions) {
     $build = parent::build($regions);
+    $build['logo'] = [
+      '#theme' => 'image_style',
+      '#style_name' => 'thumbnail',
+      '#uri' => theme_get_setting('logo.path')
+    ];
     $this->formatRegionMenu($build);
     return $build;
   }

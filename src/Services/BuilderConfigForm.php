@@ -96,7 +96,7 @@ class BuilderConfigForm {
           break;
         case 'icon-f':
           if ($key) {
-            $this->ThemeUtility->AddFieldfontAwasone($key, $form[$type], $label ? $label : 'Icone', $Value);
+            $this->ThemeUtility->AddFieldfontAwasone($type, $form, $label ? $label : 'Icone', $Value);
           }
           break;
         /**

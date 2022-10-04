@@ -47,7 +47,7 @@ use Stephane888\Debug\Repositories\ConfigDrupal;
  * )
  */
 class FormatageModelsheader1 extends FormatageModelsSection {
-  
+
   /**
    *
    * {@inheritdoc}
@@ -58,20 +58,20 @@ class FormatageModelsheader1 extends FormatageModelsSection {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage_models_header1.png");
   }
-  
+
   public function build(array $regions) {
     $build = parent::build($regions);
     $build['#settings']['logo_url'] = theme_get_setting('logo.url');
     FormatageModelsThemes::formatSettingValues($build);
     return $build;
   }
-  
+
   public function buildConfigurationForm($form, $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
     // dump($this->configuration);
     return $form;
   }
-  
+
   public function defaultConfiguration() {
     // $SiteConfig = $this->configFactory->getEditable("site.config");
     return parent::defaultConfiguration() + [
@@ -138,5 +138,5 @@ class FormatageModelsheader1 extends FormatageModelsSection {
       ]
     ];
   }
-  
+
 }
