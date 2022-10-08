@@ -1,1 +1,1 @@
-import "../../scss/headers/formatage-models-header-thegem-01.scss";
+import "@stephane888/wbu-atomique/scss/organisme/steph/headers/fm-header-thegem-01.scss";
