@@ -107,7 +107,7 @@ class FormatageModelsHeaderThegem01 extends FormatageModelsSection {
           'socials_rx' => [
             'text_html' => [
               'label' => 'rx',
-              'value' => '<div class="social-links">
+              'value' => '<ul class="social-links">
             <li class="nav-item ml-3">
               <a class="nav-link link">
                 <svg
@@ -174,7 +174,7 @@ class FormatageModelsHeaderThegem01 extends FormatageModelsSection {
                 </svg>
               </a>
             </li>
-          </div>'
+          </ul>'
             ]
           ]
         ]
