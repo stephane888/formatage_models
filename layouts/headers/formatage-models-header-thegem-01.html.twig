@@ -1,66 +1,92 @@
 {% if content %}
-	<section {{attributes.addClass(['fm-header-thegem-01'])}}>
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col">
-					<div class="row align-items-center">
-						{% if content.infos_f1 %}
-							<div {{region_attributes.infos_f1.addclass('col-auto','item','infos_f1')}}>
-								{{content.infos_f1}}
-							</div>
-						{% endif %}
-						{% if content.infos_f2 %}
-							<div {{region_attributes.infos_f2.addclass('col-auto','item','infos_f2')}}>
-								{{content.infos_f2}}
-							</div>
-						{% endif %}
-						<div class=" col item ">
-							<div class=" d-flex socials-items ">
-								{% if content.social_f1 %}
-									{{content.social_f1}}
-								{% endif %}
-								{% if content.social_f2 %}
-									{{content.social_f2}}
-								{% endif %}
-								{% if content.social_f3 %}
-									{{content.social_f3}}
-								{% endif %}
-								{% if content.social_f4 %}
-									{{content.social_f4}}
-								{% endif %}
-								{% if content.social_f5 %}
-									{{content.social_f5}}
-								{% endif %}
-								{% if content.social_f6 %}
-									{{content.social_f6}}
-								{% endif %}
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-auto">
-					<div class="row align-items-center link-text">
-						{% if content.links_f1 %}
-							<div {{region_attributes.links_f1.addClass('col','angle-right','d-flex','align-items-center','item', 'links_f1')}}>
-								{{content.links_f1}}
-							</div>
-						{% endif %}
-						{% if content.links_f2 %}
-							<div {{region_attributes.links_f2.addClass('col','angle-right','d-flex','align-items-center','item', 'links_f2')}}>
-								{{content.links_f2}}
-							</div>
-						{% endif %}
-						{% if content.links_f3 %}
-							<div {{region_attributes.links_f3.addClass('col','angle-right','d-flex','align-items-center','item', 'links_f3')}}>
-								{{content.links_f3}}
-							</div>
-						{% endif %}
-						<div class="col d-flex align-items-center">
-							{{content.button_f1}}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<section class="top-header-teaser">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light px-0">
+      <button
+        class="navbar-toggler mobile-btn"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 text-white"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">
+              <span class="location">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  preserveAspectRatio="xMidYMid meet"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 21a29.776 29.776 0 0 1-3.5-3.531C6.9 15.558 5 12.712 5 10a7 7 0 0 1 11.952-4.951A6.955 6.955 0 0 1 19 10c0 2.712-1.9 5.558-3.5 7.469A29.777 29.777 0 0 1 12 21Zm0-14a3 3 0 1 0 0 6a3 3 0 0 0 0-6Z"
+                  />
+                </svg>
+              </span>
+              <span class="linker">{{ content.infos_f1 }}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class="phone">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  preserveAspectRatio="xMidYMid meet"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m20.487 17.14l-4.065-3.696a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66c-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.085-1.39z"
+                  />
+                </svg>
+              </span>
+              <span class="linker">{{ content.infos_f2 }} </span>
+            </a>
+          </li>
+          {{ content.socials_rx }}
+        </ul>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 right-link">
+        {% if logged_in == true %}
+        <a href="/user/logout" id="header-search-button" class="d-flex align-items-baseline">
+									<i class="fas fa-sign-out-alt"></i>
+								</a>        
+        {% else %}
+          <li class="nav-item page-linker">
+            <a href="/user/login" class="nav-link linker"> {{ 'registration'|trans }} </a>
+          </li>
+          <li class="nav-item page-linker">
+            <span> | </span>
+            <a href="/user/login" class="nav-link linker"> {{ 'Login'|trans }} </a>
+          </li>
+        {% endif %}
+          {{ content.button_f1 }}
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
 {% endif %}
