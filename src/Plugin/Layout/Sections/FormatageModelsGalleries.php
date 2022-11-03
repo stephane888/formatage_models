@@ -10,7 +10,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *
  * @Layout(
  *   id = "formatage_models_galleries",
- *   label = @Translation(" Galleries "),
+ *   label = @Translation(" Galleries GridCss "),
  *   category = @Translation("Formatage Models [entete]"),
  *   path = "layouts/sections",
  *   template = "formatage-models-galleries",

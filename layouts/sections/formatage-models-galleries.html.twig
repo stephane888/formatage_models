@@ -1,5 +1,5 @@
 {% if content %}
-	<div {{attributes.addClass(['vlf-grid'])}}>
+	<div {{attributes.addClass(['vlf-grid-v2'])}}>
 	    {% for item in content.images|array_elements(region_attributes.images.addClass(['content','flow'])) %}
 	        {{ item }} 
 	    {% endfor %}
