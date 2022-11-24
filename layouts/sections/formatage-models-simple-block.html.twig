@@ -26,6 +26,14 @@
         	</div>
         {% endif %}
 	{% endif %}
+	{# content region for teaser #}
+	{% if content.teasers_container %}
+	<div class="row">
+		{% for item in content.teasers_container|array_element(region_attributes.teasers_container.addClass('')) %}
+			{{ item }}
+		{% endfor %}
+	</div>
+	{% endif %}
 </div>
 {% endif %}
 
