@@ -60,6 +60,11 @@ class FormatageModelsAboutAC extends FormatageModelsSection {
     return $build;
   }
   
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection::defaultConfiguration()
+   */
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
       'css' => '',
