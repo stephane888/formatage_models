@@ -24,6 +24,9 @@ use Drupal\user\Entity\Role;
  *     "image_bg" = {
  *       "label" = @Translation("Image bg")
  *     },
+ *    "teasers_container" = {
+ *       "label" = @Translation("Content for many elements"),
+ *    },
  *   }
  * )
  */
@@ -117,6 +120,12 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
           'main' => [
             'text_html' => [
               'label' => 'Drescription',
+              'value' => ""
+            ]
+          ],
+          'teasers_container' => [
+            'text_html' => [
+              'label' => 'Container pour Teaser',
               'value' => ""
             ]
           ],
