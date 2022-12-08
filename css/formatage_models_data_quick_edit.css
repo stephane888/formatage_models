@@ -12,11 +12,11 @@
     width: 40px;
     height: 40px;    
     font-size: 2rem;
+    transition: all 1s;
 }
 .contextual-region:hover > .formatage_models_quickly_edit{
 	color: #4369a3;
     background: rgb(255 255 255 / 85%);  
-    z-index: 9999;  
-    transition: all 1s;
+    z-index: 9999;      
     cursor:pointer;
 }

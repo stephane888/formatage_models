@@ -40,10 +40,17 @@ function formatage_models_preprocess_paragraph(&$variables) {
     $variables['content']['contextual_links'] = $variables['title_suffix']['contextual_links'];
     $variables['content']['contextual_links']['#weight'] = -100;
     // add special place to edit
-    $variables['content']['formatage_models_quickly_edit'] = [
-      '#theme' => 'formatage_models_quickly_edit',
-      '#contextual_links' => $variables['content']['contextual_links']
+    $routes = [
+      'vuejs_entity.model_choisie_form',
+      'buildercv.build_cv'
     ];
+    $route_name = \Drupal::routeMatch()->getRouteName();
+    if (!in_array($route_name, $routes)) {
+      $variables['content']['formatage_models_quickly_edit'] = [
+        '#theme' => 'formatage_models_quickly_edit',
+        '#contextual_links' => $variables['content']['contextual_links']
+      ];
+    }
   }
 }
 
@@ -58,7 +65,12 @@ function formatage_models_preprocess_page(&$variables) {
   elseif ($route_name == 'entity.paragraphs_type.collection') {
     $variables['page']['content']['#attached']['library'][] = 'formatage_models/formatage-models-admin-paragraph';
   }
-  if (!empty($variables['logged_in'])) {
+  // Il faudra que ces liens soient configurable (settings.form).
+  $routes = [
+    'vuejs_entity.model_choisie_form',
+    'buildercv.build_cv'
+  ];
+  if (!empty($variables['logged_in']) && !in_array($route_name, $routes)) {
     $variables['page']['content']['entity_edit_vuejs'] = [
       '#type' => 'html_tag',
       '#tag' => 'div',
