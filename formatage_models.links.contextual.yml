@@ -1,0 +1,4 @@
+formatage_models.edit_layout:
+  route_name: layout_builder.overrides.paragraph.view
+  group: paragraph
+  title: 'Edit layout'

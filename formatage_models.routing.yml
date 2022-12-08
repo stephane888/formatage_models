@@ -1,7 +1,7 @@
 formatage_models.example:
-  path: '/formatage-models/example'
+  path: '/formatage-models/save-entity/{entity_type_id}'
   defaults:
-    _title: 'Example'
-    _controller: '\Drupal\formatage_models\Controller\FormatageModelsController::build'
+    _title: 'Save entity'
+    _controller: '\Drupal\formatage_models\Controller\FormatageModelsController::SaveEntity'
   requirements:
     _permission: 'access content'

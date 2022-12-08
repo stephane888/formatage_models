@@ -60,6 +60,23 @@ function template_preprocess_formatage_models_menu(&$vars) {
   $vars['children'] = $vars['element']['#children'];
 }
 
+function template_preprocess_formatage_models_quickly_edit(&$vars) {
+  if (!empty($vars['element']['#contextual_links']['#id'])) {
+    $vars["#attached"]['library'][] = 'formatage_models/formatage-models-data-quick-edit-id';
+    if (empty($vars['attributes'])) {
+      $vars['attributes'] = new \Drupal\Core\Template\Attribute();
+    }
+    /**
+     *
+     * @var \Drupal\Core\Template\Attribute $attributes
+     */
+    $attributes = $vars['attributes'];
+    // dump($attributes);
+    $attributes->setAttribute('data-quick-edit-id', $vars['element']['#contextual_links']['#id']);
+    $attributes->addClass('formatage_models_quickly_edit');
+  }
+}
+
 function template_preprocess_layoutmenu_formatage_models_menu1(&$variables) {
   //
   if (!empty($variables['element'][0]['#items'])) {
@@ -70,16 +87,5 @@ function template_preprocess_layoutmenu_formatage_models_menu1(&$variables) {
     $variables['items'] = $variables['element']['#items'];
   if (!empty($variables['element']['#children']))
     $variables['children'] = $variables['element']['#children'];
-  //
-  // dump($variables);
-  // foreach ($variables['items'] as $items) {
-  // if ($items['original_link']) {
-  // /**
-  // *
-  // * @var \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent $link
-  // */
-  // $link = $items['original_link'];
-  // dump($link->getMetaData());
-  // }
-  // }
 }
+

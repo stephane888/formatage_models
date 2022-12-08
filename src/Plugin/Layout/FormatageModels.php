@@ -162,7 +162,7 @@ class FormatageModels extends LayoutDefault {
    */
   public function build(array $regions) {
     // Ensure $build only contains defined regions and in the order defined.
-    $build = [];
+    $build = parent::build($regions);
     foreach ($this->getPluginDefinition()->getRegionNames() as $region_name) {
       if (array_key_exists($region_name, $regions)) {
         $build[$region_name] = $regions[$region_name];
