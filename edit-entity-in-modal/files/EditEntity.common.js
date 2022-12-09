@@ -17629,7 +17629,7 @@ module.exports = require("vue");
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.miniCssF = function(chunkId) {
 /******/ 			// return url for filenames based on template
-/******/ 			return "css/" + chunkId + "." + "c602b6bd" + ".css";
+/******/ 			return "css/" + chunkId + "." + "97c2ac50" + ".css";
 /******/ 		};
 /******/ 	}();
 /******/ 	
@@ -17773,7 +17773,7 @@ module.exports = require("vue");
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = function(chunkId, promises) {
-/******/ 			var cssChunks = {"556":1};
+/******/ 			var cssChunks = {"805":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(function() {
@@ -21297,7 +21297,7 @@ const routes = [{
       requiresAuth: false,
       hideFooter: true
     },
-    component: () => Promise.all(/* import() */[__webpack_require__.e(743), __webpack_require__.e(556)]).then(__webpack_require__.bind(__webpack_require__, 7064))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(743), __webpack_require__.e(805)]).then(__webpack_require__.bind(__webpack_require__, 9805))
   }]
 }];
 const router = new VueRouter$1({

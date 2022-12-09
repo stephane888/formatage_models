@@ -74,16 +74,6 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     }
     $build = $this->stylesGroupManager->buildStyles($build, $this->configuration['container_wrapper']['bootstrap_styles']);
     
-    /**
-     *
-     * @var \Drupal\Core\Layout\LayoutDefinition $layout
-     */
-    $layout = $build['#layout'];
-    if ("buildercv_presentation" == $layout->id()) {
-      \Stephane888\Debug\debugLog::$max_depth = 6;
-      \Stephane888\Debug\debugLog::kintDebugDrupal($layout, 'layout__build--' . $layout->id(), true);
-    }
-    
     return $build;
   }
   
