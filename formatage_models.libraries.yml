@@ -215,12 +215,6 @@ formatage-bloc-price:
     theme:
       layouts/css/formatage-bloc-price.css: { weight: 10 }
 
-formatage-models-title-description:
-  js:
-    layouts/js/formatage-models-title-description.js: {}
-  css:
-    theme:
-      layouts/css/formatage-models-title-description.css: { weight: 10 }
 
 formatage-models-hero2:
   js:

@@ -157,12 +157,15 @@ class FormatageModels extends LayoutDefault {
   }
   
   /**
+   * On ne doit pas importer les librairies de maniere brute.
+   * ( de ce fait on masque parent::build($regions)).
    *
    * {@inheritdoc}
    */
   public function build(array $regions) {
     // Ensure $build only contains defined regions and in the order defined.
-    $build = parent::build($regions);
+    // $build = parent::build($regions);
+    $build = [];
     foreach ($this->getPluginDefinition()->getRegionNames() as $region_name) {
       if (array_key_exists($region_name, $regions)) {
         $build[$region_name] = $regions[$region_name];
@@ -172,16 +175,11 @@ class FormatageModels extends LayoutDefault {
     $build['#layout'] = $this->pluginDefinition;
     $build['#theme'] = $this->pluginDefinition->getThemeHook();
     $library = $this->pluginDefinition->getLibrary();
-    // $currentDomain = null;
-    // if (\Drupal::moduleHandler()->moduleExists('wbumenudomain')) {
-    // $currentDomain = \Drupal\wbumenudomain\Wbumenudomain::getCurrentdomain();
-    // if (!empty($this->configuration[$currentDomain])) {
-    // $build['#settings'] = $this->configuration[$currentDomain];
-    // if ($library && $this->configuration[$currentDomain]['load_libray']) {
-    // $build['#attached']['library'][] = $library;
-    // }
-    // }
-    // }
+    // configuration['load_libray'] n'est plus supporter et serra supprimé
+    /**
+     *
+     * @deprecated configuration['load_libray'] and remove à 4x.
+     */
     if ($this->subConfiguration) {
       $build['#settings'] = $this->subConfiguration;
       if ($library && $this->subConfiguration['load_libray']) {
