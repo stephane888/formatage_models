@@ -6329,15 +6329,34 @@ var index = {
 
 /***/ }),
 
-/***/ 3206:
+/***/ 1564:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var wbuutilities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6540);
+
+
+//
+/* harmony default export */ __webpack_exports__["Z"] = ({
+  ...wbuutilities__WEBPACK_IMPORTED_MODULE_0__/* .AjaxToastBootStrap */ .Ht,
+  languageId: window.drupalSettings && window.drupalSettings.path && window.drupalSettings.path.currentLanguage ? window.drupalSettings.path.currentLanguage : null,
+  TestDomain: "http://wb-horizon.kksa"
+});
+
+/***/ }),
+
+/***/ 6540:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "Z": function() { return /* binding */ request; }
+  "EC": function() { return /* reexport */ basic; },
+  "Ht": function() { return /* reexport */ BootStrap; }
 });
+
+// UNUSED EXPORTS: ButtonDelete, ButtonSave, entityLoad
 
 ;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../wbuutilities/src/Buttons/ButtonSave.vue?vue&type=template&id=29246a2e&scoped=true&lang=html&
 var render = function render() {
@@ -13415,15 +13434,6 @@ if (typeof window !== "undefined" && window.Vue) {
 
 
 
-;// CONCATENATED MODULE: ./src/request.js
-
-
-//
-/* harmony default export */ var request = ({
-  ...BootStrap,
-  languageId: window.drupalSettings && window.drupalSettings.path && window.drupalSettings.path.currentLanguage ? window.drupalSettings.path.currentLanguage : null,
-  TestDomain: "http://wb-horizon.kksa"
-});
 
 /***/ }),
 
@@ -17568,7 +17578,7 @@ module.exports = require("vue");
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -17629,7 +17639,7 @@ module.exports = require("vue");
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.miniCssF = function(chunkId) {
 /******/ 			// return url for filenames based on template
-/******/ 			return "css/" + chunkId + "." + "a292ad5b" + ".css";
+/******/ 			return "css/" + chunkId + "." + {"542":"a576b81d","665":"b438a146"}[chunkId] + ".css";
 /******/ 		};
 /******/ 	}();
 /******/ 	
@@ -17773,7 +17783,7 @@ module.exports = require("vue");
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = function(chunkId, promises) {
-/******/ 			var cssChunks = {"931":1};
+/******/ 			var cssChunks = {"542":1,"665":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(function() {
@@ -17948,8 +17958,8 @@ var component = (0,componentNormalizer/* default */.Z)(
 /* harmony default export */ var App = (component.exports);
 // EXTERNAL MODULE: ./node_modules/vuex/dist/vuex.esm.js
 var vuex_esm = __webpack_require__(408);
-// EXTERNAL MODULE: ./src/request.js + 72 modules
-var request = __webpack_require__(3206);
+// EXTERNAL MODULE: ./src/request.js
+var request = __webpack_require__(1564);
 ;// CONCATENATED MODULE: ./src/store/index.js
 
 
@@ -21297,7 +21307,7 @@ const routes = [{
       requiresAuth: false,
       hideFooter: true
     },
-    component: () => Promise.all(/* import() */[__webpack_require__.e(743), __webpack_require__.e(931)]).then(__webpack_require__.bind(__webpack_require__, 6931))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(912), __webpack_require__.e(665)]).then(__webpack_require__.bind(__webpack_require__, 3665))
   }]
 }];
 const router = new VueRouter$1({
