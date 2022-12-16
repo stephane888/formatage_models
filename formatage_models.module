@@ -85,9 +85,6 @@ function formatage_models_preprocess_page(&$variables) {
       ]
     ];
   }
-  // \Stephane888\Debug\debugLog::$max_depth = 7;
-  // \Stephane888\Debug\debugLog::kintDebugDrupal($variables,
-  // 'formatage_models_preprocess_page', true);
 }
 
 /**
