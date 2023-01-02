@@ -17793,7 +17793,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__7203__;
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = function(chunkId, promises) {
-/******/ 			var cssChunks = {"369":1};
+/******/ 			var cssChunks = {"1":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(function() {
@@ -21317,7 +21317,7 @@ const routes = [{
       requiresAuth: false,
       hideFooter: true
     },
-    component: () => Promise.all(/* import() */[__webpack_require__.e(232), __webpack_require__.e(369)]).then(__webpack_require__.bind(__webpack_require__, 8369))
+    component: () => Promise.all(/* import() */[__webpack_require__.e(579), __webpack_require__.e(1)]).then(__webpack_require__.bind(__webpack_require__, 8001))
   }]
 }];
 const router = new VueRouter$1({
