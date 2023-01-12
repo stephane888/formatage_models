@@ -30361,7 +30361,7 @@ const routes = [{
       requiresAuth: false,
       hideFooter: true
     },
-    component: () => __webpack_require__.e(/* import() */ 375).then(__webpack_require__.bind(__webpack_require__, 375))
+    component: () => __webpack_require__.e(/* import() */ 752).then(__webpack_require__.bind(__webpack_require__, 3752))
   }]
 }];
 const router = new VueRouter$1({
