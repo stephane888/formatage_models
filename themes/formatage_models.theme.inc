@@ -75,6 +75,22 @@ function template_preprocess_formatage_models_quickly_edit(&$vars) {
     $attributes->setAttribute('data-quick-edit-id', $vars['element']['#contextual_links']['#id']);
     $attributes->addClass('formatage_models_quickly_edit');
   }
+  // Ce modele provient du formatage de views_view_unformatted.
+  elseif (!empty($vars['element']['#entity'])) {
+    // dump($vars);
+    /**
+     *
+     * @var \Drupal\creation_site_virtuel\Entity\SiteTypeDatas $entity
+     */
+    $entity = $vars['element']['#entity'];
+    $attributes = new \Drupal\Core\Template\Attribute();
+    // model paragraph:paragraph=63:langcode=fr
+    $entity_type_id = $entity->getEntityTypeId();
+    $langcode = $entity->language()->getId();
+    $attributes->setAttribute('data-quick-edit-id', $entity_type_id . ':' . $entity_type_id . '=' . $entity->id() . ':langcode=' . $langcode);
+    $attributes->addClass('formatage_models_quickly_edit');
+    $vars['attributes'] = $attributes;
+  }
 }
 
 function template_preprocess_layoutmenu_formatage_models_menu1(&$variables) {

@@ -62,7 +62,6 @@ function formatage_models_preprocess_page(&$variables) {
   elseif ($route_name == 'entity.paragraphs_type.collection') {
     $variables['page']['content']['#attached']['library'][] = 'formatage_models/formatage-models-admin-paragraph';
   }
-  
   // Il faudra que ces liens soient configurable (settings.form).
   $routes = [
     'vuejs_entity.model_choisie_form',
