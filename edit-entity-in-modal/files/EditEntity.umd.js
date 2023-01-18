@@ -5740,7 +5740,7 @@ __webpack_require__(7888);
 
 /***/ }),
 
-/***/ 2232:
+/***/ 5295:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9914,6 +9914,619 @@ var CreationSitevirtuelComplexinline_component = (0,componentNormalizer/* defaul
 )
 
 /* harmony default export */ var CreationSitevirtuelComplexinline = (CreationSitevirtuelComplexinline_component.exports);
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalPriceDefault.vue?vue&type=template&id=f4bf96b2&
+var DrupalPriceDefaultvue_type_template_id_f4bf96b2_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c('div', {
+    class: _vm.classCss
+  }, [_c('ValidationProvider', {
+    attrs: {
+      "name": _vm.fullname,
+      "rules": _vm.getRules()
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function (v) {
+        return [_c('b-form-group', {
+          attrs: {
+            "label": _vm.field.label,
+            "description": _vm.field.description
+          }
+        }, [_c('b-input-group', {
+          staticClass: "field-item-value",
+          attrs: {
+            "append": _vm.input_value.currency_code
+          }
+        }, [_c('b-form-input', {
+          attrs: {
+            "placeholder": _vm.field.placeholder,
+            "state": _vm.getValidationState(v),
+            "name": _vm.fullname,
+            "debounce": "2500"
+          },
+          on: {
+            "input": _vm.input
+          },
+          model: {
+            value: _vm.input_value.number,
+            callback: function ($$v) {
+              _vm.$set(_vm.input_value, "number", $$v);
+            },
+            expression: "input_value.number"
+          }
+        })], 1), v.errors ? _c('div', {
+          staticClass: "text-danger my-2"
+        }, _vm._l(v.errors, function (error, ii) {
+          return _c('small', {
+            key: ii,
+            staticClass: "d-block"
+          }, [_vm._v(" " + _vm._s(error) + " ")]);
+        }), 0) : _vm._e()], 1)];
+      }
+    }])
+  })], 1);
+};
+var DrupalPriceDefaultvue_type_template_id_f4bf96b2_staticRenderFns = [];
+
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalPriceDefault.vue?vue&type=script&lang=js&
+
+
+
+
+/* harmony default export */ var DrupalPriceDefaultvue_type_script_lang_js_ = ({
+  name: "DrupalPriceDefault",
+  components: {
+    ValidationProvider: vee_validate_esm/* ValidationProvider */.d_
+  },
+  props: {
+    classCss: {
+      type: [Array],
+      default: function () {
+        return [];
+      }
+    },
+    field: {
+      type: Object,
+      required: true
+    },
+    model: {
+      type: [Object, Array],
+      required: true
+    },
+    namespaceStore: {
+      type: String,
+      required: true
+    },
+    parentName: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      input_value: {
+        number: null,
+        currency_code: "EUR"
+      },
+      timeout: null
+    };
+  },
+  computed: {
+    fullname() {
+      return this.parentName + this.field.name;
+    }
+  },
+  watch: {
+    /**
+     * Lorsque le champs est construt via les boucles dynamique,
+     * le template n'est pas reconstruit ducoup la valeur du precedent champs est concerservé.
+     * On applique ce watch et on verra les resultats.
+     * Cela ne s'execute que dans le cadre d'un watch et permet de ressoudre le probleme.
+     */
+    field() {
+      this.input_value = this.getValue();
+    }
+  },
+  mounted() {
+    // On recupere la valeur par defaut pour chaque construction:
+    this.input_value = this.getValue();
+  },
+  methods: {
+    getValidationState({
+      dirty,
+      validated,
+      valid = null
+    }) {
+      return (dirty || validated) && !valid ? valid : null;
+    },
+    getRules() {
+      return loadField.getRules(this.field);
+    },
+    setValue(vals) {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        if (this.namespaceStore) {
+          this.$store.dispatch(this.namespaceStore + "/setValue", {
+            value: vals,
+            fieldName: this.fullname
+          });
+        } else this.$store.dispatch("setValue", {
+          value: vals,
+          fieldName: this.fullname
+        });
+      }, loadField.timeToWait);
+    },
+    getValue() {
+      if (this.model[this.field.name] && this.model[this.field.name][0]) {
+        return {
+          number: new Intl.NumberFormat("fr-FR").format(this.model[this.field.name][0].number),
+          currency_code: this.model[this.field.name][0].currency_code
+        };
+      } else return {
+        number: null,
+        currency_code: "EUR"
+      };
+    },
+    input(v) {
+      const vals = [];
+      vals.push({
+        number: v,
+        currency_code: "EUR"
+      });
+      this.setValue(vals);
+    }
+  }
+});
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalPriceDefault.vue?vue&type=script&lang=js&
+ /* harmony default export */ var fieldsDrupal_DrupalPriceDefaultvue_type_script_lang_js_ = (DrupalPriceDefaultvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalPriceDefault.vue
+
+
+
+
+
+/* normalize component */
+;
+var DrupalPriceDefault_component = (0,componentNormalizer/* default */.Z)(
+  fieldsDrupal_DrupalPriceDefaultvue_type_script_lang_js_,
+  DrupalPriceDefaultvue_type_template_id_f4bf96b2_render,
+  DrupalPriceDefaultvue_type_template_id_f4bf96b2_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var DrupalPriceDefault = (DrupalPriceDefault_component.exports);
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/PhysicalDimensionsDefault.vue?vue&type=template&id=3f5e4ba4&
+var PhysicalDimensionsDefaultvue_type_template_id_3f5e4ba4_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c('div', {
+    class: _vm.classCss
+  }, [_c('ValidationProvider', {
+    attrs: {
+      "name": _vm.fullname,
+      "rules": _vm.getRules()
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function (v) {
+        return [_c('b-form-group', {
+          attrs: {
+            "label": _vm.field.label,
+            "description": _vm.field.description
+          }
+        }, [_c('b-input-group', {
+          staticClass: "field-item-value",
+          attrs: {
+            "append": "Hauteur"
+          }
+        }, [_c('b-form-input', {
+          attrs: {
+            "state": _vm.getValidationState(v),
+            "name": _vm.fullname + '.height',
+            "debounce": "2500"
+          },
+          on: {
+            "input": _vm.input
+          },
+          model: {
+            value: _vm.input_value.height,
+            callback: function ($$v) {
+              _vm.$set(_vm.input_value, "height", $$v);
+            },
+            expression: "input_value.height"
+          }
+        })], 1), _c('b-input-group', {
+          staticClass: "field-item-value",
+          attrs: {
+            "append": "Longueur"
+          }
+        }, [_c('b-form-input', {
+          attrs: {
+            "state": _vm.getValidationState(v),
+            "name": _vm.fullname + '.length',
+            "debounce": "2500"
+          },
+          on: {
+            "input": _vm.input
+          },
+          model: {
+            value: _vm.input_value.length,
+            callback: function ($$v) {
+              _vm.$set(_vm.input_value, "length", $$v);
+            },
+            expression: "input_value.length"
+          }
+        })], 1), _c('b-input-group', {
+          staticClass: "field-item-value",
+          attrs: {
+            "append": "Largeur"
+          }
+        }, [_c('b-form-input', {
+          attrs: {
+            "state": _vm.getValidationState(v),
+            "name": _vm.fullname + '.width',
+            "debounce": "2500"
+          },
+          on: {
+            "input": _vm.input
+          },
+          model: {
+            value: _vm.input_value.width,
+            callback: function ($$v) {
+              _vm.$set(_vm.input_value, "width", $$v);
+            },
+            expression: "input_value.width"
+          }
+        })], 1), _c('b-input-group', {
+          staticClass: "field-item-value",
+          attrs: {
+            "append": "Unit"
+          }
+        }, [_c('b-form-input', {
+          attrs: {
+            "state": _vm.getValidationState(v),
+            "name": _vm.fullname + '.unit',
+            "debounce": "2500"
+          },
+          on: {
+            "input": _vm.input
+          },
+          model: {
+            value: _vm.input_value.unit,
+            callback: function ($$v) {
+              _vm.$set(_vm.input_value, "unit", $$v);
+            },
+            expression: "input_value.unit"
+          }
+        })], 1), v.errors ? _c('div', {
+          staticClass: "text-danger my-2"
+        }, _vm._l(v.errors, function (error, ii) {
+          return _c('small', {
+            key: ii,
+            staticClass: "d-block"
+          }, [_vm._v(" " + _vm._s(error) + " ")]);
+        }), 0) : _vm._e()], 1)];
+      }
+    }])
+  })], 1);
+};
+var PhysicalDimensionsDefaultvue_type_template_id_3f5e4ba4_staticRenderFns = [];
+
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/PhysicalDimensionsDefault.vue?vue&type=script&lang=js&
+
+
+
+
+/* harmony default export */ var PhysicalDimensionsDefaultvue_type_script_lang_js_ = ({
+  name: "DrupalString",
+  components: {
+    ValidationProvider: vee_validate_esm/* ValidationProvider */.d_
+  },
+  props: {
+    classCss: {
+      type: [Array],
+      default: function () {
+        return [];
+      }
+    },
+    field: {
+      type: Object,
+      required: true
+    },
+    model: {
+      type: [Object, Array],
+      required: true
+    },
+    namespaceStore: {
+      type: String,
+      required: true
+    },
+    parentName: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      input_value: {
+        height: "",
+        length: "",
+        unit: "",
+        width: ""
+      },
+      timeout: null
+    };
+  },
+  computed: {
+    fullname() {
+      return this.parentName + this.field.name;
+    }
+  },
+  watch: {
+    /**
+     * Lorsque le champs est construt via les boucles dynamique,
+     * le template n'est pas reconstruit ducoup la valeur du precedent champs est concerservé.
+     * On applique ce watch et on verra les resultats.
+     * Cela ne s'execute que dans le cadre d'un watch et permet de ressoudre le probleme.
+     */
+    field() {
+      this.input_value = this.getValue();
+    }
+  },
+  mounted() {
+    // On recupere la valeur par defaut pour chaque construction:
+    this.input_value = this.getValue();
+  },
+  methods: {
+    getValidationState({
+      dirty,
+      validated,
+      valid = null
+    }) {
+      return (dirty || validated) && !valid ? valid : null;
+    },
+    getRules() {
+      return loadField.getRules(this.field);
+    },
+    setValue(vals) {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        if (this.namespaceStore) {
+          this.$store.dispatch(this.namespaceStore + "/setValue", {
+            value: vals,
+            fieldName: this.fullname
+          });
+        } else this.$store.dispatch("setValue", {
+          value: vals,
+          fieldName: this.fullname
+        });
+      }, loadField.timeToWait);
+    },
+    getValue() {
+      if (this.model[this.field.name] && this.model[this.field.name][0]) {
+        return {
+          height: Number.parseFloat(this.model[this.field.name][0].height).toFixed(3),
+          length: Number.parseFloat(this.model[this.field.name][0].length).toFixed(3),
+          width: Number.parseFloat(this.model[this.field.name][0].width).toFixed(3),
+          unit: this.model[this.field.name][0].unit
+        };
+      } else return {
+        height: "",
+        length: "",
+        unit: "",
+        width: ""
+      };
+    },
+    input(v) {
+      const vals = [];
+      vals.push({
+        height: v
+      });
+      console.log(" this.input_value : ", this.input_value);
+      //this.setValue(vals);
+    }
+  }
+});
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/PhysicalDimensionsDefault.vue?vue&type=script&lang=js&
+ /* harmony default export */ var fieldsDrupal_PhysicalDimensionsDefaultvue_type_script_lang_js_ = (PhysicalDimensionsDefaultvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/PhysicalDimensionsDefault.vue
+
+
+
+
+
+/* normalize component */
+;
+var PhysicalDimensionsDefault_component = (0,componentNormalizer/* default */.Z)(
+  fieldsDrupal_PhysicalDimensionsDefaultvue_type_script_lang_js_,
+  PhysicalDimensionsDefaultvue_type_template_id_3f5e4ba4_render,
+  PhysicalDimensionsDefaultvue_type_template_id_3f5e4ba4_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var PhysicalDimensionsDefault = (PhysicalDimensionsDefault_component.exports);
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/StockLevel.vue?vue&type=template&id=1e22f062&
+var StockLevelvue_type_template_id_1e22f062_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c('div', {
+    class: _vm.classCss
+  }, [_c('ValidationProvider', {
+    attrs: {
+      "name": _vm.fullname,
+      "rules": _vm.getRules()
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function (v) {
+        return [_c('b-form-group', {
+          attrs: {
+            "label": _vm.field.label,
+            "description": _vm.field.description
+          }
+        }, [_c('div', {
+          staticClass: "field-item-value"
+        }, [_c('b-form-input', {
+          attrs: {
+            "placeholder": _vm.field.placeholder,
+            "state": _vm.getValidationState(v),
+            "name": _vm.fullname,
+            "debounce": "2500"
+          },
+          on: {
+            "input": _vm.input
+          },
+          model: {
+            value: _vm.input_value,
+            callback: function ($$v) {
+              _vm.input_value = $$v;
+            },
+            expression: "input_value"
+          }
+        })], 1), v.errors ? _c('div', {
+          staticClass: "text-danger my-2"
+        }, _vm._l(v.errors, function (error, ii) {
+          return _c('small', {
+            key: ii,
+            staticClass: "d-block"
+          }, [_vm._v(" " + _vm._s(error) + " ")]);
+        }), 0) : _vm._e()])];
+      }
+    }])
+  })], 1);
+};
+var StockLevelvue_type_template_id_1e22f062_staticRenderFns = [];
+
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/StockLevel.vue?vue&type=script&lang=js&
+
+
+
+
+/* harmony default export */ var StockLevelvue_type_script_lang_js_ = ({
+  name: "StockLevel",
+  components: {
+    ValidationProvider: vee_validate_esm/* ValidationProvider */.d_
+  },
+  props: {
+    classCss: {
+      type: [Array],
+      default: function () {
+        return [];
+      }
+    },
+    field: {
+      type: Object,
+      required: true
+    },
+    model: {
+      type: [Object, Array],
+      required: true
+    },
+    namespaceStore: {
+      type: String,
+      required: true
+    },
+    parentName: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      input_value: null,
+      timeout: null
+    };
+  },
+  computed: {
+    fullname() {
+      return this.parentName + this.field.name;
+    }
+  },
+  watch: {
+    /**
+     * Lorsque le champs est construt via les boucles dynamique,
+     * le template n'est pas reconstruit ducoup la valeur du precedent champs est concerservé.
+     * On applique ce watch et on verra les resultats.
+     * Cela ne s'execute que dans le cadre d'un watch et permet de ressoudre le probleme.
+     */
+    field() {
+      this.input_value = this.getValue();
+    }
+  },
+  mounted() {
+    // On recupere la valeur par defaut pour chaque construction:
+    this.input_value = this.getValue();
+  },
+  methods: {
+    getValidationState({
+      dirty,
+      validated,
+      valid = null
+    }) {
+      return (dirty || validated) && !valid ? valid : null;
+    },
+    getRules() {
+      return loadField.getRules(this.field);
+    },
+    setValue(vals) {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        if (this.namespaceStore) {
+          this.$store.dispatch(this.namespaceStore + "/setValue", {
+            value: vals,
+            fieldName: this.fullname
+          });
+        } else this.$store.dispatch("setValue", {
+          value: vals,
+          fieldName: this.fullname
+        });
+      }, loadField.timeToWait);
+    },
+    getValue() {
+      if (this.model[this.field.name] && this.model[this.field.name][0]) {
+        return parseInt(this.model[this.field.name][0].value);
+      } else return null;
+    },
+    input(v) {
+      const vals = [];
+      vals.push({
+        value: v
+      });
+      this.setValue(vals);
+    }
+  }
+});
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/StockLevel.vue?vue&type=script&lang=js&
+ /* harmony default export */ var fieldsDrupal_StockLevelvue_type_script_lang_js_ = (StockLevelvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/StockLevel.vue
+
+
+
+
+
+/* normalize component */
+;
+var StockLevel_component = (0,componentNormalizer/* default */.Z)(
+  fieldsDrupal_StockLevelvue_type_script_lang_js_,
+  StockLevelvue_type_template_id_1e22f062_render,
+  StockLevelvue_type_template_id_1e22f062_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var StockLevel = (StockLevel_component.exports);
 ;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/Containers/NoContainer.vue?vue&type=template&id=ecdce68a&
 var NoContainervue_type_template_id_ecdce68a_render = function render() {
   var _vm = this,
@@ -10125,6 +10738,9 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
 
 
 
+
+
+
 // load Container
 
 
@@ -10200,7 +10816,18 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
         template = ValueNiveau;
         break;
       case "creationsitevirtuelcomplexinline":
+      case "inline_entity_form_complex":
         template = CreationSitevirtuelComplexinline;
+        break;
+      case "commerce_price_default":
+      case "commerce_list_price":
+        template = DrupalPriceDefault;
+        break;
+      case "physical_dimensions_default":
+        template = PhysicalDimensionsDefault;
+        break;
+      case "commerce_stock_level_simple_transaction":
+        template = StockLevel;
         break;
       default:
         console.log(" Champs sans rendu : ", key, "\n field : ", field);
@@ -10251,7 +10878,7 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
 "use strict";
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6352);
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2232);
+/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5295);
 
 
 /* harmony default export */ __webpack_exports__["Z"] = ({
@@ -15487,8 +16114,9 @@ var index = {
 /* harmony default export */ __webpack_exports__["Z"] = ({
   ...wbuutilities__WEBPACK_IMPORTED_MODULE_0__/* .AjaxToastBootStrap */ .Ht,
   languageId: window.drupalSettings && window.drupalSettings.path && window.drupalSettings.path.currentLanguage ? window.drupalSettings.path.currentLanguage : null,
-  TestDomain: "http://wb-horizon.kksa",
-  //TestDomain: "http://test376.wb-horizon.kksa", // test specifique
+  // TestDomain: "http://wb-horizon.kksa",
+  // TestDomain: "http://test376.wb-horizon.kksa", // test specifique
+  TestDomain: "http://" + window.location.host,
   debug: true
 });
 
