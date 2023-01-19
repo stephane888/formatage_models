@@ -90,7 +90,7 @@ var vue_multiselect_min_default = /*#__PURE__*/__webpack_require__.n(vue_multise
 // EXTERNAL MODULE: ../drupal-vuejs/src/App/jsonApi/itemsEntity.js
 var itemsEntity = __webpack_require__(1139);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/loadField.js + 108 modules
-var loadField = __webpack_require__(5295);
+var loadField = __webpack_require__(8155);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/Ressouces/MultiSelectEntities.vue?vue&type=script&lang=js&
 
 
@@ -317,10 +317,13 @@ class itemsEntity {
     this.items = [];
     // en function de l'environement on doit ajouter les paramettres de bases.( notament baseUrl, TestDomain, les methodes surchargées ).
     if (config) {
-      _utilities_js__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z = {
-        ..._utilities_js__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z,
-        ...config
-      };
+      // à ce state la surcharge total pose probleme, donc on doit surcharger par necessite.
+      // utilities = {
+      //   ...utilities,
+      //   ...config,
+      // };
+      if (config.TestDomain) _utilities_js__WEBPACK_IMPORTED_MODULE_1__/* ["default"].TestDomain */ .Z.TestDomain = config.TestDomain;
+      //utilities.get = config.get;
     }
   }
   /**
