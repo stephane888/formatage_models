@@ -37,11 +37,11 @@
 				<div class="row">
 					<div class="col-4 col-lg-6 d-flex align-items-center logo-bloc flex-wrap">
 						<div class="basic-wrapper">
-							<a href="/" title="Home" rel="home" class="logo">								
-								{% if settings.logo_url %}
-									<img src="{{settings.logo_url}}?itok=ZLdfdH5z">
-								{% endif %}
+                            {% if settings.logo_url %}
+							<a href="{{settings.front}}" title="Home" rel="home" class="logo">	
+									<img src="{{settings.logo_url}}">
 							</a>
+							{% endif %}
 						</div>
 						<div class="basic-wrapper-slogan">
 							<div {{region_attributes.sitename.addClass('sitename','site-name')}}>

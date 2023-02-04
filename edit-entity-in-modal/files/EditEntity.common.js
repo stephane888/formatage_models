@@ -5730,7 +5730,7 @@ __webpack_require__(7888);
 
 /***/ }),
 
-/***/ 1201:
+/***/ 7717:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5934,8 +5934,8 @@ var component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var drupal_string = (component.exports);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/drupal-link.vue?vue&type=template&id=f3a67c54&
-var drupal_linkvue_type_template_id_f3a67c54_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/drupal-link.vue?vue&type=template&id=7e9e981d&
+var drupal_linkvue_type_template_id_7e9e981d_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -5999,7 +5999,7 @@ var drupal_linkvue_type_template_id_f3a67c54_render = function render() {
     }])
   })], 1);
 };
-var drupal_linkvue_type_template_id_f3a67c54_staticRenderFns = [];
+var drupal_linkvue_type_template_id_7e9e981d_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/drupal-link.vue?vue&type=script&lang=js&
 
@@ -6092,8 +6092,13 @@ var drupal_linkvue_type_template_id_f3a67c54_staticRenderFns = [];
       const vals = [];
       clearTimeout(this.timer);
       this.timer = setTimeout(() => {
+        var r = new RegExp("^(?:[a-z+]+:)?//", "i");
+        var uri = "internal:" + this.input_value.uri;
+        if (r.test(this.input_value.uri)) {
+          uri = this.input_value.uri;
+        }
         const value = {
-          uri: "internal:" + this.input_value.uri,
+          uri: uri,
           title: this.input_value.title,
           attributes: [],
           options: []
@@ -6116,8 +6121,8 @@ var drupal_linkvue_type_template_id_f3a67c54_staticRenderFns = [];
 ;
 var drupal_link_component = (0,componentNormalizer/* default */.Z)(
   fieldsDrupal_drupal_linkvue_type_script_lang_js_,
-  drupal_linkvue_type_template_id_f3a67c54_render,
-  drupal_linkvue_type_template_id_f3a67c54_staticRenderFns,
+  drupal_linkvue_type_template_id_7e9e981d_render,
+  drupal_linkvue_type_template_id_7e9e981d_staticRenderFns,
   false,
   null,
   null,
@@ -11010,7 +11015,7 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
 "use strict";
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6352);
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1201);
+/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7717);
 
 
 /* harmony default export */ __webpack_exports__["Z"] = ({
@@ -27906,7 +27911,7 @@ var request = __webpack_require__(1564);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/js/FormUttilities.js
 var FormUttilities = __webpack_require__(9351);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/loadField.js + 108 modules
-var loadField = __webpack_require__(1201);
+var loadField = __webpack_require__(7717);
 ;// CONCATENATED MODULE: ./src/store/index.js
 
 

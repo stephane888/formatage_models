@@ -5,7 +5,7 @@ namespace Drupal\formatage_models\Plugin\Layout\Sections\Headers;
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
 use Drupal\formatage_models\FormatageModelsThemes;
-use Stephane888\Debug\Repositories\ConfigDrupal;
+use Drupal\Core\Url;
 
 /**
  * A very advanced custom layout.
@@ -47,7 +47,7 @@ use Stephane888\Debug\Repositories\ConfigDrupal;
  * )
  */
 class FormatageModelsheader1 extends FormatageModelsSection {
-
+  
   /**
    *
    * {@inheritdoc}
@@ -58,20 +58,23 @@ class FormatageModelsheader1 extends FormatageModelsSection {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage_models_header1.png");
   }
-
+  
   public function build(array $regions) {
     $build = parent::build($regions);
+    $build['#settings']['front'] = Url::fromRoute('<front>', [], [
+      'absolute' => TRUE
+    ])->toString();
     $build['#settings']['logo_url'] = theme_get_setting('logo.url');
     FormatageModelsThemes::formatSettingValues($build);
     return $build;
   }
-
+  
   public function buildConfigurationForm($form, $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
     // dump($this->configuration);
     return $form;
   }
-
+  
   public function defaultConfiguration() {
     // $SiteConfig = $this->configFactory->getEditable("site.config");
     return parent::defaultConfiguration() + [
@@ -138,5 +141,5 @@ class FormatageModelsheader1 extends FormatageModelsSection {
       ]
     ];
   }
-
+  
 }
