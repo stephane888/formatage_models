@@ -8440,7 +8440,7 @@ var MultiSelectvue_type_template_id_c29e3076_staticRenderFns = [];
   name: "MultiSelect",
   components: {
     MultiSelectTaxo: () => __webpack_require__.e(/* import() */ 968).then(__webpack_require__.bind(__webpack_require__, 8968)),
-    MultiSelectEntities: () => __webpack_require__.e(/* import() */ 496).then(__webpack_require__.bind(__webpack_require__, 3496))
+    MultiSelectEntities: () => __webpack_require__.e(/* import() */ 863).then(__webpack_require__.bind(__webpack_require__, 4863))
   },
   props: {
     classCss: {
