@@ -5,7 +5,6 @@ Drupal.behaviors.formatage_models = {
       const str = id.split(":");
       const st = str[1].split("=");
       if (st && st[1]) {
-        console.log("emit_data_vuejs : ", str);
         const event = new CustomEvent(
           "formatage_models_data_quick_edit_vuejs",
           {
