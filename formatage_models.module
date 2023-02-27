@@ -206,7 +206,7 @@ function formatage_models_preprocess_formatage_models_comments(&$vars) {
  * @param array $vars
  */
 function formatage_models_preprocess_formatage_models_titre_description(array &$variables) {
-  
+
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   FormatageModelsThemes::mergeContentAttributes($variables);
 }
@@ -347,7 +347,7 @@ function formatage_models_preprocess_views_view_render_page(&$vars) {
   $view = $vars['view'];
   //
   $css = $view->display_handler->getOption('view_row_css');
-  
+
   if ($css) {
     $Attribute = new Attribute();
     $css = explode(" ", $css);
@@ -388,7 +388,7 @@ function formatage_models_preprocess_views_view_render_page(&$vars) {
  * @param array $vars
  */
 function formatage_models_preprocess_views_view_render(&$vars) {
-  
+
   /**
    *
    * @var \Drupal\views\ViewExecutable $view

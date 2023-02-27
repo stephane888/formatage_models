@@ -51,7 +51,6 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
     // TODO Auto-generated method stub
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
-    
     return $build;
   }
   
@@ -61,7 +60,6 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
-    
     $form['class_container'] = [
       '#type' => 'textfield',
       '#title' => 'Class container des champs',
@@ -73,7 +71,6 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
       '#title' => 'Class row',
       '#default_value' => $this->configuration['class_row']
     ];
-    
     return $form;
   }
   
