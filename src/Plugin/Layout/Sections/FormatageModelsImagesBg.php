@@ -32,14 +32,14 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  * )
  */
 class FormatageModelsImagesBg extends FormatageModelsSection {
-  
+
   /**
    * The styles group plugin manager.
    *
    * @var \Drupal\bootstrap_styles\StylesGroup\StylesGroupManager
    */
   protected $stylesGroupManager;
-  
+
   /**
    *
    * {@inheritdoc}
@@ -50,13 +50,40 @@ class FormatageModelsImagesBg extends FormatageModelsSection {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/formatage-models-images-bg.png");
   }
-  
+
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $config = $this->getConfiguration();
+    dump($config);
+    $form = parent::buildConfigurationForm($form, $form_state);
+    $form['larger_text'] = [
+      '#type' => 'textfield',
+      '#title' => 'Larger de Colone bootstrap',
+      '#default_value' => isset($config['larger_text']) ? $config['larger_text'] : '',
+    ];
+    return $form;
+  }
+
+  /**
+   *
+   * {@inheritdoc}
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+
+    $this->configuration['larger_text'] = $form_state->getValue('larger_text');
+  }
+
   /**
    *
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return parent::defaultConfiguration() + [
+    return [
+      'larger_text' => 'col-md-8',
       'sf' => [
         'builder-form' => true,
         'info' => [
@@ -90,7 +117,7 @@ class FormatageModelsImagesBg extends FormatageModelsSection {
           ]
         ]
       ]
-    ];
+    ] + parent::defaultConfiguration();
   }
-  
+
 }
