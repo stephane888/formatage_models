@@ -13,6 +13,7 @@
   "require": {
     "drupal/bootstrap_layout_builder": "^2.0",
     "stephane888/htmlbootstrap": "^1.2 | dev-1x",
-    "stephane888/debug": "^1.0 | dev-1x"
+    "stephane888/debug": "^2.0 | dev-2x",
+    "stephane888/drupal_utility": "^1.0 | dev-1x"
   }
 }

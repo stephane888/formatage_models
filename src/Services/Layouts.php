@@ -179,7 +179,7 @@ class Layouts {
     
     //
     foreach ($configuration as $key => $field) {
-      if (!empty($field['builder-form'])) {
+      if (!empty($field['builder-form']) && !empty($field['fields'])) {
         $configuration[$key]['info'] = array_merge($field['info'], $form_state->getValue($key)['info']);
         $configuration[$key]['fields'] = array_merge($field['fields'], $form_state->getValue($key)['fields']);
         // if (empty($configuration[$key]['fields'])) {

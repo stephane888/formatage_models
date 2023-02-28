@@ -1,10 +1,7 @@
 <?php
-use Drupal\formatage_models\FormatageModelsThemes;
-use Drupal\Core\Url;
-use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use Drupal\Component\DependencyInjection\Container;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Template\Attribute;
+use Drupal\formatage_models\FormatageModelsThemes;
 
 /**
  *
@@ -28,6 +25,33 @@ function addTextareaTreeMultipleMoreAjax(&$form, FormStateInterface $form_state)
 }
 
 /**
+ * Implements hook_preprocess_HOOK() for paragraph.html.twig.
+ *
+ * @see contextual_preprocess()
+ * @see template_preprocess_paragraph()
+ */
+function formatage_models_preprocess_paragraph(&$variables) {
+  // Paragraph templates don't normally print the title_suffix, so add the
+  // contextual links to the content render array.
+  if (isset($variables['title_suffix']['contextual_links'])) {
+    $variables['content']['contextual_links'] = $variables['title_suffix']['contextual_links'];
+    $variables['content']['contextual_links']['#weight'] = -100;
+    // add special place to edit
+    $routes = [
+      'vuejs_entity.model_choisie_form',
+      'buildercv.build_cv'
+    ];
+    $route_name = \Drupal::routeMatch()->getRouteName();
+    if (!in_array($route_name, $routes) && !\Drupal::service('router.admin_context')->isAdminRoute()) {
+      $variables['content']['formatage_models_quickly_edit'] = [
+        '#theme' => 'formatage_models_quickly_edit',
+        '#contextual_links' => $variables['content']['contextual_links']
+      ];
+    }
+  }
+}
+
+/**
  * Implement hook_preprocess_page
  */
 function formatage_models_preprocess_page(&$variables) {
@@ -38,12 +62,25 @@ function formatage_models_preprocess_page(&$variables) {
   elseif ($route_name == 'entity.paragraphs_type.collection') {
     $variables['page']['content']['#attached']['library'][] = 'formatage_models/formatage-models-admin-paragraph';
   }
-}
-
-function formatage_models_preprocess_item_list__layouts(&$variables) {
-  // \Stephane888\Debug\debugLog::$max_depth = 5;
-  // \Stephane888\Debug\debugLog::kintDebugDrupal($variables['items'],
-  // '_item_list__layouts');
+  // Il faudra que ces liens soient configurable (settings.form).
+  $routes = [
+    'vuejs_entity.model_choisie_form',
+    'buildercv.build_cv'
+  ];
+  if (!empty($variables['logged_in']) && !in_array($route_name, $routes) && !\Drupal::service('router.admin_context')->isAdminRoute()) {
+    $variables['page']['content']['entity_edit_vuejs'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'div',
+      '#attributes' => [
+        'id' => 'entity_edit_by_vuejs'
+      ],
+      '#attached' => [
+        'library' => [
+          'formatage_models/edit_entity'
+        ]
+      ]
+    ];
+  }
 }
 
 /**
@@ -100,14 +137,6 @@ function formatage_models_preprocess_formatage_models_blog_call_toaction(&$vars)
  *
  * @param array $vars
  */
-// function formatage_models_preprocess_formatage_models_teaser_small(&$vars) {
-// FormatageModelsThemes::mergeContentAttributes($vars);
-// }
-
-/**
- *
- * @param array $vars
- */
 function formatage_models_preprocess_formatage_models_description(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
@@ -144,7 +173,16 @@ function formatage_models_preprocess_blb_section(&$vars) {
  * Implements hook_theme().
  */
 function formatage_models_theme() {
-  return FormatageModelsThemes::getThemeHooks();
+  $hooks = FormatageModelsThemes::getThemeHooks();
+  // template to edit quickly paragraphe.
+  $hooks['formatage_models_quickly_edit'] = [
+    'preprocess functions' => [
+      'template_preprocess_formatage_models_quickly_edit'
+    ],
+    'render element' => 'element',
+    'file' => 'themes/formatage_models.theme.inc'
+  ];
+  return $hooks;
 }
 
 /**
@@ -168,13 +206,9 @@ function formatage_models_preprocess_formatage_models_comments(&$vars) {
  * @param array $vars
  */
 function formatage_models_preprocess_formatage_models_titre_description(array &$variables) {
-  
+
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   FormatageModelsThemes::mergeContentAttributes($variables);
-}
-
-function formatage_models_preprocess_formatage_models_header1(&$vars) {
-  // FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
 /**
@@ -184,25 +218,6 @@ function formatage_models_preprocess_formatage_models_header1(&$vars) {
 function formatage_models_preprocess_formatage_models_hero_thegem_18(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   FormatageModelsThemes::ApplyAttributes($variables);
-}
-
-/**
- *
- * @param array $vars
- */
-// function formatage_models_preprocess_formatage_models_single_blog(array
-// &$variables) {
-// // FormatageModelsThemes::addLayoutEditBlock($variables);
-// FormatageModelsThemes::ApplyAttributes($variables);
-// }
-
-/**
- *
- * @param array $vars
- */
-function formatage_models_preprocess_formatage_models_item_section(array &$variables) {
-  // FormatageModelsThemes::addLayoutEditBlock($variables);
-  // FormatageModelsThemes::ApplyAttributes($variables);
 }
 
 function formatage_models_preprocess_formatage_models_images_bg(array &$variables) {
@@ -261,17 +276,6 @@ function formatage_models_preprocess_formatage_models_galery_title(array &$varia
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   FormatageModelsThemes::ApplyAttributes($variables);
 }
-
-/**
- *
- * @param array $variables
- */
-// function formatage_models_preprocess_formatage_models_teaser_img_desc(array
-// &$variables) {
-// // FormatageModelsThemes::addLayoutEditBlock($variables);
-// // FormatageModelsThemes::ApplyAttributes($variables);
-// FormatageModelsThemes::mergeContentAttributes($variables);
-// }
 
 /**
  *
@@ -343,7 +347,7 @@ function formatage_models_preprocess_views_view_render_page(&$vars) {
   $view = $vars['view'];
   //
   $css = $view->display_handler->getOption('view_row_css');
-  
+
   if ($css) {
     $Attribute = new Attribute();
     $css = explode(" ", $css);
@@ -384,7 +388,7 @@ function formatage_models_preprocess_views_view_render_page(&$vars) {
  * @param array $vars
  */
 function formatage_models_preprocess_views_view_render(&$vars) {
-  
+
   /**
    *
    * @var \Drupal\views\ViewExecutable $view

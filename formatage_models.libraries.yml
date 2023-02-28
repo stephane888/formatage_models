@@ -25,18 +25,38 @@ jquery-labelauty:
   dependencies:
     - core/jquery
 
+      
 # Third-party library (CDN).
-vuejs:
+vuejs_prod:
   remote: https://vuejs.org
-  version: 2.0.5
+  version: 2.0.6
   license:
     name: MIT
     url: https://github.com/vuejs/vue/blob/dev/LICENSE
     gpl-compatible: true
   js:
-    https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js:
-      { type: external, minified: true }
+    https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.min.js: { type: external, minified: true, weight: -10 }
 
+vuejs_dev:
+  remote: https://vuejs.org
+  version: 2.0.6
+  license:
+    name: MIT
+    url: https://github.com/vuejs/vue/blob/dev/LICENSE
+    gpl-compatible: true
+  js:
+    https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js: { type: external, minified: true, weight: -10 }
+
+# Custom module library for general purposes.
+edit_entity:
+  js:
+    edit-entity-in-modal/files/EditEntity.umd.min.js: {weight: -1}
+  css:
+    component:
+      edit-entity-in-modal/files/EditEntity.css: {weight: -1}
+  dependencies:
+    - core/drupalSettings
+    - formatage_models/vuejs_dev
 
 formatage-models-admin:
   js:
@@ -51,6 +71,13 @@ formatage-models-admin-paragraph:
   css:
     theme:
       layouts/css/formatage_models_admin_paragraph.css: { weight: 10 }
+      
+formatage-models-data-quick-edit-id:
+  js:
+    js/formatage_models_data_quick_edit.js: {}
+  css:
+    theme:
+      css/formatage_models_data_quick_edit.css: { weight: 10 }
 
 #################################################################################################################################################
 # -50 <weight> +50
@@ -188,12 +215,6 @@ formatage-bloc-price:
     theme:
       layouts/css/formatage-bloc-price.css: { weight: 10 }
 
-formatage-models-title-description:
-  js:
-    layouts/js/formatage-models-title-description.js: {}
-  css:
-    theme:
-      layouts/css/formatage-models-title-description.css: { weight: 10 }
 
 formatage-models-hero2:
   js:

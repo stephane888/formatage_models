@@ -6,34 +6,36 @@
 	    {% set attributes=attributes.merge(content.image_bg|layout_bg_img) %}
 	{% endif %}
 <div {{attributes.addClass('one-column')}}>	
-	{% if content.main %}
-		{# verification #}
-		{% if settings.region_tag_main %}
-			<{{settings.region_tag_main}} {{region_attributes.main.addClass('main')}}>
-        		{% if settings.load_clean_value %}
-        		    {{ content.main|layout_value }}
-        		{% else %}
-        		    {{ content.main }}
-        		{% endif %}
-        	</{{settings.region_tag_main}}>		
-		{% else %}
-        	<div {{region_attributes.main.addClass('main')}}>
-        		{% if settings.load_clean_value %}
-        		    {{ content.main|layout_value }}
-        		{% else %}
-        		    {{ content.main }}
-        		{% endif %}
-        	</div>
-        {% endif %}
-	{% endif %}
-	{# content region for teaser #}
-	{% if content.teasers_container %}
-	<div class="row">
-		{% for item in content.teasers_container|array_elements(region_attributes.teasers_container.addClass('')) %}
-			{{ item }}
-		{% endfor %}
+	<div class="{{settings.class_container}}">
+    	{% if content.main|has_value %}
+    		{# verification #}
+    		{% if settings.region_tag_main %}
+    			<{{settings.region_tag_main}} {{region_attributes.main.addClass('main')}}>
+            		{% if settings.load_clean_value %}
+            		    {{ content.main|layout_value }}
+            		{% else %}
+            		    {{ content.main }}
+            		{% endif %}
+            	</{{settings.region_tag_main}}>		
+    		{% else %}
+            	<div {{region_attributes.main.addClass('main')}}>
+            		{% if settings.load_clean_value %}
+            		    {{ content.main|layout_value }}
+            		{% else %}
+            		    {{ content.main }}
+            		{% endif %}
+            	</div>
+            {% endif %}
+    	{% endif %}
+    	{# content region for teaser #}
+    	{% if content.teasers_container %}
+    	<div class="row {{settings.class_row}}">
+    		{% for item in content.teasers_container|array_elements(region_attributes.teasers_container.addClass('')) %}
+    			{{ item }}
+    		{% endfor %}
+    	</div>
+    	{% endif %}
 	</div>
-	{% endif %}
 </div>
 {% endif %}
 

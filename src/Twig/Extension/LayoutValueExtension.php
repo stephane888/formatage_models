@@ -145,15 +145,12 @@ class LayoutValueExtension extends AbstractExtension {
    */
   public function getLayoutValues($build, $keySearch = null) {
     $vals = [];
-    $key = 0;
-    
     // La condifition sur layout_builder_add_block permet un affichage par
     // defaut si on est en administration.
     if (is_array($build) && !isset($build['layout_builder_add_block'])) {
       foreach ($build as $key => $value) {
         if (is_array($value) && !empty($value)) {
           if (!empty($value['#theme']) && $value['#theme'] == 'block' && !empty($value['content'])) {
-            
             if ($keySearch !== null) {
               if ($key === $keySearch) {
                 return $this->getFieldValue($value['content'], $keySearch);
@@ -169,7 +166,6 @@ class LayoutValueExtension extends AbstractExtension {
             $vals[$key] = $value;
           }
         }
-        $key++;
       }
     }
     else
@@ -287,7 +283,6 @@ class LayoutValueExtension extends AbstractExtension {
     foreach ($elements as $delta) {
       $items[$delta] = $build[$delta];
     }
-    
     return $items;
   }
   

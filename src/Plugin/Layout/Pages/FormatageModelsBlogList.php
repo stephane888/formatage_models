@@ -42,11 +42,14 @@ class FormatageModelsBlogList extends FormatageModels {
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return parent::defaultConfiguration() + [
+    return [
       'css_left' => 'col-lg-8',
       'css_right' => 'col-lg-4',
-      'css_top' => 'col-lg-12'
-    ];
+      'css_top' => 'col-lg-12',
+      'css_row' => '',
+      'region_tag_lefttile' => 'h2',
+      'region_tag_righttile' => 'h2'
+    ] + parent::defaultConfiguration();
   }
   
   /**
@@ -55,6 +58,16 @@ class FormatageModelsBlogList extends FormatageModels {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
+    $form['css_row'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('css row'),
+      '#default_value' => $this->configuration['css_row']
+    ];
+    $form['css_top'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('css_top'),
+      '#default_value' => $this->configuration['css_top']
+    ];
     $form['css_left'] = [
       '#type' => 'textfield',
       '#title' => $this->t('css_left'),
@@ -64,11 +77,6 @@ class FormatageModelsBlogList extends FormatageModels {
       '#type' => 'textfield',
       '#title' => $this->t('css_right'),
       '#default_value' => $this->configuration['css_right']
-    ];
-    $form['css_top'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('css_top'),
-      '#default_value' => $this->configuration['css_top']
     ];
     return $form;
   }
@@ -82,6 +90,7 @@ class FormatageModelsBlogList extends FormatageModels {
     $this->configuration['css_left'] = $form_state->getValue('css_left');
     $this->configuration['css_right'] = $form_state->getValue('css_right');
     $this->configuration['css_top'] = $form_state->getValue('css_top');
+    $this->configuration['css_row'] = $form_state->getValue('css_row');
   }
   
 }

@@ -1,6 +1,6 @@
 {% if content %}
 	<div {{ attributes.addClass(['home-blog']) }}>
-		<div class="row">
+		<div class="row {{settings.css_row}}">
 			{% if content.top %}
 				<div {{ region_attributes.top.addClass(['top', settings.css_top]) }}>
 					{{ content.top }}
@@ -9,9 +9,9 @@
 			{% if content.left %}
 				<div {{ region_attributes.left.addClass(['left', settings.css_left]) }}>
 					{% if content.lefttile %}
-						<h1 {{ region_attributes.lefttile.addClass(['lefttile']) }}>
+						<{{settings.region_tag_lefttile}} {{ region_attributes.lefttile.addClass(['lefttile']) }}>
 							{{ content.lefttile }}
-						</h1>
+						</{{settings.region_tag_lefttile}}>
 					{% endif %}
 					{{ content.left }}
 				</div>
@@ -19,9 +19,9 @@
 			{% if content.right %}
 				<div {{ region_attributes.right.addClass(['right', settings.css_right]) }}>
 					{% if content.righttile %}
-						<h1 {{ region_attributes.righttile.addClass(['righttile']) }}>
+						<{{settings.region_tag_righttile}} {{ region_attributes.righttile.addClass(['righttile']) }}>
 							{{ content.righttile }}
-						</h1>
+						</{{settings.region_tag_righttile}}>
 					{% endif %}
 					{{ content.right }}
 				</div>
