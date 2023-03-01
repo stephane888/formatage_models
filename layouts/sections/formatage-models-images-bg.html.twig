@@ -8,7 +8,7 @@
 	<section {{ attributes.addClass(['images-bg','space-padding']) }} style="background-image: url('{{ imgUrl|striptags|trim }}')">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8">
+				<div class = "{{ settings.larger_text }}">
 					{% if content.sub_title %}
 						<h4 {{ region_attributes.sub_title.addClass(['sub_title']) }}>
 							{{ content.sub_title|layout_value }}
