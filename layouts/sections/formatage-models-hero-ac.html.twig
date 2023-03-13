@@ -5,12 +5,12 @@
 				<div class="{{ settings.css_left }} content-text">
 					<div>
     					{% if content.subtitle|has_value %}
-                            <h4 {{ region_attributes.subtitle.addClass('subtitle') }}>
+                            <h4 {{ region_attributes.subtitle.addClass('subtitle','h4') }}>
                                 {{ content.subtitle }}
                             </h4>
                         {% endif %}
                         {% if content.title|has_value %}
-                            <h1 {{ region_attributes.title.addClass('title') }}>
+                            <h1 {{ region_attributes.title.addClass('title','h1') }}>
                                 {{ content.title }}
                             </h1>
                         {% endif %}
@@ -33,5 +33,5 @@
 				</div>
 			</div>
 		</div>
-	</section>	
+	</section>
 {% endif %}

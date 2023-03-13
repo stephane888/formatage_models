@@ -3,6 +3,7 @@
 namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * A very advanced custom layout.
@@ -57,7 +58,7 @@ class FormatageModelsImagesBg extends FormatageModelsSection {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
-    dump($config);
+    //dump($config);
     $form = parent::buildConfigurationForm($form, $form_state);
     $form['larger_text'] = [
       '#type' => 'textfield',

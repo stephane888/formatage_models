@@ -24,7 +24,11 @@
 							{{content.description}}
 						</div>
 						{% if content.call_action %}
-							{{content.call_action}}
+							<div class="test">
+								{% for item in content.call_action|array_elements(region_attributes.call_action.addClass([""])) %}
+									{{ item }}
+								{% endfor %}
+							</div>
 						{% endif %}
 					</div>
 				</div>
