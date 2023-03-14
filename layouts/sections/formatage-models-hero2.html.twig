@@ -10,14 +10,14 @@
 		<div class="hero-section-rc-web__block-center">
 			<div class="desc">
 				{% if content.description %}
-				<div {{region_attributes.description.addClass('description','hp-desc')}}>
+				<div {{region_attributes.description.addClass(['description','hp-desc'])}}>
 					{{content.description}}
 				</div>
 				{% endif %}
 				{% if content.title %}
-				<h2 {{region_attributes.title.addClass('title','desc__title')}}>
+				<h1 {{region_attributes.title.addClass(['title','desc__title'])}}>
 					{{content.title}}
-				</h2>
+				</h1>
 				{% endif %}
 			</div>
 		</div>
