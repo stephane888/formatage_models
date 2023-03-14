@@ -5730,7 +5730,7 @@ __webpack_require__(7888);
 
 /***/ }),
 
-/***/ 6749:
+/***/ 732:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6463,10 +6463,10 @@ var svg_preloader_component = (0,componentNormalizer/* default */.Z)(
     // ValidationProvider,
     svgLoader: svg_preloader,
     OptionsTaxonomy: () => {
-      return __webpack_require__.e(/* import() */ 584).then(__webpack_require__.bind(__webpack_require__, 8584));
+      return __webpack_require__.e(/* import() */ 107).then(__webpack_require__.bind(__webpack_require__, 2107));
     },
     OptionsAllowedValues: () => {
-      return __webpack_require__.e(/* import() */ 495).then(__webpack_require__.bind(__webpack_require__, 3495));
+      return __webpack_require__.e(/* import() */ 83).then(__webpack_require__.bind(__webpack_require__, 5083));
     },
     OptionsEntities: () => {
       return __webpack_require__.e(/* import() */ 140).then(__webpack_require__.bind(__webpack_require__, 6140));
@@ -6804,8 +6804,8 @@ var drupal_list_string_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var drupal_list_string = (drupal_list_string_component.exports);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/TextareaCkeditor.vue?vue&type=template&id=6cb2b95e&
-var TextareaCkeditorvue_type_template_id_6cb2b95e_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/TextareaCkeditor.vue?vue&type=template&id=ce9a3420&
+var TextareaCkeditorvue_type_template_id_ce9a3420_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -6825,7 +6825,7 @@ var TextareaCkeditorvue_type_template_id_6cb2b95e_render = function render() {
         return [_c('legend', [_vm._v(_vm._s(_vm.field.label))]), _c('ckeditor', {
           attrs: {
             "config": _vm.editorConfig,
-            "editor-url": "/themes/contrib/wb_universe/ckeditor/ckeditor.js"
+            "editor-url": _vm.baseUrl + '/themes/contrib/wb_universe/ckeditor/ckeditor.js'
           },
           on: {
             "input": _vm.input,
@@ -6850,7 +6850,7 @@ var TextareaCkeditorvue_type_template_id_6cb2b95e_render = function render() {
     }])
   })], 1);
 };
-var TextareaCkeditorvue_type_template_id_6cb2b95e_staticRenderFns = [];
+var TextareaCkeditorvue_type_template_id_ce9a3420_staticRenderFns = [];
 
 // EXTERNAL MODULE: ../components_bootstrapvuejs/node_modules/ckeditor4-vue/dist/ckeditor.js
 var ckeditor = __webpack_require__(4353);
@@ -7035,6 +7035,9 @@ var ckeditor_default = /*#__PURE__*/__webpack_require__.n(ckeditor);
     },
     fullname() {
       return this.parentName + this.field.name;
+    },
+    baseUrl() {
+      if (loadField.config) return loadField.config.getBaseUrl();else return "";
     }
   },
   mounted() {
@@ -7103,8 +7106,8 @@ var ckeditor_default = /*#__PURE__*/__webpack_require__.n(ckeditor);
 ;
 var TextareaCkeditor_component = (0,componentNormalizer/* default */.Z)(
   fieldsDrupal_TextareaCkeditorvue_type_script_lang_js_,
-  TextareaCkeditorvue_type_template_id_6cb2b95e_render,
-  TextareaCkeditorvue_type_template_id_6cb2b95e_staticRenderFns,
+  TextareaCkeditorvue_type_template_id_ce9a3420_render,
+  TextareaCkeditorvue_type_template_id_ce9a3420_staticRenderFns,
   false,
   null,
   null,
@@ -9331,8 +9334,8 @@ var DrupalEmail_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var DrupalEmail = (DrupalEmail_component.exports);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalCheckbox.vue?vue&type=template&id=5ab828ca&scoped=true&
-var DrupalCheckboxvue_type_template_id_5ab828ca_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalCheckbox.vue?vue&type=template&id=44c0f504&scoped=true&
+var DrupalCheckboxvue_type_template_id_44c0f504_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -9457,7 +9460,7 @@ var DrupalCheckboxvue_type_template_id_5ab828ca_scoped_true_render = function re
     }])
   })], 1)]);
 };
-var DrupalCheckboxvue_type_template_id_5ab828ca_scoped_true_staticRenderFns = [];
+var DrupalCheckboxvue_type_template_id_44c0f504_scoped_true_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalCheckbox.vue?vue&type=script&lang=js&
 
@@ -9532,12 +9535,12 @@ var DrupalCheckboxvue_type_template_id_5ab828ca_scoped_true_staticRenderFns = []
     }
   },
   mounted() {
-    this.getImage();
-    this.selected = this.getValue();
-    this.multi_selected = this.getValues();
     if (this.field.definition_settings && this.field.definition_settings.target_type) {
       this.key_value = "target_id";
     } else this.key_value = "value";
+    this.getImage();
+    this.selected = this.getValue();
+    this.multi_selected = this.getValues();
   },
   methods: {
     getImage() {
@@ -9562,7 +9565,20 @@ var DrupalCheckboxvue_type_template_id_5ab828ca_scoped_true_staticRenderFns = []
       return value;
     },
     getValues() {
-      return [];
+      const values = [];
+      if (this.model[this.field.name] && this.model[this.field.name].length) {
+        this.model[this.field.name].forEach(item => {
+          // console.log(
+          //   "item : " + this.field.name,
+          //   " : ",
+          //   item,
+          //   "\n this.key_value ",
+          //   this.key_value
+          // );
+          values.push(item[this.key_value]);
+        });
+      }
+      return values;
     },
     setValue(vals) {
       if (this.namespaceStore) {
@@ -9605,10 +9621,10 @@ var DrupalCheckboxvue_type_template_id_5ab828ca_scoped_true_staticRenderFns = []
 });
 ;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalCheckbox.vue?vue&type=script&lang=js&
  /* harmony default export */ var fieldsDrupal_DrupalCheckboxvue_type_script_lang_js_ = (DrupalCheckboxvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalCheckbox.vue?vue&type=style&index=0&id=5ab828ca&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalCheckbox.vue?vue&type=style&index=0&id=44c0f504&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalCheckbox.vue?vue&type=style&index=0&id=5ab828ca&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalCheckbox.vue?vue&type=style&index=0&id=44c0f504&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalCheckbox.vue
 
@@ -9621,18 +9637,18 @@ var DrupalCheckboxvue_type_template_id_5ab828ca_scoped_true_staticRenderFns = []
 
 var DrupalCheckbox_component = (0,componentNormalizer/* default */.Z)(
   fieldsDrupal_DrupalCheckboxvue_type_script_lang_js_,
-  DrupalCheckboxvue_type_template_id_5ab828ca_scoped_true_render,
-  DrupalCheckboxvue_type_template_id_5ab828ca_scoped_true_staticRenderFns,
+  DrupalCheckboxvue_type_template_id_44c0f504_scoped_true_render,
+  DrupalCheckboxvue_type_template_id_44c0f504_scoped_true_staticRenderFns,
   false,
   null,
-  "5ab828ca",
+  "44c0f504",
   null
   
 )
 
 /* harmony default export */ var DrupalCheckbox = (DrupalCheckbox_component.exports);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=template&id=541d9715&scoped=true&
-var DateRangevue_type_template_id_541d9715_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=template&id=b8ded7fc&scoped=true&
+var DateRangevue_type_template_id_b8ded7fc_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -9772,7 +9788,7 @@ var DateRangevue_type_template_id_541d9715_scoped_true_render = function render(
     }])
   })], 1);
 };
-var DateRangevue_type_template_id_541d9715_scoped_true_staticRenderFns = [];
+var DateRangevue_type_template_id_b8ded7fc_scoped_true_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=script&lang=js&
 
@@ -9870,7 +9886,8 @@ var DateRangevue_type_template_id_541d9715_scoped_true_staticRenderFns = [];
      *
      */
     getValue() {
-      if (this.model[this.field.name] && this.model[this.field.name][0]) {
+      console.log("date range : ", this.model[this.field.name]);
+      if (this.model[this.field.name] && this.model[this.field.name][0] && this.model[this.field.name][0].value) {
         const D_b = this.getDateFromDateTimeStamp(this.model[this.field.name][0].value);
         const val = {
           value: D_b.date,
@@ -9945,10 +9962,10 @@ var DateRangevue_type_template_id_541d9715_scoped_true_staticRenderFns = [];
 });
 ;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=script&lang=js&
  /* harmony default export */ var fieldsDrupal_DateRangevue_type_script_lang_js_ = (DateRangevue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-22.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=541d9715&prod&lang=scss&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-22.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=b8ded7fc&prod&lang=scss&scoped=true&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=541d9715&prod&lang=scss&scoped=true&
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=b8ded7fc&prod&lang=scss&scoped=true&
 
 ;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue
 
@@ -9961,11 +9978,11 @@ var DateRangevue_type_template_id_541d9715_scoped_true_staticRenderFns = [];
 
 var DateRange_component = (0,componentNormalizer/* default */.Z)(
   fieldsDrupal_DateRangevue_type_script_lang_js_,
-  DateRangevue_type_template_id_541d9715_scoped_true_render,
-  DateRangevue_type_template_id_541d9715_scoped_true_staticRenderFns,
+  DateRangevue_type_template_id_b8ded7fc_scoped_true_render,
+  DateRangevue_type_template_id_b8ded7fc_scoped_true_staticRenderFns,
   false,
   null,
-  "541d9715",
+  "b8ded7fc",
   null
   
 )
@@ -11618,7 +11635,7 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
 "use strict";
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6352);
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6749);
+/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(732);
 
 
 /* harmony default export */ __webpack_exports__["Z"] = ({
@@ -23802,19 +23819,26 @@ const AjaxToastBootStrap = {
     }
     return new Promise((resolv, reject) => {
       this.$bvModal.msgBoxConfirm(body, confDefault).then(value => {
-        if (value) resolv(value);else reject(value);
+        console.log("value : ", value);
+        resolv(value);
       }).catch(err => {
         reject(err);
       });
     });
   },
-  modalConfirmDelete(body = "Confirmer la suppression, NB : cette action est irreverssible.", conf = {
-    title: "Attention",
-    okVariant: "danger",
-    okTitle: "Supprimer",
-    cancelTitle: "Annuler",
-    footerClass: "p-2"
-  }) {
+  modalConfirmDelete(body = "Confirmer la suppression, NB : cette action est irreverssible.", newConf = {}) {
+    const conf = {
+      title: "Attention",
+      okVariant: "danger",
+      okTitle: "Supprimer",
+      cancelTitle: "Annuler",
+      footerClass: "p-2",
+      headerBgVariant: "danger",
+      headerTextVariant: "light"
+    };
+    for (const i in newConf) {
+      conf[i] = newConf[i];
+    }
     return this.modalMessage(body, conf);
   },
   modalSuccess(body = "", conf = {}) {
@@ -28514,7 +28538,7 @@ var request = __webpack_require__(1564);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/js/FormUttilities.js
 var FormUttilities = __webpack_require__(9351);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/loadField.js + 116 modules
-var loadField = __webpack_require__(6749);
+var loadField = __webpack_require__(732);
 ;// CONCATENATED MODULE: ./src/store/index.js
 
 
@@ -28630,7 +28654,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default().use(vuex_esm/* default */
         entity_type_id: state.currentEntityInfo.entityTypeId,
         duplicate: false
       };
-      return request/* default.bPost */.Z.bPost("/vuejs-entity/form/get-form/from/entity-id", param, {}, false).then(resp => {
+      return request/* default.bPost */.Z.bPost("/apivuejs/edit-duplicate-entity", param, {}, false).then(resp => {
         commit("DISABLE_RUNNING");
         commit("SET_CURRENT_ENTITY_FORM", resp.data);
         dispatch("buildFields");
