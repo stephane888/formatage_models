@@ -58,7 +58,6 @@ class FormatageModelsImagesBg extends FormatageModelsSection {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
-    dump($config);
     $form = parent::buildConfigurationForm($form, $form_state);
     $form['larger_text'] = [
       '#type' => 'textfield',

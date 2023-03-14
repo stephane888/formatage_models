@@ -6,19 +6,25 @@
 	{% if content.image_bg|layout_bg_img %}
 		{% set attributes=attributes.merge(content.image_bg|layout_bg_img) %}
 	{% endif %}
-	<div{{attributes.addClass('hero-section-rc-web')}}>
+	<div {{attributes.addClass('hero-section-rc-web')}}>
 		<div class="hero-section-rc-web__block-center">
 			<div class="desc">
-				<div {{region_attributes.description.addClass('description','hp-desc')}}>
+				{% if content.description %}
+				<div {{region_attributes.description.addClass(['description','hp-desc'])}}>
 					{{content.description}}
 				</div>
-				<h2 {{region_attributes.title.addClass('title','desc__title')}}>
+				{% endif %}
+				{% if content.title %}
+				<h1 {{region_attributes.title.addClass(['title','desc__title'])}}>
 					{{content.title}}
-				</h2>
+				</h1>
+				{% endif %}
 			</div>
 		</div>
+		{% if content.button %}
 		<div {{region_attributes.button.addClass('rc-btn-block')}}>
 			{{content.button}}
 		</div>
+		{% endif %}
 	</div>
 {% endif %}
