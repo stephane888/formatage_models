@@ -14,7 +14,11 @@
     font-size: 2rem;
     transition: all 1s;
 }
-.contextual-region:hover > .formatage_models_quickly_edit{
+/**
+ * On affiche uniquement le premier niveau, on masque les sous elements.
+ */
+.contextual-region:hover > .formatage_models_quickly_edit, 
+.contextual-region:hover > .node__content > .formatage_models_quickly_edit{
 	color: #4369a3;
     background: rgb(255 255 255 / 85%);  
     z-index: 9999;      
