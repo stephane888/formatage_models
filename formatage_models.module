@@ -52,6 +52,110 @@ function formatage_models_preprocess_paragraph(&$variables) {
 }
 
 /**
+ */
+function formatage_models_preprocess_views_view_unformatted(&$vars) {
+  if (\Drupal::currentUser()->id()) {
+    // Liste d'entité qu'on peut editer avec le crayon.
+    // on doit rentre cette liste editable.
+    $entities = [
+      '#paragraph',
+      '#node',
+      '#blocks_contents',
+      '#block_content',
+      '#commerce_product',
+      '#site_type_datas',
+      '#site_internet_entity'
+    ];
+    if (!empty($vars['rows'])) {
+      foreach ($vars['rows'] as &$row) {
+        foreach ($entities as $keyEntity) {
+          if (!empty($row['content'][$keyEntity])) {
+            if (empty($row['attributes'])) {
+              $row['attributes'] = new \Drupal\Core\Template\Attribute();
+            }
+            /**
+             *
+             * @var \Drupal\Core\Template\Attribute $attribute
+             */
+            $attribute = $row['attributes'];
+            $attribute->addClass('contextual-region');
+            $row['content']['formatage_models_quickly_edit'] = [
+              '#theme' => 'formatage_models_quickly_edit',
+              '#entity' => $row['content'][$keyEntity]
+            ];
+            break;
+          }
+        }
+      }
+    }
+  }
+}
+
+function formatage_models_preprocess_owlcarousel_views(&$vars) {
+  if (\Drupal::currentUser()->id()) {
+    // Liste d'entité qu'on peut editer avec e crayon.
+    $entities = [
+      '#paragraph',
+      '#node',
+      '#blocks_contents',
+      '#block_content',
+      '#commerce_product',
+      '#site_type_datas',
+      '#site_internet_entity'
+    ];
+    if (!empty($vars['rows'])) {
+      foreach ($vars['rows'] as &$row) {
+        foreach ($entities as $keyEntity) {
+          if (!empty($row[$keyEntity])) {
+            if (empty($row['attributes'])) {
+              $row['attributes'] = new \Drupal\Core\Template\Attribute();
+            }
+            /**
+             *
+             * @var \Drupal\Core\Template\Attribute $attribute
+             */
+            $attribute = $row['attributes'];
+            $attribute->addClass('contextual-region');
+            $row['formatage_models_quickly_edit'] = [
+              '#theme' => 'formatage_models_quickly_edit',
+              '#entity' => $row[$keyEntity]
+            ];
+            break;
+          }
+        }
+      }
+    }
+  }
+}
+
+function formatage_models_entity_view_alter(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+  if ($build['#view_mode'] == 'full') {
+    // dump($build);
+    // On charge l'outil d'edition via le custom bouton.
+    $entities = [
+      'commerce_product',
+      'node',
+      'blocks_contents',
+      'paragraph',
+      'block_content',
+      'commerce_product'
+    ];
+    //
+    if (!empty($build['#entity_type']))
+      if (in_array($build['#entity_type'], $entities)) {
+        // dump($build);
+        $build['formatage_models_quickly_edit'] = [
+          '#theme' => 'formatage_models_quickly_edit',
+          '#entity' => \Drupal::routeMatch()->getParameter($build['#entity_type'])
+        ];
+      }
+    // else {
+    // dump($build);
+    // }
+  }
+}
+
+/**
  * Implement hook_preprocess_page
  */
 function formatage_models_preprocess_page(&$variables) {
@@ -206,7 +310,7 @@ function formatage_models_preprocess_formatage_models_comments(&$vars) {
  * @param array $vars
  */
 function formatage_models_preprocess_formatage_models_titre_description(array &$variables) {
-
+  
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   FormatageModelsThemes::mergeContentAttributes($variables);
 }
@@ -347,7 +451,7 @@ function formatage_models_preprocess_views_view_render_page(&$vars) {
   $view = $vars['view'];
   //
   $css = $view->display_handler->getOption('view_row_css');
-
+  
   if ($css) {
     $Attribute = new Attribute();
     $css = explode(" ", $css);
@@ -388,7 +492,7 @@ function formatage_models_preprocess_views_view_render_page(&$vars) {
  * @param array $vars
  */
 function formatage_models_preprocess_views_view_render(&$vars) {
-
+  
   /**
    *
    * @var \Drupal\views\ViewExecutable $view
