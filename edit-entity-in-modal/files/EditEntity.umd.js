@@ -11603,7 +11603,7 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
     return template;
   },
   getImageUrl(fid, style = "medium") {
-    return this.config.get("/vuejs-entity/image/" + fid + "/" + style);
+    return this.config.get("/filesmanager/image/" + fid + "/" + style);
   },
   getRules(field) {
     const rules = {};
