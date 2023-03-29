@@ -5740,7 +5740,7 @@ __webpack_require__(7888);
 
 /***/ }),
 
-/***/ 3481:
+/***/ 1384:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11284,6 +11284,397 @@ var ChartWidgetType_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var ChartWidgetType = (ChartWidgetType_component.exports);
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/TexTarea.vue?vue&type=template&id=0f7a50da&
+var TexTareavue_type_template_id_0f7a50da_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c('div', {
+    class: _vm.classCss
+  }, [_c('ValidationProvider', {
+    attrs: {
+      "name": _vm.fullname,
+      "rules": _vm.getRules()
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function (v) {
+        return [_c('b-form-group', {
+          attrs: {
+            "label": _vm.field.label,
+            "description": _vm.field.description
+          }
+        }, [_c('div', {
+          staticClass: "field-item-value"
+        }, [_c('b-form-textarea', {
+          attrs: {
+            "placeholder": _vm.field.placeholder,
+            "state": _vm.getValidationState(v),
+            "name": _vm.fullname,
+            "rows": "3",
+            "max-rows": "6"
+          },
+          on: {
+            "input": _vm.input
+          },
+          model: {
+            value: _vm.input_value,
+            callback: function ($$v) {
+              _vm.input_value = $$v;
+            },
+            expression: "input_value"
+          }
+        })], 1), v.errors ? _c('div', {
+          staticClass: "text-danger my-2"
+        }, _vm._l(v.errors, function (error, ii) {
+          return _c('small', {
+            key: ii,
+            staticClass: "d-block"
+          }, [_vm._v(" " + _vm._s(error) + " ")]);
+        }), 0) : _vm._e()])];
+      }
+    }])
+  })], 1);
+};
+var TexTareavue_type_template_id_0f7a50da_staticRenderFns = [];
+
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/TexTarea.vue?vue&type=script&lang=js&
+
+
+
+
+/* harmony default export */ var TexTareavue_type_script_lang_js_ = ({
+  name: "TexTarea",
+  components: {
+    ValidationProvider: vee_validate_esm/* ValidationProvider */.d_
+  },
+  props: {
+    classCss: {
+      type: [Array],
+      default: function () {
+        return [];
+      }
+    },
+    field: {
+      type: Object,
+      required: true
+    },
+    model: {
+      type: [Object, Array],
+      required: true
+    },
+    namespaceStore: {
+      type: String,
+      required: true
+    },
+    parentName: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      input_value: null,
+      timeout: null
+    };
+  },
+  computed: {
+    fullname() {
+      return this.parentName + this.field.name;
+    }
+  },
+  watch: {
+    /**
+     * Lorsque le champs est construt via les boucles dynamique,
+     * le template n'est pas reconstruit ducoup la valeur du precedent champs est concerservé.
+     * On applique ce watch et on verra les resultats.
+     * Cela ne s'execute que dans le cadre d'un watch et permet de ressoudre le probleme.
+     */
+    field() {
+      this.input_value = this.getValue();
+    }
+  },
+  mounted() {
+    // On recupere la valeur par defaut pour chaque construction:
+    this.input_value = this.getValue();
+  },
+  methods: {
+    getValidationState({
+      dirty,
+      validated,
+      valid = null
+    }) {
+      return (dirty || validated) && !valid ? valid : null;
+    },
+    getRules() {
+      return loadField.getRules(this.field);
+    },
+    setValue(vals) {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        if (this.namespaceStore) {
+          this.$store.dispatch(this.namespaceStore + "/setValue", {
+            value: vals,
+            fieldName: this.fullname
+          });
+        } else this.$store.dispatch("setValue", {
+          value: vals,
+          fieldName: this.fullname
+        });
+      }, loadField.timeToWait);
+    },
+    getValue() {
+      if (this.model[this.field.name] && this.model[this.field.name][0]) {
+        return this.model[this.field.name][0].value;
+      } else return null;
+    },
+    input(v) {
+      const vals = [];
+      vals.push({
+        value: v
+      });
+      this.setValue(vals);
+    }
+  }
+});
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/TexTarea.vue?vue&type=script&lang=js&
+ /* harmony default export */ var fieldsDrupal_TexTareavue_type_script_lang_js_ = (TexTareavue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/TexTarea.vue
+
+
+
+
+
+/* normalize component */
+;
+var TexTarea_component = (0,componentNormalizer/* default */.Z)(
+  fieldsDrupal_TexTareavue_type_script_lang_js_,
+  TexTareavue_type_template_id_0f7a50da_render,
+  TexTareavue_type_template_id_0f7a50da_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var TexTarea = (TexTarea_component.exports);
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/MoreFieldsIconwTextidget.vue?vue&type=template&id=299978ee&
+var MoreFieldsIconwTextidgetvue_type_template_id_299978ee_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c('div', {
+    class: _vm.classCss
+  }, [_c('ValidationProvider', {
+    attrs: {
+      "name": _vm.fullname,
+      "rules": _vm.getRules()
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function (v) {
+        return [_c('b-form-group', {
+          attrs: {
+            "label": _vm.field.label,
+            "description": _vm.field.description
+          }
+        }, [_vm._l(_vm.input_value, function (value, index) {
+          return _c('div', {
+            key: index,
+            staticClass: "field-item-value"
+          }, [_c('b-form-input', {
+            attrs: {
+              "placeholder": _vm.field.placeholder,
+              "state": _vm.getValidationState(v),
+              "name": _vm.fullname + '.value'
+            },
+            model: {
+              value: value.value,
+              callback: function ($$v) {
+                _vm.$set(value, "value", $$v);
+              },
+              expression: "value.value"
+            }
+          }), _c('b-form-textarea', {
+            attrs: {
+              "placeholder": _vm.field.placeholder,
+              "state": _vm.getValidationState(v),
+              "name": _vm.fullname + '.text',
+              "rows": "3",
+              "max-rows": "6"
+            },
+            model: {
+              value: value.text,
+              callback: function ($$v) {
+                _vm.$set(value, "text", $$v);
+              },
+              expression: "value.text"
+            }
+          })], 1);
+        }), v.errors ? _c('div', {
+          staticClass: "text-danger my-2"
+        }, _vm._l(v.errors, function (error, ii) {
+          return _c('small', {
+            key: ii,
+            staticClass: "d-block"
+          }, [_vm._v(" " + _vm._s(error) + " ")]);
+        }), 0) : _vm._e()], 2), _vm.cardinality ? _c('div', [_c('b-button', {
+          attrs: {
+            "size": "sm",
+            "variant": "info"
+          },
+          on: {
+            "click": function ($event) {
+              $event.preventDefault();
+              return _vm.addField.apply(null, arguments);
+            }
+          }
+        }, [_vm._v(" Add more ")])], 1) : _vm._e()];
+      }
+    }])
+  })], 1);
+};
+var MoreFieldsIconwTextidgetvue_type_template_id_299978ee_staticRenderFns = [];
+
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/MoreFieldsIconwTextidget.vue?vue&type=script&lang=js&
+
+
+
+
+/* harmony default export */ var MoreFieldsIconwTextidgetvue_type_script_lang_js_ = ({
+  name: "MoreFieldsIconwTextidget",
+  components: {
+    ValidationProvider: vee_validate_esm/* ValidationProvider */.d_
+  },
+  props: {
+    classCss: {
+      type: [Array],
+      default: function () {
+        return [];
+      }
+    },
+    field: {
+      type: Object,
+      required: true
+    },
+    model: {
+      type: [Object, Array],
+      required: true
+    },
+    namespaceStore: {
+      type: String,
+      required: true
+    },
+    parentName: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      input_value: [{
+        value: "",
+        text: "",
+        format: "text_html"
+      }],
+      timeout: null
+    };
+  },
+  computed: {
+    fullname() {
+      return this.parentName + this.field.name;
+    },
+    cardinality() {
+      if (this.field.cardinality === -1) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  watch: {
+    /**
+     * Lorsque le champs est construt via les boucles dynamique,
+     * le template n'est pas reconstruit ducoup la valeur du precedent champs est concerservé.
+     * On applique ce watch et on verra les resultats.
+     * Cela ne s'execute que dans le cadre d'un watch et permet de ressoudre le probleme.
+     */
+    field() {
+      this.input_value = this.getValue();
+    }
+  },
+  mounted() {
+    // On recupere la valeur par defaut pour chaque construction:
+    this.input_value = this.getValue();
+  },
+  methods: {
+    getValidationState({
+      dirty,
+      validated,
+      valid = null
+    }) {
+      return (dirty || validated) && !valid ? valid : null;
+    },
+    getRules() {
+      return loadField.getRules(this.field);
+    },
+    setValue(vals) {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        if (this.namespaceStore) {
+          this.$store.dispatch(this.namespaceStore + "/setValue", {
+            value: vals,
+            fieldName: this.fullname
+          });
+        } else this.$store.dispatch("setValue", {
+          value: vals,
+          fieldName: this.fullname
+        });
+      }, loadField.timeToWait);
+    },
+    getValue() {
+      if (this.model[this.field.name] && this.model[this.field.name].length > 0) {
+        return this.model[this.field.name];
+      } else return [];
+    },
+    input(v) {
+      const vals = [];
+      vals.push({
+        value: v
+      });
+      this.setValue(vals);
+    },
+    addField() {
+      const newEntry = {
+        value: "",
+        text: "",
+        format: "text_html"
+      };
+      this.input_value.push(newEntry);
+    }
+  }
+});
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/MoreFieldsIconwTextidget.vue?vue&type=script&lang=js&
+ /* harmony default export */ var fieldsDrupal_MoreFieldsIconwTextidgetvue_type_script_lang_js_ = (MoreFieldsIconwTextidgetvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/MoreFieldsIconwTextidget.vue
+
+
+
+
+
+/* normalize component */
+;
+var MoreFieldsIconwTextidget_component = (0,componentNormalizer/* default */.Z)(
+  fieldsDrupal_MoreFieldsIconwTextidgetvue_type_script_lang_js_,
+  MoreFieldsIconwTextidgetvue_type_template_id_299978ee_render,
+  MoreFieldsIconwTextidgetvue_type_template_id_299978ee_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var MoreFieldsIconwTextidget = (MoreFieldsIconwTextidget_component.exports);
 ;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/Containers/NoContainer.vue?vue&type=template&id=ecdce68a&
 var NoContainervue_type_template_id_ecdce68a_render = function render() {
   var _vm = this,
@@ -11498,6 +11889,8 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
 
 
 
+
+
 // load Container
 
 
@@ -11596,6 +11989,12 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
       case "chart_widget_type":
         template = ChartWidgetType;
         break;
+      case "string_textarea":
+        template = TexTarea;
+        break;
+      case "more_fields_icon_text_widget":
+        template = MoreFieldsIconwTextidget;
+        break;
       default:
         console.log(" Champs sans rendu : ", key, "\n field : ", field);
         break;
@@ -11645,7 +12044,7 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
 "use strict";
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6352);
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3481);
+/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1384);
 
 
 /* harmony default export */ __webpack_exports__["Z"] = ({
@@ -28547,8 +28946,8 @@ var vuex_esm = __webpack_require__(5340);
 var request = __webpack_require__(4269);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/js/FormUttilities.js
 var FormUttilities = __webpack_require__(7657);
-// EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/loadField.js + 116 modules
-var loadField = __webpack_require__(3481);
+// EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/loadField.js + 124 modules
+var loadField = __webpack_require__(1384);
 ;// CONCATENATED MODULE: ./src/store/index.js
 
 
