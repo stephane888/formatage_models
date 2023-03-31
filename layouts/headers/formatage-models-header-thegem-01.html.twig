@@ -71,9 +71,21 @@
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0 right-link">
         {% if logged_in == true %}
-        <a href="/user/logout" class="d-flex align-items-center px-4">
+							
+						{% if content.user_compact %}
+							<div class="btn-group px-4">
+                            	<a href="#" type="button" class="mr-4 dropdown-toggle" title="{{'Profile information'|trans}}" data-toggle="dropdown" aria-expanded="false">
+                            		<i class="fas fa-user"></i>
+                            	</a>
+                            	<div class="dropdown-menu dropdown-menu--user">
+                                    {{content.user_compact}}
+                                </div>
+                        	</div> 
+                        {% else %}
+								<a href="/user/logout" id="header-search-button" class="d-flex align-items-center px-4">
 									<i class="fas fa-sign-out-alt"></i>
-								</a>        
+								</a>
+						{% endif %}      
         {% else %}
           <li class="nav-item page-linker">
             <a href="/user/login" class="nav-link linker"> {{ 'registration'|trans }} </a>
