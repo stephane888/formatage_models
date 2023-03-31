@@ -6,8 +6,6 @@
 
 <script>
 export default {
-  mounted() {
-    // console.log("edit entity APP");
-  },
+  name: "AppRoute",
 };
 </script>

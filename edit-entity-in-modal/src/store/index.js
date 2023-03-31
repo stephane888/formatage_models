@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import request from "../request";
 import generateField from "components_h_vuejs/src/js/FormUttilities";
 import loadField from "components_h_vuejs/src/components/fieldsDrupal/loadField";
+import ckeditorConfig from "components_h_vuejs/src/components/Ressouces/ckeditor-config";
 
 Vue.use(Vuex);
 
@@ -181,7 +182,46 @@ export default new Vuex.Store({
     },
     buildFields({ commit, state }) {
       var fields = [];
+      //
       loadField.setConfig(request);
+      var style = "";
+      // pour les domaines wb-horizon. on essaie de recuperer la css genrer pour le theme.
+      if (window.location.host.includes("wb-horizon.")) {
+        // style =
+        //   "@import 'https://wb-horizon.com/themes/custom/wb_horizon_com/css/vendor-style.css';";
+        const themeName = window.location.host
+          .replaceAll("-", "_")
+          .replaceAll(".", "_");
+        style +=
+          "@import '" +
+          window.location.protocol +
+          "//" +
+          window.location.host +
+          "/themes/custom/" +
+          themeName +
+          "/css/vendor-style.css';";
+        style +=
+          "@import '" +
+          window.location.protocol +
+          "//" +
+          window.location.host +
+          "/themes/custom/" +
+          themeName +
+          "/css/global-style.css';";
+        // style += "body{padding:1rem !important;}";
+        console.log("style", style);
+        ckeditorConfig.getImportCss = function () {
+          return (
+            "@import '" +
+            request.getBaseUrl() +
+            "/themes/contrib/wb_universe/node_modules/%40fortawesome/fontawesome-free/css/all.min.css'; " +
+            style
+          );
+        };
+      } else {
+        // il est preferable que cela soit un paramettre au niveau du module drupal.
+      }
+
       commit("RUN_BUILDING_FIELDS");
       if (state.currentEntityForm.length) {
         generateField

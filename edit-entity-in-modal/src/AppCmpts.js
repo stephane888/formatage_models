@@ -1,7 +1,11 @@
 import Vue from "vue";
-import App from "./App.vue";
+//import App from "./App.vue";
+import App from "./App/EditEntity.vue";
 import store from "./store";
-import router from "./router";
+/**
+ * On desactive le retour car ce dernier ajoute #/editentity sur les URLS.
+ */
+//import router from "./router";
 // import bootstrap.
 import "./plugins/AppCmpts.js";
 Vue.config.productionTip = false;
@@ -28,6 +32,6 @@ extend("alpha", alpha);
 //
 new Vue({
   store,
-  router,
+  //router,
   render: (h) => h(App),
 }).$mount("#entity_edit_by_vuejs");
