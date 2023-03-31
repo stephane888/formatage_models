@@ -17,9 +17,20 @@
 						{% endif %}
 						<div class="header_search_1">
 							{% if logged_in == true %}
+							{% if content.user_compact %}
+							<div class="btn-group">
+                            	<a href="#" type="button" class="mr-4 dropdown-toggle" title="{{'Profile information'|trans}}" data-toggle="dropdown" aria-expanded="false">
+                            		<i class="fas fa-user"></i>
+                            	</a>
+                            	<div class="dropdown-menu dropdown-menu--user">
+                                    {{content.user_compact}}
+                                </div>
+                        	</div> 
+                        	{% else %}
 								<a href="/user/logout" id="header-search-button" class="d-flex align-items-baseline">
 									<i class="fas fa-sign-out-alt"></i>
 								</a>
+							{% endif %}
 							{% else %}
 								<a href="/user/login" id="header-search-button" class="d-flex align-items-baseline">
 									<i class="fas fa-sign-in-alt"></i>
