@@ -23,7 +23,7 @@
 						<div class="seeMore">
 							{% if content.link %}
 								{% for i in content.link|array_elements(region_attributes.link.addClass([''])) %}
-									{{ item }}
+									{{ i }}
 								{% endfor %}
 							{#{ content.link }#}
 							{% endif %}
