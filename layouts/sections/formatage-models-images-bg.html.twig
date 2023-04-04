@@ -20,9 +20,13 @@
 						</h1>
 					{% endif %}
 					<div{{region_attributes.link.addClass(['link'])}}>
-
 						<div class="seeMore">
-							{{ content.link }}
+							{% if content.link %}
+								{% for i in content.link|array_elements(region_attributes.link.addClass([''])) %}
+									{{ item }}
+								{% endfor %}
+							{#{ content.link }#}
+							{% endif %}
 						</div>
 					</div>
 				</div>
