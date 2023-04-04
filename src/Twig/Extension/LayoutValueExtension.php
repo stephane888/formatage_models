@@ -156,6 +156,10 @@ class LayoutValueExtension extends AbstractExtension {
                 return $this->getFieldValue($value['content'], $keySearch);
               }
             }
+            // si on a un rendu retarder, on l'ignore.
+            elseif (isset($value['content']['#lazy_builder'])) {
+              $vals[$key] = $value;
+            }
             else {
               $vals[] = $this->getFieldValue($value['content']);
             }

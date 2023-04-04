@@ -43,6 +43,9 @@ use Drupal\Core\Url;
  *     "call_action" = {
  *       "label" = @Translation("call action"),
  *     },
+ *     "user_compact" = {
+ *       "label" = @Translation("User compact"),
+ *     },
  *   }
  * )
  */

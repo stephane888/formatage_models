@@ -61,6 +61,7 @@ function template_preprocess_formatage_models_menu(&$vars) {
 }
 
 function template_preprocess_formatage_models_quickly_edit(&$vars) {
+  // dump($vars);
   if (!empty($vars['element']['#contextual_links']['#id'])) {
     $vars["#attached"]['library'][] = 'formatage_models/formatage-models-data-quick-edit-id';
     if (empty($vars['attributes'])) {
@@ -77,7 +78,7 @@ function template_preprocess_formatage_models_quickly_edit(&$vars) {
   }
   // Ce modele provient du formatage de views_view_unformatted.
   elseif (!empty($vars['element']['#entity'])) {
-    // dump($vars);
+    $vars["#attached"]['library'][] = 'formatage_models/formatage-models-data-quick-edit-id';
     /**
      *
      * @var \Drupal\creation_site_virtuel\Entity\SiteTypeDatas $entity

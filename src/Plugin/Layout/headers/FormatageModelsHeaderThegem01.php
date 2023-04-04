@@ -39,11 +39,15 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *     "button_f1" = {
  *       "label" = @Translation("button_f1"),
  *     },
+ *     "user_compact" = {
+ *       "label" = @Translation(" User compact "),
+ *     }
+ *
  *   }
  * )
  */
 class FormatageModelsHeaderThegem01 extends FormatageModelsSection {
-
+  
   /**
    *
    * {@inheritdoc}
@@ -54,7 +58,7 @@ class FormatageModelsHeaderThegem01 extends FormatageModelsSection {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/headers/formatage-models-header-thegem-01.png");
   }
-
+  
   /**
    *
    * {@inheritdoc}
@@ -67,7 +71,7 @@ class FormatageModelsHeaderThegem01 extends FormatageModelsSection {
     FormatageModelsThemes::formatSettingValues($build);
     return $build;
   }
-
+  
   function defaultConfiguration() {
     return parent::defaultConfiguration() + [
       'css' => 'bg-dark text-white',
@@ -200,5 +204,5 @@ class FormatageModelsHeaderThegem01 extends FormatageModelsSection {
       ]
     ];
   }
-
+  
 }
