@@ -91,82 +91,7 @@ class Layouts {
       '#description' => 'permet de définir les animations aos pour chaque region',
       '#open' => false
     );
-
-
-  /**
-   * Construit le formulaire pour les animations AOS.
-   *
-   * @param array $form
-   */
-  function buildClassCssRegion(array &$form) {
-    foreach ($this->regions as $region => $label) {
-      $form['aos_class']['data_aos_' . $region] = [
-        '#type' => 'details',
-        '#title' => 'data-aos value: ' . $label['label'],
-        '#open' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['fade-up'] = [
-        '#type' => 'checkbox',
-        '#title' => 'fade-up',
-        '#value' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['fade-down'] = [
-        '#type' => 'checkbox',
-        '#title' => 'fade-up',
-        '#value' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['fade-right'] = [
-        '#type' => 'checkbox',
-        '#title' => 'fade-up',
-        '#value' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['fade-left'] = [
-        '#type' => 'checkbox',
-        '#title' => 'fade-up',
-        '#value' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['fade-up-right'] = [
-        '#type' => 'checkbox',
-        '#title' => 'fade-up-right',
-        '#value' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['fade-up-left'] = [
-        '#type' => 'checkbox',
-        '#title' => 'fade-up-left',
-        '#value' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['fade-down-right'] = [
-        '#type' => 'checkbox',
-        '#title' => 'fade-down-right',
-        '#value' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['fade-down-left'] = [
-        '#type' => 'checkbox',
-        '#title' => 'fade-down-left',
-        '#value' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['flip-left'] = [
-        '#type' => 'checkbox',
-        '#title' => 'flip-left',
-        '#value' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['flip-right'] = [
-        '#type' => 'checkbox',
-        '#title' => 'flip-right',
-        '#value' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['flip-up'] = [
-        '#type' => 'checkbox',
-        '#title' => 'flip-up',
-        '#value' => false,
-      ];
-      $form['aos_class']['data_aos'.$region]['flip-down'] = [
-        '#type' => 'checkbox',
-        '#title' => 'flip-down',
-        '#value' => false,
-      ];
-    }
-  }
+    $this->buildAosClassRegion($form);
     //
     $form['css_class'] = array(
       '#type' => 'details',
@@ -207,6 +132,107 @@ class Layouts {
       ];
     }
   }
+
+  /**
+   * Construit le formulaire pour les animations AOS.
+   *
+   * @param array $form
+   */
+    function buildAosClassRegion(array &$form) {
+      foreach ($this->regions as $region => $label) {
+
+        $form['aos_class'][$region] = [
+          '#type' => 'details',
+          '#title' => $label['label'],
+          '#open' => false,
+        ];
+        $form['aos_class'][$region]['data_aos'] = [
+          '#title' => 'type d\'animations',
+          '#type' => 'select',
+          '#description' => "Select the data-aos type",
+          '#options' => [
+            'fade'=> 'fade',
+            'fade-up' => 'fade-up',
+            'fade-down' => 'fade-down',
+            'fade-left' => 'fade-left',
+            'fade-right' => 'fade-right',
+            'fade-up-right' => 'fade-up-right',
+            'fade-up-left' => 'fade-up-left',
+            'fade-down-right' => 'fade-down-right',
+            'fade-down-left' => 'fade-down-left',
+            'flip-up' => 'flip-up',
+            'flip-down' => 'flip-down',
+            'flip-left' => 'flip-left',
+            'flip-right' => 'flip-right',
+            'slide-up' => 'slide-up',
+            'slide-down' => 'slide-down',
+            'slide-left' => 'slide-left',
+            'slide-right' => 'slide-right',
+            'zoom-in' => 'zoom-in',
+            'zoom-in-up' => 'zoom-in-up',
+            'zoom-in-down' => 'zoom-in-down',
+            'zoom-in-left' => 'zoom-in-left',
+            'zoom-in-right' => 'zoom-in-right',
+            'zoom-out' => 'zoom-out',
+            'zoom-out-up' => 'zoom-out-up',
+            'zoom-out-down' => 'zoom-out-down',
+            'zoom-out-left' => 'zoom-out-left',
+            'zoom-out-right' => 'zoom-out-right',
+
+          ],
+        ];
+        $form['aos_class'][$region]['data_aos_anchor_placement'] = [
+          '#title' => 'data-aos-anchor-placement',
+          '#type' => 'select',
+          '#description' => 'select the anchor placement',
+          '#options' => [
+            'top-bottom' => 'top-bottom',
+            'top-center' => 'top-center',
+            'top-top' => 'top-top',
+            'center-bottom' => 'center-bottom',
+            'center-center' => 'center-center',
+            'center-top' => 'center-top',
+            'bottom-bottom' => 'bottom-bottom',
+            'bottom-center' => 'bottom-center',
+            'bottom-top' => 'bottom-top',
+          ]
+        ];
+        $form['aos_class'][$region]['data_aos_duration'] = [
+          '#title' => 'data-aos-duration',
+          '#type' => 'number',
+          '#description' => 'define the animation duration (1000, 2000, etc.)',
+          '#default_value' => isset($this->configuration['aos_class'][$region]['data_aos_duration'] ) ? $this->configuration['aos_class'][$region]['data_aos_duration']  : ''
+          //'#default_value' => '1000',
+        ];
+        $form['aos_class'][$region]['data_aos_ease'] = [
+          '#title' => 'data-aos-ease',
+          '#type' => 'select',
+          '#description' => 'select the ease function type',
+          '#options' => [
+            'linear' => 'linear',
+            'ease' => 'ease',
+            'ease-in' => 'ease-in',
+            'ease-out' => 'ease-out',
+            'ease-in-out' => 'ease-in-out',
+            'ease-in-back' => 'ease-in-back',
+            'ease-out-back' => 'ease-out-back',
+            'ease-in-out-back' => 'ease-in-out-back',
+            'ease-in-sine' => 'ease-in-sine',
+            'ease-out-sine' => 'ease-out-sine',
+            'ease-in-out-sine' => 'ease-in-out-sine',
+            'ease-in-quad' => 'ease-in-quad',
+            'ease-out-quad' => 'ease-out-quad',
+            'ease-in-out-quad' => 'ease-in-out-quad',
+            'ease-in-cubic' => 'ease-in-cubic',
+            'ease-out-cubic' => 'ease-out-cubic',
+            'ease-in-out-cubic' => 'ease-in-out-cubic',
+            'ease-in-quart' => 'ease-in-quart',
+            'ease-out-quart' => 'ease-out-quart',
+            'ease-in-out-quart' => 'ease-in-out-quart',
+          ]
+        ];
+      }
+    }
 
   /**
    *
