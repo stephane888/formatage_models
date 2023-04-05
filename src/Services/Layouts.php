@@ -9,18 +9,18 @@ class Layouts {
   protected $configuration = [];
   protected $regions = [];
   protected $BuilderConfigForm;
-  
+
   function __construct(BuilderConfigForm $BuilderConfigForm) {
     $this->BuilderConfigForm = $BuilderConfigForm;
   }
-  
+
   /**
    * Permert d'ajouter un formulaire d'edition.
    *
    * @var array
    */
   protected $forms = [];
-  
+
   /**
    *
    * @return string[]|boolean[]
@@ -33,7 +33,7 @@ class Layouts {
       'save_by_domain' => false
     ];
   }
-  
+
   /**
    *
    * @param \Drupal\formatage_models\Services\Layouts $configuration
@@ -41,12 +41,12 @@ class Layouts {
   function setConfig($configuration) {
     $this->configuration = $configuration;
   }
-  
+
   //
   function setRegions($regions) {
     $this->regions = $regions;
   }
-  
+
   /**
    * Construit le formaulaire de gestion de CSS.
    *
@@ -61,7 +61,7 @@ class Layouts {
       ];
     }
   }
-  
+
   /**
    *
    * @param array $form
@@ -84,6 +84,89 @@ class Layouts {
         '#default_value' => $this->configuration['save_by_domain']
       ];
     }
+    // formulaire pour les animations aos
+    $form['aos_class'] = array(
+      '#type' => 'details',
+      '#title' => 'animations AOS',
+      '#description' => 'permet de définir les animations aos pour chaque region',
+      '#open' => false
+    );
+
+
+  /**
+   * Construit le formulaire pour les animations AOS.
+   *
+   * @param array $form
+   */
+  function buildClassCssRegion(array &$form) {
+    foreach ($this->regions as $region => $label) {
+      $form['aos_class']['data_aos_' . $region] = [
+        '#type' => 'details',
+        '#title' => 'data-aos value: ' . $label['label'],
+        '#open' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['fade-up'] = [
+        '#type' => 'checkbox',
+        '#title' => 'fade-up',
+        '#value' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['fade-down'] = [
+        '#type' => 'checkbox',
+        '#title' => 'fade-up',
+        '#value' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['fade-right'] = [
+        '#type' => 'checkbox',
+        '#title' => 'fade-up',
+        '#value' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['fade-left'] = [
+        '#type' => 'checkbox',
+        '#title' => 'fade-up',
+        '#value' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['fade-up-right'] = [
+        '#type' => 'checkbox',
+        '#title' => 'fade-up-right',
+        '#value' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['fade-up-left'] = [
+        '#type' => 'checkbox',
+        '#title' => 'fade-up-left',
+        '#value' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['fade-down-right'] = [
+        '#type' => 'checkbox',
+        '#title' => 'fade-down-right',
+        '#value' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['fade-down-left'] = [
+        '#type' => 'checkbox',
+        '#title' => 'fade-down-left',
+        '#value' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['flip-left'] = [
+        '#type' => 'checkbox',
+        '#title' => 'flip-left',
+        '#value' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['flip-right'] = [
+        '#type' => 'checkbox',
+        '#title' => 'flip-right',
+        '#value' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['flip-up'] = [
+        '#type' => 'checkbox',
+        '#title' => 'flip-up',
+        '#value' => false,
+      ];
+      $form['aos_class']['data_aos'.$region]['flip-down'] = [
+        '#type' => 'checkbox',
+        '#title' => 'flip-down',
+        '#value' => false,
+      ];
+    }
+  }
     //
     $form['css_class'] = array(
       '#type' => 'details',
@@ -114,7 +197,7 @@ class Layouts {
     $this->BuilderConfigForm->prepareBuildForms($this->configuration, $form);
     // dump($this->configuration);
   }
-  
+
   function buildTagHtmlRegion(array &$form) {
     foreach ($this->regions as $region => $label) {
       $form['tag_html']['region_tag_' . $region] = [
@@ -124,7 +207,7 @@ class Layouts {
       ];
     }
   }
-  
+
   /**
    *
    * @param array $fids
@@ -133,7 +216,7 @@ class Layouts {
   function saveFilePermanent(array $fids) {
     foreach ($fids as $fid) {
       if ($file = \Drupal\file\Entity\File::load($fid)) {
-        
+
         $file->setPermanent();
         $file->save();
         $file_usage = \Drupal::service('file.usage');
@@ -142,7 +225,7 @@ class Layouts {
       }
     }
   }
-  
+
   /**
    * Sauvegarde les données, peut tenir compte du domaine.
    *
@@ -176,7 +259,7 @@ class Layouts {
         'region_tag_' . $region
       ]);
     }
-    
+
     //
     foreach ($configuration as $key => $field) {
       if (!empty($field['builder-form']) && !empty($field['fields'])) {
@@ -191,7 +274,7 @@ class Layouts {
       }
     }
   }
-  
+
   /**
    *
    * @param array $fields
@@ -203,7 +286,7 @@ class Layouts {
       }
     }
   }
-  
+
   /**
    * Enregistre une image comme permanent;
    *
@@ -225,5 +308,5 @@ class Layouts {
       }
     }
   }
-  
+
 }
