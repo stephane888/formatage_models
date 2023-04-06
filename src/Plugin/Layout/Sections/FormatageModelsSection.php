@@ -9,14 +9,14 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 
 class FormatageModelsSection extends FormatageModels implements ContainerFactoryPluginInterface {
-  
+
   /**
    * The styles group plugin manager.
    *
    * @var \Drupal\bootstrap_styles\StylesGroup\StylesGroupManager
    */
   protected $stylesGroupManager;
-  
+
   /**
    *
    * {@inheritdoc}
@@ -27,7 +27,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->stylesGroupManager = $styles_group_manager;
   }
-  
+
   /**
    *
    * {@inheritdoc}
@@ -35,7 +35,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static($configuration, $plugin_id, $plugin_definition, $container->get('plugin.manager.bootstrap_styles_group'));
   }
-  
+
   /**
    * On a remplcer $this->configuration => $build['#settings'].
    *
@@ -52,7 +52,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     if (!empty($this->configuration[$currentDomain])) {
       $build['#settings'] = $this->configuration[$currentDomain];
     }
-    
+
     // classes and attributes.
     if (!isset($build['#attributes']['class'])) {
       $build['#attributes']['class'] = [];
@@ -62,7 +62,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     if (!empty($this->configuration['derivate']['value'])) {
       $build['#attributes']['class'][] = $build['#settings']['derivate']['value'];
     }
-    
+
     // Regions classes and attributes.
     foreach ($this->getPluginDefinition()->getRegionNames() as $region_name) {
       $build[$region_name]['#attributes']['class'] = [
@@ -72,11 +72,20 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
         $build[$region_name]['#attributes']['class'][] = isset($build['#settings']['region_css_' . $region_name]) ? $build['#settings']['region_css_' . $region_name] : $this->configuration['region_css_' . $region_name];
       }
     }
+    // Regions Aos attributes
+    foreach ($this->getPluginDefinition()->getRegionNames() as $region){
+      if (isset($this->configuration['aos_attributes'][$region])) {
+        $build[$region]['#attributes']['data-aos'] = isset($build['#settings'][$region]['data_aos']) ? $build['#settings'][$region]['data_aos'] : $this->configuration['aos_attributes'][$region]['data_aos'] ;
+        $build[$region]['#attributes']['data-aos-anchor-placement'] = isset($build['#settings'][$region]['data_aos_anchor_placement']) ? $build['#settings'][$region]['data_aos_anchor_placement'] : $this->configuration['aos_attributes'][$region]['data_aos_anchor_placement'] ;
+        $build[$region]['#attributes']['data-aos-duration'] = isset($build['#settings'][$region]['data_aos_duration']) ? $build['#settings'][$region]['data_aos_duration'] : $this->configuration['aos_attributes'][$region]['data_aos_duration'] ;
+        $build[$region]['#attributes']['data-aos-ease'] = isset($build['#settings'][$region]['data_aos_ease']) ? $build['#settings'][$region]['data_aos_ease'] : $this->configuration['aos_attributes'][$region]['data_aos_ease'] ;
+      }
+    }
     $build = $this->stylesGroupManager->buildStyles($build, $this->configuration['container_wrapper']['bootstrap_styles']);
-    
+    //dump($build);
     return $build;
   }
-  
+
   /**
    *
    * {@inheritdoc}
@@ -92,7 +101,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
       'css' => ''
     ];
   }
-  
+
   /**
    *
    * {@inheritdoc}
@@ -107,11 +116,11 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     // vise à corriger les erreurs.
     if (empty($this->configuration['container_wrapper']['bootstrap_styles']))
       $this->configuration['container_wrapper']['bootstrap_styles'] = [];
-    
+
     $this->stylesGroupManager->buildStylesFormElements($form['blb_style'], $form_state, $this->configuration['container_wrapper']['bootstrap_styles'], 'bootstrap_layout_builder.styles');
     return $form;
   }
-  
+
   /**
    *
    * {@inheritdoc}
@@ -132,5 +141,5 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     }
     $this->configuration['container_wrapper']['bootstrap_styles'] = $this->stylesGroupManager->submitStylesFormElements($form['blb_style'], $form_state, $style_tab, $this->configuration['container_wrapper']['bootstrap_styles'], 'bootstrap_layout_builder.styles');
   }
-  
+
 }

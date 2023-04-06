@@ -284,10 +284,6 @@ class Layouts {
     // save the animation configuration :
     foreach ($this->regions as $region) {
       $configuration['aos_attributes'] = $form_state->getValue(['aos_attributes']);
-      /*$configuration['aos_attributes'][$region]['data_aos'] = $form_state->getValue(['aos_attributes'][$region]['data_aos']);
-      $configuration['aos_attributes'][$region]['data_aos_anchor_placement'] = $form_state->getValue(['aos_attributes'][$region]['data_aos_anchor_placement']);
-      $configuration['aos_attributes'][$region]['data_aos_duration'] = $form_state->getValue(['aos_attributes'][$region]['data_aos_duration']);
-      $configuration['aos_attributes'][$region]['data_aos_ease'] = $form_state->getValue(['aos_attributes'][$region]['data_aos_ease']);*/
     }
     // Save html tag.
     foreach ($this->regions as $region => $label) {
@@ -345,5 +341,4 @@ class Layouts {
       }
     }
   }
-
 }
