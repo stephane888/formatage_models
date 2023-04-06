@@ -85,13 +85,13 @@ class Layouts {
       ];
     }
     // formulaire pour les animations aos
-    $form['aos_class'] = array(
+    $form['aos_attributes'] = array(
       '#type' => 'details',
       '#title' => 'animations AOS',
       '#description' => 'permet de définir les animations aos pour chaque region',
       '#open' => false
     );
-    $this->buildAosClassRegion($form);
+    $this->buildAosAttributesRegion($form);
     //
     $form['css_class'] = array(
       '#type' => 'details',
@@ -138,17 +138,18 @@ class Layouts {
    *
    * @param array $form
    */
-    function buildAosClassRegion(array &$form) {
+    function buildAosAttributesRegion(array &$form) {
       foreach ($this->regions as $region => $label) {
 
-        $form['aos_class'][$region] = [
+        $form['aos_attributes'][$region] = [
           '#type' => 'details',
           '#title' => $label['label'],
           '#open' => false,
         ];
-        $form['aos_class'][$region]['data_aos'] = [
+        $form['aos_attributes'][$region]['data_aos'] = [
           '#title' => 'type d\'animations',
           '#type' => 'select',
+          '#default_value' => isset($this->configuration['aos_attributes'][$region]['data_aos'] ) ? $this->configuration['aos_attributes'][$region]['data_aos']  : '',
           '#description' => "Select the data-aos type",
           '#options' => [
             'fade'=> 'fade',
@@ -181,10 +182,11 @@ class Layouts {
 
           ],
         ];
-        $form['aos_class'][$region]['data_aos_anchor_placement'] = [
+        $form['aos_attributes'][$region]['data_aos_anchor_placement'] = [
           '#title' => 'data-aos-anchor-placement',
           '#type' => 'select',
           '#description' => 'select the anchor placement',
+          '#default_value' => isset($this->configuration['aos_attributes'][$region]['data_aos_anchor_placement'] ) ? $this->configuration['aos_attributes'][$region]['data_aos_anchor_placement']  : '',
           '#options' => [
             'top-bottom' => 'top-bottom',
             'top-center' => 'top-center',
@@ -197,17 +199,18 @@ class Layouts {
             'bottom-top' => 'bottom-top',
           ]
         ];
-        $form['aos_class'][$region]['data_aos_duration'] = [
+        $form['aos_attributes'][$region]['data_aos_duration'] = [
           '#title' => 'data-aos-duration',
           '#type' => 'number',
           '#description' => 'define the animation duration (1000, 2000, etc.)',
-          '#default_value' => isset($this->configuration['aos_class'][$region]['data_aos_duration'] ) ? $this->configuration['aos_class'][$region]['data_aos_duration']  : ''
+          '#default_value' => isset($this->configuration['aos_attributes'][$region]['data_aos_duration'] ) ? $this->configuration['aos_attributes'][$region]['data_aos_duration']  : ''
           //'#default_value' => '1000',
         ];
-        $form['aos_class'][$region]['data_aos_ease'] = [
+        $form['aos_attributes'][$region]['data_aos_ease'] = [
           '#title' => 'data-aos-ease',
           '#type' => 'select',
           '#description' => 'select the ease function type',
+          '#default_value' => isset($this->configuration['aos_attributes'][$region]['data_aos_ease'] ) ? $this->configuration['data_aos_ease'][$region]['data_aos_ease']  : '',
           '#options' => [
             'linear' => 'linear',
             'ease' => 'ease',
@@ -277,6 +280,14 @@ class Layouts {
         'css_class',
         'region_css_' . $region
       ]);
+    }
+    // save the animation configuration :
+    foreach ($this->regions as $region) {
+      $configuration['aos_attributes'] = $form_state->getValue(['aos_attributes']);
+      /*$configuration['aos_attributes'][$region]['data_aos'] = $form_state->getValue(['aos_attributes'][$region]['data_aos']);
+      $configuration['aos_attributes'][$region]['data_aos_anchor_placement'] = $form_state->getValue(['aos_attributes'][$region]['data_aos_anchor_placement']);
+      $configuration['aos_attributes'][$region]['data_aos_duration'] = $form_state->getValue(['aos_attributes'][$region]['data_aos_duration']);
+      $configuration['aos_attributes'][$region]['data_aos_ease'] = $form_state->getValue(['aos_attributes'][$region]['data_aos_ease']);*/
     }
     // Save html tag.
     foreach ($this->regions as $region => $label) {
