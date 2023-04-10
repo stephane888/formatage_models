@@ -26,9 +26,9 @@ Drupal.behaviors.formatage_models = {
       function (element, id) {
         // element.classList.add("processed-" + id);
         element.addEventListener("click", function (even) {
-          emit_data_vuejs(even, element.getAttribute("data-quick-edit-id"));
+          emit_data_vuejs(even, element.getAttribute("data-quick-edit-id")); 
         });
       }
     );
-  },
+  }, 
 };

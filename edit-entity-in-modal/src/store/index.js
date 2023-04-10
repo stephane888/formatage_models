@@ -209,7 +209,7 @@ export default new Vuex.Store({
           themeName +
           "/css/global-style.css';";
         // style += "body{padding:1rem !important;}";
-        console.log("style", style);
+        // console.log("style", style);
         ckeditorConfig.getImportCss = function () {
           return (
             "@import '" +
@@ -220,6 +220,14 @@ export default new Vuex.Store({
         };
       } else {
         // il est preferable que cela soit un paramettre au niveau du module drupal.
+        ckeditorConfig.getImportCss = function () {
+          return (
+            "@import '" +
+            request.getBaseUrl() +
+            "/themes/contrib/wb_universe/node_modules/%40fortawesome/fontawesome-free/css/all.min.css'; " +
+            style
+          );
+        };
       }
 
       commit("RUN_BUILDING_FIELDS");

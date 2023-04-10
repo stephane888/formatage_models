@@ -5734,7 +5734,13 @@ __webpack_require__(7888);
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8857);
+/* harmony import */ var _fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2169);
+/**
+ * Bug: Les plugins sont charger via cette route : /core/assets/vendor/
+ * Cela est du au fait que il ya un ckeditor qui est chargé à partir de la. (/core/modules/ckeditor/js/ckeditor.js et /core/assets/vendor/ckeditor/ckeditor.js)
+ * ||
+ * fgf
+ */
 
 /* harmony default export */ __webpack_exports__["Z"] = ({
   preEditorConfig() {
@@ -5864,6 +5870,9 @@ __webpack_require__(7888);
     };
   },
   onNamespaceLoaded(CKEDITOR) {
+    // pour empecher ckeditor d'ajouter '<p>'
+    CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
+    //
     CKEDITOR.config.allowedContent = true;
     // CKEDITOR.config.contentsCss =
     // "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
@@ -5888,12 +5897,29 @@ __webpack_require__(7888);
    */
   getImportCss() {
     return "";
+  },
+  /**
+   *  editor-url="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js" permet de specifier l'url externe.
+  NB: Dans la mesure ou la page dispose deja de ckeditor, le module ne chargera plus le CDN, il va utiliser celui qui est present.
+  Consequence, les plugins peuvent ne plus fonctionner sauf s'ils sont definie dans le nouveau plugin.
+  ***
+  Vous pouvez egalment utiliser le plugins local qui se trouve dans /themes/contrib/wb_universe/ckeditor/ckeditor.js" via cet attributes
+  editor-url="/themes/contrib/wb_universe/ckeditor/ckeditor.js".
+  ( pour pallier à ce probleme de ck-editor on va desactivée le module c )
+  ***
+   * @returns 
+   */
+  editorUrl() {
+    //return "https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js";
+    const urlEdit = _fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__/* ["default"].config.getBaseUrl */ .Z.config.getBaseUrl() + "/themes/contrib/wb_universe/ckeditor/ckeditor.js";
+    console.log("urlEdit : ", urlEdit);
+    return urlEdit;
   }
 });
 
 /***/ }),
 
-/***/ 8857:
+/***/ 2169:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6967,8 +6993,8 @@ var drupal_list_string_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var drupal_list_string = (drupal_list_string_component.exports);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/TextareaCkeditor.vue?vue&type=template&id=eb0fd51a&
-var TextareaCkeditorvue_type_template_id_eb0fd51a_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/TextareaCkeditor.vue?vue&type=template&id=5e26e889&
+var TextareaCkeditorvue_type_template_id_5e26e889_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -6985,10 +7011,42 @@ var TextareaCkeditorvue_type_template_id_eb0fd51a_render = function render() {
     scopedSlots: _vm._u([{
       key: "default",
       fn: function (v) {
-        return [_c('legend', [_vm._v(_vm._s(_vm.field.label))]), _c('ckeditor', {
+        return [_c('legend', [_vm._v(_vm._s(_vm.field.label))]), _c('div', {
+          staticClass: "options-config"
+        }, [_c('b-form-checkbox', {
+          attrs: {
+            "switch": "",
+            "size": "md"
+          },
+          model: {
+            value: _vm.select_edit_mode,
+            callback: function ($$v) {
+              _vm.select_edit_mode = $$v;
+            },
+            expression: "select_edit_mode"
+          }
+        }, [_vm._v(" Edit code (Pro) ")])], 1), _vm.select_edit_mode ? _c('b-form-textarea', {
+          attrs: {
+            "placeholder": _vm.field.placeholder,
+            "state": _vm.getValidationState(v),
+            "name": _vm.fullname,
+            "rows": "3",
+            "max-rows": "6"
+          },
+          on: {
+            "input": _vm.input
+          },
+          model: {
+            value: _vm.editorData,
+            callback: function ($$v) {
+              _vm.editorData = $$v;
+            },
+            expression: "editorData"
+          }
+        }) : _vm._e(), !_vm.select_edit_mode ? _c('ckeditor', {
           attrs: {
             "config": _vm.editorConfig,
-            "editor-url": _vm.baseUrl + '/themes/contrib/wb_universe/ckeditor/ckeditor.js'
+            "editor-url": _vm.editorUrl
           },
           on: {
             "input": _vm.input,
@@ -7001,7 +7059,7 @@ var TextareaCkeditorvue_type_template_id_eb0fd51a_render = function render() {
             },
             expression: "editorData"
           }
-        }), v.errors ? _c('div', {
+        }) : _vm._e(), v.errors ? _c('div', {
           staticClass: "text-danger my-2"
         }, _vm._l(v.errors, function (error, ii) {
           return _c('small', {
@@ -7013,7 +7071,7 @@ var TextareaCkeditorvue_type_template_id_eb0fd51a_render = function render() {
     }])
   })], 1);
 };
-var TextareaCkeditorvue_type_template_id_eb0fd51a_staticRenderFns = [];
+var TextareaCkeditorvue_type_template_id_5e26e889_staticRenderFns = [];
 
 // EXTERNAL MODULE: ../components_bootstrapvuejs/node_modules/ckeditor4-vue/dist/ckeditor.js
 var ckeditor = __webpack_require__(4353);
@@ -7061,7 +7119,9 @@ var ckeditor_config = __webpack_require__(3009);
     return {
       editorData: "",
       preEditorConfig: ckeditor_config/* default.preEditorConfig */.Z.preEditorConfig(),
-      timeout: null
+      editorUrl: ckeditor_config/* default.editorUrl */.Z.editorUrl(),
+      timeout: null,
+      select_edit_mode: false
     };
   },
   computed: {
@@ -7137,8 +7197,8 @@ var ckeditor_config = __webpack_require__(3009);
 ;
 var TextareaCkeditor_component = (0,componentNormalizer/* default */.Z)(
   fieldsDrupal_TextareaCkeditorvue_type_script_lang_js_,
-  TextareaCkeditorvue_type_template_id_eb0fd51a_render,
-  TextareaCkeditorvue_type_template_id_eb0fd51a_staticRenderFns,
+  TextareaCkeditorvue_type_template_id_5e26e889_render,
+  TextareaCkeditorvue_type_template_id_5e26e889_staticRenderFns,
   false,
   null,
   null,
@@ -7648,8 +7708,8 @@ var ExperienceTypevue_type_template_id_9396c44e_scoped_true_render = function re
 };
 var ExperienceTypevue_type_template_id_9396c44e_scoped_true_staticRenderFns = [];
 
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/Ressouces/EditExperienceType.vue?vue&type=template&id=1fc57d58&
-var EditExperienceTypevue_type_template_id_1fc57d58_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/Ressouces/EditExperienceType.vue?vue&type=template&id=40a7aedc&
+var EditExperienceTypevue_type_template_id_40a7aedc_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', [_c('div', {
@@ -7839,7 +7899,8 @@ var EditExperienceTypevue_type_template_id_1fc57d58_render = function render() {
     }
   }, [_vm._v(" " + _vm._s(_vm.settings.label_description) + " ")]), _c('ckeditor', {
     attrs: {
-      "config": _vm.editorConfig
+      "config": _vm.editorConfig,
+      "editor-url": _vm.editorUrl
     },
     on: {
       "input": _vm.input,
@@ -7854,7 +7915,7 @@ var EditExperienceTypevue_type_template_id_1fc57d58_render = function render() {
     }
   }), _c('b-form-text', [_vm._v(" p.ex. Organisation d'événements VIP et prise en charge de clients exclusifs. ")])], 1)])], 1)], 1)], 1)]);
 };
-var EditExperienceTypevue_type_template_id_1fc57d58_staticRenderFns = [];
+var EditExperienceTypevue_type_template_id_40a7aedc_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/Ressouces/EditExperienceType.vue?vue&type=script&lang=js&
 
@@ -7882,6 +7943,7 @@ var EditExperienceTypevue_type_template_id_1fc57d58_staticRenderFns = [];
     return {
       editorData: "",
       preEditorConfig: ckeditor_config/* default.preEditorConfig */.Z.preEditorConfig(),
+      editorUrl: ckeditor_config/* default.editorUrl */.Z.editorUrl(),
       timer: null
     };
   },
@@ -7977,8 +8039,8 @@ var EditExperienceTypevue_type_template_id_1fc57d58_staticRenderFns = [];
 ;
 var EditExperienceType_component = (0,componentNormalizer/* default */.Z)(
   Ressouces_EditExperienceTypevue_type_script_lang_js_,
-  EditExperienceTypevue_type_template_id_1fc57d58_render,
-  EditExperienceTypevue_type_template_id_1fc57d58_staticRenderFns,
+  EditExperienceTypevue_type_template_id_40a7aedc_render,
+  EditExperienceTypevue_type_template_id_40a7aedc_staticRenderFns,
   false,
   null,
   null,
@@ -11415,8 +11477,8 @@ var TexTarea_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var TexTarea = (TexTarea_component.exports);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/MoreFieldsIconwTextidget.vue?vue&type=template&id=0abd2cd9&
-var MoreFieldsIconwTextidgetvue_type_template_id_0abd2cd9_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/MoreFieldsIconwTextidget.vue?vue&type=template&id=a51b271a&
+var MoreFieldsIconwTextidgetvue_type_template_id_a51b271a_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -11485,7 +11547,8 @@ var MoreFieldsIconwTextidgetvue_type_template_id_0abd2cd9_render = function rend
             }
           }) : _vm._e(), !_vm.select_edit_mode ? _c('ckeditor', {
             attrs: {
-              "config": _vm.editorConfig
+              "config": _vm.editorConfig,
+              "editor-url": _vm.editorUrl
             },
             on: {
               "namespaceloaded": _vm.onNamespaceLoaded
@@ -11546,10 +11609,13 @@ var MoreFieldsIconwTextidgetvue_type_template_id_0abd2cd9_render = function rend
     }])
   })], 1);
 };
-var MoreFieldsIconwTextidgetvue_type_template_id_0abd2cd9_staticRenderFns = [];
+var MoreFieldsIconwTextidgetvue_type_template_id_a51b271a_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/MoreFieldsIconwTextidget.vue?vue&type=script&lang=js&
 
+/**
+ * @deprecated will be remove before 2x. use MoreFieldsIconDescription
+ */
 
 
 
@@ -11594,7 +11660,8 @@ var MoreFieldsIconwTextidgetvue_type_template_id_0abd2cd9_staticRenderFns = [];
       }],
       timeout: null,
       editorConfig: ckeditor_config/* default.preEditorConfig */.Z.preEditorConfig(),
-      select_edit_mode: false
+      editorUrl: ckeditor_config/* default.editorUrl */.Z.editorUrl(),
+      select_edit_mode: true
     };
   },
   computed: {
@@ -11689,8 +11756,8 @@ var MoreFieldsIconwTextidgetvue_type_template_id_0abd2cd9_staticRenderFns = [];
 ;
 var MoreFieldsIconwTextidget_component = (0,componentNormalizer/* default */.Z)(
   fieldsDrupal_MoreFieldsIconwTextidgetvue_type_script_lang_js_,
-  MoreFieldsIconwTextidgetvue_type_template_id_0abd2cd9_render,
-  MoreFieldsIconwTextidgetvue_type_template_id_0abd2cd9_staticRenderFns,
+  MoreFieldsIconwTextidgetvue_type_template_id_a51b271a_render,
+  MoreFieldsIconwTextidgetvue_type_template_id_a51b271a_staticRenderFns,
   false,
   null,
   null,
@@ -11699,6 +11766,297 @@ var MoreFieldsIconwTextidget_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var MoreFieldsIconwTextidget = (MoreFieldsIconwTextidget_component.exports);
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/MoreFieldsIconwDescriptionidget.vue?vue&type=template&id=11118bed&
+var MoreFieldsIconwDescriptionidgetvue_type_template_id_11118bed_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c('div', {
+    staticClass: "container-field",
+    class: _vm.classCss
+  }, [_c('ValidationProvider', {
+    attrs: {
+      "name": _vm.fullname,
+      "rules": _vm.getRules()
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function (v) {
+        return [_c('b-form-group', {
+          attrs: {
+            "label": _vm.field.label,
+            "description": _vm.field.description
+          }
+        }, [_c('div', {
+          staticClass: "options-config"
+        }, [_c('b-form-checkbox', {
+          attrs: {
+            "switch": "",
+            "size": "md"
+          },
+          model: {
+            value: _vm.select_edit_mode,
+            callback: function ($$v) {
+              _vm.select_edit_mode = $$v;
+            },
+            expression: "select_edit_mode"
+          }
+        }, [_vm._v(" Edit code (Pro) ")])], 1), _vm._l(_vm.input_value, function (value, index) {
+          return _c('div', {
+            key: index,
+            staticClass: "field-item-value"
+          }, [_c('label', [_vm._v(_vm._s(_vm.field.settings.label_1))]), _c('b-form-textarea', {
+            attrs: {
+              "placeholder": _vm.field.placeholder,
+              "state": _vm.getValidationState(v),
+              "name": _vm.fullname + '.value'
+            },
+            model: {
+              value: value.value,
+              callback: function ($$v) {
+                _vm.$set(value, "value", $$v);
+              },
+              expression: "value.value"
+            }
+          }), _c('label', {
+            staticClass: "mt-2"
+          }, [_vm._v(" " + _vm._s(_vm.field.settings.label_2) + " ")]), _vm.select_edit_mode ? _c('b-form-textarea', {
+            attrs: {
+              "placeholder": _vm.field.placeholder,
+              "state": _vm.getValidationState(v),
+              "name": _vm.fullname + '.text',
+              "rows": "3",
+              "max-rows": "6"
+            },
+            model: {
+              value: value.text,
+              callback: function ($$v) {
+                _vm.$set(value, "text", $$v);
+              },
+              expression: "value.text"
+            }
+          }) : _vm._e(), !_vm.select_edit_mode ? _c('ckeditor', {
+            attrs: {
+              "value": value.text,
+              "config": _vm.editorConfig,
+              "editor-url": _vm.editorUrl
+            },
+            on: {
+              "namespaceloaded": _vm.onNamespaceLoaded,
+              "input": function ($event) {
+                return _vm.inputRaw($event, index, 'value');
+              }
+            }
+          }) : _vm._e(), _vm.cardinality ? _c('b-button', {
+            directives: [{
+              name: "b-tooltip",
+              rawName: "v-b-tooltip.v-danger",
+              value: ' Supprimer ',
+              expression: "' Supprimer '",
+              modifiers: {
+                "v-danger": true
+              }
+            }],
+            staticClass: "p-0 border-0 elt-remove",
+            attrs: {
+              "variant": "outline-danger",
+              "size": "sm"
+            },
+            on: {
+              "click": function ($event) {
+                return _vm.remove(index);
+              }
+            }
+          }, [_c('b-icon', {
+            attrs: {
+              "icon": "trash",
+              "font-scale": "1"
+            }
+          })], 1) : _vm._e()], 1);
+        }), v.errors ? _c('div', {
+          staticClass: "text-danger my-2"
+        }, _vm._l(v.errors, function (error, ii) {
+          return _c('small', {
+            key: ii,
+            staticClass: "d-block"
+          }, [_vm._v(" " + _vm._s(error) + " ")]);
+        }), 0) : _vm._e()], 2), _vm.cardinality ? _c('div', [_c('b-button', {
+          attrs: {
+            "size": "sm",
+            "variant": "info"
+          },
+          on: {
+            "click": function ($event) {
+              $event.preventDefault();
+              return _vm.addField.apply(null, arguments);
+            }
+          }
+        }, [_vm._v(" Add more ")])], 1) : _vm._e()];
+      }
+    }])
+  })], 1);
+};
+var MoreFieldsIconwDescriptionidgetvue_type_template_id_11118bed_staticRenderFns = [];
+
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/MoreFieldsIconwDescriptionidget.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+/* harmony default export */ var MoreFieldsIconwDescriptionidgetvue_type_script_lang_js_ = ({
+  name: "MoreFieldsIconwDescriptionidget",
+  components: {
+    ValidationProvider: vee_validate_esm/* ValidationProvider */.d_,
+    ckeditor: (ckeditor_default()).component
+    //ckeditor2: CKEditor.component,
+  },
+
+  props: {
+    classCss: {
+      type: [Array],
+      default: function () {
+        return [];
+      }
+    },
+    field: {
+      type: Object,
+      required: true
+    },
+    model: {
+      type: [Object, Array],
+      required: true
+    },
+    namespaceStore: {
+      type: String,
+      required: true
+    },
+    parentName: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      input_value: [{
+        value: "",
+        text: "",
+        format: "text_html"
+      }],
+      timeout: null,
+      editorConfig: ckeditor_config/* default.preEditorConfig */.Z.preEditorConfig(),
+      editorUrl: ckeditor_config/* default.editorUrl */.Z.editorUrl(),
+      select_edit_mode: true,
+      editorData: "emdf plfg"
+    };
+  },
+  computed: {
+    fullname() {
+      return this.parentName + this.field.name;
+    },
+    cardinality() {
+      if (this.field.cardinality === -1) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  watch: {
+    /**
+     * Lorsque le champs est construt via les boucles dynamique,
+     * le template n'est pas reconstruit ducoup la valeur du precedent champs est concerservé.
+     * On applique ce watch et on verra les resultats.
+     * Cela ne s'execute que dans le cadre d'un watch et permet de ressoudre le probleme.
+     */
+    field() {
+      console.log("watch : ");
+      this.input_value = this.getValue();
+    }
+  },
+  mounted() {
+    // On recupere la valeur par defaut pour chaque construction:
+    this.input_value = this.getValue();
+  },
+  methods: {
+    getValidationState({
+      dirty,
+      validated,
+      valid = null
+    }) {
+      return (dirty || validated) && !valid ? valid : null;
+    },
+    getRules() {
+      return loadField.getRules(this.field);
+    },
+    setValue(vals) {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        if (this.namespaceStore) {
+          this.$store.dispatch(this.namespaceStore + "/setValue", {
+            value: vals,
+            fieldName: this.fullname
+          });
+        } else this.$store.dispatch("setValue", {
+          value: vals,
+          fieldName: this.fullname
+        });
+      }, loadField.timeToWait);
+    },
+    getValue() {
+      if (this.model[this.field.name] && this.model[this.field.name].length > 0) {
+        return this.model[this.field.name];
+      } else return [];
+    },
+    /**
+     * Tentative de resolution.
+     * @param {*} value
+     * @param {*} index
+     * @param {*} property
+     */
+    inputRaw(value, index, property) {
+      console.log("value :", value, "\n index : ", index, "\n property : ", property);
+      // this.input_value[index][property] = value;
+    },
+
+    addField() {
+      const newEntry = {
+        value: "",
+        text: "",
+        format: "text_html"
+      };
+      this.input_value.push(newEntry);
+    },
+    remove(index) {
+      this.input_value.splice(index, 1);
+    },
+    onNamespaceLoaded(CKEDITOR) {
+      ckeditor_config/* default.onNamespaceLoaded */.Z.onNamespaceLoaded(CKEDITOR);
+    }
+  }
+});
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/MoreFieldsIconwDescriptionidget.vue?vue&type=script&lang=js&
+ /* harmony default export */ var fieldsDrupal_MoreFieldsIconwDescriptionidgetvue_type_script_lang_js_ = (MoreFieldsIconwDescriptionidgetvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/MoreFieldsIconwDescriptionidget.vue
+
+
+
+
+
+/* normalize component */
+;
+var MoreFieldsIconwDescriptionidget_component = (0,componentNormalizer/* default */.Z)(
+  fieldsDrupal_MoreFieldsIconwDescriptionidgetvue_type_script_lang_js_,
+  MoreFieldsIconwDescriptionidgetvue_type_template_id_11118bed_render,
+  MoreFieldsIconwDescriptionidgetvue_type_template_id_11118bed_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var MoreFieldsIconwDescriptionidget = (MoreFieldsIconwDescriptionidget_component.exports);
 ;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/Containers/NoContainer.vue?vue&type=template&id=ecdce68a&
 var NoContainervue_type_template_id_ecdce68a_render = function render() {
   var _vm = this,
@@ -11913,6 +12271,8 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
 
 
 
+// @deprecated will be remove before 2x. use MoreFieldsIconDescription
+
 
 
 // load Container
@@ -12016,8 +12376,12 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
       case "string_textarea":
         template = TexTarea;
         break;
+      // @deprecated will be remove before 2x. use MoreFieldsIconDescription
       case "more_fields_icon_text_widget":
         template = MoreFieldsIconwTextidget;
+        break;
+      case "more_fields_icon_text_description_widget":
+        template = MoreFieldsIconwDescriptionidget;
         break;
       default:
         console.log(" Champs sans rendu : ", key, "\n field : ", field);
@@ -12068,7 +12432,7 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
 "use strict";
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6352);
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8857);
+/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2169);
 
 
 /**
@@ -29430,8 +29794,8 @@ var EditEntity_component = (0,componentNormalizer/* default */.Z)(
 /* harmony default export */ var EditEntity = (EditEntity_component.exports);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/js/FormUttilities.js
 var FormUttilities = __webpack_require__(9351);
-// EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/loadField.js + 124 modules
-var loadField = __webpack_require__(8857);
+// EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/loadField.js + 128 modules
+var loadField = __webpack_require__(2169);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/Ressouces/ckeditor-config.js
 var ckeditor_config = __webpack_require__(3009);
 ;// CONCATENATED MODULE: ./src/store/index.js
@@ -29624,12 +29988,15 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default().use(vuex_esm);
         style += "@import '" + window.location.protocol + "//" + window.location.host + "/themes/custom/" + themeName + "/css/vendor-style.css';";
         style += "@import '" + window.location.protocol + "//" + window.location.host + "/themes/custom/" + themeName + "/css/global-style.css';";
         // style += "body{padding:1rem !important;}";
-        console.log("style", style);
+        // console.log("style", style);
         ckeditor_config/* default.getImportCss */.Z.getImportCss = function () {
           return "@import '" + request.getBaseUrl() + "/themes/contrib/wb_universe/node_modules/%40fortawesome/fontawesome-free/css/all.min.css'; " + style;
         };
       } else {
         // il est preferable que cela soit un paramettre au niveau du module drupal.
+        ckeditor_config/* default.getImportCss */.Z.getImportCss = function () {
+          return "@import '" + request.getBaseUrl() + "/themes/contrib/wb_universe/node_modules/%40fortawesome/fontawesome-free/css/all.min.css'; " + style;
+        };
       }
       commit("RUN_BUILDING_FIELDS");
       if (state.currentEntityForm.length) {
