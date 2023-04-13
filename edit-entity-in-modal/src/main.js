@@ -18,7 +18,7 @@ Vue.component("ContainerPage", ContainerPage);
 import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
 Vue.component("ValidationObserver", ValidationObserver);
 Vue.component("ValidationProvider", ValidationProvider);
-//import "drupal-vuejs/src/App/components/vee-validate-custom.js";
+// import "drupal-vuejs/src/App/components/vee-validate-custom.js";
 import { required, email, alpha } from "vee-validate/dist/rules";
 extend("required", {
   ...required,

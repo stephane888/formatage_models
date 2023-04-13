@@ -62,6 +62,12 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     if (!empty($this->configuration['derivate']['value'])) {
       $build['#attributes']['class'][] = $build['#settings']['derivate']['value'];
     }
+    // cover ::before
+    if (!empty($build['#settings']['cover_section']['active'])) {
+      $build['#attributes']['class'][] = $build['#settings']['cover_section']['active'];
+      $build['#attributes']['class'][] = $build['#settings']['cover_section']['model'];
+      $build['#attributes']['class'][] = $build['#settings']['cover_section']['opacity'];
+    }
     
     // Regions classes and attributes.
     foreach ($this->getPluginDefinition()->getRegionNames() as $region_name) {
@@ -73,10 +79,6 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
       }
     }
     // Regions Aos attributes
-    // if ($this->pluginId == 'vixcon_event_section') {
-    // dump($this->configuration['aos_attributes']);
-    // dump($build);
-    // }
     foreach ($this->getPluginDefinition()->getRegionNames() as $region) {
       if (isset($this->configuration['aos_attributes'][$region]) && !empty($this->configuration['aos_attributes'][$region]['data_aos'])) {
         $build[$region]['#attributes']['data-aos'] = $this->configuration['aos_attributes'][$region]['data_aos'];
@@ -88,6 +90,8 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
           $build[$region]['#attributes']['data-aos-easing'] = $this->configuration['aos_attributes'][$region]['data_aos_ease'];
       }
     }
+    
+    // bootstrap styles.
     $build = $this->stylesGroupManager->buildStyles($build, $this->configuration['container_wrapper']['bootstrap_styles']);
     // dump($build);
     return $build;

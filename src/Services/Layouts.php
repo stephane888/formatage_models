@@ -84,14 +84,6 @@ class Layouts {
         '#default_value' => $this->configuration['save_by_domain']
       ];
     }
-    // formulaire pour les animations aos
-    $form['aos_attributes'] = array(
-      '#type' => 'details',
-      '#title' => 'animations AOS',
-      '#description' => 'permet de définir les animations aos pour chaque region',
-      '#open' => false
-    );
-    $this->buildAosAttributesRegion($form);
     //
     $form['css_class'] = array(
       '#type' => 'details',
@@ -112,6 +104,21 @@ class Layouts {
         '#empty_option' => '- Select -'
       ];
     $this->buildClassCssRegion($form);
+    // formulaire pour les animations aos
+    $form['aos_attributes'] = array(
+      '#type' => 'details',
+      '#title' => 'animations AOS',
+      '#description' => 'permet de définir les animations aos pour chaque region',
+      '#open' => false
+    );
+    $this->buildAosAttributesRegion($form);
+    // permet de gerer le cover::before.
+    $form['cover_section'] = array(
+      '#type' => 'details',
+      '#title' => 'Gerer le cover',
+      '#open' => false
+    );
+    $this->buildFieldsCovers($form);
     //
     $form['tag_html'] = array(
       '#type' => 'details',
@@ -121,6 +128,44 @@ class Layouts {
     $this->buildTagHtmlRegion($form);
     $this->BuilderConfigForm->prepareBuildForms($this->configuration, $form);
     // dump($this->configuration);
+  }
+  
+  /**
+   *
+   * @param array $form
+   */
+  function buildFieldsCovers(array &$form) {
+    $form['cover_section']['active'] = [
+      '#type' => 'checkbox',
+      '#title' => 'Activé le cover ? ',
+      '#default_value' => isset($this->configuration['cover_section']['active']) ? $this->configuration['cover_section']['active'] : '',
+      '#return_value' => 'cover-bg-theme'
+    ];
+    $form['cover_section']['model'] = [
+      '#type' => 'select',
+      '#title' => 'Cover color',
+      '#default_value' => isset($this->configuration['cover_section']['model']) ? $this->configuration['cover_section']['model'] : '',
+      '#options' => [
+        '' => 'theme background',
+        'cover-light' => 'Light',
+        'cover-dark' => 'Dark',
+        'cover-primary' => 'Primary'
+      ]
+    ];
+    $form['cover_section']['opacity'] = [
+      '#type' => 'select',
+      '#title' => 'Opacity value',
+      '#default_value' => isset($this->configuration['cover_section']['opacity']) ? $this->configuration['cover_section']['opacity'] : '',
+      '#options' => [
+        '' => 'Aucun',
+        'opacity-before-092' => '0.92',
+        'opacity-before-088' => '0.88',
+        'opacity-before-07' => '0.70',
+        'opacity-before-055' => '0.55',
+        'opacity-before-03' => '0.30',
+        'opacity-before-015' => '0.15'
+      ]
+    ];
   }
   
   function buildTagHtmlRegion(array &$form) {
@@ -296,7 +341,10 @@ class Layouts {
         'region_tag_' . $region
       ]);
     }
-    
+    // save cover_section
+    $configuration['cover_section'] = $form_state->getValue([
+      'cover_section'
+    ]);
     //
     foreach ($configuration as $key => $field) {
       if (!empty($field['builder-form']) && !empty($field['fields'])) {
