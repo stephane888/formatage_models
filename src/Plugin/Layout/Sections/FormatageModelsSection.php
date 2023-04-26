@@ -79,15 +79,18 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
       }
     }
     // Regions Aos attributes
-    foreach ($this->getPluginDefinition()->getRegionNames() as $region) {
-      if (isset($this->configuration['aos_attributes'][$region]) && !empty($this->configuration['aos_attributes'][$region]['data_aos'])) {
-        $build[$region]['#attributes']['data-aos'] = $this->configuration['aos_attributes'][$region]['data_aos'];
-        if (!empty($this->configuration['aos_attributes'][$region]['data_aos_anchor_placement']))
-          $build[$region]['#attributes']['data-aos-anchor-placement'] = $this->configuration['aos_attributes'][$region]['data_aos_anchor_placement'];
-        if (!empty($this->configuration['aos_attributes'][$region]['data_aos_duration']))
-          $build[$region]['#attributes']['data-aos-duration'] = $this->configuration['aos_attributes'][$region]['data_aos_duration'];
-        if (!empty($this->configuration['aos_attributes'][$region]['data_aos_ease']))
-          $build[$region]['#attributes']['data-aos-easing'] = $this->configuration['aos_attributes'][$region]['data_aos_ease'];
+    // on n'affiche pas en mode edition
+    if (!str_contains(\Drupal::routeMatch()->getRouteName(), 'layout_builder.')) {
+      foreach ($this->getPluginDefinition()->getRegionNames() as $region) {
+        if (isset($this->configuration['aos_attributes'][$region]) && !empty($this->configuration['aos_attributes'][$region]['data_aos'])) {
+          $build[$region]['#attributes']['data-aos'] = $this->configuration['aos_attributes'][$region]['data_aos'];
+          if (!empty($this->configuration['aos_attributes'][$region]['data_aos_anchor_placement']))
+            $build[$region]['#attributes']['data-aos-anchor-placement'] = $this->configuration['aos_attributes'][$region]['data_aos_anchor_placement'];
+          if (!empty($this->configuration['aos_attributes'][$region]['data_aos_duration']))
+            $build[$region]['#attributes']['data-aos-duration'] = $this->configuration['aos_attributes'][$region]['data_aos_duration'];
+          if (!empty($this->configuration['aos_attributes'][$region]['data_aos_ease']))
+            $build[$region]['#attributes']['data-aos-easing'] = $this->configuration['aos_attributes'][$region]['data_aos_ease'];
+        }
       }
     }
     

@@ -44,6 +44,8 @@ class TitreDescription extends FormatageModelsSection {
     return parent::defaultConfiguration() + [
       'load_libray' => true,
       "css" => 'container',
+      'region_tag_title' => 'h2',
+      'region_css_title' => 'h2',
       "derivate" => [
         'value' => 'text-center',
         'options' => [
