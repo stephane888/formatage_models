@@ -8,7 +8,7 @@
 	<section {{attributes.addClass('appson-section-handler')}}>
 		<div class="container">
 			<div class="slider-content d-flex flex-center">
-				<div class="col-md-8 col-xs-12 d-flex flex-center">
+				<div class=" col-xs-12 d-flex flex-center {% if settings.css_left %}{{settings.css_left}}{% else %}col-md-8{% endif %}">
 					<div class="slider-nner">
 						{% if content.title %}
 							<{{settings.region_tag_title}} {{region_attributes.title.addClass('title')}}>
@@ -32,9 +32,9 @@
 						{% endif %}
 					</div>
 				</div>
-				<div class="col-md-3 d-none d-md-flex align-items-end">
+				<div class=" align-items-end {% if settings.css_right %}{{settings.css_right}}{% else %} col-md-3 d-none d-md-flex {% endif %}">
 					{% if content.image %}
-						<div class="slider-m-img">
+						<div {{region_attributes.image.addClass('slider-m-img')}}>
 							{{ content.image }}
 						</div>
 					{% endif %}

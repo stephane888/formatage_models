@@ -4,6 +4,7 @@ namespace Drupal\formatage_models\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * A very advanced custom layout.
@@ -63,9 +64,32 @@ class FormatageModelsHeroAson extends FormatageModelsSection {
     return $build;
   }
   
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form = parent::buildConfigurationForm($form, $form_state);
+    $form['css_left'] = [
+      '#type' => 'textfield',
+      '#title' => 'css left',
+      '#default_value' => $this->configuration['css_left']
+    ];
+    $form['css_right'] = [
+      '#type' => 'textfield',
+      '#title' => 'css right',
+      '#default_value' => $this->configuration['css_right']
+    ];
+    return $form;
+  }
+  
+  public function submitConfigurationForm(array &$form, $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['css_left'] = $form_state->getValue('css_left');
+    $this->configuration['css_right'] = $form_state->getValue('css_right');
+  }
+  
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
       'css' => '',
+      'css_left' => "col-md-8",
+      'css_right' => "col-md-3 d-none d-md-flex",
       'region_tag_title' => 'h2',
       'sf' => [
         'builder-form' => true,
