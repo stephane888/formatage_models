@@ -184,6 +184,7 @@ class Layouts {
    * @param array $form
    */
   function buildAosAttributesRegion(array &$form) {
+    // dump($this->configuration['aos_attributes']);
     foreach ($this->regions as $region => $label) {
       
       $form['aos_attributes'][$region] = [
@@ -248,7 +249,10 @@ class Layouts {
       $form['aos_attributes'][$region]['data_aos_duration'] = [
         '#title' => 'data-aos-duration',
         '#type' => 'number',
-        '#description' => 'define the animation duration (1000, 2000, etc.)',
+        '#min' => 100,
+        '#max' => 3000,
+        '#step' => 50,
+        '#description' => 'define the animation duration from 100 to 3000, with step 50',
         '#default_value' => isset($this->configuration['aos_attributes'][$region]['data_aos_duration']) ? $this->configuration['aos_attributes'][$region]['data_aos_duration'] : ''
         // '#default_value' => '1000',
       ];
@@ -256,7 +260,7 @@ class Layouts {
         '#title' => 'data-aos-ease',
         '#type' => 'select',
         '#description' => 'select the ease function type',
-        '#default_value' => isset($this->configuration['aos_attributes'][$region]['data_aos_ease']) ? $this->configuration['data_aos_ease'][$region]['data_aos_ease'] : '',
+        '#default_value' => isset($this->configuration['aos_attributes'][$region]['data_aos_ease']) ? $this->configuration['aos_attributes'][$region]['data_aos_ease'] : '',
         '#options' => [
           '' => 'Aucun',
           'linear' => 'linear',
