@@ -1,5 +1,5 @@
 {% if content %}
-	<section id="hero" {{attributes.addClass('ac-hero')}}>
+	<section {{attributes.addClass('ac-hero')}}>
 		<div class="container">
 			<div class="row">
 				<div class="{{ settings.css_left }} content-text">
@@ -20,7 +20,9 @@
                             </div>
                         {% endif %}
                         {% if content.button|has_value %}
-                            {{ content.button }}
+                        	<div {{ region_attributes.button.addClass('button') }}>
+                                {{ content.button }}
+                            </div>
                         {% endif %}
 					</div>
 				</div>
