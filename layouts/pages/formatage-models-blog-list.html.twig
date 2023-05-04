@@ -12,28 +12,25 @@
     			{% if content.left or content.lefttile %}
         			<div class="{{settings.css_left}}">
         				<div {{ region_attributes.left.addClass(['left']) }}>
-        					{% if content.lefttile %}
+        					{% if content.lefttile|has_value %}
         						<{{settings.region_tag_lefttile}} {{ region_attributes.lefttile.addClass(['lefttile']) }}>
         							{{ content.lefttile }}
         						</{{settings.region_tag_lefttile}}>
         					{% endif %}
-        					{% if content.left %}
-        						<div {{ region_attributes.left.addClass(['left']) }}>{{ content.left }}</div>
-        					{% endif %}        					
+        					{{ content.left }}       					
         				</div>
         			</div>
     			{% endif %}
     			{% if content.right or content.righttile %}
     				<div class="{{settings.css_right}}">
     					<div {{ region_attributes.right.addClass(['right']) }}>
-        					{% if content.righttile %}
+        					{% if content.righttile|has_value %}
         						<{{settings.region_tag_righttile}} {{ region_attributes.righttile.addClass(['righttile']) }}>
         							{{ content.righttile }}
         						</{{settings.region_tag_righttile}}>
         					{% endif %}
-        					{% if content.right %}
-        						<div {{ region_attributes.right.addClass(['right']) }}>{{ content.right }}</div>
-        					{% endif %}
+        					{{ content.right }}
+        					
         				</div>
     				</div>    				
     			{% endif %}
