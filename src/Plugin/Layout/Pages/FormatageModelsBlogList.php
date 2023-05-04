@@ -2,7 +2,6 @@
 
 namespace Drupal\formatage_models\Plugin\Layout\Pages;
 
-use Drupal\formatage_models\Plugin\Layout\FormatageModels;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -35,7 +34,7 @@ use Drupal\Core\Form\FormStateInterface;
  *   }
  * )
  */
-class FormatageModelsBlogList extends FormatageModels {
+class FormatageModelsBlogList extends FormatageModelsPages {
   
   /**
    *
