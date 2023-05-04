@@ -9,7 +9,7 @@
     					</div>
     				</div>				
     			{% endif %}
-    			{% if content.left %}
+    			{% if content.left or content.lefttile %}
         			<div class="{{settings.css_left}}">
         				<div {{ region_attributes.left.addClass(['left']) }}>
         					{% if content.lefttile %}
@@ -17,11 +17,13 @@
         							{{ content.lefttile }}
         						</{{settings.region_tag_lefttile}}>
         					{% endif %}
-        					{{ content.left }}
+        					{% if content.left %}
+        						<div {{ region_attributes.left.addClass(['left']) }}>{{ content.left }}</div>
+        					{% endif %}        					
         				</div>
         			</div>
     			{% endif %}
-    			{% if content.right %}
+    			{% if content.right or content.righttile %}
     				<div class="{{settings.css_right}}">
     					<div {{ region_attributes.right.addClass(['right']) }}>
         					{% if content.righttile %}
@@ -29,7 +31,9 @@
         							{{ content.righttile }}
         						</{{settings.region_tag_righttile}}>
         					{% endif %}
-        					{{ content.right }}
+        					{% if content.right %}
+        						<div {{ region_attributes.right.addClass(['right']) }}>{{ content.right }}</div>
+        					{% endif %}
         				</div>
     				</div>    				
     			{% endif %}
