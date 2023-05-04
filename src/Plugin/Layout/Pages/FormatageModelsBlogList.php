@@ -45,7 +45,7 @@ class FormatageModelsBlogList extends FormatageModelsPages {
       'css_left' => 'col-lg-8',
       'css_right' => 'col-lg-4',
       'css_top' => 'col-lg-12',
-      'css_row' => '',
+      'css_row' => 'container mx-auto',
       'region_tag_lefttile' => 'h2',
       'region_tag_righttile' => 'h2'
     ] + parent::defaultConfiguration();

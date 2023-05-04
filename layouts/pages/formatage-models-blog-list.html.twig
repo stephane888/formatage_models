@@ -1,31 +1,39 @@
 {% if content %}
 	<div {{ attributes.addClass(['home-blog']) }}>
-		<div class="row {{settings.css_row}}">
-			{% if content.top %}
-				<div {{ region_attributes.top.addClass(['top', settings.css_top]) }}>
-					{{ content.top }}
-				</div>
-			{% endif %}
-			{% if content.left %}
-				<div {{ region_attributes.left.addClass(['left', settings.css_left]) }}>
-					{% if content.lefttile %}
-						<{{settings.region_tag_lefttile}} {{ region_attributes.lefttile.addClass(['lefttile']) }}>
-							{{ content.lefttile }}
-						</{{settings.region_tag_lefttile}}>
-					{% endif %}
-					{{ content.left }}
-				</div>
-			{% endif %}
-			{% if content.right %}
-				<div {{ region_attributes.right.addClass(['right', settings.css_right]) }}>
-					{% if content.righttile %}
-						<{{settings.region_tag_righttile}} {{ region_attributes.righttile.addClass(['righttile']) }}>
-							{{ content.righttile }}
-						</{{settings.region_tag_righttile}}>
-					{% endif %}
-					{{ content.right }}
-				</div>
-			{% endif %}
+		<div class="{{settings.css_row}}">
+			<div class="row">
+				{% if content.top|has_value %}
+    				<div class="{{settings.css_top}}">
+    					<div {{ region_attributes.top.addClass(['top']) }}>
+    					    {{ content.top }}
+    					</div>
+    				</div>				
+    			{% endif %}
+    			{% if content.left %}
+        			<div class="{{settings.css_left}}">
+        				<div {{ region_attributes.left.addClass(['left']) }}>
+        					{% if content.lefttile %}
+        						<{{settings.region_tag_lefttile}} {{ region_attributes.lefttile.addClass(['lefttile']) }}>
+        							{{ content.lefttile }}
+        						</{{settings.region_tag_lefttile}}>
+        					{% endif %}
+        					{{ content.left }}
+        				</div>
+        			</div>
+    			{% endif %}
+    			{% if content.right %}
+    				<div class="{{settings.css_right}}">
+    					<div {{ region_attributes.right.addClass(['right']) }}>
+        					{% if content.righttile %}
+        						<{{settings.region_tag_righttile}} {{ region_attributes.righttile.addClass(['righttile']) }}>
+        							{{ content.righttile }}
+        						</{{settings.region_tag_righttile}}>
+        					{% endif %}
+        					{{ content.right }}
+        				</div>
+    				</div>    				
+    			{% endif %}
+			</div>
 		</div>
 	</div>
 {% endif %}
