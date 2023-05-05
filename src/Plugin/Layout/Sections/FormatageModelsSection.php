@@ -90,6 +90,8 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
             $build[$region]['#attributes']['data-aos-duration'] = $this->configuration['aos_attributes'][$region]['data_aos_duration'];
           if (!empty($this->configuration['aos_attributes'][$region]['data_aos_ease']))
             $build[$region]['#attributes']['data-aos-easing'] = $this->configuration['aos_attributes'][$region]['data_aos_ease'];
+          if (!empty($this->configuration['aos_attributes'][$region]['data_aos_delay']))
+            $build[$region]['#attributes']['data-aos-delay'] = $this->configuration['aos_attributes'][$region]['data_aos_delay'];
         }
       }
     }

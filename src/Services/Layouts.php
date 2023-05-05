@@ -254,7 +254,15 @@ class Layouts {
         '#step' => 50,
         '#description' => 'define the animation duration from 100 to 3000, with step 50',
         '#default_value' => isset($this->configuration['aos_attributes'][$region]['data_aos_duration']) ? $this->configuration['aos_attributes'][$region]['data_aos_duration'] : ''
-        // '#default_value' => '1000',
+      ];
+      $form['aos_attributes'][$region]['data_aos_delay'] = [
+        '#title' => 'data_aos_delay',
+        '#type' => 'number',
+        '#min' => 100,
+        '#max' => 3000,
+        '#step' => 50,
+        '#description' => 'define the animation delay from 100 to 3000, with step 50',
+        '#default_value' => isset($this->configuration['aos_attributes'][$region]['data_aos_delay']) ? $this->configuration['aos_attributes'][$region]['data_aos_delay'] : ''
       ];
       $form['aos_attributes'][$region]['data_aos_ease'] = [
         '#title' => 'data-aos-ease',
