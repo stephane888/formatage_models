@@ -6,6 +6,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\Entity\File;
 
 class Layouts {
+  use DefaultClass;
   protected $configuration = [];
   protected $regions = [];
   protected $BuilderConfigForm;
@@ -119,6 +120,16 @@ class Layouts {
       '#open' => false
     );
     $this->buildFieldsCovers($form);
+    
+    // Class par defaut.
+    $form['default_class'] = array(
+      '#type' => 'details',
+      '#title' => 'Default class',
+      '#open' => false
+      // '#description' => "Cela permet d'appliquer les classes par defaut au
+      // container ou aux regions"
+    );
+    $this->buildFieldsDefaultClass($form['default_class']);
     //
     $form['tag_html'] = array(
       '#type' => 'details',
@@ -131,6 +142,63 @@ class Layouts {
   }
   
   /**
+   * Permet de construire les champs liée au classes par defaut.
+   *
+   * @param array $form
+   */
+  function buildFieldsDefaultClass(array &$form) {
+    $form['titre1'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'small',
+      '#value' => 'Class pour le container',
+      '#attributes' => [
+        'class' => [
+          'pb-2',
+          'd-block'
+        ]
+      ]
+    ];
+    $configuration = !isset($this->configuration['default_class']) ? $this->configuration['default_class'] : [];
+    $this->backgroundPosition($form, $configuration);
+    $this->spaces($form, $configuration);
+    $this->borderRadius($form, $configuration);
+    $this->boxShadow($form, $configuration);
+    $this->containerWidth($form, $configuration);
+    $form['titre2'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'small',
+      '#value' => 'Class pour les regions',
+      '#attributes' => [
+        'class' => [
+          'pt-3',
+          'pb-2',
+          'd-block'
+        ]
+      ]
+    ];
+    $form['regions'] = [
+      '#type' => 'details',
+      '#title' => 'Regions',
+      '#open' => false
+    ];
+    
+    foreach ($this->regions as $region => $label) {
+      $configuration = !isset($this->configuration['default_class']['regions'][$region]) ? $this->configuration['default_class']['regions'][$region] : [];
+      $form['regions'][$region] = [
+        '#type' => 'details',
+        '#title' => $label['label'],
+        '#open' => false
+      ];
+      $this->backgroundPosition($form['regions'][$region], $configuration);
+      $this->spaces($form['regions'][$region], $configuration);
+      $this->borderRadius($form['regions'][$region], $configuration);
+      $this->boxShadow($form['regions'][$region], $configuration);
+      $this->containerWidth($form['regions'][$region], $configuration);
+    }
+  }
+  
+  /**
+   * permet de gerer les champs du cover::before.
    *
    * @param array $form
    */
@@ -146,10 +214,10 @@ class Layouts {
       '#title' => 'Cover color',
       '#default_value' => isset($this->configuration['cover_section']['model']) ? $this->configuration['cover_section']['model'] : '',
       '#options' => [
-        '' => 'theme background',
-        'cover-light' => 'Light',
-        'cover-dark' => 'Dark',
-        'cover-primary' => 'Primary'
+        '' => 'Theme color background',
+        'cover-light' => 'Color white',
+        'cover-dark' => 'Color dark',
+        'cover-primary' => 'Theme color Primary'
       ]
     ];
     $form['cover_section']['opacity'] = [
@@ -356,6 +424,10 @@ class Layouts {
     // save cover_section
     $configuration['cover_section'] = $form_state->getValue([
       'cover_section'
+    ]);
+    // save default class $this->configuration['default_class']
+    $configuration['default_class'] = $form_state->getValue([
+      'default_class'
     ]);
     //
     foreach ($configuration as $key => $field) {

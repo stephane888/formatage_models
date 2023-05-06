@@ -70,7 +70,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     }
     
     // Regions classes and attributes.
-    foreach ($this->getPluginDefinition()->getRegionNames() as $region_name) {
+    foreach ($regions as $region_name => $content) {
       $build[$region_name]['#attributes']['class'] = [
         'layout-region'
       ];
@@ -78,10 +78,12 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
         $build[$region_name]['#attributes']['class'][] = isset($build['#settings']['region_css_' . $region_name]) ? $build['#settings']['region_css_' . $region_name] : $this->configuration['region_css_' . $region_name];
       }
     }
+    
     // Regions Aos attributes
     // on n'affiche pas en mode edition
     if (!str_contains(\Drupal::routeMatch()->getRouteName(), 'layout_builder.')) {
-      foreach ($this->getPluginDefinition()->getRegionNames() as $region) {
+      // Load AOS attributes.
+      foreach ($regions as $region => $content) {
         if (isset($this->configuration['aos_attributes'][$region]) && !empty($this->configuration['aos_attributes'][$region]['data_aos'])) {
           $build[$region]['#attributes']['data-aos'] = $this->configuration['aos_attributes'][$region]['data_aos'];
           if (!empty($this->configuration['aos_attributes'][$region]['data_aos_anchor_placement']))
@@ -94,12 +96,44 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
             $build[$region]['#attributes']['data-aos-delay'] = $this->configuration['aos_attributes'][$region]['data_aos_delay'];
         }
       }
+      // Load Default class.
+      if (!empty($this->configuration['default_class'])) {
+        // dump($this->configuration['default_class']);
+        foreach ($this->configuration['default_class'] as $key => $groups) {
+          if ($key == 'regions') {
+            foreach ($regions as $region => $content) {
+              foreach ($groups[$region] as $groups_regions) {
+                $build[$region]['#attributes']['class'][] = $this->getClassNameOnGroup($groups_regions);
+              }
+            }
+          }
+          else {
+            $build['#attributes']['class'][] = $this->getClassNameOnGroup($groups);
+          }
+        }
+      }
     }
     
     // bootstrap styles.
     $build = $this->stylesGroupManager->buildStyles($build, $this->configuration['container_wrapper']['bootstrap_styles']);
     // dump($build);
     return $build;
+  }
+  
+  protected function getClassNameOnGroup(array $groups) {
+    $className = '';
+    foreach ($groups as $values) {
+      if (is_array($values)) {
+        foreach ($values as $key => $value) {
+          if ($value)
+            $className .= ' ' . $key;
+        }
+      }
+      elseif (!empty($values)) {
+        $className .= ' ' . $values;
+      }
+    }
+    return $className;
   }
   
   /**
