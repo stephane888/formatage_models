@@ -13,6 +13,7 @@
     height: 40px;    
     font-size: 2rem;
     transition: all 1s;
+    opacity:0;
 }
 /**
  * On affiche uniquement le premier niveau, on masque les sous elements.
@@ -23,4 +24,5 @@
     background: rgb(255 255 255 / 85%);  
     z-index: 9999;      
     cursor:pointer;
+    opacity:1;
 }
