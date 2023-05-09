@@ -68,9 +68,15 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
       $build['#attributes']['class'][] = $build['#settings']['cover_section']['model'];
       $build['#attributes']['class'][] = $build['#settings']['cover_section']['opacity'];
     }
-    
+    /**
+     * On utilise ces regions, car " $regions" peut contenis des regions non
+     * valide, i.e qui a été suppprimer du modele.
+     *
+     * @var array $current_regions
+     */
+    $current_regions = $this->getPluginDefinition()->getRegionNames();
     // Regions classes and attributes.
-    foreach ($regions as $region_name => $content) {
+    foreach ($current_regions as $region_name) {
       $build[$region_name]['#attributes']['class'] = [
         'layout-region'
       ];
@@ -83,7 +89,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
     // on n'affiche pas en mode edition
     if (!str_contains(\Drupal::routeMatch()->getRouteName(), 'layout_builder.')) {
       // Load AOS attributes.
-      foreach ($regions as $region => $content) {
+      foreach ($current_regions as $region) {
         if (isset($this->configuration['aos_attributes'][$region]) && !empty($this->configuration['aos_attributes'][$region]['data_aos'])) {
           $build[$region]['#attributes']['data-aos'] = $this->configuration['aos_attributes'][$region]['data_aos'];
           if (!empty($this->configuration['aos_attributes'][$region]['data_aos_anchor_placement']))
@@ -101,7 +107,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
         // dump($this->configuration['default_class']);
         foreach ($this->configuration['default_class'] as $key => $groups) {
           if ($key == 'regions') {
-            foreach ($regions as $region => $content) {
+            foreach ($current_regions as $region) {
               foreach ($groups[$region] as $groups_regions) {
                 $build[$region]['#attributes']['class'][] = $this->getClassNameOnGroup($groups_regions);
               }
