@@ -5744,7 +5744,7 @@ __webpack_require__(7888);
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1662);
+/* harmony import */ var _fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2706);
 /**
  * Bug: Les plugins sont charger via cette route : /core/assets/vendor/
  * Cela est du au fait que il ya un ckeditor qui est chargé à partir de la. (/core/modules/ckeditor/js/ckeditor.js et /core/assets/vendor/ckeditor/ckeditor.js)
@@ -5759,11 +5759,20 @@ __webpack_require__(7888);
       stylesSet: [],
       // toolbars configs => https://ckeditor.com/latest/samples/toolbarconfigurator/#advanced
       toolbar: [{
-        name: "document",
-        items: ["Source", "-", "Save", "NewPage", "Preview", "Print", "-", "Templates"]
+        name: "basicstyles",
+        items: ["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "-", "CopyFormatting", "RemoveFormat"]
       }, {
         name: "clipboard",
         items: ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Undo", "Redo"]
+      }, {
+        name: "document",
+        items: ["Source", "-",
+        // "Save",
+        // "NewPage",
+        // "Preview",
+        // "Print",
+        // "-",
+        "Templates", "CodeSnippet"]
       },
       // {
       //   name: "editing",
@@ -5784,18 +5793,20 @@ __webpack_require__(7888);
       //   ],
       // },
       //"/",
+
       {
-        name: "basicstyles",
-        items: ["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "-", "CopyFormatting", "RemoveFormat"]
-      }, {
         name: "paragraph",
-        items: ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote", "CreateDiv", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock", "-", "BidiLtr", "BidiRtl", "Language"]
+        items: ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote", "CreateDiv", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock", "-"
+        // "BidiLtr",
+        // "BidiRtl",
+        // "Language",
+        ]
       }, {
         name: "links",
         items: ["Link", "Unlink", "Anchor"]
       }, {
         name: "insert",
-        items: ["Image", "Flash", "Table", "HorizontalRule", "Smiley", "SpecialChar", "PageBreak", "Iframe"]
+        items: ["Image", "QuickUploaderUpload", "Flash", "Table", "HorizontalRule", "Smiley", "SpecialChar", "PageBreak", "Iframe"]
       }, "/", {
         name: "styles",
         items: ["Styles", "Format", "Font", "FontSize"]
@@ -5892,6 +5903,10 @@ __webpack_require__(7888);
     CKEDITOR.dtd.$removeEmpty.span = 0;
     CKEDITOR.dtd.$removeEmpty.i = 0;
     CKEDITOR.dtd.$removeEmpty.label = 0;
+    // quickuploader
+    const date = new Date();
+    CKEDITOR.plugins.addExternal("quickuploader", _fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__/* ["default"].config.getBaseUrl */ .Z.config.getBaseUrl() + "/libraries/quickuploader/plugin.js?v=" + date.getTime());
+    if (_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__/* ["default"].config */ .Z.config) CKEDITOR.config.quickuploaderUploadUrl = _fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__/* ["default"].config.getBaseUrl */ .Z.config.getBaseUrl();
   },
   // Le parent surchargera cette partie enfin de fournir ces styles.
   /**
@@ -5929,7 +5944,7 @@ __webpack_require__(7888);
 
 /***/ }),
 
-/***/ 1662:
+/***/ 2706:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5939,7 +5954,7 @@ __webpack_require__.d(__webpack_exports__, {
   "Z": function() { return /* binding */ loadField; }
 });
 
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/drupal-string.vue?vue&type=template&id=f13bfb26&
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalString.vue?vue&type=template&id=37e80514&
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -6012,12 +6027,12 @@ var rules = __webpack_require__(4670);
 (0,vee_validate_esm/* extend */.l7)("alpha", rules/* alpha */.Fq);
 (0,vee_validate_esm/* extend */.l7)("alpha", rules/* numeric */.uR);
 //export default extend;
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/drupal-string.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalString.vue?vue&type=script&lang=js&
 
 
 
 
-/* harmony default export */ var drupal_stringvue_type_script_lang_js_ = ({
+/* harmony default export */ var DrupalStringvue_type_script_lang_js_ = ({
   name: "DrupalString",
   components: {
     ValidationProvider: vee_validate_esm/* ValidationProvider */.d_
@@ -6117,11 +6132,11 @@ var rules = __webpack_require__(4670);
     }
   }
 });
-;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/drupal-string.vue?vue&type=script&lang=js&
- /* harmony default export */ var fieldsDrupal_drupal_stringvue_type_script_lang_js_ = (drupal_stringvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalString.vue?vue&type=script&lang=js&
+ /* harmony default export */ var fieldsDrupal_DrupalStringvue_type_script_lang_js_ = (DrupalStringvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
 var componentNormalizer = __webpack_require__(1001);
-;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/drupal-string.vue
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalString.vue
 
 
 
@@ -6130,7 +6145,7 @@ var componentNormalizer = __webpack_require__(1001);
 /* normalize component */
 ;
 var component = (0,componentNormalizer/* default */.Z)(
-  fieldsDrupal_drupal_stringvue_type_script_lang_js_,
+  fieldsDrupal_DrupalStringvue_type_script_lang_js_,
   render,
   staticRenderFns,
   false,
@@ -6140,7 +6155,202 @@ var component = (0,componentNormalizer/* default */.Z)(
   
 )
 
-/* harmony default export */ var drupal_string = (component.exports);
+/* harmony default export */ var DrupalString = (component.exports);
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalInteger.vue?vue&type=template&id=bc46f4fe&
+var DrupalIntegervue_type_template_id_bc46f4fe_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c('div', {
+    class: _vm.classCss
+  }, [_c('ValidationProvider', {
+    attrs: {
+      "name": _vm.fullname,
+      "rules": _vm.getRules()
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function (v) {
+        return [_c('b-form-group', {
+          class: _vm.size ? 'size-' + _vm.size : '',
+          attrs: {
+            "label": _vm.field.label,
+            "description": _vm.field.description
+          }
+        }, [_c('div', {
+          staticClass: "field-item-value"
+        }, [_c('b-form-input', {
+          attrs: {
+            "placeholder": _vm.field.placeholder,
+            "state": _vm.getValidationState(v),
+            "name": _vm.fullname,
+            "size": _vm.size,
+            "min": _vm.settings.min,
+            "max": _vm.settings.max,
+            "debounce": "2500",
+            "type": "number"
+          },
+          on: {
+            "input": _vm.input
+          },
+          model: {
+            value: _vm.input_value,
+            callback: function ($$v) {
+              _vm.input_value = $$v;
+            },
+            expression: "input_value"
+          }
+        })], 1), v.errors && v.errors.length > 0 ? _c('div', {
+          staticClass: "text-danger my-2"
+        }, _vm._l(v.errors, function (error, ii) {
+          return _c('small', {
+            key: ii,
+            staticClass: "d-block"
+          }, [_vm._v(" " + _vm._s(error) + " ")]);
+        }), 0) : _vm._e()])];
+      }
+    }])
+  })], 1);
+};
+var DrupalIntegervue_type_template_id_bc46f4fe_staticRenderFns = [];
+
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalInteger.vue?vue&type=script&lang=js&
+
+
+
+
+/* harmony default export */ var DrupalIntegervue_type_script_lang_js_ = ({
+  name: "DrupalInteger",
+  components: {
+    ValidationProvider: vee_validate_esm/* ValidationProvider */.d_
+  },
+  props: {
+    classCss: {
+      type: [Array],
+      default: function () {
+        return [];
+      }
+    },
+    field: {
+      type: Object,
+      required: true
+    },
+    model: {
+      type: [Object, Array],
+      required: true
+    },
+    namespaceStore: {
+      type: String,
+      required: true
+    },
+    parentName: {
+      type: String,
+      required: true
+    },
+    // permet de definir la taille du bouton,
+    // sm,md,lg
+    size: {
+      type: [String],
+      default: "sm"
+    }
+  },
+  data() {
+    return {
+      input_value: null,
+      timeout: null
+    };
+  },
+  computed: {
+    fullname() {
+      return this.parentName + this.field.name;
+    },
+    settings() {
+      var settings = {
+        min: "",
+        max: ""
+      };
+      if (this.field.definition_settings) {
+        if (this.field.definition_settings.min) settings.min = this.field.definition_settings.min;
+        if (this.field.definition_settings.max) settings.max = this.field.definition_settings.max;
+      }
+      return settings;
+    }
+  },
+  watch: {
+    /**
+     * Lorsque le champs est construt via les boucles dynamique,
+     * le template n'est pas reconstruit ducoup la valeur du precedent champs est concerservé.
+     * On applique ce watch et on verra les resultats.
+     * Cela ne s'execute que dans le cadre d'un watch et permet de ressoudre le probleme.
+     */
+    field() {
+      this.input_value = this.getValue();
+    }
+  },
+  mounted() {
+    // On recupere la valeur par defaut pour chaque construction:
+    this.input_value = this.getValue();
+  },
+  methods: {
+    getValidationState({
+      dirty,
+      validated,
+      valid = null
+    }) {
+      return (dirty || validated) && !valid ? valid : null;
+    },
+    getRules() {
+      return loadField.getRules(this.field);
+    },
+    setValue(vals) {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        if (this.namespaceStore) {
+          this.$store.dispatch(this.namespaceStore + "/setValue", {
+            value: vals,
+            fieldName: this.fullname
+          });
+        } else this.$store.dispatch("setValue", {
+          value: vals,
+          fieldName: this.fullname
+        });
+      }, loadField.timeToWait);
+    },
+    getValue() {
+      if (this.model[this.field.name] && this.model[this.field.name][0]) {
+        return this.model[this.field.name][0].value;
+      } else return null;
+    },
+    input(v) {
+      const vals = [];
+      vals.push({
+        value: v
+      });
+      this.setValue(vals);
+    }
+  }
+});
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalInteger.vue?vue&type=script&lang=js&
+ /* harmony default export */ var fieldsDrupal_DrupalIntegervue_type_script_lang_js_ = (DrupalIntegervue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalInteger.vue
+
+
+
+
+
+/* normalize component */
+;
+var DrupalInteger_component = (0,componentNormalizer/* default */.Z)(
+  fieldsDrupal_DrupalIntegervue_type_script_lang_js_,
+  DrupalIntegervue_type_template_id_bc46f4fe_render,
+  DrupalIntegervue_type_template_id_bc46f4fe_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var DrupalInteger = (DrupalInteger_component.exports);
 ;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/drupal-link.vue?vue&type=template&id=8bcca538&
 var drupal_linkvue_type_template_id_8bcca538_render = function render() {
   var _vm = this,
@@ -6415,8 +6625,8 @@ var drupal_color_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var drupal_color = (drupal_color_component.exports);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalRadios.vue?vue&type=template&id=24050633&scoped=true&
-var DrupalRadiosvue_type_template_id_24050633_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalRadios.vue?vue&type=template&id=b668fa62&scoped=true&
+var DrupalRadiosvue_type_template_id_b668fa62_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -6430,7 +6640,36 @@ var DrupalRadiosvue_type_template_id_24050633_scoped_true_render = function rend
     attrs: {
       "format_val": _vm.format_val
     }
-  }, [_c('ValidationProvider', {
+  }, [_vm.field.definition_settings.target_type && _vm.field.definition_settings.target_type == 'taxonomy_term' ? _c('OptionsTaxonomy', {
+    attrs: {
+      "field": _vm.field,
+      "model": _vm.model,
+      "namespace-store": _vm.namespaceStore,
+      "fullname": _vm.fullname
+    },
+    on: {
+      "setValue": _vm.setValue
+    }
+  }) : _vm.field.definition_settings.allowed_values && Object.keys(_vm.field.definition_settings.allowed_values).length > 0 ? _c('OptionsAllowedValues', {
+    attrs: {
+      "field": _vm.field,
+      "model": _vm.model,
+      "namespace-store": _vm.namespaceStore,
+      "fullname": _vm.fullname
+    },
+    on: {
+      "setValue": _vm.setValue
+    }
+  }) : _vm.field.definition_settings.target_type && _vm.field.definition_settings.target_type != '' ? _c('OptionsEntities', {
+    attrs: {
+      "field": _vm.field,
+      "model": _vm.model,
+      "namespace-store": _vm.namespaceStore
+    },
+    on: {
+      "setValue": _vm.setValue
+    }
+  }) : _c('ValidationProvider', {
     attrs: {
       "name": _vm.fullname,
       "rules": _vm.getRules()
@@ -6438,34 +6677,7 @@ var DrupalRadiosvue_type_template_id_24050633_scoped_true_render = function rend
     scopedSlots: _vm._u([{
       key: "default",
       fn: function (v) {
-        return [_vm.field.definition_settings.target_type && _vm.field.definition_settings.target_type == 'taxonomy_term' ? _c('OptionsTaxonomy', {
-          attrs: {
-            "field": _vm.field,
-            "model": _vm.model,
-            "namespace-store": _vm.namespaceStore
-          },
-          on: {
-            "setValue": _vm.setValue
-          }
-        }) : _vm.field.definition_settings.allowed_values && Object.keys(_vm.field.definition_settings.allowed_values).length > 0 ? _c('OptionsAllowedValues', {
-          attrs: {
-            "field": _vm.field,
-            "model": _vm.model,
-            "namespace-store": _vm.namespaceStore
-          },
-          on: {
-            "setValue": _vm.setValue
-          }
-        }) : _vm.field.definition_settings.target_type && _vm.field.definition_settings.target_type != '' ? _c('OptionsEntities', {
-          attrs: {
-            "field": _vm.field,
-            "model": _vm.model,
-            "namespace-store": _vm.namespaceStore
-          },
-          on: {
-            "setValue": _vm.setValue
-          }
-        }) : _c('b-form-group', {
+        return [_c('b-form-group', {
           class: _vm.size ? 'size-' + _vm.size : '',
           attrs: {
             "label": _vm.field.label,
@@ -6524,7 +6736,7 @@ var DrupalRadiosvue_type_template_id_24050633_scoped_true_render = function rend
     }])
   })], 1)]);
 };
-var DrupalRadiosvue_type_template_id_24050633_scoped_true_staticRenderFns = [];
+var DrupalRadiosvue_type_template_id_b668fa62_scoped_true_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/svg-preloader.vue?vue&type=template&id=d69890ba&scoped=true&
 var svg_preloadervue_type_template_id_d69890ba_scoped_true_render = function render() {
@@ -6663,19 +6875,16 @@ var svg_preloader_component = (0,componentNormalizer/* default */.Z)(
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalRadios.vue?vue&type=script&lang=js&
 
 
-// import { ValidationProvider } from "vee-validate";
-// import "./vee-validation-rules";
 
 /* harmony default export */ var DrupalRadiosvue_type_script_lang_js_ = ({
   name: "DrupalRadios",
   components: {
-    // ValidationProvider,
     svgLoader: svg_preloader,
     OptionsTaxonomy: () => {
       return __webpack_require__.e(/* import() */ 785).then(__webpack_require__.bind(__webpack_require__, 5785));
     },
     OptionsAllowedValues: () => {
-      return __webpack_require__.e(/* import() */ 84).then(__webpack_require__.bind(__webpack_require__, 2084));
+      return __webpack_require__.e(/* import() */ 708).then(__webpack_require__.bind(__webpack_require__, 708));
     },
     OptionsEntities: () => {
       return __webpack_require__.e(/* import() */ 374).then(__webpack_require__.bind(__webpack_require__, 374));
@@ -6783,10 +6992,10 @@ var svg_preloader_component = (0,componentNormalizer/* default */.Z)(
 });
 ;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalRadios.vue?vue&type=script&lang=js&
  /* harmony default export */ var fieldsDrupal_DrupalRadiosvue_type_script_lang_js_ = (DrupalRadiosvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-54.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-54.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalRadios.vue?vue&type=style&index=0&id=24050633&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-54.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-54.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalRadios.vue?vue&type=style&index=0&id=b668fa62&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalRadios.vue?vue&type=style&index=0&id=24050633&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalRadios.vue?vue&type=style&index=0&id=b668fa62&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DrupalRadios.vue
 
@@ -6799,11 +7008,11 @@ var svg_preloader_component = (0,componentNormalizer/* default */.Z)(
 
 var DrupalRadios_component = (0,componentNormalizer/* default */.Z)(
   fieldsDrupal_DrupalRadiosvue_type_script_lang_js_,
-  DrupalRadiosvue_type_template_id_24050633_scoped_true_render,
-  DrupalRadiosvue_type_template_id_24050633_scoped_true_staticRenderFns,
+  DrupalRadiosvue_type_template_id_b668fa62_scoped_true_render,
+  DrupalRadiosvue_type_template_id_b668fa62_scoped_true_staticRenderFns,
   false,
   null,
-  "24050633",
+  "b668fa62",
   null
   
 )
@@ -7019,8 +7228,8 @@ var drupal_list_string_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var drupal_list_string = (drupal_list_string_component.exports);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/TextareaCkeditor.vue?vue&type=template&id=5e26e889&
-var TextareaCkeditorvue_type_template_id_5e26e889_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/TextareaCkeditor.vue?vue&type=template&id=30dcce6c&
+var TextareaCkeditorvue_type_template_id_30dcce6c_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -7097,7 +7306,7 @@ var TextareaCkeditorvue_type_template_id_5e26e889_render = function render() {
     }])
   })], 1);
 };
-var TextareaCkeditorvue_type_template_id_5e26e889_staticRenderFns = [];
+var TextareaCkeditorvue_type_template_id_30dcce6c_staticRenderFns = [];
 
 // EXTERNAL MODULE: ../components_bootstrapvuejs/node_modules/ckeditor4-vue/dist/ckeditor.js
 var ckeditor = __webpack_require__(6112);
@@ -7152,7 +7361,7 @@ var ckeditor_config = __webpack_require__(1293);
   },
   computed: {
     editorConfig() {
-      var extraPlugins = "codesnippet, print,format,font,colorbutton,justify,image,filebrowser,stylesheetparser";
+      var extraPlugins = "quickuploader, codesnippet, print,format,font,colorbutton,justify,image,filebrowser,stylesheetparser";
       return {
         extraPlugins: extraPlugins,
         ...this.preEditorConfig
@@ -7223,8 +7432,8 @@ var ckeditor_config = __webpack_require__(1293);
 ;
 var TextareaCkeditor_component = (0,componentNormalizer/* default */.Z)(
   fieldsDrupal_TextareaCkeditorvue_type_script_lang_js_,
-  TextareaCkeditorvue_type_template_id_5e26e889_render,
-  TextareaCkeditorvue_type_template_id_5e26e889_staticRenderFns,
+  TextareaCkeditorvue_type_template_id_30dcce6c_render,
+  TextareaCkeditorvue_type_template_id_30dcce6c_staticRenderFns,
   false,
   null,
   null,
@@ -8448,8 +8657,8 @@ var ExperienceType_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var ExperienceType = (ExperienceType_component.exports);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/MultiSelect.vue?vue&type=template&id=c29e3076&
-var MultiSelectvue_type_template_id_c29e3076_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/MultiSelect.vue?vue&type=template&id=03a152cd&
+var MultiSelectvue_type_template_id_03a152cd_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -8463,25 +8672,27 @@ var MultiSelectvue_type_template_id_c29e3076_render = function render() {
       "field": _vm.field,
       "model": _vm.model,
       "namespace-store": _vm.namespaceStore,
-      "parent-name": _vm.parentName
+      "parent-name": _vm.parentName,
+      "override-config": _vm.overrideConfig
     }
   }) : _vm.field.definition_settings && _vm.field.definition_settings.target_type != 'taxonomy_term' ? _c('MultiSelectEntities', {
     attrs: {
       "field": _vm.field,
       "model": _vm.model,
       "namespace-store": _vm.namespaceStore,
-      "parent-name": _vm.parentName
+      "parent-name": _vm.parentName,
+      "override-config": _vm.overrideConfig
     }
   }) : _vm._e()], 1);
 };
-var MultiSelectvue_type_template_id_c29e3076_staticRenderFns = [];
+var MultiSelectvue_type_template_id_03a152cd_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/MultiSelect.vue?vue&type=script&lang=js&
 /* harmony default export */ var MultiSelectvue_type_script_lang_js_ = ({
   name: "MultiSelect",
   components: {
     MultiSelectTaxo: () => __webpack_require__.e(/* import() */ 526).then(__webpack_require__.bind(__webpack_require__, 7162)),
-    MultiSelectEntities: () => __webpack_require__.e(/* import() */ 711).then(__webpack_require__.bind(__webpack_require__, 1711))
+    MultiSelectEntities: () => __webpack_require__.e(/* import() */ 521).then(__webpack_require__.bind(__webpack_require__, 8521))
   },
   props: {
     classCss: {
@@ -8505,6 +8716,14 @@ var MultiSelectvue_type_template_id_c29e3076_staticRenderFns = [];
     parentName: {
       type: String,
       required: true
+    },
+    /**
+     * Pour effeutuer les requetes, certains champs initialise leur configuration, cela fontionne si l'application est interne au site.
+     * Mais dans le cadre d'une applcation decouplé, il faut utiliser la config definie par l'applicationde base. (dans ce cas on met true)
+     */
+    overrideConfig: {
+      type: Boolean,
+      default: false
     }
   }
 });
@@ -8521,8 +8740,8 @@ var MultiSelectvue_type_template_id_c29e3076_staticRenderFns = [];
 
 var MultiSelect_component = (0,componentNormalizer/* default */.Z)(
   fieldsDrupal_MultiSelectvue_type_script_lang_js_,
-  MultiSelectvue_type_template_id_c29e3076_render,
-  MultiSelectvue_type_template_id_c29e3076_staticRenderFns,
+  MultiSelectvue_type_template_id_03a152cd_render,
+  MultiSelectvue_type_template_id_03a152cd_staticRenderFns,
   false,
   null,
   null,
@@ -9696,8 +9915,8 @@ var DrupalCheckbox_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var DrupalCheckbox = (DrupalCheckbox_component.exports);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=template&id=b8ded7fc&scoped=true&
-var DateRangevue_type_template_id_b8ded7fc_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=template&id=1d8c2860&scoped=true&
+var DateRangevue_type_template_id_1d8c2860_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -9733,7 +9952,7 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_render = function render(
             }
           },
           on: {
-            "input": _vm.date_change_debut
+            "input": _vm.date_change
           },
           model: {
             value: _vm.date.value,
@@ -9749,6 +9968,9 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_render = function render(
             "type": "text",
             "placeholder": "HH:mm:ss"
           },
+          on: {
+            "input": _vm.date_change
+          },
           model: {
             value: _vm.date.hour_begin,
             callback: function ($$v) {
@@ -9763,6 +9985,9 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_render = function render(
             "show-seconds": "",
             "locale": "fr",
             "aria-controls": 'b-' + _vm.idHtml
+          },
+          on: {
+            "input": _vm.date_change
           },
           model: {
             value: _vm.date.hour_begin,
@@ -9787,6 +10012,9 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_render = function render(
               day: '2-digit'
             }
           },
+          on: {
+            "input": _vm.date_change
+          },
           model: {
             value: _vm.date.end_value,
             callback: function ($$v) {
@@ -9800,6 +10028,9 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_render = function render(
             "id": 'e-' + _vm.idHtml,
             "type": "text",
             "placeholder": "HH:mm:ss"
+          },
+          on: {
+            "input": _vm.date_change
           },
           model: {
             value: _vm.date.hour_end,
@@ -9815,6 +10046,9 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_render = function render(
             "show-seconds": "",
             "locale": "fr",
             "aria-controls": 'e-' + _vm.idHtml
+          },
+          on: {
+            "input": _vm.date_change
           },
           model: {
             value: _vm.date.hour_end,
@@ -9837,7 +10071,7 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_render = function render(
     }])
   })], 1);
 };
-var DateRangevue_type_template_id_b8ded7fc_scoped_true_staticRenderFns = [];
+var DateRangevue_type_template_id_1d8c2860_scoped_true_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=script&lang=js&
 
@@ -9883,7 +10117,15 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_staticRenderFns = [];
         hour_end: ""
       },
       idHtml: "time-" + Math.random().toString(36),
-      timeout: null
+      timeout: null,
+      /**
+       * On a deux format de sauvegarde, celui definit par string (YYYY-MM-DDTHH:mm:ss qui n'est pas un format normalisé)
+       * et celui definit par un integer (timeStamp).
+       * Pour l'instant compliqué de determiner qu'elle est le format qui doit etre utiliser.
+       * Donc, l'approche c'est de determiner le type à partir de la valeur par defaut.
+       * Par defaut, on conidere que c'est du string(pour etre compatible avec drupal >= 9.5.9).
+       */
+      checkFormatDate: "string"
     };
   },
   computed: {
@@ -9935,15 +10177,15 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_staticRenderFns = [];
      *
      */
     getValue() {
-      console.log("date range : ", this.model[this.field.name]);
+      // console.log("date range : ", this.model[this.field.name]);
       if (this.model[this.field.name] && this.model[this.field.name][0] && this.model[this.field.name][0].value) {
-        const D_b = this.getDateFromDateTimeStamp(this.model[this.field.name][0].value);
+        const D_b = this.checkValue(this.model[this.field.name][0].value);
         const val = {
           value: D_b.date,
           hour_begin: D_b.hour
         };
         if (this.field.type == "daterange_default") {
-          const D_f = this.getDateFromDateTimeStamp(this.model[this.field.name][0].end_value);
+          const D_f = this.checkValue(this.model[this.field.name][0].end_value);
           val["end_value"] = D_f.date;
           val["hour_end"] = D_f.hour;
         }
@@ -9954,10 +10196,23 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_staticRenderFns = [];
         hour_begin: "",
         hour_end: ""
       };
-      // pas necessaire ( car entrainne des mauvaise données )
-      //else return this.currentDate();
+      // pas necessaire ( car entrainne des mauvaises données )
+      // else return this.currentDate();
     },
 
+    checkValue(data) {
+      let value = parseInt(data);
+      if (value > 326636489) {
+        this.checkFormatDate = "int";
+        return this.getDateFromDateTimeStamp(data);
+      } else {
+        let date = new Date(data);
+        if (date) {
+          this.checkFormatDate = "string";
+          return this.getDateFromDateTimeStamp(date.getTime() / 1000);
+        }
+      }
+    },
     /**
      *
      * @param {*} DateTimeStamp
@@ -9968,11 +10223,12 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_staticRenderFns = [];
       let month = parseInt(date.getMonth()) + 1;
       return {
         date: date.getFullYear() + "-" + month + "-" + date.getDate(),
-        hour: date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+        hour: ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2) + ":" + ("0" + date.getSeconds()).slice(-2)
       };
     },
     /**
-     * @deprecated
+     * @deprecated pas utiliser ( car entrainne des mauvaise données )
+     * Permet d'ajouter la date encours ou date par defaut si vide.
      */
     currentDate() {
       const date = new Date();
@@ -9990,18 +10246,22 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_staticRenderFns = [];
     /**
      *
      */
-    date_change_debut() {
+    date_change() {
       const vals = [];
       if (this.date.value) {
         const dateDebut = new Date(this.date.value + " " + this.date.hour_begin);
-        vals.push({
+        if (this.checkFormatDate == "string") vals.push({
+          value: this.date.value + "T" + this.date.hour_begin
+        });else vals.push({
           value: dateDebut.getTime() / 1000
         });
       }
       //
       if (this.date.end_value && this.field.type == "daterange_default") {
         const dateFin = new Date(this.date.end_value + " " + this.date.hour_end);
-        vals.push({
+        if (this.checkFormatDate == "string") vals.push({
+          end_value: this.date.end_value + "T" + this.date.hour_end
+        });else vals.push({
           end_value: dateFin.getTime() / 1000
         });
       }
@@ -10011,10 +10271,10 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_staticRenderFns = [];
 });
 ;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=script&lang=js&
  /* harmony default export */ var fieldsDrupal_DateRangevue_type_script_lang_js_ = (DateRangevue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=b8ded7fc&prod&lang=scss&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=1d8c2860&prod&lang=scss&scoped=true&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=b8ded7fc&prod&lang=scss&scoped=true&
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=1d8c2860&prod&lang=scss&scoped=true&
 
 ;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue
 
@@ -10027,11 +10287,11 @@ var DateRangevue_type_template_id_b8ded7fc_scoped_true_staticRenderFns = [];
 
 var DateRange_component = (0,componentNormalizer/* default */.Z)(
   fieldsDrupal_DateRangevue_type_script_lang_js_,
-  DateRangevue_type_template_id_b8ded7fc_scoped_true_render,
-  DateRangevue_type_template_id_b8ded7fc_scoped_true_staticRenderFns,
+  DateRangevue_type_template_id_1d8c2860_scoped_true_render,
+  DateRangevue_type_template_id_1d8c2860_scoped_true_staticRenderFns,
   false,
   null,
-  "b8ded7fc",
+  "1d8c2860",
   null
   
 )
@@ -12309,6 +12569,7 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
 
 
 
+
 // @deprecated will be remove before 2x. use MoreFieldsIconDescription
 
 
@@ -12335,7 +12596,10 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
     switch (key) {
       case "string":
       case "string_textfield":
-        template = drupal_string;
+        template = DrupalString;
+        break;
+      case "number":
+        template = DrupalInteger;
         break;
       case "email":
       case "email_default":
@@ -12470,7 +12734,7 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
 "use strict";
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6352);
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1662);
+/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2706);
 
 
 /**
@@ -12510,6 +12774,8 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
               template: _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__/* ["default"].getField */ .Z.getField(field),
               field: field,
               model: entity.entity,
+              // doit etre supprimer pour la version 2x, cela est une information de trop.
+              //(on doit utiliser celui definit au niveau du container)
               entities: []
             };
             if (entity.entities && entity.entities[field.name]) {
@@ -16879,6 +17145,13 @@ const basicRequest = {
   getBaseUrl() {
     if (this.baseUrl) return this.isLocalDev && this.TestDomain ? this.TestDomain.trim("/") : this.baseUrl;else return this.isLocalDev && this.TestDomain ? this.TestDomain.trim("/") : window.location.protocol + "//" + window.location.host;
   },
+  /**
+   * Permet de recuperer les messages , en priorité celui definie dans headers.customstatustext.
+   *
+   * @param {*} er
+   * @param {*} type ( vrai pour recuperer les messages en cas de success )
+   * @returns
+   */
   getStatusText(er, type = false) {
     if (er) {
       if (type) {
@@ -29844,8 +30117,8 @@ var EditEntity_component = (0,componentNormalizer/* default */.Z)(
 /* harmony default export */ var EditEntity = (EditEntity_component.exports);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/js/FormUttilities.js
 var FormUttilities = __webpack_require__(7657);
-// EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/loadField.js + 128 modules
-var loadField = __webpack_require__(1662);
+// EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/loadField.js + 132 modules
+var loadField = __webpack_require__(2706);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/Ressouces/ckeditor-config.js
 var ckeditor_config = __webpack_require__(1293);
 ;// CONCATENATED MODULE: ./src/store/index.js

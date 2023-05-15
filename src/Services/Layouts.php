@@ -158,7 +158,8 @@ class Layouts {
         ]
       ]
     ];
-    $configuration = !isset($this->configuration['default_class']) ? $this->configuration['default_class'] : [];
+    // dump($this->configuration['default_class']);
+    $configuration = isset($this->configuration['default_class']) ? $this->configuration['default_class'] : [];
     $this->backgroundPosition($form, $configuration);
     $this->spaces($form, $configuration);
     $this->borderRadius($form, $configuration);
@@ -183,7 +184,7 @@ class Layouts {
     ];
     
     foreach ($this->regions as $region => $label) {
-      $configuration = !isset($this->configuration['default_class']['regions'][$region]) ? $this->configuration['default_class']['regions'][$region] : [];
+      $configuration = isset($this->configuration['default_class']['regions'][$region]) ? $this->configuration['default_class']['regions'][$region] : [];
       $form['regions'][$region] = [
         '#type' => 'details',
         '#title' => $label['label'],
