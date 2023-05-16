@@ -5744,7 +5744,7 @@ __webpack_require__(7888);
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2706);
+/* harmony import */ var _fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(859);
 /**
  * Bug: Les plugins sont charger via cette route : /core/assets/vendor/
  * Cela est du au fait que il ya un ckeditor qui est chargé à partir de la. (/core/modules/ckeditor/js/ckeditor.js et /core/assets/vendor/ckeditor/ckeditor.js)
@@ -5904,8 +5904,15 @@ __webpack_require__(7888);
     CKEDITOR.dtd.$removeEmpty.i = 0;
     CKEDITOR.dtd.$removeEmpty.label = 0;
     // quickuploader
-    const date = new Date();
-    CKEDITOR.plugins.addExternal("quickuploader", _fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__/* ["default"].config.getBaseUrl */ .Z.config.getBaseUrl() + "/libraries/quickuploader/plugin.js?v=" + date.getTime());
+    // Pas necessaire on a opté d'ajouter le module dans ckeditor au niveau du theme wb-universe/ckeditor.
+    // const date = new Date();
+    // CKEDITOR.plugins.addExternal(
+    //   "quickuploader",
+    //   request.config.getBaseUrl() +
+    //     "/libraries/quickuploader/plugin.js?v=" +
+    //     date.getTime()
+    // );
+    // humm.
     if (_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__/* ["default"].config */ .Z.config) CKEDITOR.config.quickuploaderUploadUrl = _fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_0__/* ["default"].config.getBaseUrl */ .Z.config.getBaseUrl();
   },
   // Le parent surchargera cette partie enfin de fournir ces styles.
@@ -5944,7 +5951,7 @@ __webpack_require__(7888);
 
 /***/ }),
 
-/***/ 2706:
+/***/ 859:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9915,8 +9922,8 @@ var DrupalCheckbox_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ var DrupalCheckbox = (DrupalCheckbox_component.exports);
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=template&id=1d8c2860&scoped=true&
-var DateRangevue_type_template_id_1d8c2860_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=template&id=6034a598&scoped=true&
+var DateRangevue_type_template_id_6034a598_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -10071,7 +10078,7 @@ var DateRangevue_type_template_id_1d8c2860_scoped_true_render = function render(
     }])
   })], 1);
 };
-var DateRangevue_type_template_id_1d8c2860_scoped_true_staticRenderFns = [];
+var DateRangevue_type_template_id_6034a598_scoped_true_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=script&lang=js&
 
@@ -10222,7 +10229,7 @@ var DateRangevue_type_template_id_1d8c2860_scoped_true_staticRenderFns = [];
       date.setTime(parseInt(DateTimeStamp) * 1000);
       let month = parseInt(date.getMonth()) + 1;
       return {
-        date: date.getFullYear() + "-" + month + "-" + date.getDate(),
+        date: date.getFullYear() + "-" + ("0" + month).slice(-2) + "-" + date.getDate(),
         hour: ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2) + ":" + ("0" + date.getSeconds()).slice(-2)
       };
     },
@@ -10271,10 +10278,10 @@ var DateRangevue_type_template_id_1d8c2860_scoped_true_staticRenderFns = [];
 });
 ;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=script&lang=js&
  /* harmony default export */ var fieldsDrupal_DateRangevue_type_script_lang_js_ = (DateRangevue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=1d8c2860&prod&lang=scss&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=6034a598&prod&lang=scss&scoped=true&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=1d8c2860&prod&lang=scss&scoped=true&
+;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue?vue&type=style&index=0&id=6034a598&prod&lang=scss&scoped=true&
 
 ;// CONCATENATED MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/DateRange.vue
 
@@ -10287,11 +10294,11 @@ var DateRangevue_type_template_id_1d8c2860_scoped_true_staticRenderFns = [];
 
 var DateRange_component = (0,componentNormalizer/* default */.Z)(
   fieldsDrupal_DateRangevue_type_script_lang_js_,
-  DateRangevue_type_template_id_1d8c2860_scoped_true_render,
-  DateRangevue_type_template_id_1d8c2860_scoped_true_staticRenderFns,
+  DateRangevue_type_template_id_6034a598_scoped_true_render,
+  DateRangevue_type_template_id_6034a598_scoped_true_staticRenderFns,
   false,
   null,
-  "1d8c2860",
+  "6034a598",
   null
   
 )
@@ -12734,7 +12741,7 @@ var AccordionCard_component = (0,componentNormalizer/* default */.Z)(
 "use strict";
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6352);
 /* harmony import */ var core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_push_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2706);
+/* harmony import */ var _components_fieldsDrupal_loadField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(859);
 
 
 /**
@@ -30118,7 +30125,7 @@ var EditEntity_component = (0,componentNormalizer/* default */.Z)(
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/js/FormUttilities.js
 var FormUttilities = __webpack_require__(7657);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/fieldsDrupal/loadField.js + 132 modules
-var loadField = __webpack_require__(2706);
+var loadField = __webpack_require__(859);
 // EXTERNAL MODULE: ../components_bootstrapvuejs/src/components/Ressouces/ckeditor-config.js
 var ckeditor_config = __webpack_require__(1293);
 ;// CONCATENATED MODULE: ./src/store/index.js
