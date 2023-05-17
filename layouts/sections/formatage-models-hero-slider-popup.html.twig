@@ -5,32 +5,33 @@
                   {# image affiché en premier plan #}
                   <div class="galeryImage">
                        <div class="galeryImage__big">
-                            {{ content.images|layout_value_img({'begin':1,'number':1}, settings.infos.fields.img_style_big.img_style.value) }}
+                            {{ content.images|layout_value_img({'begin':1,'number':1}, settings.img_style_big) }}
                        </div>
                        <div class="galeryImage__small">
-                            {% set images_small= content.images|layout_value_img({'begin':2,'number':3},settings.infos.fields.img_style_small.img_style.value) %}
+                            {% set images_small= content.images|layout_value_img({'begin':2,'number':3}, settings.img_style_small) %}
                             {% for img_block in images_small %}
                                 {% for img_sm in img_block  %}
-                                    <div class="small"> {{ img_sm }}
-                                         {% if loop.last %}
-                                             <h3 class="small__voirPlus">{{'See more pictures'|trans}}</h3>
-                                         {% endif %}
-                                    </div>
+                                    <div class="small"> {{ img_sm }}</div>
                                 {% endfor %}
-                            {% endfor %}
+                            {% endfor %}                            
                        </div>
+                       <div class="galeryImage__read-more d-flex justify-content-center align-items-center"> <h3 class="small__voirPlus">{{'See more pictures'|trans}}</h3>
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/></svg>
+                        </div>
                   </div>
              </div>
              {# image popup #}
              <div class="stanCaroussel d-flex flex-column justify-content-center">
                   <div>
-                       <h2 class="title">
-                            {{ content.title|layout_value }}
-                       </h2>
+                  		{% if content.title %}
+                           <h2 class="title">
+                                {{ content.title|layout_value }}
+                           </h2>
+                       {% endif %}
                        <div class="close"></div>
                        <div class="twoBlockCarousel">
                             <div class="bigImage">
-                                 {% for img_block in content.images|layout_value_img({}, settings.infos.fields.img_style_big.img_style.value) %}
+                                 {% for img_block in content.images|layout_value_img({}, settings.img_style_big_popup) %}
                                      {% for img_sm in img_block  %}
                                          <div class="rer">
                                               {{ img_sm }}
@@ -40,7 +41,7 @@
                             </div>
                             <div class="secondBlock">
                                  <div class="smallCarousel">
-                                      {% for img_block in content.images|layout_value_img({},settings.infos.fields.img_style_small.img_style.value) %}
+                                      {% for img_block in content.images|layout_value_img({},settings.img_style_small) %}
                                           {% for img_sm in img_block  %}
                                               <div class="bl">
                                                    {{ img_sm }}
