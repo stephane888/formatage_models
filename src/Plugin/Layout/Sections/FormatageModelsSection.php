@@ -107,10 +107,12 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
         // dump($this->configuration['default_class']);
         foreach ($this->configuration['default_class'] as $key => $groups) {
           if ($key == 'regions') {
+            //
             foreach ($current_regions as $region) {
-              foreach ($groups[$region] as $groups_regions) {
-                $build[$region]['#attributes']['class'][] = $this->getClassNameOnGroup($groups_regions);
-              }
+              if (!empty($groups[$region]))
+                foreach ($groups[$region] as $groups_regions) {
+                  $build[$region]['#attributes']['class'][] = $this->getClassNameOnGroup($groups_regions);
+                }
             }
           }
           else {

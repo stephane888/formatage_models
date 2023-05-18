@@ -43,9 +43,7 @@
                                  <div class="smallCarousel">
                                       {% for img_block in content.images|layout_value_img({},settings.img_style_small) %}
                                           {% for img_sm in img_block  %}
-                                              <div class="bl">
-                                                   {{ img_sm }}
-                                              </div>
+                                              <div class="bl"> {{ img_sm }} </div>
                                           {% endfor %}
                                       {% endfor %}
                                  </div>
