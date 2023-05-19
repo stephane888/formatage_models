@@ -58,16 +58,52 @@ class FormatageModelsTeasers extends FormatageModels implements ContainerFactory
         $build[$region_name]['#attributes']['class'][] = $this->configuration['region_css_' . $region_name];
       }
     }
-    $build = $this->stylesGroupManager->buildStyles($build, 
-        // storage.
-        $this->configuration['container_wrapper']['bootstrap_styles'] // Theme
-                                                                      // wrapper
-                                                                      // that we
-                                                                      // need to
-                                                                      // apply
-                                                                      // styles
-                                                                      // to it.
-    );
+    
+    /**
+     * On utilise ces regions, car " $regions" peut contenis des regions non
+     * valide, i.e qui a été suppprimer du modele.
+     *
+     * @var array $current_regions
+     */
+    $current_regions = $this->getPluginDefinition()->getRegionNames();
+    // Regions Aos attributes
+    // on n'affiche pas en mode edition
+    if (!str_contains(\Drupal::routeMatch()->getRouteName(), 'layout_builder.')) {
+      // Load AOS attributes.
+      foreach ($current_regions as $region) {
+        if (isset($this->configuration['aos_attributes'][$region]) && !empty($this->configuration['aos_attributes'][$region]['data_aos'])) {
+          $build[$region]['#attributes']['data-aos'] = $this->configuration['aos_attributes'][$region]['data_aos'];
+          if (!empty($this->configuration['aos_attributes'][$region]['data_aos_anchor_placement']))
+            $build[$region]['#attributes']['data-aos-anchor-placement'] = $this->configuration['aos_attributes'][$region]['data_aos_anchor_placement'];
+          if (!empty($this->configuration['aos_attributes'][$region]['data_aos_duration']))
+            $build[$region]['#attributes']['data-aos-duration'] = $this->configuration['aos_attributes'][$region]['data_aos_duration'];
+          if (!empty($this->configuration['aos_attributes'][$region]['data_aos_ease']))
+            $build[$region]['#attributes']['data-aos-easing'] = $this->configuration['aos_attributes'][$region]['data_aos_ease'];
+          if (!empty($this->configuration['aos_attributes'][$region]['data_aos_delay']))
+            $build[$region]['#attributes']['data-aos-delay'] = $this->configuration['aos_attributes'][$region]['data_aos_delay'];
+        }
+      }
+      // Load Default class.
+      if (!empty($this->configuration['default_class'])) {
+        // dump($this->configuration['default_class']);
+        foreach ($this->configuration['default_class'] as $key => $groups) {
+          if ($key == 'regions') {
+            //
+            foreach ($current_regions as $region) {
+              if (!empty($groups[$region]))
+                foreach ($groups[$region] as $groups_regions) {
+                  $build[$region]['#attributes']['class'][] = $this->getClassNameOnGroup($groups_regions);
+                }
+            }
+          }
+          else {
+            $build['#attributes']['class'][] = $this->getClassNameOnGroup($groups);
+          }
+        }
+      }
+    }
+    //
+    $build = $this->stylesGroupManager->buildStyles($build, $this->configuration['container_wrapper']['bootstrap_styles']);
     return $build;
   }
   
