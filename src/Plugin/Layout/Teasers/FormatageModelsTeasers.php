@@ -107,6 +107,22 @@ class FormatageModelsTeasers extends FormatageModels implements ContainerFactory
     return $build;
   }
   
+  protected function getClassNameOnGroup(array $groups) {
+    $className = '';
+    foreach ($groups as $values) {
+      if (is_array($values)) {
+        foreach ($values as $key => $value) {
+          if ($value)
+            $className .= ' ' . $key;
+        }
+      }
+      elseif (!empty($values)) {
+        $className .= ' ' . $values;
+      }
+    }
+    return $className;
+  }
+  
   /**
    *
    * {@inheritdoc}
