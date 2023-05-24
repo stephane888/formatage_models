@@ -2,6 +2,7 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\formatage_models\FormatageModelsThemes;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  *
@@ -69,6 +70,16 @@ function formatage_models_preprocess_paragraph(&$variables) {
     }
     // }
   }
+}
+
+function formatage_models_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+  if (!isset($build['#node']) && !isset($build['#paragraph'])) {
+    // dump($build);
+  }
+}
+
+function formatage_models_preprocess_block_content(&$variables) {
+  dump($variables);
 }
 
 /**

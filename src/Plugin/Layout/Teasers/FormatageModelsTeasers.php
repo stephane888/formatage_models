@@ -58,6 +58,12 @@ class FormatageModelsTeasers extends FormatageModels implements ContainerFactory
         $build[$region_name]['#attributes']['class'][] = $this->configuration['region_css_' . $region_name];
       }
     }
+    // cover ::before
+    if (!empty($build['#settings']['cover_section']['active'])) {
+      $build['#attributes']['class'][] = $build['#settings']['cover_section']['active'];
+      $build['#attributes']['class'][] = $build['#settings']['cover_section']['model'];
+      $build['#attributes']['class'][] = $build['#settings']['cover_section']['opacity'];
+    }
     
     /**
      * On utilise ces regions, car " $regions" peut contenis des regions non
@@ -85,10 +91,10 @@ class FormatageModelsTeasers extends FormatageModels implements ContainerFactory
       }
       // Load Default class.
       if (!empty($this->configuration['default_class'])) {
+        // if ($this->pluginId == 'hot_models_sublime_right_teaser')
         // dump($this->configuration['default_class']);
         foreach ($this->configuration['default_class'] as $key => $groups) {
           if ($key == 'regions') {
-            //
             foreach ($current_regions as $region) {
               if (!empty($groups[$region]))
                 foreach ($groups[$region] as $groups_regions) {
@@ -97,7 +103,9 @@ class FormatageModelsTeasers extends FormatageModels implements ContainerFactory
             }
           }
           else {
-            $build['#attributes']['class'][] = $this->getClassNameOnGroup($groups);
+            $class = $this->getClassNameOnGroup($groups);
+            if (!empty($class))
+              $build['#attributes']['class'][] = $class;
           }
         }
       }
