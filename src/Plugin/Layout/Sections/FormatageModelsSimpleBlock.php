@@ -60,12 +60,7 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
-    $form['class_container'] = [
-      '#type' => 'textfield',
-      '#title' => 'Class container des champs',
-      '#default_value' => $this->configuration['class_container'],
-      '#description' => "Classe utiliser pour ressortir un container"
-    ];
+    
     $form['class_row'] = [
       '#type' => 'textfield',
       '#title' => 'Class row',
@@ -82,7 +77,6 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
     parent::submitConfigurationForm($form, $form_state);
     // $this->configuration['layoutrestrictions'] =
     // $form_state->getValue('layoutrestrictions');
-    $this->configuration['class_container'] = $form_state->getValue('class_container');
     $this->configuration['class_row'] = $form_state->getValue('class_row');
   }
   
@@ -95,9 +89,6 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
     return [
       'css' => '',
       'region_tag_main' => 'div',
-      'layoutrestrictions' => [
-        'roles' => []
-      ],
       'sf' => [
         'builder-form' => true,
         'info' => [
