@@ -91,6 +91,13 @@ class FormatageModelsHeroAC extends FormatageModelsSection {
       'css' => '',
       'css_left' => "col-md-6",
       'css_right' => "col-md-6",
+      "derivate" => [
+        'value' => 'basic',
+        'options' => [
+          '' => 'image right (default)',
+          'image-left' => 'image right'
+        ]
+      ],
       'sf' => [
         'builder-form' => true,
         'info' => [
