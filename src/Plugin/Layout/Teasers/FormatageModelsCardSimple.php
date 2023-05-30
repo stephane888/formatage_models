@@ -81,13 +81,13 @@ class FormatageModelsCardSimple extends FormatageModelsTeasers {
     $form['limit_text_desc'] = [
       '#type' => 'number',
       '#title' => $this->t('Limiter le texte de description'),
-      '#default_value' => $this->configuration['limit_text'],
+      '#default_value' => $this->configuration['limit_text_desc'],
       '#description' => 'si la valeur est vide le texte va etre afficher dans son enssemble, si non les balise sont supprimées et le nombre de charactere est affiché.'
     ];
     $form['limit_text_title'] = [
       '#type' => 'number',
       '#title' => $this->t('Limiter le texte du Titre'),
-      '#default_value' => $this->configuration['limit_text'],
+      '#default_value' => $this->configuration['limit_text_title'],
       '#description' => 'si la valeur est vide le texte va etre afficher dans son enssemble, si non les balise sont supprimées et le nombre de charactere est affiché.'
     ];
     $this->Layouts->buildConfigurationForm($form);
