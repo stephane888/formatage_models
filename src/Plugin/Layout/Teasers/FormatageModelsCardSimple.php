@@ -68,6 +68,33 @@ class FormatageModelsCardSimple extends FormatageModelsTeasers {
           'card-img-big' => 'Card image big',
           'card-box-shadow' => 'Card box shadow'
         ]
+        ],
+      'sf' => [
+        'builder-form' => true,
+        'info' => [
+          'title' => 'Contenu',
+          'loader' => 'static'
+        ],
+        'fields' => [
+          'image' => [
+            'text_html' => [
+              'label' => 'Image',
+              'value' => ''
+            ]
+          ],
+          'titre' => [
+            'text_html' => [
+              'label' => 'Titre',
+              'value' => 'NICAMEX PRE-EVENT TRIP TO LAGOS, NIGERIA'
+            ]
+          ],
+          'description' => [
+            'text_html' => [
+              'label' => 'Description',
+              'value' => 'lorem ipsum dolor sit amet, consectetur adipis in euismod erat, sed diam nonum vul sit amet'
+            ]
+          ]
+        ]
       ]
     ];
   }
