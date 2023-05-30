@@ -17,7 +17,7 @@
 			{% if content.description %}
 			<div{{region_attributes.description.addClass('card-text','description')}}>
 				{% if settings.limit_text_desc > 0 %}
-					{% set d = content.description|rener|striptags|trim %}
+					{% set d = content.description|render|striptags|trim %}
 					{{ d|length > settings.limit_text_desc ? d|slice(0, settings.limit_text_desc) ~ '...' : d}}
 				{% else %}
 					{{content.description}}
