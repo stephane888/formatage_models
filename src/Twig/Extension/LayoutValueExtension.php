@@ -266,14 +266,26 @@ class LayoutValueExtension extends AbstractExtension {
   public function getFieldValue($build) {
     if (!$this->isFieldRenderArray($build)) {
       if (!empty($build)) {
-        // si c'est un rendu avec #type
-        $test = reset($build);
-        if (!empty($test['#type'])) {
-          return $build;
-        }
-        elseif (isset($build['#theme']) || isset($build['#type'])) {
-          return $build;
-        }
+        // On commente pour le moment, car je ne vois pas l'interer de tester ce
+        // qui y est, puisque on retourne $build.
+        // // si c'est un rendu avec #type
+        // $test = reset($build);
+        // if (is_array($test)) {
+        // if (!empty($test['#type'])) {
+        // return $build;
+        // }
+        // elseif (isset($build['#theme']) || isset($build['#type'])) {
+        // return $build;
+        // }
+        // }
+        // /**
+        // * Les elements de types blockContent renvoit un object.
+        // * Une raison supplemenataire d'eviter d'utiliser blockContent.
+        // */
+        // else {
+        // return $build;
+        // }
+        return $build;
       }
       return NULL;
     }

@@ -1,14 +1,24 @@
 {% if content %}
-	{% set custom_image %}
-	{{ content.bgimage }}
-	{% endset %}
-	<section {{attributes.addClass('page-header-bg')}} style="background-image: url('{{ custom_image|striptags|trim }}'); background-size:{{settings.bg_size}}; background-position:{{settings.bg_position}};">
-		{% if content.title %}
-			<div class="container">
-				<div class="col-md-12">
-					{{ content.title }}
-				</div>
+	{% if content.bgimage.layout_builder_add_block %}
+	    {{ content.bgimage }}
+	{% endif %}
+	{% if content.bgimage|layout_bg_img %}
+	    {% set attributes=attributes.merge(content.bgimage|layout_bg_img) %}
+	{% endif %}
+	<section {{attributes.addClass('page-header-bg')}}>
+		{% if content.title or content.sub_title %}
+		<div class=" content-text d-flex flex-column justify-content-center w-100">
+			<div class="container ">
+				<div class="row">
+					{% if content.title %}
+        				<{{settings.region_tag_title}} {{ region_attributes.title.addClass('title') }}> {{ content.title }} </{{settings.region_tag_title}}>
+    				{% endif %}
+    				{% if content.sub_title %}
+        				<{{settings.region_tag_sub_title}} {{ region_attributes.sub_title.addClass('sub_title') }}> {{ content.sub_title }} </{{settings.region_tag_sub_title}}>
+    				{% endif %}    				
+				</div>				
 			</div>
+		</div>			
 		{% endif %}
 	</section>
 {% endif %}

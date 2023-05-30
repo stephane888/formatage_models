@@ -23,6 +23,9 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *     "title" = {
  *       "label" = @Translation("Titre")
  *     },
+ *     "sub_title" = {
+ *       "label" = @Translation("Sous titre")
+ *     },
  *   }
  * )
  */
@@ -44,40 +47,12 @@ class FormatageModelsBgHeader extends FormatageModelsSection {
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return parent::defaultConfiguration() + [
-      'bg_position' => 'right center',
-      'bg_size' => '75%'
-    ];
-  }
-  
-  /**
-   *
-   * {@inheritdoc}
-   */
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form = parent::buildConfigurationForm($form, $form_state);
-    
-    $form['bg_position'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('bg_position'),
-      '#default_value' => $this->configuration['bg_position']
-    ];
-    $form['bg_size'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('bg_size'),
-      '#default_value' => $this->configuration['bg_size']
-    ];
-    return $form;
-  }
-  
-  /**
-   *
-   * {@inheritdoc}
-   */
-  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
-    parent::submitConfigurationForm($form, $form_state);
-    $this->configuration['bg_position'] = $form_state->getValue('bg_position');
-    $this->configuration['bg_size'] = $form_state->getValue('bg_size');
+    return [
+      'region_tag_title' => 'h2',
+      'region_tag_sub_title' => 'h4',
+      'region_css_title' => 'col-md-12',
+      'region_css_sub_title' => 'col-md-12'
+    ] + parent::defaultConfiguration();
   }
   
 }

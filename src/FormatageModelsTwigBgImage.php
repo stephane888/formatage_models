@@ -21,10 +21,12 @@ trait FormatageModelsTwigBgImage {
     if (!is_array($build)) {
       return $build;
     }
+    
     foreach ($build as $value) {
       if (is_array($value) && !empty($value)) {
         if (!empty($value['#theme'])) {
           if ($value['#theme'] == 'block' && !empty($value['content'])) {
+            
             if (!empty($vals['#configuration']))
               $conf = $vals['#configuration'];
             return $this->getFieldImgBg($value['content'], $conf);
@@ -52,7 +54,7 @@ trait FormatageModelsTwigBgImage {
     if (!$this->isFieldRenderArray($build)) {
       return NULL;
     }
-    
+    // dump($build);
     $elements = Element::children($build);
     if (empty($elements)) {
       return NULL;

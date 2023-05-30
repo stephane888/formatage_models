@@ -66,9 +66,9 @@
               </span>
               <span class="linker">{{ content.infos_f2 }} </span>
             </a>
-          </li>
-          {{ content.socials_rx }}
+          </li>          
         </ul>
+        {{ content.socials_rx }}
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0 right-link">
         {% if logged_in == true %}
 							
@@ -95,7 +95,9 @@
             <a href="/user/login" class="nav-link linker"> {{ 'Login'|trans }} </a>
           </li>
         {% endif %}
-          {{ content.button_f1 }}
+        {% for item in content.button_f1|array_elements(region_attributes.button_f1.addClass('button_f1')) %}
+		    {{ item }}
+	    {% endfor %}
         </ul>
       </div>
     </nav>

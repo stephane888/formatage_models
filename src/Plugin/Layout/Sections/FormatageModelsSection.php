@@ -107,10 +107,12 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
         // dump($this->configuration['default_class']);
         foreach ($this->configuration['default_class'] as $key => $groups) {
           if ($key == 'regions') {
+            //
             foreach ($current_regions as $region) {
-              foreach ($groups[$region] as $groups_regions) {
-                $build[$region]['#attributes']['class'][] = $this->getClassNameOnGroup($groups_regions);
-              }
+              if (!empty($groups[$region]))
+                foreach ($groups[$region] as $groups_regions) {
+                  $build[$region]['#attributes']['class'][] = $this->getClassNameOnGroup($groups_regions);
+                }
             }
           }
           else {
@@ -154,7 +156,11 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
         // The dynamic bootstrap styles storage.
         'bootstrap_styles' => []
       ],
-      'css' => ''
+      'css' => '',
+      'config_section' => [
+        'type_container' => 'container',
+        'container_class' => ''
+      ]
     ];
   }
   
@@ -164,6 +170,34 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
+    /**
+     * Configuration d'une section.
+     */
+    $form['config_section'] = [
+      '#type' => 'details',
+      '#title' => 'Configuration de la section',
+      '#open' => false,
+      '#description' => "NB, si cela ne s'applique pas, alors vous devez mettre à jour le layout, voir tache#57 dans formatage_models."
+    ];
+    // On permet à l'utilisateur de pourvoir selectionner le type de conteneur.
+    $form['config_section']['type_container'] = [
+      '#type' => 'select',
+      '#title' => 'Selectionner le type de container',
+      '#options' => [
+        '' => 'aucun',
+        'width-phone' => 'width-phone',
+        'with-tablet' => 'with-tablet',
+        'container' => 'container',
+        'container-fluid' => 'container-fluid'
+      ],
+      '#default_value' => $this->configuration['config_section']['type_container']
+    ];
+    $form['config_section']['container_class'] = [
+      '#type' => 'textfield',
+      '#title' => 'Classe pour le conteneur',
+      '#default_value' => $this->configuration['config_section']['container_class']
+    ];
+    //
     $form['blb_style'] = [
       '#type' => 'details',
       '#title' => 'Style',
@@ -183,6 +217,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['config_section'] = $form_state->getValue('config_section');
     $style_tab = [
       'blb_style'
     ];
