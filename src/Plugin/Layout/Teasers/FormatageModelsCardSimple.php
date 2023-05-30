@@ -79,13 +79,13 @@ class FormatageModelsCardSimple extends FormatageModelsTeasers {
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
     $form['limit_text_desc'] = [
-      '#type' => 'textfield',
+      '#type' => 'number',
       '#title' => $this->t('Limiter le texte de description'),
       '#default_value' => $this->configuration['limit_text'],
       '#description' => 'si la valeur est vide le texte va etre afficher dans son enssemble, si non les balise sont supprimées et le nombre de charactere est affiché.'
     ];
     $form['limit_text_title'] = [
-      '#type' => 'textfield',
+      '#type' => 'number',
       '#title' => $this->t('Limiter le texte du Titre'),
       '#default_value' => $this->configuration['limit_text'],
       '#description' => 'si la valeur est vide le texte va etre afficher dans son enssemble, si non les balise sont supprimées et le nombre de charactere est affiché.'
