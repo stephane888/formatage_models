@@ -1,11 +1,13 @@
-{%if content %}
-	<div{{attributes.addClass(['teaser-cardsimple','card'])}}>
-		<div{{region_attributes.image.addClass('card-img-top','image')}}>
+{% if content %}
+	<div {{attributes.addClass(['teaser-cardsimple','card'])}}>
+		{% if content %}
+		<div {{region_attributes.image.addClass('card-img-top','image')}}>
 			{{content.image}}
 		</div>
+		{% endif %}
 		<div class="card-body">
 			{% if content.titre %}
-			<h4{{region_attributes.titre.addClass('card-title','titre')}}>
+			<h4 {{region_attributes.titre.addClass('card-title','titre')}}>
 				{% if settings.limit_text_title > 0 %}
 					{% set t = content.titre|render|striptags|trim %}
 					{{ t|length > settings.limit_text_title ? t|slice(0, settings.limit_text_title) ~ '...' : t}}
@@ -15,7 +17,7 @@
 			</h4>
 			{% endif %}
 			{% if content.description %}
-			<div{{region_attributes.description.addClass('card-text','description')}}>
+			<div {{region_attributes.description.addClass('card-text','description')}}>
 				{% if settings.limit_text_desc > 0 %}
 					{% set d = content.description|render|striptags|trim %}
 					{{ d|length > settings.limit_text_desc ? d|slice(0, settings.limit_text_desc) ~ '...' : d}}
