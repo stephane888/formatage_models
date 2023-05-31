@@ -66,7 +66,8 @@ class FormatageModelsCardSimple extends FormatageModelsTeasers {
         'options' => [
           'basic' => 'Basic',
           'card-img-big' => 'Card image big',
-          'card-box-shadow' => 'Card box shadow'
+          'card-box-shadow' => 'Card box shadow',
+          'title-2-lines' => 'title 2 lines'
         ]
         ],
       'sf' => [
