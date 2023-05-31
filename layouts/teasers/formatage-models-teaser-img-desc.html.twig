@@ -27,7 +27,7 @@
 				{% endif %}
 				{% if content.desc %}
 					<div {{region_attributes.desc.addClass('desc','description')}}>
-						{% if settings.limit_text > 0 %}
+						{% if settings.limit_text > 0 and content.desc.layout_builder_add_block is empty %}
 							{% set text = content.desc|render|striptags|trim %}
 							{{ text|length > settings.limit_text ? text|slice(0, settings.limit_text) ~ '...' : text }}
 						{% else %}
