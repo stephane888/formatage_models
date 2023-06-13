@@ -30,7 +30,7 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class FormatageModelsSimpleBlock extends FormatageModelsSection {
-  
+
   /**
    *
    * {@inheritdoc}
@@ -41,7 +41,7 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/sections/formatage-models-simple-block.png");
   }
-  
+
   /**
    *
    * {@inheritdoc}
@@ -53,14 +53,14 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
     FormatageModelsThemes::formatSettingValues($build);
     return $build;
   }
-  
+
   /**
    *
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
-    
+
     $form['class_row'] = [
       '#type' => 'textfield',
       '#title' => 'Class row',
@@ -68,7 +68,7 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
     ];
     return $form;
   }
-  
+
   /**
    *
    * {@inheritdoc}
@@ -79,7 +79,7 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
     // $form_state->getValue('layoutrestrictions');
     $this->configuration['class_row'] = $form_state->getValue('class_row');
   }
-  
+
   /**
    *
    * {@inheritdoc}
@@ -98,7 +98,7 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
         'fields' => [
           'main' => [
             'text_html' => [
-              'label' => 'Drescription',
+              'label' => 'Description',
               'value' => ""
             ]
           ],
@@ -118,5 +118,5 @@ class FormatageModelsSimpleBlock extends FormatageModelsSection {
       ]
     ] + parent::defaultConfiguration();
   }
-  
+
 }
