@@ -199,7 +199,7 @@ class FormatageModels extends LayoutDefault {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     // NB : on change la valeur de configuration à ce stade, pour que le ou les
-    // formuailes parent puissent avaoir les bonnes valeurs.
+    // formuailes parent puissent avoir les bonnes valeurs.
     if ($this->subConfiguration) {
       $this->configuration = $this->subConfiguration;
     }

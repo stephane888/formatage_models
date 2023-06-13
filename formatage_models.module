@@ -3,6 +3,9 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\formatage_models\FormatageModelsThemes;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Field\FormatterInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Component\Utility\Html;
 
 /**
  *
@@ -12,6 +15,111 @@ use Drupal\Core\Entity\EntityInterface;
  * @DCG
  * This file is no longer required in Drupal 8.
  * @see https://www.drupal.org/node/2217931
+ */
+
+/**
+ * Implements hook_field_formatter_third_party_settings_form().
+ *
+ * Adds a textfield for container, label and value.
+ */
+function formatage_models_field_formatter_third_party_settings_form(FormatterInterface $plugin, FieldDefinitionInterface $field_definition, $view_mode, $form, FormStateInterface $form_state) {
+  $classes = $plugin->getThirdPartySetting('formatage_models', 'classes', [
+    'container' => '',
+    'title' => '',
+    'value' => ''
+  ]);
+  $element['classes'] = [
+    '#type' => 'details',
+    '#title' => t('Field Formatter'),
+    '#open' => false,
+    '#weight' => -30
+  ];
+  $element['classes']['container'] = [
+    '#type' => 'textfield',
+    '#title' => t('Field container class'),
+    '#default_value' => $classes['container']
+  ];
+  $element['classes']['title'] = [
+    '#type' => 'textfield',
+    '#title' => t('Field label class'),
+    '#default_value' => $classes['title']
+  ];
+  $element['classes']['value'] = [
+    '#type' => 'textfield',
+    '#title' => t('Field value class'),
+    '#default_value' => $classes['value']
+  ];
+  //
+  if (\Drupal::moduleHandler()->moduleExists('token')) {
+    $element['token_help'] = [
+      '#theme' => 'token_tree_link',
+      '#token_types' => [
+        $field_definition->getTargetEntityTypeId()
+      ]
+    ];
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for field templates.
+ *
+ * Adds a custom class to the field's class attribute
+ * according to the field formatter settings.
+ */
+function formatage_models_preprocess_field(&$variables) {
+  
+  // Add class for whole field.
+  if (!empty($variables['element']['#third_party_settings']['formatage_models']['classes'])) {
+    $classContainer = $variables['element']['#third_party_settings']['formatage_models']['classes']['container'];
+    $classTitle = $variables['element']['#third_party_settings']['formatage_models']['classes']['title'];
+    $classValue = $variables['element']['#third_party_settings']['formatage_models']['classes']['value'];
+    
+    /** @var \Drupal\Core\Utility\Token $token */
+    $token = \Drupal::service('token');
+    /** @var \Drupal\Core\Entity\EntityInterface $object */
+    $object = $variables['element']['#object'];
+    //
+    $classContainer = $token->replace($classContainer, [
+      $object->getEntityTypeId() => $object
+    ], [
+      'clear' => true
+    ]);
+    $classContainer = explode(' ', $classContainer);
+    foreach ($classContainer as $thisClass) {
+      $variables['attributes']['class'][] = Html::escape($thisClass);
+    }
+    //
+    $classTitle = $token->replace($classTitle, [
+      $object->getEntityTypeId() => $object
+    ], [
+      'clear' => true
+    ]);
+    $classTitle = explode(' ', $classTitle);
+    foreach ($classTitle as $thisClass) {
+      $variables['title_attributes']['class'][] = Html::escape($thisClass);
+    }
+    //
+    $classValue = $token->replace($classValue, [
+      $object->getEntityTypeId() => $object
+    ], [
+      'clear' => true
+    ]);
+    $classValue = explode(' ', $classValue);
+    foreach ($classValue as $thisClass) {
+      $variables['content_attributes']['class'][] = Html::escape($thisClass);
+    }
+    //
+    // dump($variables);
+  }
+}
+
+/**
+ * à quoi sert cette function.
+ *
+ * @param unknown $form
+ * @param FormStateInterface $form_state
+ * @return unknown
  */
 function addTextareaTreeMultipleMoreAjax(&$form, FormStateInterface $form_state) {
   $parents = $form_state->getTriggeringElement()['#parents'];
@@ -70,16 +178,6 @@ function formatage_models_preprocess_paragraph(&$variables) {
     }
     // }
   }
-}
-
-function formatage_models_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
-  if (!isset($build['#node']) && !isset($build['#paragraph'])) {
-    // dump($build);
-  }
-}
-
-function formatage_models_preprocess_block_content(&$variables) {
-  dump($variables);
 }
 
 /**
@@ -242,20 +340,38 @@ function formatage_models_plugin_filter_layout__layout_builder_alter(array &$def
 function formatage_models_preprocess_layout(&$vars) {
   if (!empty($vars['region_attributes'])) {
     foreach ($vars['region_attributes'] as $key => $region_attribute) {
-      $vars['region_attributes'][$key]->addClass('layout-region');
+      $vars['region_attributes'][$key]->addClass('layout-region lyt');
     }
   }
 }
 
+/**
+ *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
+ * @param unknown $vars
+ */
 function formatage_models_preprocess_formatage_models_menu01(&$vars) {
   FormatageModelsThemes::formatage_models_menu01($vars);
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
+/**
+ *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
+ * @param unknown $vars
+ */
 function formatage_models_preprocess_formatage_models_contact_page(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
+/**
+ *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
+ * @param unknown $vars
+ */
 function formatage_models_preprocess_formatage_models_contact(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
@@ -263,6 +379,8 @@ function formatage_models_preprocess_formatage_models_contact(&$vars) {
 /**
  *
  * @param array $vars
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  */
 function formatage_models_preprocess_formatage_models_blog_call_toaction(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
@@ -271,6 +389,8 @@ function formatage_models_preprocess_formatage_models_blog_call_toaction(&$vars)
 /**
  *
  * @param array $vars
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  */
 function formatage_models_preprocess_formatage_models_description(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
@@ -279,6 +399,8 @@ function formatage_models_preprocess_formatage_models_description(&$vars) {
 /**
  *
  * @param array $vars
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  */
 function formatage_models_preprocess_formatage_models_empty_results(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
@@ -287,6 +409,8 @@ function formatage_models_preprocess_formatage_models_empty_results(&$vars) {
 /**
  *
  * @param array $vars
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  */
 function formatage_models_page_bigbackground(&$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
@@ -298,7 +422,7 @@ function formatage_models_page_bigbackground(&$vars) {
 function formatage_models_preprocess_blb_section(&$vars) {
   if (!empty($vars['region_attributes'])) {
     foreach ($vars['region_attributes'] as $key => $region_attribute) {
-      $vars['region_attributes'][$key]->addClass('layout-region');
+      $vars['region_attributes'][$key]->addClass('layout-region blb');
     }
   }
   // if ($vars['theme_hook_original'] == 'blb_section')
@@ -322,14 +446,8 @@ function formatage_models_theme() {
 
 /**
  *
- * @param array $vars
- */
-function formatage_models_preprocess_formatage_models_footer1(&$vars) {
-  // FormatageModelsThemes::mergeContentAttributes($vars);
-}
-
-/**
- *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  * @param array $vars
  */
 function formatage_models_preprocess_formatage_models_comments(&$vars) {
@@ -338,16 +456,8 @@ function formatage_models_preprocess_formatage_models_comments(&$vars) {
 
 /**
  *
- * @param array $vars
- */
-function formatage_models_preprocess_formatage_models_titre_description(array &$variables) {
-  
-  // FormatageModelsThemes::addLayoutEditBlock($variables);
-  FormatageModelsThemes::mergeContentAttributes($variables);
-}
-
-/**
- *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  * @param array $vars
  */
 function formatage_models_preprocess_formatage_models_hero_thegem_18(array &$variables) {
@@ -355,17 +465,35 @@ function formatage_models_preprocess_formatage_models_hero_thegem_18(array &$var
   FormatageModelsThemes::ApplyAttributes($variables);
 }
 
+/**
+ *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
+ * @param array $variables
+ */
 function formatage_models_preprocess_formatage_models_images_bg(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   // FormatageModelsThemes::ApplyAttributes($variables);
   FormatageModelsThemes::mergeContentAttributes($variables);
 }
 
+/**
+ *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
+ * @param array $variables
+ */
 function formatage_models_preprocess_formatage_models_services_sliders(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   FormatageModelsThemes::ApplyAttributes($variables);
 }
 
+/**
+ *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
+ * @param array $vars
+ */
 function formatage_models_preprocess_formatage_models_titre(array &$vars) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   // FormatageModelsThemes::ApplyAttributes($variables);
@@ -373,39 +501,66 @@ function formatage_models_preprocess_formatage_models_titre(array &$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
+/**
+ *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
+ * @param array $vars
+ */
 function formatage_models_preprocess_formatage_models_lmsg_call_toaction(array &$vars) {
   FormatageModelsThemes::mergeContentAttributes($vars);
 }
 
+/**
+ *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
+ * @param array $variables
+ */
 function formatage_models_preprocess_formatage_models_service_icone(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   FormatageModelsThemes::ApplyAttributes($variables);
   FormatageModelsThemes::mergeContentAttributes($variables);
 }
 
+/**
+ *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
+ * @param array $variables
+ */
 function formatage_models_preprocess_formatage_models_expert_solution(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   FormatageModelsThemes::ApplyAttributes($variables);
 }
 
+/**
+ *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
+ * @param array $variables
+ */
 function formatage_models_preprocess_formatage_models_image_after_before(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   FormatageModelsThemes::ApplyAttributes($variables);
 }
 
+/**
+ *
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
+ * @param array $variables
+ */
 function formatage_models_preprocess_formatage_models_hero_slider_popup(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
   FormatageModelsThemes::ApplyAttributes($variables);
 }
 
-function formatage_models_preprocess_formatage_models_simple_block(array &$variables) {
-  // FormatageModelsThemes::ApplyAttributes($variables);
-  // FormatageModelsThemes::addLayoutEditBlock($variables);
-}
-
 /**
  *
  * @param array $variables
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  */
 function formatage_models_preprocess_formatage_models_galery_title(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
@@ -415,6 +570,8 @@ function formatage_models_preprocess_formatage_models_galery_title(array &$varia
 /**
  *
  * @param array $variables
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  */
 function formatage_models_preprocess_formatage_models_blog_list(array &$variables) {
   FormatageModelsThemes::ApplyAttributes($variables);
@@ -424,6 +581,8 @@ function formatage_models_preprocess_formatage_models_blog_list(array &$variable
 /**
  *
  * @param array $variables
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  */
 function formatage_models_preprocess_formatage_models_teaser(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
@@ -434,6 +593,8 @@ function formatage_models_preprocess_formatage_models_teaser(array &$variables) 
 /**
  *
  * @param array $variables
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  */
 function formatage_models_preprocess_formatage_models_teaser_a_la_une(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
@@ -443,6 +604,8 @@ function formatage_models_preprocess_formatage_models_teaser_a_la_une(array &$va
 /**
  *
  * @param array $variables
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  */
 function formatage_models_preprocess_formatage_models_realisation_big(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
@@ -452,6 +615,8 @@ function formatage_models_preprocess_formatage_models_realisation_big(array &$va
 /**
  *
  * @param array $variables
+ * @deprecated remove before 4x; ( il faut ajouter la function build
+ *             dans le plugin).
  */
 function formatage_models_preprocess_formatage_models_realisation_small(array &$variables) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);
@@ -461,6 +626,8 @@ function formatage_models_preprocess_formatage_models_realisation_small(array &$
 /**
  *
  * @param array $variables
+ * @deprecated remove before 4x; ( il faut ajouter la function build dans le
+ *             plugin).
  */
 function formatage_models_preprocess_formatage_models_bg_header(array &$vars) {
   // FormatageModelsThemes::addLayoutEditBlock($variables);

@@ -1,3 +1,20 @@
+field.formatter.settings.formatage_models:
+  type: mapping
+  label: Formatter settings
+  mapping:
+    classes:
+      type: mapping
+      label: Details
+      container:
+        type: string
+        label: Field container class
+      title:
+        type: string
+        label: Field title class
+      value:
+        type: string
+        label: Field value class
+
 field.formatter.settings.formatage_models_fieldgalleries:
   type: mapping
   label: FieldGalleries formatter settings
