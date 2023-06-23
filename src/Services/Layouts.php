@@ -242,7 +242,7 @@ class Layouts {
       '#default_value' => isset($this->configuration['cover_section']['zindex']) ? $this->configuration['cover_section']['zindex'] : '',
       '#options' => [
         '' => '::before Z-index 1',
-        'cover-before-z10' => '::before Z-index 10'
+        'cover-bg-theme-before-z10' => '::before Z-index 10'
       ]
     ];
   }
