@@ -716,10 +716,17 @@ function formatage_models_preprocess_views_view_render(&$vars) {
   $css = $view->display_handler->getOption('view_form_css');
   if ($css) {
     $Attribute = new Attribute();
-    $css = explode("", $css);
+    $css = explode(" ", $css);
     $Attribute->addClass($css);
-    if (!empty($vars['exposed']['#attributes']))
-      $vars['exposed']['#attributes']->addClass($css);
+    if (!empty($vars['exposed']['#attributes'])) {
+      if (is_array($vars['exposed']['#attributes'])) {
+        foreach ($css as $v) {
+          $vars['exposed']['#attributes']['class'][] = $v;
+        }
+      }
+      else
+        $vars['exposed']['#attributes']->addClass($css);
+    }
     else
       $vars['exposed']['#attributes'] = $Attribute;
   }

@@ -12,13 +12,13 @@ trait ArrayElements {
    * @var \Drupal\Core\Template\AttributeString
    */
   public $stringAttri = '';
-
+  
   function getElements($build, Attribute $atttribute = null) {
     if (!$atttribute)
       $atttribute = new Attribute();
-
+    
     $elements = [];
-
+    
     // La condifition sur layout_builder_add_block permet un affichage par
     // defaut si on est en administration.
     if (is_array($build) && !isset($build['layout_builder_add_block'])) {
@@ -79,5 +79,5 @@ trait ArrayElements {
       $elements[] = $build;
     return $elements;
   }
-
+  
 }
