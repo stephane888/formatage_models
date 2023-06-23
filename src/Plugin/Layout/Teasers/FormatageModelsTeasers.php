@@ -63,6 +63,7 @@ class FormatageModelsTeasers extends FormatageModels implements ContainerFactory
       $build['#attributes']['class'][] = $build['#settings']['cover_section']['active'];
       $build['#attributes']['class'][] = $build['#settings']['cover_section']['model'];
       $build['#attributes']['class'][] = $build['#settings']['cover_section']['opacity'];
+      $build['#attributes']['class'][] = $build['#settings']['cover_section']['zindex'];
     }
     
     /**
@@ -137,10 +138,16 @@ class FormatageModelsTeasers extends FormatageModels implements ContainerFactory
    */
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
-      'load_libray' => true,
+      'load_libray' => false,
       'container_wrapper' => [
         // The dynamic bootstrap styles storage.
         'bootstrap_styles' => []
+      ],
+      'cover_section' => [
+        'active' => '',
+        'model' => '',
+        'opacity' => '',
+        'zindex' => ''
       ]
     ];
   }

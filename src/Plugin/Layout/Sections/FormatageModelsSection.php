@@ -67,6 +67,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
       $build['#attributes']['class'][] = $build['#settings']['cover_section']['active'];
       $build['#attributes']['class'][] = $build['#settings']['cover_section']['model'];
       $build['#attributes']['class'][] = $build['#settings']['cover_section']['opacity'];
+      $build['#attributes']['class'][] = $build['#settings']['cover_section']['zindex'];
     }
     /**
      * On utilise ces regions, car " $regions" peut contenis des regions non
@@ -150,7 +151,7 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
    */
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
-      'load_libray' => true,
+      'load_libray' => false,
       'save_by_domain' => false,
       'container_wrapper' => [
         // The dynamic bootstrap styles storage.
@@ -160,6 +161,12 @@ class FormatageModelsSection extends FormatageModels implements ContainerFactory
       'config_section' => [
         'type_container' => 'container',
         'container_class' => ''
+      ],
+      'cover_section' => [
+        'active' => '',
+        'model' => '',
+        'opacity' => '',
+        'zindex' => ''
       ]
     ];
   }

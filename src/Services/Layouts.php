@@ -210,6 +210,7 @@ class Layouts {
       '#default_value' => isset($this->configuration['cover_section']['active']) ? $this->configuration['cover_section']['active'] : '',
       '#return_value' => 'cover-bg-theme'
     ];
+    //
     $form['cover_section']['model'] = [
       '#type' => 'select',
       '#title' => 'Cover color',
@@ -233,6 +234,15 @@ class Layouts {
         'opacity-before-055' => '0.55',
         'opacity-before-03' => '0.30',
         'opacity-before-015' => '0.15'
+      ]
+    ];
+    $form['cover_section']['zindex'] = [
+      '#type' => 'select',
+      '#title' => '::before Z-index',
+      '#default_value' => isset($this->configuration['cover_section']['zindex']) ? $this->configuration['cover_section']['zindex'] : '',
+      '#options' => [
+        '' => '::before Z-index 1',
+        'cover-before-z10' => '::before Z-index 10'
       ]
     ];
   }
