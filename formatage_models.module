@@ -690,7 +690,8 @@ function formatage_models_preprocess_views_view_render_page(&$vars) {
  * @param array $vars
  */
 function formatage_models_preprocess_views_view_render(&$vars) {
-  
+  module_load_include('inc', 'views', 'views.theme');
+  template_preprocess_views_view($vars);
   /**
    *
    * @var \Drupal\views\ViewExecutable $view
