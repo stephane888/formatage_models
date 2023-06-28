@@ -1,6 +1,6 @@
 {% if content %}
-<section class="top-header-teaser">
-  <div class="container">
+<section {{attributes.addClass('top-header-teaser')}}>
+  <div {% if settings.config_section %} class="{{ settings.config_section.type_container }} {{ settings.config_section.container_class }}" {% else %} class="container" {% endif %}>
     <nav class="navbar navbar-expand-lg navbar-light px-0">
       <button
         class="navbar-toggler mobile-btn"
@@ -45,7 +45,7 @@
                   />
                 </svg>
               </span>
-              <span class="linker">{{ content.infos_f1 }}</span>
+              <span {{region_attributes.infos_f1.addClass('linker')}}>{{ content.infos_f1 }}</span>
             </a>
           </li>
           <li class="nav-item">
@@ -64,11 +64,15 @@
                   />
                 </svg>
               </span>
-              <span class="linker">{{ content.infos_f2 }} </span>
+              <span {{region_attributes.infos_f2.addClass('linker')}}>{{ content.infos_f2 }} </span>
             </a>
           </li>          
         </ul>
-        {{ content.socials_rx }}
+        {% if content.socials_rx %}
+            <div {{region_attributes.socials_rx.addClass('socials_rx')}}>
+                {{ content.socials_rx }}
+            </div>
+        {% endif %}
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0 right-link">
         {% if logged_in == true %}
 							
@@ -77,7 +81,7 @@
                             	<a href="#" type="button" class="mr-4 dropdown-toggle" title="{{'Profile information'|trans}}" data-toggle="dropdown" aria-expanded="false">
                             		<i class="fas fa-user"></i>
                             	</a>
-                            	<div class="dropdown-menu dropdown-menu--user">
+                            	<div {{region_attributes.user_compact.addClass(['user_compact','dropdown-menu','dropdown-menu--user'])}}>
                                     {{content.user_compact}}
                                 </div>
                         	</div> 
@@ -95,9 +99,15 @@
             <a href="/user/login" class="nav-link linker"> {{ 'Login'|trans }} </a>
           </li>
         {% endif %}
-        {% for item in content.button_f1|array_elements(region_attributes.button_f1.addClass('button_f1')) %}
-		    {{ item }}
-	    {% endfor %}
+        {% if content.button_f1 %}
+        	{% if content.button_f1.layout_builder_add_block %}
+        		<div {{region_attributes.button_f1.addClass('button_f1')}}>{{ content.button_f1 }}</div>
+        	{% else %}
+            {% for item in content.button_f1|array_elements(region_attributes.button_f1.addClass('button_f1')) %}
+    		    {{ item }}
+    	    {% endfor %}
+    	    {% endif %}
+    	{% endif %}
         </ul>
       </div>
     </nav>

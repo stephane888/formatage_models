@@ -37,21 +37,29 @@ trait ArrayElements {
                   '#attributes' => $atttribute->toArray(),
                   [
                     '' => $value
-                  ]
+                  ],
+                  '#weight' => isset($build[$key]['#weight']) ? $build[$key]['#weight'] : 0
                 ];
               }
             }
             elseif (!empty($build[$key]['content'][$i]['#type']) && $build[$key]['content'][$i]['#type'] == 'link') {
               $build[$key]['content'][$i]['#attributes'] = $atttribute->toArray();
+              
               // un peu de forcing.
               // on recuperer la class definie dans field_formatter_class et on
               // l'ajoute dans la balise a.
               if (!empty($build[$key]['content']['#third_party_settings']['field_formatter_class']['class'])) {
                 if (empty($build[$key]['content'][$i]['#options']['attributes']['class']))
                   $build[$key]['content'][$i]['#options']['attributes']['class'] = [];
-                //
                 $build[$key]['content'][$i]['#options']['attributes']['class'][] = $build[$key]['content']['#third_party_settings']['field_formatter_class']['class'];
               }
+              // on recupere les classes definies dans :"formatage_models"
+              if (!empty($build[$key]['content']['#third_party_settings']['formatage_models']['classes']['value'])) {
+                if (empty($build[$key]['content'][$i]['#options']['attributes']['class']))
+                  $build[$key]['content'][$i]['#options']['attributes']['class'] = [];
+                $build[$key]['content'][$i]['#options']['attributes']['class'][] = $build[$key]['content']['#third_party_settings']['formatage_models']['classes']['value'];
+              }
+              $build[$key]['content'][$i]['#weight'] = isset($build[$key]['#weight']) ? $build[$key]['#weight'] : 0;
               $elements[] = $build[$key]['content'][$i];
             }
             else {
@@ -68,7 +76,8 @@ trait ArrayElements {
                 '#attributes' => $atttribute->toArray(),
                 [
                   '' => $build[$key]['content'][$i]
-                ]
+                ],
+                '#weight' => isset($build[$key]['#weight']) ? $build[$key]['#weight'] : 0
               ];
             }
           }

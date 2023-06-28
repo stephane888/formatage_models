@@ -12,7 +12,7 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  * @Layout(
  *   id = "formatage_models_header_thegem_01",
  *   label = @Translation(" Header Thegem 01 "),
- *   category = @Translation("Formatage Models [entete]"),
+ *   category = @Translation("Formatage Models (entete)"),
  *   path = "layouts/headers",
  *   template = "formatage-models-header-thegem-01",
  *   library = "formatage_models/formatage-models-header-thegem-01",
@@ -26,16 +26,7 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *     },
  *     "socials_rx" = {
  *       "label" = @Translation("socials_rx"),
- *     },
- *     "links_f1" = {
- *       "label" = @Translation("links_f1"),
- *     },
- *     "links_f2" = {
- *       "label" = @Translation("links_f2"),
- *     },
- *     "links_f3" = {
- *       "label" = @Translation("links_f3"),
- *     },
+ *     }, *
  *     "button_f1" = {
  *       "label" = @Translation("button_f1"),
  *     },
