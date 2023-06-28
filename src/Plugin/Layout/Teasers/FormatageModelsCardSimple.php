@@ -31,7 +31,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  * )
  */
 class FormatageModelsCardSimple extends FormatageModelsTeasers {
-
+  
   /**
    *
    * {@inheritdoc}
@@ -42,7 +42,7 @@ class FormatageModelsCardSimple extends FormatageModelsTeasers {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/teasers/formatage-models-cardsimple.png");
   }
-
+  
   /**
    *
    * {@inheritdoc}
@@ -54,7 +54,7 @@ class FormatageModelsCardSimple extends FormatageModelsTeasers {
     FormatageModelsThemes::formatSettingValues($build);
     return $build;
   }
-
+  
   function defaultConfiguration() {
     return parent::defaultConfiguration() + [
       'load_libray' => true,
@@ -69,7 +69,7 @@ class FormatageModelsCardSimple extends FormatageModelsTeasers {
           'card-box-shadow' => 'Card box shadow',
           'title-2-lines' => 'title 2 lines'
         ]
-        ],
+      ],
       'sf' => [
         'builder-form' => true,
         'info' => [
@@ -99,11 +99,11 @@ class FormatageModelsCardSimple extends FormatageModelsTeasers {
       ]
     ];
   }
-
+  
   /**
-  *
-  * {@inheritdoc}
-  */
+   *
+   * {@inheritdoc}
+   */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
     $form['limit_text_desc'] = [
@@ -118,18 +118,18 @@ class FormatageModelsCardSimple extends FormatageModelsTeasers {
       '#default_value' => $this->configuration['limit_text_title'],
       '#description' => 'si la valeur est vide le texte va etre afficher dans son enssemble, si non les balise sont supprimées et le nombre de charactere est affiché.'
     ];
-    $this->Layouts->buildConfigurationForm($form);
+    // $this->Layouts->buildConfigurationForm($form);
     return $form;
   }
-
+  
   /**
-  *
-  * {@inheritdoc}
-  */
+   *
+   * {@inheritdoc}
+   */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
     $this->configuration['limit_text_desc'] = $form_state->getValue('limit_text_desc');
     $this->configuration['limit_text_title'] = $form_state->getValue('limit_text_title');
   }
-
+  
 }
