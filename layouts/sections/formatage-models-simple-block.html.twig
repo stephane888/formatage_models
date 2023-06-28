@@ -4,7 +4,7 @@
 	{% endif %}
 	{% if content.image_bg|layout_bg_img %}
 	    {% set attributes=attributes.merge(content.image_bg|layout_bg_img) %}
-{% endif %}
+    {% endif %}
 <div {{attributes.addClass('one-column')}}>	
 	<div {% if settings.config_section %} class="{{ settings.config_section.type_container }} {{ settings.config_section.container_class }}" {% else %} class="" {% endif %}>
     	{% if content.main|has_value %}

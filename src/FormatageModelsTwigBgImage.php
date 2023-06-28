@@ -64,10 +64,67 @@ trait FormatageModelsTwigBgImage {
       if (!empty($build[$delta]["#markup"])) {
         return $Attribute->setAttribute('style', 'background-image:url(' . $build[$delta]["#markup"] . ');');
       }
-      else
-        \Drupal::messenger()->addWarning("Le type de formatage doit etre image_url ");
+      elseif ($build[$delta]['#theme'] == 'responsive_image_formatter') {
+        $Attribute->addClass('lazyload');
+        return $Attribute->setAttribute('data-bgset', $this->renderResponssiveImage($build[$delta]['#item'], $build[$delta]['#responsive_image_style_id']));
+      }
+      else {
+        \Drupal::messenger()->addWarning(" Le type de formatage doit etre image_url ");
+      }
     }
     return null;
+  }
+  
+  private function renderResponssiveImage(\Drupal\image\Plugin\Field\FieldType\ImageItem $item, $responsive_image_style_id) {
+    $responsive_image_style = \Drupal\responsive_image\Entity\ResponsiveImageStyle::load($responsive_image_style_id);
+    if ($responsive_image_style) {
+      $image_style_mappings = $responsive_image_style->getImageStyleMappings();
+      // $FallbackImageStyle = $responsive_image_style->getFallbackImageStyle();
+      /**
+       *
+       * @var \Drupal\breakpoint\BreakpointManagerInterface $breakpointManager
+       */
+      $breakpointManager = \Drupal::service('breakpoint.manager');
+      $breakpoints = array_reverse($breakpointManager->getBreakpointsByGroup($responsive_image_style->getBreakpointGroup()));
+      
+      //
+      $target_id = $item->getValue();
+      $dataBgset = null;
+      if (!empty($target_id[0])) {
+        $target_id = $target_id[0];
+      }
+      //
+      if ($target_id) {
+        $file = \Drupal\file\Entity\File::load($target_id['target_id']);
+        if ($file) {
+          foreach ($image_style_mappings as $image_style_mapping) {
+            $urlImage = \Drupal\image\Entity\ImageStyle::load($image_style_mapping['image_mapping'])->buildUrl($file->getFileUri());
+            /**
+             *
+             * @var \Drupal\breakpoint\Breakpoint $breakpoint
+             */
+            $breakpoint = $breakpoints[$image_style_mapping['breakpoint_id']];
+            $mediaQuery = $breakpoint->getMediaQuery();
+            if (!$dataBgset) {
+              if ($mediaQuery)
+                $dataBgset = $urlImage . ' [(' . $mediaQuery . ')]';
+              else
+                $dataBgset .= $urlImage;
+            }
+            else {
+              $dataBgset .= ' | ';
+              if ($mediaQuery)
+                $dataBgset .= $urlImage . ' [(' . $mediaQuery . ')]';
+              else
+                $dataBgset .= $urlImage;
+            }
+          }
+        }
+      }
+      return $dataBgset;
+    }
+    else
+      \Drupal::messenger()->addWarning(" responsive_image_style_id not definie ");
   }
   
 }

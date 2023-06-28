@@ -3,9 +3,11 @@
 		{% if content.bgimage.layout_builder_add_block %}
 			{{ content.bgimage }}
 		{% endif %}
-		{% set imgUrl %}{{content.bgimage|layout_value}}{% endset %}
+		{% if content.bgimage|layout_bg_img %}
+		    {% set attributes=attributes.merge(content.bgimage|layout_bg_img) %}
+		{% endif %}
 	{% endif %}
-	<section {{ attributes.addClass(['images-bg','space-padding']) }} style="background-image: url('{{ imgUrl|striptags|trim }}')">
+	<section {{ attributes.addClass(['images-bg','space-padding']) }} >
 		<div class="container">
 			<div class="row">
 				<div class = "{{ settings.larger_text }}">
