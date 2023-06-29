@@ -12,40 +12,30 @@ dependencies:
     - layout_builder
     - text
     - user
-<<<<<<< HEAD
-  theme:
-    - lesroisdelareno
-=======
     - formatage_models
->>>>>>> f65d783675b33239fed76ddec88cc3dfc95fe470
 third_party_settings:
   layout_builder:
     allow_custom: false
     enabled: true
     sections:
-      -
-<<<<<<< HEAD
-        layout_id: lesroisdelareno.blog-teaser
-=======
-        layout_id: formatage_models_teaser
->>>>>>> f65d783675b33239fed76ddec88cc3dfc95fe470
+      - layout_id: formatage_models_teaser
         layout_settings:
-          label: ''
+          label: ""
         components:
           71732537-db40-4971-bca1-a50908176800:
             uuid: 71732537-db40-4971-bca1-a50908176800
             region: bgimage
             configuration:
-              id: 'field_block:node:blogs:field_image'
+              id: "field_block:node:blogs:field_image"
               label: Image
               provider: layout_builder
-              label_display: '0'
+              label_display: "0"
               formatter:
                 label: hidden
                 type: image_url
                 settings:
-                  image_style: ''
-                third_party_settings: {  }
+                  image_style: ""
+                third_party_settings: {}
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -138,18 +128,18 @@ third_party_settings:
             uuid: 1aa3b23a-9b36-4651-a8a7-f0a5ecb667b2
             region: date
             configuration:
-              id: 'field_block:node:blogs:revision_timestamp'
-              label: 'Date de création de la révision'
+              id: "field_block:node:blogs:revision_timestamp"
+              label: "Date de création de la révision"
               provider: layout_builder
-              label_display: '0'
+              label_display: "0"
               formatter:
                 label: hidden
                 type: timestamp
                 settings:
                   date_format: long
-                  custom_date_format: ''
-                  timezone: ''
-                third_party_settings: {  }
+                  custom_date_format: ""
+                  timezone: ""
+                third_party_settings: {}
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -242,16 +232,16 @@ third_party_settings:
             uuid: a3323d74-5301-4882-9e46-0b4c1efe012a
             region: titre
             configuration:
-              id: 'field_block:node:blogs:title'
+              id: "field_block:node:blogs:title"
               label: Titre
               provider: layout_builder
-              label_display: '0'
+              label_display: "0"
               formatter:
                 label: hidden
                 type: string
                 settings:
                   link_to_entity: false
-                third_party_settings: {  }
+                third_party_settings: {}
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -344,15 +334,15 @@ third_party_settings:
             uuid: 5ffdc147-dbc6-4348-ab1f-129e42111547
             region: url
             configuration:
-              id: 'field_block:node:blogs:nid'
-              label: 'Identifiant (ID)'
+              id: "field_block:node:blogs:nid"
+              label: "Identifiant (ID)"
               provider: layout_builder
-              label_display: '0'
+              label_display: "0"
               formatter:
                 label: hidden
                 type: number_unformatted
-                settings: {  }
-                third_party_settings: {  }
+                settings: {}
+                third_party_settings: {}
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -441,7 +431,7 @@ third_party_settings:
                   scroll_effects:
                     class: null
             weight: 0
-        third_party_settings: {  }
+        third_party_settings: {}
 id: node.blogs.teaser
 targetEntityType: node
 bundle: blogs
@@ -453,12 +443,12 @@ content:
     weight: 101
     settings:
       trim_length: 600
-    third_party_settings: {  }
+    third_party_settings: {}
     region: content
   links:
     weight: 100
-    settings: {  }
-    third_party_settings: {  }
+    settings: {}
+    third_party_settings: {}
     region: content
 hidden:
   field_categorie_blog: true

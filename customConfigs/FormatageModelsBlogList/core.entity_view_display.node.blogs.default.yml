@@ -17,28 +17,23 @@ third_party_settings:
     allow_custom: false
     enabled: true
     sections:
-      -
-<<<<<<< HEAD
-        layout_id: lesroisdelareno.single-blog
-=======
-        layout_id: formatage_models_blog_list
->>>>>>> f65d783675b33239fed76ddec88cc3dfc95fe470
+      - layout_id: formatage_models_blog_list
         layout_settings:
-          label: ''
+          label: ""
         components:
           3c8f40bb-5950-4a79-8394-c5e3913b52b3:
             uuid: 3c8f40bb-5950-4a79-8394-c5e3913b52b3
             region: body
             configuration:
-              id: 'field_block:node:blogs:body'
+              id: "field_block:node:blogs:body"
               label: Body
               provider: layout_builder
-              label_display: '0'
+              label_display: "0"
               formatter:
                 label: hidden
                 type: text_default
-                settings: {  }
-                third_party_settings: {  }
+                settings: {}
+                third_party_settings: {}
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -131,16 +126,16 @@ third_party_settings:
             uuid: df784683-b76d-4d1e-983a-fa360133c1c6
             region: bgimage
             configuration:
-              id: 'field_block:node:blogs:field_image'
+              id: "field_block:node:blogs:field_image"
               label: Image
               provider: layout_builder
-              label_display: '0'
+              label_display: "0"
               formatter:
                 label: hidden
                 type: image_url
                 settings:
-                  image_style: ''
-                third_party_settings: {  }
+                  image_style: ""
+                third_party_settings: {}
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -233,18 +228,18 @@ third_party_settings:
             uuid: 28936096-ccf8-4a67-bdd8-cd10ee5064a2
             region: date
             configuration:
-              id: 'field_block:node:blogs:revision_timestamp'
-              label: 'Date de création de la révision'
+              id: "field_block:node:blogs:revision_timestamp"
+              label: "Date de création de la révision"
               provider: layout_builder
-              label_display: '0'
+              label_display: "0"
               formatter:
                 label: hidden
                 type: timestamp
                 settings:
                   date_format: medium
-                  custom_date_format: ''
-                  timezone: ''
-                third_party_settings: {  }
+                  custom_date_format: ""
+                  timezone: ""
+                third_party_settings: {}
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -337,15 +332,15 @@ third_party_settings:
             uuid: 6726382f-1667-45b1-9955-9f7a490146c1
             region: user
             configuration:
-              id: 'field_block:node:blogs:uid'
-              label: 'Écrit par'
+              id: "field_block:node:blogs:uid"
+              label: "Écrit par"
               provider: layout_builder
-              label_display: '0'
+              label_display: "0"
               formatter:
                 label: hidden
                 type: author
-                settings: {  }
-                third_party_settings: {  }
+                settings: {}
+                third_party_settings: {}
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -438,16 +433,16 @@ third_party_settings:
             uuid: a7bfdfd8-2a5b-409c-84f5-52d661109dfe
             region: title
             configuration:
-              id: 'field_block:node:blogs:title'
+              id: "field_block:node:blogs:title"
               label: Titre
               provider: layout_builder
-              label_display: '0'
+              label_display: "0"
               formatter:
                 label: hidden
                 type: string
                 settings:
                   link_to_entity: false
-                third_party_settings: {  }
+                third_party_settings: {}
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -536,7 +531,7 @@ third_party_settings:
                   scroll_effects:
                     class: null
             weight: 0
-        third_party_settings: {  }
+        third_party_settings: {}
 id: node.blogs.default
 targetEntityType: node
 bundle: blogs
@@ -546,30 +541,30 @@ content:
     label: hidden
     type: text_default
     weight: 101
-    settings: {  }
-    third_party_settings: {  }
+    settings: {}
+    third_party_settings: {}
     region: content
   field_categorie_blog:
     weight: 103
     label: above
     settings:
       link: true
-    third_party_settings: {  }
+    third_party_settings: {}
     type: entity_reference_label
     region: content
   field_image:
     weight: 102
     label: above
     settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
+      image_style: ""
+      image_link: ""
+    third_party_settings: {}
     type: image
     region: content
   links:
     weight: 100
     region: content
-    settings: {  }
-    third_party_settings: {  }
+    settings: {}
+    third_party_settings: {}
 hidden:
   langcode: true
