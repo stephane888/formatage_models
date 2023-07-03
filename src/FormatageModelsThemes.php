@@ -121,37 +121,42 @@ class FormatageModelsThemes {
     
     if (!empty($options['view_layouts_options']) & $view->style_plugin->usesFields()) {
       foreach ($vars['rows'] as $row_index => $row) {
-        $viewRow = $row['#view'];
-        if (!empty($viewRow->row_index))
-          $viewRow->row_index = $row_index;
-        $row['view'] = $viewRow;
-        $row['row'] = $row['#row'];
-        $row['options'] = $row['#options'];
-        template_preprocess_views_view_fields($row);
-        if (!empty($row['fields'])) {
-          $vars['rows'][$row_index] = $row;
-          foreach ($row['fields'] as $fieldname => $field) {
+        if (!empty($row['#view'])) {
+          $viewRow = $row['#view'];
+          if (!empty($viewRow->row_index))
+            $viewRow->row_index = $row_index;
+          $row['view'] = $viewRow;
+          $row['row'] = $row['#row'];
+          $row['options'] = $row['#options'];
+          template_preprocess_views_view_fields($row);
+          if (!empty($row['fields'])) {
+            $vars['rows'][$row_index] = $row;
+            foreach ($row['fields'] as $fieldname => $field) {
+              /**
+               *
+               * @var \Drupal\views\Plugin\views\field\EntityField $fieldHanler
+               */
+              $fieldHanler = $field->handler;
+              $vars['rows'][$row_index][$fieldname]['#markup'] = $fieldHanler->advancedRender($row['row']);
+              // $vars['rows'][$row_index][$fieldname] = $field;
+              // $fieldHanler->ren
+            }
             /**
-             *
-             * @var \Drupal\views\Plugin\views\field\EntityField $fieldHanler
+             * On selectionne une region et on y charge tous les champs qui sont
+             * rattaché.
              */
-            $fieldHanler = $field->handler;
-            $vars['rows'][$row_index][$fieldname]['#markup'] = $fieldHanler->advancedRender($row['row']);
-            // $vars['rows'][$row_index][$fieldname] = $field;
-            // $fieldHanler->ren
-          }
-          /**
-           * On selectionne une region et on y charge tous les champs qui sont
-           * rattaché.
-           */
-          foreach ($regions as $region => $fieldnames) {
-            // $vars['rows'][$row_index][$region] = [];
-            foreach ($fieldnames as $fieldnameR) {
-              if (!empty($vars['rows'][$row_index][$fieldnameR])) {
-                $vars['rows'][$row_index][$region][] = $vars['rows'][$row_index][$fieldnameR];
+            foreach ($regions as $region => $fieldnames) {
+              // $vars['rows'][$row_index][$region] = [];
+              foreach ($fieldnames as $fieldnameR) {
+                if (!empty($vars['rows'][$row_index][$fieldnameR])) {
+                  $vars['rows'][$row_index][$region][] = $vars['rows'][$row_index][$fieldnameR];
+                }
               }
             }
           }
+        }
+        else {
+          \Drupal::messenger()->addWarning('Error with display views');
         }
       }
     }

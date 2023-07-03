@@ -30,7 +30,7 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a class="nav-link d-flex" href="#">
+            <div class="nav-link d-flex" href="#">
               <span class="location">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -46,10 +46,10 @@
                 </svg>
               </span>
               <span {{region_attributes.infos_f1.addClass('linker')}}>{{ content.infos_f1 }}</span>
-            </a>
+            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link d-flex" href="#">
+            <div class="nav-link d-flex" href="#">
               <span class="phone">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,7 @@
                 </svg>
               </span>
               <span {{region_attributes.infos_f2.addClass('linker')}}>{{ content.infos_f2 }} </span>
-            </a>
+            </div>
           </li>          
         </ul>
         {% if content.socials_rx %}
