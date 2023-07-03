@@ -6,7 +6,7 @@
 		</div>
 		{% endif %}
 		<div class="card-body">
-			{% if content.titre|has_value %}
+			{% if content.titre %}
 			<h4 {{region_attributes.titre.addClass(['card-title','titre'])}}>
 				{#% if settings.limit_text_title > 0 and content.titre.layout_builder_add_block is empty %}
 					{% set t = content.titre|render|striptags|trim %}

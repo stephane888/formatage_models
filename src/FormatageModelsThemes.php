@@ -122,7 +122,8 @@ class FormatageModelsThemes {
     if (!empty($options['view_layouts_options']) & $view->style_plugin->usesFields()) {
       foreach ($vars['rows'] as $row_index => $row) {
         $viewRow = $row['#view'];
-        $viewRow->row_index = $row_index;
+        if (!empty($viewRow->row_index))
+          $viewRow->row_index = $row_index;
         $row['view'] = $viewRow;
         $row['row'] = $row['#row'];
         $row['options'] = $row['#options'];

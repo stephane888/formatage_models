@@ -51,12 +51,12 @@ class FormatageModelsCardSimple extends FormatageModelsTeasers {
   public function build(array $regions) {
     // TODO Auto-generated method stub
     $build = parent::build($regions);
-    FormatageModelsThemes::formatSettingValues($build);
+    // FormatageModelsThemes::formatSettingValues($build);
     return $build;
   }
   
   function defaultConfiguration() {
-    return parent::defaultConfiguration() + [
+    return [
       'load_libray' => true,
       'limit_text_desc' => 200,
       'limit_text_title' => 200,
@@ -97,7 +97,7 @@ class FormatageModelsCardSimple extends FormatageModelsTeasers {
           ]
         ]
       ]
-    ];
+    ] + parent::defaultConfiguration();
   }
   
   /**
