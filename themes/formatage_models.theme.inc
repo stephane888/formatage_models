@@ -61,7 +61,7 @@ function template_preprocess_formatage_models_menu(&$vars) {
 }
 
 function template_preprocess_formatage_models_quickly_edit(&$vars) {
-  // dump($vars);
+  $vars['status_edit'] = true;
   if (!empty($vars['element']['#contextual_links']['#id'])) {
     $vars["#attached"]['library'][] = 'formatage_models/formatage-models-data-quick-edit-id';
     if (empty($vars['attributes'])) {

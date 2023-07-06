@@ -431,9 +431,9 @@ function formatage_models_preprocess_blb_section(&$vars) {
 /**
  * Implements hook_theme().
  */
-function formatage_models_theme() {
+function formatage_models_theme($existing, $type, $theme, $path) {
   $hooks = FormatageModelsThemes::getThemeHooks();
-  // template to edit quickly paragraphe.
+  // Template to edit quickly paragraphe.
   $hooks['formatage_models_quickly_edit'] = [
     'preprocess functions' => [
       'template_preprocess_formatage_models_quickly_edit'
