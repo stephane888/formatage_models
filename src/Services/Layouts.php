@@ -94,7 +94,8 @@ class Layouts {
     $form['css_class']['css'] = [
       '#type' => 'textfield',
       '#title' => 'Class css du container parent',
-      '#default_value' => $this->configuration['css']
+      '#default_value' => $this->configuration['css'],
+      '#maxlength' => 256
     ];
     if (!empty($this->configuration['derivate']['options']))
       $form['css_class']['derivate'] = [
