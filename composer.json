@@ -1,7 +1,7 @@
 {
-  "name": "stephane888/formatage_models",
+  "name": "habeuk/formatage_models",
   "description": "permet de formatter les modeles tels que les champs",
-  "type": "drupal-module-custom",
+  "type": "drupal-custom-module",
   "license": "MIT",
   "authors": [
     {

@@ -109,17 +109,19 @@ function formatage_models_preprocess_field(&$variables) {
     foreach ($classValue as $thisClass) {
       $variables['content_attributes']['class'][] = Html::escape($thisClass);
     }
-    //
-    // dump($variables);
+    if (!empty($classValue)) {
+      // \Stephane888\Debug\debugLog::kintDebugDrupal($variables,
+      // 'formatage_models_preprocess_field--', true);
+    }
   }
 }
 
 /**
  * à quoi sert cette function.
  *
- * @param unknown $form
+ * @param array $form
  * @param FormStateInterface $form_state
- * @return unknown
+ * @return array
  */
 function addTextareaTreeMultipleMoreAjax(&$form, FormStateInterface $form_state) {
   $parents = $form_state->getTriggeringElement()['#parents'];

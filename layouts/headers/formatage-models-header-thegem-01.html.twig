@@ -27,6 +27,12 @@
           </svg>
         </span>
       </button>
+      {% if content.data_mobile %}
+      <!-- display only on mobile -->
+      <div {{ region_attributes.data_mobile.addClass(['data_mobile']) }}>
+      	{{ content.data_mobile }}
+      </div>
+      {% endif %}
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
@@ -92,10 +98,10 @@
 						{% endif %}      
         {% else %}
           <li class="nav-item page-linker">
-            <a href="/user/login" class="nav-link linker"> {{ 'registration'|trans }} </a>
+            <a href="/user/login" class="nav-link linker"> {{ 'Registration'|trans }} </a>
           </li>
           <li class="nav-item page-linker">
-            <span> | </span>
+            <span class="d-none d-lg-block" > | </span>
             <a href="/user/login" class="nav-link linker"> {{ 'Login'|trans }} </a>
           </li>
         {% endif %}

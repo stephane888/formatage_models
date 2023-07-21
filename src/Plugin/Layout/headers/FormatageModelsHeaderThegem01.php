@@ -32,6 +32,9 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *     },
  *     "user_compact" = {
  *       "label" = @Translation(" User compact "),
+ *     },
+ *     "data_mobile" = {
+ *       "label" = @Translation(" data_mobile "),
  *     }
  *
  *   }
@@ -64,8 +67,9 @@ class FormatageModelsHeaderThegem01 extends FormatageModelsSection {
   }
   
   function defaultConfiguration() {
-    return parent::defaultConfiguration() + [
+    return [
       'css' => 'bg-dark text-white',
+      'region_css_data_mobile' => 'ml-auto d-lg-none',
       'load_libray' => true,
       'infos' => [
         'builder-form' => true,
@@ -193,7 +197,7 @@ class FormatageModelsHeaderThegem01 extends FormatageModelsSection {
           ]
         ]
       ]
-    ];
+    ] + parent::defaultConfiguration();
   }
   
 }
